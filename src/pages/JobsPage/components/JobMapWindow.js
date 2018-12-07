@@ -54,7 +54,9 @@ const JobMapWindow = ({ marker, allMarkers, closeMapWindow, history }) => {
 export default withRouter(JobMapWindow)
 
 const MapWindowContainer = styled.div`
-  width: 90vw;
+  position: fixed;
+  left: -50%;
+  right: 50%;
   display: flex;
   flex-wrap: wrap;
   background: #fff;

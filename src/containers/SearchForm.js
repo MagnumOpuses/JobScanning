@@ -8,6 +8,7 @@ import { Checkbox } from '../components'
 import { countiesAndMunicipalities } from '../utils/searchOptions'
 import axios from 'axios'
 import breakpoint from '../styles/breakpoints'
+import { buttonStyle } from '../styles/components/'
 
 class SearchForm extends Component {
   state = {
@@ -188,35 +189,13 @@ const CustomForm = styled(Form)`
 
 const CustomButton = styled(Button)`
   &&& {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
+    ${buttonStyle}
     align-self: center;
     margin-top: 4rem;
-    text-align: center;
     padding: 1.4rem 9rem;
-    background: ${props => props.theme.secondary};
-    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2);
-    border-radius: 10rem;
 
     @media (min-width: ${breakpoint.tablet}) {
       margin-top: 0;
-    }
-
-    &:hover {
-      box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-    }
-
-    &:active,
-    &:focus {
-      box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
-    }
-
-    &&&:disabled {
-      color: ${props => props.theme.lightGrey};
-      background: ${props => props.theme.brightestSecondary};
-      box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2) !important;
-      opacity: 1 !important;
     }
   }
 `

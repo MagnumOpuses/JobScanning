@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import images from '../../../images/'
+import { buttonStyle } from '../../../styles/components'
 
 const DescriptionContainer = ({ text, source }) => (
   <DescriptionBox>
@@ -60,30 +61,15 @@ const DescriptionText = styled.p`
 `
 
 const StyledLink = styled.a`
+  ${buttonStyle}
   &:link,
   &:visited {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
+    width: 60%;
     position: absolute;
     left: 50%;
     bottom: 15%;
     transform: translate(-50%, -15%);
-    text-align: center;
-    width: 60%;
     padding: 1.5rem;
-    background: ${props => props.theme.secondary};
-    /* box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5); */
-    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2);
-    border-radius: 10rem;
-  }
-
-  &:hover,
-  &:active {
-    color: ${props => props.theme.secondary};
-    background: #fff;
-    border: 1px solid ${props => props.theme.secondary};
-    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
   }
 `
 

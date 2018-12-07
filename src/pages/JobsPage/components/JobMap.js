@@ -53,6 +53,7 @@ const MyMapComponent = compose(
               defaultAnimation={4}
               onClick={() => props.onMarkerClick(marker)}
             >
+              {console.log(marker)}
               {marker.isOpen && (
                 <OverlayView
                   position={{ lat: position.lat, lng: position.lng }}
@@ -85,19 +86,24 @@ class MyFancyComponent extends React.Component {
         markers: props.ads.markers
       }
     }
+
     return null
   }
 
-  handleMarkerClick = clickedMarker => {
+  toggleInfoWindow = clickedMarker => {
     console.log(clickedMarker)
 
-    const updatedMarkers = [...this.state.markers]
-    for (let i = 0; i < updatedMarkers.length; i++) {
-      if (updatedMarkers[i].id === clickedMarker.id) {
-        updatedMarkers[i].isOpen = !updatedMarkers[i].isOpen
-      }
-    }
-    this.setState({ markers: updatedMarkers })
+    this.setState(prevState => ({
+      markers: prevState.markers.map(marker => {
+        if (marker.id === clickedMarker.id) {
+          marker.isOpen = !marker.isOpen
+        } else {
+          marker.isOpen = false
+        }
+        return marker
+      })
+    }))
+    console.log('STAAAAATE', this.state.markers)
   }
 
   render() {
@@ -105,7 +111,7 @@ class MyFancyComponent extends React.Component {
       <MyMapComponent
         markers={this.state.markers}
         processedList={this.props.processedList}
-        onMarkerClick={this.handleMarkerClick}
+        onMarkerClick={this.toggleInfoWindow}
       />
     )
   }
