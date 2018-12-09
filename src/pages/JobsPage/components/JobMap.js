@@ -40,7 +40,6 @@ const MyMapComponent = compose(
         gridSize={60}
         maxZoom={14}
       >
-        {console.log(props.markers)}
         {props.markers.map(marker => {
           const position = {
             lat: marker.geocode.geometry.location.lat,
@@ -53,8 +52,7 @@ const MyMapComponent = compose(
               defaultAnimation={4}
               onClick={() => props.onMarkerClick(marker)}
             >
-              {console.log(marker)}
-              {marker.isOpen && (
+              {marker.id === props.selectedMarker.id && (
                 <OverlayView
                   position={{ lat: position.lat, lng: position.lng }}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
@@ -77,40 +75,28 @@ const MyMapComponent = compose(
 
 class MyFancyComponent extends React.Component {
   state = {
-    markers: this.props.ads.markers
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (props.ads.markers !== state.markers) {
-      return {
-        markers: props.ads.markers
-      }
-    }
-
-    return null
+    selectedMarker: {}
   }
 
   toggleInfoWindow = clickedMarker => {
-    console.log(clickedMarker)
+    const { selectedMarker } = this.state
 
-    this.setState(prevState => ({
-      markers: prevState.markers.map(marker => {
-        if (marker.id === clickedMarker.id) {
-          marker.isOpen = !marker.isOpen
-        } else {
-          marker.isOpen = false
-        }
-        return marker
-      })
-    }))
-    console.log('STAAAAATE', this.state.markers)
+    if (clickedMarker.id === selectedMarker.id) {
+      this.setState({ selectedMarker: {} })
+    } else {
+      this.setState({ selectedMarker: clickedMarker })
+    }
   }
 
   render() {
+    const { selectedMarker } = this.state
+    const { markers, processedList } = this.props.ads
+
     return (
       <MyMapComponent
-        markers={this.state.markers}
-        processedList={this.props.processedList}
+        markers={markers}
+        selectedMarker={selectedMarker}
+        processedList={processedList}
         onMarkerClick={this.toggleInfoWindow}
       />
     )
