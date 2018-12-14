@@ -1,40 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { selectJob, unselectJob } from '../../../../redux/actions'
 import styled from 'styled-components'
 import _ from 'lodash'
 import {
   AdsList,
-  AdsMap,
   AdsOverview,
   GridContainer,
-  DescriptionContainer
+  DescriptionContainer,
+  JobMap
 } from '../../../../components'
 import JobDetailsDesktop from './JobDetailsDesktop'
 import PageHeaderAds from './PageHeaderAds'
 
 class AdsPage extends Component {
-  state = {
-    selected: false,
-    selectedAd: {}
-  }
-
   selectAd = selectedAd => {
-    console.log(selectedAd)
-
     const duplicatedGroupId = _.filter(this.props.hits, item => {
       return item.group.id === selectedAd.group.id
     })
 
-    this.setState({
-      selected: true,
-      selectedAd: { ...selectedAd, duplicatedGroupId }
-    })
+    const selectedJob = { ...selectedAd, duplicatedGroupId }
+    this.props.selectJob(selectedJob)
 
-    console.log('STATE', this.state.selectedAd)
+    this.setState({
+      selected: true
+    })
   }
 
   render() {
-    const { selected, selectedAd } = this.state
+    const { selectedJob } = this.props
+
     return (
       <GridContainer rows={'100px calc(100vh - 100px)'} center>
         <PageHeaderAds />
@@ -44,17 +39,17 @@ class AdsPage extends Component {
           </List>
           <Ad>
             <Details>
-              {selected ? (
-                <JobDetailsDesktop selectedAd={selectedAd} />
+              {Object.keys(selectedJob).length > 0 ? (
+                <JobDetailsDesktop selectedAd={selectedJob} />
               ) : (
                 <div style={{ height: '40vh' }} />
               )}
             </Details>
             <Text>
-              {selected ? (
+              {Object.keys(selectedJob).length > 0 ? (
                 <DescriptionContainer
-                  text={selectedAd.content.text}
-                  source={selectedAd.duplicatedGroupId}
+                  text={selectedJob.content.text}
+                  source={selectedJob.duplicatedGroupId}
                 />
               ) : (
                 <div style={{ height: '40vh' }} />
@@ -65,7 +60,7 @@ class AdsPage extends Component {
             <AdsOverview />
           </Ranks>
           <Map>
-            <AdsMap markers={this.props.markers} />
+            <JobMap />
           </Map>
         </Content>
       </GridContainer>
@@ -74,16 +69,17 @@ class AdsPage extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { hits } = ads
+  const { hits, selectedJob } = ads
 
   return {
-    hits
+    hits,
+    selectedJob
   }
 }
 
 export default connect(
   mapStateToProps,
-  null
+  { selectJob, unselectJob }
 )(AdsPage)
 
 const Content = styled.div`

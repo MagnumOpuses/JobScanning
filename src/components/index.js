@@ -11,7 +11,6 @@ import PageHeader from './PageHeader'
 import PageHeaderAds from '../pages/JobsPage/components/PageHeaderAds'
 
 import AdsList from '../pages/JobsPage/components/AdsList'
-import AdsMap from '../pages/JobsPage/components/AdsMap'
 import AdsOverview from '../containers/AdsOverview'
 
 import SubHeader from './reusables/adcomponents/SubHeader'
@@ -19,12 +18,10 @@ import Title from './reusables/adcomponents/Title'
 import InfoContainer from './reusables/adcomponents/InfoContainer'
 import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
 
-import JobMap from '../pages/JobsPage/components/JobMap'
-import JobMapWindow from '../pages/JobsPage/components/JobMapWindow'
+import { default as JobMap } from './jobMap/JobMapContainer'
 
 export {
   AdsList,
-  AdsMap,
   AdsOverview,
   BoldText,
   ButtonLink,
@@ -41,6 +38,5 @@ export {
   Title,
   InfoContainer,
   DescriptionContainer,
-  JobMap,
-  JobMapWindow
+  JobMap
 }

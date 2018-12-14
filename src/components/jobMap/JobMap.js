@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { selectJob, unselectJob } from '../../../redux/actions'
 import { compose, withProps } from 'recompose'
 import {
   withScriptjs,
@@ -10,11 +8,11 @@ import {
   OverlayView
 } from 'react-google-maps'
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer'
-import { JobMapWindow } from '../../../components'
+import JobMapWindow from './components/JobMapWindow'
 
 const getPixelPositionOffset = (width, height) => ({
   x: -(width / 2),
-  y: -(height - 135)
+  y: -(height - 2)
 })
 
 const MyMapComponent = compose(
@@ -32,6 +30,9 @@ const MyMapComponent = compose(
   <GoogleMap
     defaultZoom={4.8}
     defaultCenter={{ lat: 62.173276, lng: 14.942265 }}
+    defaultOptions={{
+      disableDefaultUI: true
+    }}
   >
     {props.markers.length > 0 && (
       <MarkerClusterer
@@ -53,7 +54,7 @@ const MyMapComponent = compose(
               defaultAnimation={4}
               onClick={() => props.toggleInfoWindow(marker)}
             >
-              {marker.id === props.selectedMarker.id && (
+              {marker.id === props.selectedJob.id && (
                 <OverlayView
                   position={{ lat: position.lat, lng: position.lng }}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
@@ -61,7 +62,7 @@ const MyMapComponent = compose(
                 >
                   <JobMapWindow
                     marker={marker}
-                    allMarkers={props.markers}
+                    markers={props.markers}
                     closeMapWindow={() => props.toggleInfoWindow(marker)}
                   />
                 </OverlayView>
@@ -74,36 +75,19 @@ const MyMapComponent = compose(
   </GoogleMap>
 ))
 
-class MyFancyComponent extends React.Component {
-  toggleInfoWindow = clickedMarker => {
-    if (clickedMarker.id === this.props.ads.selectedJob.id) {
-      this.props.unselectJob()
-    } else {
-      this.props.selectJob(clickedMarker)
-    }
-  }
-
+class JobMap extends React.Component {
   render() {
-    const { markers, processedList, selectedJob } = this.props.ads
+    const { markers, selectedJob, processedList, toggleInfoWindow } = this.props
 
     return (
       <MyMapComponent
         markers={markers}
-        selectedMarker={selectedJob}
+        selectedJob={selectedJob}
         processedList={processedList}
-        toggleInfoWindow={this.toggleInfoWindow}
+        toggleInfoWindow={toggleInfoWindow}
       />
     )
   }
 }
 
-function mapStateToProps({ ads }) {
-  return {
-    ads
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  { selectJob, unselectJob }
-)(MyFancyComponent)
+export default JobMap

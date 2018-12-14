@@ -30,7 +30,7 @@ class SearchForm extends Component {
   handleSubmit = async event => {
     event.preventDefault()
     this.props.searchJobs(this.state.searchTerm, this.state.location)
-    this.props.history.push('/ads')
+    this.props.history.push('/jobs')
   }
 
   getCurrentPosition = () => {

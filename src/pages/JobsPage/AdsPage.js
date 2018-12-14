@@ -8,17 +8,17 @@ import theme from '../../styles/theme'
 import numberOfUniqueSources from '../../utils/numberOfUniqueSources'
 import {
   AdsList,
-  AdsMap,
   AdsOverview,
   DisplayNumber,
   GridContainer,
-  PageHeaderAds
+  PageHeaderAds,
+  JobMap
 } from '../../components'
 import JobsPageDesktop from './components/desktop/JobsPageDesktop'
 
 const DISPLAY_STATES = {
   list: <AdsList />,
-  map: <AdsMap />,
+  map: <JobMap />,
   overview: <AdsOverview />
 }
 

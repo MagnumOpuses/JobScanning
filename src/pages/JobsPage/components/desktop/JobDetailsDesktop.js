@@ -33,14 +33,14 @@ const JobDetailsDesktop = ({ selectedAd }) => {
           <BoldText>Publicerad:</BoldText>{' '}
           {format(firstSeenAt, 'YYYY-MM-DD HH:mm')}
         </p>
-        <p>
+        {/* <p>
           <BoldText>Sök jobbet senast:</BoldText>{' '}
           {deadline
             ? format(new Date(deadline), 'D MMMM', {
                 locale: sv
               })
             : 'Se annonsen för datum'}
-        </p>
+        </p> */}
       </Content>
     </Grid>
   )

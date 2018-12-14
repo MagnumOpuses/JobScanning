@@ -6,7 +6,7 @@ import images from '../../../images/index'
 const SubHeader = ({ siteName }) => (
   <StyledHeader>
     <div>
-      <Link to="/ads">{`< tillbaka`}</Link>
+      <Link to="/jobs">{`< tillbaka`}</Link>
     </div>
     <RightDiv>
       <div>

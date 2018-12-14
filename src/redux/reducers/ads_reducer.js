@@ -11,6 +11,7 @@ import _ from 'lodash'
 const initialState = {
   searchTerm: '',
   location: '',
+  offset: 0,
   isFetching: false,
   hits: [],
   processedList: [],

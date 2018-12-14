@@ -20,7 +20,7 @@ class AdsList extends Component {
   }
 
   redirectToAdPage = id => {
-    this.props.history.push(`/ads/${id}`)
+    this.props.history.push(`/jobs/${id}`)
   }
 
   fetchMoreData = () => {
