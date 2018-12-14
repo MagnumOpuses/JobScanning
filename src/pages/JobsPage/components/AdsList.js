@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchMoreAds } from '../../../redux/actions'
+import { fetchMoreJobs } from '../../../redux/actions'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import distanceInWordsStrict from 'date-fns/distance_in_words_strict'
@@ -29,7 +29,7 @@ class AdsList extends Component {
     }))
     console.log(this.state.offset)
 
-    this.props.fetchMoreAds(
+    this.props.fetchMoreJobs(
       this.props.searchTerm,
       this.props.location,
       this.state.offset
@@ -117,7 +117,7 @@ function mapStateToProps({ ads }) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchMoreAds }
+    { fetchMoreJobs }
   )(AdsList)
 )
 

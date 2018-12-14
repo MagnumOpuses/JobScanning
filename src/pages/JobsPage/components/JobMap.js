@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { selectJob, unselectJob } from '../../../redux/actions'
 import { compose, withProps } from 'recompose'
 import {
   withScriptjs,
@@ -50,7 +51,7 @@ const MyMapComponent = compose(
               key={marker.id}
               position={position}
               defaultAnimation={4}
-              onClick={() => props.onMarkerClick(marker)}
+              onClick={() => props.toggleInfoWindow(marker)}
             >
               {marker.id === props.selectedMarker.id && (
                 <OverlayView
@@ -61,7 +62,7 @@ const MyMapComponent = compose(
                   <JobMapWindow
                     marker={marker}
                     allMarkers={props.markers}
-                    closeMapWindow={() => props.onMarkerClick(marker)}
+                    closeMapWindow={() => props.toggleInfoWindow(marker)}
                   />
                 </OverlayView>
               )}
@@ -74,30 +75,23 @@ const MyMapComponent = compose(
 ))
 
 class MyFancyComponent extends React.Component {
-  state = {
-    selectedMarker: {}
-  }
-
   toggleInfoWindow = clickedMarker => {
-    const { selectedMarker } = this.state
-
-    if (clickedMarker.id === selectedMarker.id) {
-      this.setState({ selectedMarker: {} })
+    if (clickedMarker.id === this.props.ads.selectedJob.id) {
+      this.props.unselectJob()
     } else {
-      this.setState({ selectedMarker: clickedMarker })
+      this.props.selectJob(clickedMarker)
     }
   }
 
   render() {
-    const { selectedMarker } = this.state
-    const { markers, processedList } = this.props.ads
+    const { markers, processedList, selectedJob } = this.props.ads
 
     return (
       <MyMapComponent
         markers={markers}
-        selectedMarker={selectedMarker}
+        selectedMarker={selectedJob}
         processedList={processedList}
-        onMarkerClick={this.toggleInfoWindow}
+        toggleInfoWindow={this.toggleInfoWindow}
       />
     )
   }
@@ -111,5 +105,5 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  null
+  { selectJob, unselectJob }
 )(MyFancyComponent)

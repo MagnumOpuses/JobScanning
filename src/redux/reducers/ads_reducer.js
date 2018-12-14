@@ -1,4 +1,11 @@
-import { ADS_REQUEST, ADS_SUCCESS, ADS_FAILURE, ADS_ADD_MORE } from '../actions'
+import {
+  JOBS_REQUEST,
+  JOBS_SUCCESS,
+  JOBS_FAILURE,
+  JOBS_ADD_MORE,
+  JOB_SELECT,
+  JOB_UNSELECT
+} from '../actions'
 import _ from 'lodash'
 
 const initialState = {
@@ -7,23 +14,25 @@ const initialState = {
   isFetching: false,
   hits: [],
   processedList: [],
-  markers: []
+  markers: [],
+  selectedJob: {}
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADS_REQUEST:
+    case JOBS_REQUEST:
       return {
         ...state,
         isFetching: true,
         searchTerm: action.term,
-        location: action.location
+        location: action.location,
+        selectedJob: {}
       }
-    case ADS_SUCCESS:
+    case JOBS_SUCCESS:
       return { ...state, isFetching: false, error: false, ...action.payload }
-    case ADS_FAILURE:
+    case JOBS_FAILURE:
       return { ...state, isFetching: false, error: true }
-    case ADS_ADD_MORE:
+    case JOBS_ADD_MORE:
       let markers = _.uniqBy(
         [...state.markers, ...action.payload.markers],
         'id'
@@ -37,6 +46,16 @@ export default (state = initialState, action) => {
           ...action.payload.processedList
         ],
         markers
+      }
+    case JOB_SELECT:
+      return {
+        ...state,
+        selectedJob: action.job
+      }
+    case JOB_UNSELECT:
+      return {
+        ...state,
+        selectedJob: {}
       }
     default:
       return state

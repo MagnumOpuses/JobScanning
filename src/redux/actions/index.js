@@ -3,15 +3,17 @@ import processJobList from '../../utils/processJobList'
 import createMarkers from '../../utils/createMarkers'
 
 export const SEARCH_TERM = 'SEARCH_TERM'
-export const ADS_REQUEST = 'ADS_REQUEST'
-export const ADS_SUCCESS = 'ADS_SUCCESS'
-export const ADS_FAILURE = 'ADS_FAILURE'
-export const ADS_ADD_MORE = 'ADS_ADD_MORE'
+export const JOBS_REQUEST = 'JOBS_REQUEST'
+export const JOBS_SUCCESS = 'JOBS_SUCCESS'
+export const JOBS_FAILURE = 'JOBS_FAILURE'
+export const JOBS_ADD_MORE = 'JOBS_ADD_MORE'
+export const JOB_SELECT = 'JOB_SELECT'
+export const JOB_UNSELECT = 'JOB_UNSELECT'
 
-export const searchAds = (term, location) => async dispatch => {
+export const searchJobs = (term, location) => async dispatch => {
   // Dispatch that sets loading state to true
   dispatch({
-    type: ADS_REQUEST,
+    type: JOBS_REQUEST,
     term,
     location
   })
@@ -27,19 +29,19 @@ export const searchAds = (term, location) => async dispatch => {
 
   if (data.hits.length > 0) {
     dispatch({
-      type: ADS_SUCCESS,
+      type: JOBS_SUCCESS,
       payload: data
     })
   }
 
   if (!data.hits.length > 0) {
     dispatch({
-      type: ADS_FAILURE
+      type: JOBS_FAILURE
     })
   }
 }
 
-export const fetchMoreAds = (term, location, offset) => async dispatch => {
+export const fetchMoreJobs = (term, location, offset) => async dispatch => {
   const locationType = location.length > 2 ? 'kommun' : 'lan'
   let { data } = await fetchJobs(term, locationType, location, offset)
   console.log('​data', data)
@@ -52,8 +54,21 @@ export const fetchMoreAds = (term, location, offset) => async dispatch => {
 
   if (data.hits.length > 0) {
     dispatch({
-      type: ADS_ADD_MORE,
+      type: JOBS_ADD_MORE,
       payload: data
     })
+  }
+}
+
+export const selectJob = job => {
+  return {
+    type: JOB_SELECT,
+    job
+  }
+}
+
+export const unselectJob = () => {
+  return {
+    type: JOB_UNSELECT
   }
 }

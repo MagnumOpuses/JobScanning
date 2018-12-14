@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { searchAds } from '../redux/actions/index'
+import { searchJobs } from '../redux/actions/index'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button, Dropdown, Form, Input } from 'semantic-ui-react'
@@ -29,7 +29,7 @@ class SearchForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    this.props.searchAds(this.state.searchTerm, this.state.location)
+    this.props.searchJobs(this.state.searchTerm, this.state.location)
     this.props.history.push('/ads')
   }
 
@@ -142,7 +142,7 @@ function mapStateToProps({ ads }) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { searchAds }
+    { searchJobs }
   )(SearchForm)
 )
 
