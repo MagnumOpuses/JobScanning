@@ -11,7 +11,6 @@ import PageHeader from './PageHeader'
 import PageHeaderAds from '../pages/JobsPage/components/PageHeaderAds'
 
 import AdsList from '../pages/JobsPage/components/AdsList'
-import AdsOverview from '../containers/AdsOverview'
 
 import SubHeader from './reusables/adcomponents/SubHeader'
 import Title from './reusables/adcomponents/Title'
@@ -19,10 +18,11 @@ import InfoContainer from './reusables/adcomponents/InfoContainer'
 import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
 
 import { default as JobMap } from './jobMap/JobMapContainer'
+import { default as SourceRanking } from './sourceRanking/SourceRankingContainer'
 
 export {
   AdsList,
-  AdsOverview,
+  SourceRanking,
   BoldText,
   ButtonLink,
   Checkbox,

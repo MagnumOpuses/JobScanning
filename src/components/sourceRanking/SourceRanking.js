@@ -1,107 +1,41 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
-import { CustomLoader, NoResultsBox } from '../components'
-import getLogo from '../utils/getLogo'
-import numberOfUniqueSources from '../utils/numberOfUniqueSources'
+import getLogo from '../../utils/getLogo'
 
-class AdsOverview extends Component {
-  getRanks = () => {
-    console.log(this.props.ads.hits)
-
-    let scoreboard = this.props.ads.hits.reduce((acc, val) => {
-      acc[val.source.site.name] = acc[val.source.site.name]
-        ? acc[val.source.site.name] + 1
-        : 1
-      return acc
-    }, {})
-
-    let ordered = Object.keys(scoreboard).sort(
-      (a, b) => scoreboard[b] - scoreboard[a]
-    )
-
-    ordered = ordered.length > 10 ? ordered.slice(0, 10) : ordered
-
-    return _.map(ordered, key => (
-      <ListItem key={key}>
-        {getLogo(key)}
-        <Arrow className="arrow">
-          <Score className="score">
-            {scoreboard[key]}
-            <p
-              style={{
-                display: 'inline-block',
-                fontSize: '1.375rem',
-                margin: '6px 0 0 0'
-              }}
-            >
-              st
-            </p>
-          </Score>
-        </Arrow>
-
-        {/* <Score>
-          {scoreboard[key]}
-          <p
-            style={{
-              display: 'inline-block',
-              fontSize: '1.375rem',
-              margin: '6px 0 0 0'
-            }}
-          >
-            st
-          </p>
-          <span className="arrow" />
-        </Score> */}
-      </ListItem>
-    ))
-  }
-
-  getNumberOfSources = () => {
-    let { ads, term } = this.props
-
-    const number = numberOfUniqueSources(ads.hits)
-
-    return (
+const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
+  return (
+    <div style={{ padding: '1.5rem' }}>
       <p>
-        Top {number ? number : 0} rekryteringssajter för dig som letar efter
-        annonser för {term}
+        Top {numberOfSources ? numberOfSources : 0} rekryteringssajter för dig
+        som letar efter annonser för {searchTerm}
       </p>
-    )
-  }
-
-  render() {
-    let { ads } = this.props
-
-    if (ads.isFetching) {
-      return <CustomLoader size="massive" content="Laddar" />
-    } else if (Object.keys(ads).length === 0 && ads.constructor === Object) {
-      return <NoResultsBox />
-    } else if (ads.error) {
-      return <NoResultsBox />
-    } else {
-      return (
-        <div style={{ padding: '1.5rem' }}>
-          {this.getNumberOfSources()}
-          <OrderedList>{this.getRanks()}</OrderedList>
-        </div>
-      )
-    }
-  }
+      <OrderedList>
+        {scoreboard.map(item => (
+          <ListItem key={item.source}>
+            {getLogo(item.source)}
+            <Arrow className="arrow">
+              <Score className="score">
+                {item.score}
+                <p
+                  style={{
+                    display: 'inline-block',
+                    fontSize: '1.375rem',
+                    margin: '6px 0 0 0'
+                  }}
+                >
+                  st
+                </p>
+              </Score>
+            </Arrow>
+          </ListItem>
+        ))}
+      </OrderedList>
+    </div>
+  )
 }
 
-function mapStateToProps(state) {
-  return {
-    ads: state.ads,
-    term: state.term
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  null
-)(AdsOverview)
+export default SourceRanking
 
 const ListItem = styled.li`
   height: 5rem;

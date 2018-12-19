@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import _ from 'lodash'
 import {
   AdsList,
-  AdsOverview,
+  SourceRanking,
   GridContainer,
   DescriptionContainer,
   JobMap
@@ -57,7 +57,7 @@ class AdsPage extends Component {
             </Text>
           </Ad>
           <Ranks>
-            <AdsOverview />
+            <SourceRanking />
           </Ranks>
           <Map>
             <JobMap />

@@ -8,7 +8,7 @@ import theme from '../../styles/theme'
 import numberOfUniqueSources from '../../utils/numberOfUniqueSources'
 import {
   AdsList,
-  AdsOverview,
+  SourceRanking,
   DisplayNumber,
   GridContainer,
   PageHeaderAds,
@@ -19,7 +19,7 @@ import JobsPageDesktop from './components/desktop/JobsPageDesktop'
 const DISPLAY_STATES = {
   list: <AdsList />,
   map: <JobMap />,
-  overview: <AdsOverview />
+  overview: <SourceRanking />
 }
 
 class AdsPage extends Component {

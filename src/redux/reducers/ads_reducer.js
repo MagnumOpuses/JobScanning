@@ -7,6 +7,7 @@ import {
   JOB_UNSELECT
 } from '../actions'
 import _ from 'lodash'
+import createScoreboard from '../../utils/createScoreboard'
 
 const initialState = {
   searchTerm: '',
@@ -21,7 +22,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case JOBS_REQUEST:
+    case JOBS_REQUEST: {
       return {
         ...state,
         isFetching: true,
@@ -29,35 +30,53 @@ export default (state = initialState, action) => {
         location: action.location,
         selectedJob: {}
       }
-    case JOBS_SUCCESS:
-      return { ...state, isFetching: false, error: false, ...action.payload }
-    case JOBS_FAILURE:
+    }
+    case JOBS_SUCCESS: {
+      const scoreboard = createScoreboard(action.payload.hits)
+
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+        ...action.payload,
+        scoreboard
+      }
+    }
+    case JOBS_FAILURE: {
       return { ...state, isFetching: false, error: true }
-    case JOBS_ADD_MORE:
+    }
+    case JOBS_ADD_MORE: {
       let markers = _.uniqBy(
         [...state.markers, ...action.payload.markers],
         'id'
       )
 
+      const hits = [...state.hits, ...action.payload.hits]
+      const scoreboard = createScoreboard(hits)
+
       return {
         ...state,
-        hits: [...state.hits, ...action.payload.hits],
+        hits,
         processedList: [
           ...state.processedList,
           ...action.payload.processedList
         ],
-        markers
+        markers,
+        scoreboard
       }
-    case JOB_SELECT:
+    }
+    case JOB_SELECT: {
       return {
         ...state,
         selectedJob: action.job
       }
-    case JOB_UNSELECT:
+    }
+    case JOB_UNSELECT: {
       return {
         ...state,
         selectedJob: {}
       }
+    }
     default:
       return state
   }

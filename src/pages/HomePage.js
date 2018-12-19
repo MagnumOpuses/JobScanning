@@ -49,8 +49,8 @@ const Container = styled.div`
 `
 
 const Background = styled.div`
-  height: calc(100vh * 2);
-  width: calc(100vw * 2);
+  height: 3000px;
+  width: 3000px;
   background: url('${homePageBackground}') repeat;
   background-position: right bottom;
   animation: ${diagonalSlide} 20s linear infinite;
