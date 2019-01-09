@@ -39,7 +39,7 @@ const MyMapComponent = compose(
         onClick={props.onMarkerClustererClick}
         averageCenter
         enableRetinaIcons
-        gridSize={60}
+        gridSize={100}
         maxZoom={14}
       >
         {props.markers.map(marker => {

@@ -31,6 +31,7 @@ export default (state = initialState, action) => {
         selectedJob: {}
       }
     }
+
     case JOBS_SUCCESS: {
       const scoreboard = createScoreboard(action.payload.hits)
 
@@ -42,41 +43,46 @@ export default (state = initialState, action) => {
         scoreboard
       }
     }
+
     case JOBS_FAILURE: {
       return { ...state, isFetching: false, error: true }
     }
+
     case JOBS_ADD_MORE: {
+      const hits = [...state.hits, ...action.payload.hits]
+      const processedList = [
+        ...state.processedList,
+        ...action.payload.processedList
+      ]
       let markers = _.uniqBy(
         [...state.markers, ...action.payload.markers],
         'id'
       )
-
-      const hits = [...state.hits, ...action.payload.hits]
       const scoreboard = createScoreboard(hits)
 
       return {
         ...state,
         hits,
-        processedList: [
-          ...state.processedList,
-          ...action.payload.processedList
-        ],
+        processedList,
         markers,
         scoreboard
       }
     }
+
     case JOB_SELECT: {
       return {
         ...state,
         selectedJob: action.job
       }
     }
+
     case JOB_UNSELECT: {
       return {
         ...state,
         selectedJob: {}
       }
     }
+
     default:
       return state
   }

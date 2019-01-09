@@ -8,29 +8,27 @@ import { Icon } from 'semantic-ui-react'
 import { LogoPlaceholder } from '../../../components'
 
 const JobMapWindow = ({ marker, markers, closeMapWindow, history }) => {
+  console.log(marker)
+
+  const {
+    application,
+    employer,
+    group,
+    header,
+    location: { translations },
+    source: { firstSeenAt }
+  } = marker
   return (
     <MapWindowContainer>
-      {markers.map((item, i) => {
-        const {
-          application,
-          employer,
-          group,
-          header,
-          location: { translations },
-          source: { firstSeenAt }
-        } = item
-
-        if (item.location.googleMaps.id === marker.location.googleMaps.id) {
-          return (
-            <MapWindow key={i}>
-              <InfoContainer>
-                <ItemTitle>{header}</ItemTitle>
-                <p>
-                  {employer && employer.name} &#8226;{' '}
-                  {translations && translations['sv-SE']}
-                </p>
-                <p>Inlagd: {format(firstSeenAt, 'YYYY-MM-DD HH:mm')}</p>
-                {/* <p>
+      <MapWindow key={marker.id}>
+        <InfoContainer>
+          <ItemTitle>{header}</ItemTitle>
+          <p>
+            {employer && employer.name} &#8226;{' '}
+            {translations && translations['sv-SE']}
+          </p>
+          <p>Inlagd: {format(firstSeenAt, 'YYYY-MM-DD HH:mm')}</p>
+          {/* <p>
                   {application.deadline
                     ? distanceInWordsStrict(Date.now(), application.deadline, {
                         addSuffix: true,
@@ -38,15 +36,50 @@ const JobMapWindow = ({ marker, markers, closeMapWindow, history }) => {
                       })
                     : 'Se annonsen för datum'}
                 </p> */}
-              </InfoContainer>
-              <StyledSpan onClick={() => history.push(`/jobs/${group.id}`)}>
-                <Icon name="arrow right" size="big" />
-              </StyledSpan>
-            </MapWindow>
-          )
-        }
-      })}
+        </InfoContainer>
+        <StyledSpan onClick={() => history.push(`/jobs/${group.id}`)}>
+          <Icon name="arrow right" size="big" />
+        </StyledSpan>
+      </MapWindow>
     </MapWindowContainer>
+    // <MapWindowContainer>
+    //   {markers.map((item, i) => {
+    //     const {
+    //       application,
+    //       employer,
+    //       group,
+    //       header,
+    //       location: { translations },
+    //       source: { firstSeenAt }
+    //     } = item
+
+    //     if (item.location.googleMaps.id === marker.location.googleMaps.id) {
+    //       return (
+    //         <MapWindow key={i}>
+    //           <InfoContainer>
+    //             <ItemTitle>{header}</ItemTitle>
+    //             <p>
+    //               {employer && employer.name} &#8226;{' '}
+    //               {translations && translations['sv-SE']}
+    //             </p>
+    //             <p>Inlagd: {format(firstSeenAt, 'YYYY-MM-DD HH:mm')}</p>
+    //             {/* <p>
+    //               {application.deadline
+    //                 ? distanceInWordsStrict(Date.now(), application.deadline, {
+    //                     addSuffix: true,
+    //                     locale: sv
+    //                   })
+    //                 : 'Se annonsen för datum'}
+    //             </p> */}
+    //           </InfoContainer>
+    //           <StyledSpan onClick={() => history.push(`/jobs/${group.id}`)}>
+    //             <Icon name="arrow right" size="big" />
+    //           </StyledSpan>
+    //         </MapWindow>
+    //       )
+    //     }
+    //   })}
+    // </MapWindowContainer>
   )
 }
 

@@ -1,6 +1,7 @@
 import fetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
 import createMarkers from '../../utils/createMarkers'
+import store from '../store/index'
 
 export const SEARCH_TERM = 'SEARCH_TERM'
 export const JOBS_REQUEST = 'JOBS_REQUEST'
@@ -22,8 +23,8 @@ export const searchJobs = (term, location) => async dispatch => {
   let { data } = await fetchJobs(term, locationType, location)
 
   const processedList = processJobList(data.hits)
-  const removedUnknownLocations = processedList.filter(item => item.location)
-  const markers = await createMarkers(removedUnknownLocations)
+
+  const markers = await createMarkers(processedList)
 
   data = { ...data, processedList, markers }
 
@@ -44,11 +45,13 @@ export const searchJobs = (term, location) => async dispatch => {
 export const fetchMoreJobs = (term, location, offset) => async dispatch => {
   const locationType = location.length > 2 ? 'kommun' : 'lan'
   let { data } = await fetchJobs(term, locationType, location, offset)
-  console.log('​data', data)
 
   const processedList = processJobList(data.hits)
-  const removedUnknownLocations = processedList.filter(item => item.location)
-  const markers = await createMarkers(removedUnknownLocations)
+
+  // const markers = await createMarkers(processedList)
+
+  const storeProcessedList = store.getState().ads.processedList
+  const markers = await createMarkers([...processedList, ...storeProcessedList])
 
   data = { hits: data.hits, processedList, markers }
 
