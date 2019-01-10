@@ -7,7 +7,6 @@ import SearchPage from './pages/SearchPage'
 import AdDetails from './pages/AdDetails'
 import AdsPage from './pages/JobsPage/AdsPage'
 import breakpoints from './styles/breakpoints'
-import background from './images/bg.png'
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -25,23 +24,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
-    font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem !important;
     height: 100vh;
-
-    @media only screen and (min-width: ${breakpoints.tablet}) {
-    background: url(${background});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    }
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: 'Open Sans', sans-serif;
   }
 
   h1 {

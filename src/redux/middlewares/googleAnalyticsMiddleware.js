@@ -1,4 +1,4 @@
-import trackEvent from '../../utils/trackEvent'
+// import trackEvent from '../../utils/trackEvent'
 
 const middleware = store => next => action => {
   // let result = next(action);
