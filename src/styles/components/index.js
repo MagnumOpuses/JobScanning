@@ -1,3 +1,3 @@
-import { buttonStyle } from './buttonStyle'
+import { buttonStyle, buttonStyleCorners } from './buttonStyle'
 
-export { buttonStyle }
+export { buttonStyle, buttonStyleCorners }

@@ -19,6 +19,7 @@ import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
 
 import { default as JobMap } from './jobMap/JobMapContainer'
 import { default as SourceRanking } from './sourceRanking/SourceRankingContainer'
+import { default as ResultStats } from './resultStats/ResultStatsContainer'
 
 export {
   AdsList,
@@ -38,5 +39,6 @@ export {
   Title,
   InfoContainer,
   DescriptionContainer,
-  JobMap
+  JobMap,
+  ResultStats
 }

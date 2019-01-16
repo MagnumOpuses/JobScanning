@@ -138,6 +138,12 @@ const ListItem = styled.li`
   grid-gap: 2rem;
   align-items: start;
   padding: 1.5rem;
+  transition: all .2s
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 3px rgba(210, 237, 234, 1);
+  }
 `
 
 const ItemInfo = styled.div`

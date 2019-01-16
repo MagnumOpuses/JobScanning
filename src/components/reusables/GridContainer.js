@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const GridContainer = ({
   height,
   width,
+  margin,
   rows,
   columns,
   gap,
@@ -13,6 +14,7 @@ const GridContainer = ({
   <Grid
     height={height}
     width={width}
+    margin={margin}
     rows={rows}
     columns={columns}
     gap={gap}
@@ -27,6 +29,7 @@ export default GridContainer
 const Grid = styled.div`
   height: ${props => props.height};
   width: ${props => props.width};
+  margin: ${props => props.margin};
   display: grid;
   grid-template-rows: ${props => props.rows};
   grid-template-columns: ${props => (props.columns ? props.columns : 'auto')};

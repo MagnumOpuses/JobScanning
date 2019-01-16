@@ -17,9 +17,8 @@ const JobDetailsDesktop = ({ selectedAd }) => {
   return (
     <Grid>
       <Header>
-        <div>
-          <JobHeader>{header}</JobHeader>
-        </div>
+        <JobHeader>{header}</JobHeader>
+
         <div style={{ justifySelf: 'end' }}>
           <LogoPlaceholder employer={employer} padding={false} desktop={true} />
         </div>
@@ -51,13 +50,13 @@ export default JobDetailsDesktop
 const Grid = styled.div`
   height: 100%;
   display: grid;
-  grid-template-rows: minmax(30%, auto) 1fr;
+  grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 1em;
 `
 
 const Header = styled.div`
-  grid-row: 1/2;
+  /* grid-row: 1/2; */
   grid-column: 1/3;
   align-items: center;
   display: grid;

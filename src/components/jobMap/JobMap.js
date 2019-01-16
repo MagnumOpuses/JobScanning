@@ -9,6 +9,8 @@ import {
 } from 'react-google-maps'
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer'
 import JobMapWindow from './components/JobMapWindow'
+import markerSelected from '../../images/markerIcons/markerSelected.png'
+import markerUnselected from '../../images/markerIcons/markerUnselected.png'
 
 const getPixelPositionOffset = (width, height) => ({
   x: -(width / 2),
@@ -53,8 +55,13 @@ const MyMapComponent = compose(
               position={position}
               defaultAnimation={4}
               onClick={() => props.toggleInfoWindow(marker)}
+              icon={
+                marker.id === props.selectedJob.id
+                  ? markerSelected
+                  : markerUnselected
+              }
             >
-              {marker.id === props.selectedJob.id && (
+              {!props.desktop && marker.id === props.selectedJob.id && (
                 <OverlayView
                   position={{ lat: position.lat, lng: position.lng }}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
@@ -77,7 +84,13 @@ const MyMapComponent = compose(
 
 class JobMap extends React.Component {
   render() {
-    const { markers, selectedJob, processedList, toggleInfoWindow } = this.props
+    const {
+      markers,
+      selectedJob,
+      processedList,
+      toggleInfoWindow,
+      desktop
+    } = this.props
 
     return (
       <MyMapComponent
@@ -85,6 +98,7 @@ class JobMap extends React.Component {
         selectedJob={selectedJob}
         processedList={processedList}
         toggleInfoWindow={toggleInfoWindow}
+        desktop={desktop}
       />
     )
   }

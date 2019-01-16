@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import images from '../../../images/'
-import { buttonStyle } from '../../../styles/components'
+import { buttonStyle, buttonStyleCorners } from '../../../styles/components'
 
 const DescriptionContainer = ({ text, source }) => (
   <DescriptionBox>
@@ -61,7 +61,7 @@ const DescriptionText = styled.p`
 `
 
 const StyledLink = styled.a`
-  ${buttonStyle}
+  ${buttonStyleCorners}
   &:link,
   &:visited {
     width: 60%;

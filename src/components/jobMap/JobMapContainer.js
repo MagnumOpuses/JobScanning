@@ -20,7 +20,7 @@ class JobMapContainer extends React.Component {
   }
 
   render() {
-    const { markers, processedList, selectedJob } = this.props
+    const { markers, processedList, selectedJob, desktop } = this.props
 
     return (
       <JobMap
@@ -28,6 +28,7 @@ class JobMapContainer extends React.Component {
         selectedJob={selectedJob}
         processedList={processedList}
         toggleInfoWindow={this.toggleInfoWindow}
+        desktop={desktop}
       />
     )
   }

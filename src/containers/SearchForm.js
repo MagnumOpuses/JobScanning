@@ -8,7 +8,7 @@ import { Checkbox } from '../components'
 import { countiesAndMunicipalities } from '../utils/searchOptions'
 import axios from 'axios'
 import breakpoint from '../styles/breakpoints'
-import { buttonStyle } from '../styles/components/'
+import { buttonStyleCorners } from '../styles/components/'
 
 class SearchForm extends Component {
   state = {
@@ -189,7 +189,7 @@ const CustomForm = styled(Form)`
 
 const CustomButton = styled(Button)`
   &&& {
-    ${buttonStyle}
+    ${buttonStyleCorners}
     align-self: center;
     margin-top: 4rem;
     padding: 1.4rem 9rem;
