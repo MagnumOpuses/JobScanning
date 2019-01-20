@@ -9,10 +9,22 @@ import format from 'date-fns/format'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CustomLoader, LogoPlaceholder, NoResultsBox } from '../../components'
 
-class AdsList extends Component {
+class JobsList extends Component {
   state = {
     items: [],
     offset: 0
+  }
+
+  componentDidUpdate() {
+    if (this.props.isFetching && this.state.offset !== 0) {
+      this.setState({ offset: 0 })
+    }
+  }
+
+  calculateInfiniteScrollHeight = () => {
+    const { processedList } = this.props
+    const height = (processedList.length - 1) * 17
+    return height > 90 ? '90%' : `${height}%`
   }
 
   redirectToAdPage = id => {
@@ -23,7 +35,6 @@ class AdsList extends Component {
     this.setState(prevState => ({
       offset: prevState.offset + 10
     }))
-    console.log(this.state.offset)
 
     this.props.fetchMoreJobs(
       this.props.searchTerm,
@@ -43,7 +54,10 @@ class AdsList extends Component {
       return <NoResultsBox />
     } else {
       return (
-        <List id="scrollableDiv">
+        <List
+          id="scrollableDiv"
+          style={{ height: this.calculateInfiniteScrollHeight() }}
+        >
           <InfiniteScroll
             dataLength={processedList.length}
             next={this.fetchMoreData}
@@ -122,11 +136,10 @@ export default withRouter(
   connect(
     mapStateToProps,
     { fetchMoreJobs }
-  )(AdsList)
+  )(JobsList)
 )
 
 const List = styled.ul`
-  height: 100%;
   width: 100%;
   overflow: auto;
   display: grid;

@@ -14,7 +14,7 @@ import {
   PageHeaderAds,
   JobMap
 } from '../../components'
-import JobsPageDesktop from './components/desktop/NewJobsPageDesktop'
+import JobsPageDesktop from './components/desktop/JobsPageDesktop'
 
 const DISPLAY_STATES = {
   list: <AdsList />,
