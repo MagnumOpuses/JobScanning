@@ -1,5 +1,4 @@
 import BoldText from './reusables/BoldText'
-import ButtonLink from './reusables/ButtonLink'
 import Checkbox from './reusables/Checkbox'
 import DisplayNumber from './reusables/DisplayNumber'
 import Ellipse from './reusables/Ellipse'
@@ -20,12 +19,12 @@ import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
 import { default as JobMap } from './jobMap/JobMapContainer'
 import { default as SourceRanking } from './sourceRanking/SourceRankingContainer'
 import { default as ResultStats } from './resultStats/ResultStatsContainer'
+import { default as SearchForm } from './searchForm/SearchFormContainer'
 
 export {
   AdsList,
   SourceRanking,
   BoldText,
-  ButtonLink,
   Checkbox,
   DisplayNumber,
   Ellipse,
@@ -40,5 +39,6 @@ export {
   InfoContainer,
   DescriptionContainer,
   JobMap,
-  ResultStats
+  ResultStats,
+  SearchForm
 }

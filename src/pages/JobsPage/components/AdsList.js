@@ -28,7 +28,7 @@ class AdsList extends Component {
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
     const height = (processedList.length - 1) * 17
-    return height > 90 ? '90%' : `${height}%`
+    return height > 90 ? '100%' : `${height}%`
   }
 
   redirectToAdPage = id => {
@@ -49,15 +49,22 @@ class AdsList extends Component {
   }
 
   render() {
-    if (this.props.ads.isFetching) {
+    const { isFetching, error, hits, processedList } = this.props
+
+    if (isFetching) {
       return <CustomLoader size="massive" content="Laddar" />
-    } else if (this.props.ads.error) {
+    } else if (error) {
+      return <NoResultsBox />
+    } else if (Object.keys(hits).length === 0) {
       return <NoResultsBox />
     } else {
       return (
-        <List id="scrollableDiv">
+        <List
+          id="scrollableDiv"
+          style={{ height: this.calculateInfiniteScrollHeight() }}
+        >
           <InfiniteScroll
-            dataLength={this.props.ads.processedList.length}
+            dataLength={processedList.length}
             next={this.fetchMoreData}
             hasMore={true}
             style={{ overflow: 'visible' }}
@@ -74,7 +81,7 @@ class AdsList extends Component {
               </div>
             }
           >
-            {this.props.ads.processedList.map((item, i) => (
+            {processedList.map((item, i) => (
               <ListItem
                 key={i}
                 onClick={
@@ -118,9 +125,13 @@ class AdsList extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { searchTerm, location } = ads
+  const { isFetching, error, hits, processedList, searchTerm, location } = ads
+
   return {
-    ads,
+    isFetching,
+    error,
+    hits,
+    processedList,
     searchTerm,
     location
   }

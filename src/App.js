@@ -29,23 +29,47 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 2em;
+    font-size: ${theme.fonts.h1.fontSizeDesktop};
     font-weight: ${theme.fonts.h1.fontWeightDesktop};
 
-    @media screen and (min-width: ${breakpoints.tablet}) {
-      font-size: ${theme.fonts.h1.fontSizeDesktop};
+    @media screen and (max-width: ${breakpoints.tablet}) {
+      font-size: ${theme.fonts.h1.fontSizeTabletLarge};
+    }
+
+    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+      font-size: ${theme.fonts.h1.fontSizeMobile};
     }
   }
 
   h2 {
-    font-size: ${theme.fonts.h2.fontSizeDesktop} !important;
+    font-size: ${theme.fonts.h2.fontSizeDesktop};
     font-weight: ${theme.fonts.h2.fontWeightDesktop};
     margin: ${theme.fonts.h2.margin} !important;
+
+    @media screen and (max-width: ${breakpoints.tablet}) {
+      font-size: ${theme.fonts.h2.fontSizeTabletLarge};
+    }
+
+    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+      font-size: ${theme.fonts.h2.fontSizeMobile};
+    }
   }
 
   h3 {
     font-size: ${theme.fonts.h3.fontSizeDesktop};
     font-weight: ${theme.fonts.h3.fontWeightDesktop};
+
+    @media screen and (max-width: ${breakpoints.tablet}) {
+      font-size: ${theme.fonts.h3.fontSizeTabletLarge};
+    }
+
+    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+      font-size: ${theme.fonts.h3.fontSizeMobile};
+    }
+  }
+
+  p {
+    font-size: ${props => props.theme.fonts.bodyCopy.fontSizeDesktop}
   }
 `
 

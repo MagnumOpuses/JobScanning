@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { BoldText, GridContainer, PageHeader } from '../components'
-import SearchForm from '../containers/SearchForm'
+import { BoldText, GridContainer, PageHeader, SearchForm } from '../components'
+// import SearchForm from '../containers/SearchForm'
 
 class SearchPage extends Component {
   render() {

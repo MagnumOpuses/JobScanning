@@ -9,23 +9,19 @@ import numberOfUniqueSources from '../../utils/numberOfUniqueSources'
 import {
   AdsList,
   SourceRanking,
-  DisplayNumber,
   GridContainer,
   PageHeaderAds,
-  JobMap
+  JobMap,
+  ResultStats
 } from '../../components'
 import JobsPageDesktop from './components/desktop/JobsPageDesktop'
 
-const DISPLAY_STATES = {
-  list: <AdsList />,
-  map: <JobMap />,
-  overview: <SourceRanking />
-}
-
 class AdsPage extends Component {
-  state = { activeItem: 'list' }
+  state = { activeComponent: 'list' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  changeComponent = componentName => {
+    this.setState({ activeComponent: componentName })
+  }
 
   getNumberOfSources = () => {
     let { ads } = this.props
@@ -36,9 +32,7 @@ class AdsPage extends Component {
   }
 
   render() {
-    const { activeItem } = this.state
-
-    const activeComponent = DISPLAY_STATES[activeItem]
+    const { activeComponent } = this.state
 
     return (
       <React.Fragment>
@@ -47,50 +41,46 @@ class AdsPage extends Component {
             <Header>
               <PageHeaderAds />
 
-              <p
-                style={{
-                  fontSize: theme.fontSizeMedium,
-                  margin: '0',
-                  alignSelf: 'center',
-                  textAlign: 'center',
-                  padding: '1rem 0'
-                }}
-              >
-                <DisplayNumber>
-                  {this.props.ads.total ? this.props.ads.total : 0}
-                </DisplayNumber>{' '}
-                jobbannonser från{' '}
-                <DisplayNumber>{this.getNumberOfSources()}</DisplayNumber>{' '}
-                rekryteringssajter
-              </p>
+              <ResultStats />
 
               <CustomMenu borderless fluid widths={3}>
                 <CustomMenuItem
                   name="list"
-                  active={activeItem === 'list'}
+                  active={activeComponent === 'list'}
                   content="Lista"
-                  onClick={this.handleItemClick}
+                  onClick={() => this.setState({ activeComponent: 'list' })}
                 />
 
                 <CustomMenuItem
                   name="map"
-                  active={activeItem === 'map'}
+                  active={activeComponent === 'map'}
                   content="Karta"
-                  onClick={this.handleItemClick}
+                  onClick={() => this.setState({ activeComponent: 'map' })}
                 />
 
                 <CustomMenuItem
                   name="overview"
-                  active={activeItem === 'overview'}
+                  active={activeComponent === 'overview'}
                   content="Översikt"
-                  onClick={this.handleItemClick}
+                  onClick={() => this.setState({ activeComponent: 'overview' })}
                 />
               </CustomMenu>
             </Header>
-            <Content>{activeComponent}</Content>
+            <Content>
+              <div
+                style={{
+                  display: activeComponent === 'list' ? 'block' : 'none',
+                  height: '100%'
+                }}
+              >
+                <AdsList />
+              </div>
+              {activeComponent === 'map' && <JobMap />}
+              {activeComponent === 'overview' && <SourceRanking />}
+            </Content>
           </GridContainer>
         </Responsive>
-        <Responsive minWidth={breakpoint.tablet}>
+        <Responsive minWidth={769}>
           <JobsPageDesktop />
         </Responsive>
       </React.Fragment>

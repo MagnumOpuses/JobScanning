@@ -6,7 +6,7 @@ import { buttonStyleCorners } from '../../../styles/components'
 const DescriptionContainer = ({ text, source }) => (
   <DescriptionBox>
     <h3 style={{ fontSize: '2.4rem', marginBottom: '15px' }}>Annons</h3>
-    {text && <DescriptionText>{text.substring(0, 1300)}</DescriptionText>}
+    {text && <DescriptionText>{text.substring(0, 1200)}</DescriptionText>}
     {source.length > 1 ? (
       <MultipleLinks>
         <p>Vi hittade annonsen på {source.length} olika sajter</p>

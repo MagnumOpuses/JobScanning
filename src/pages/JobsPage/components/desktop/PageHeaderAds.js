@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../../../styles/theme'
 import jt_logoblack from '../../../../images/logo/1x/jt_logoblack.png'
-import SearchForm from '../../../../containers/SearchForm'
+import { SearchForm } from '../../../../components'
+// import SearchForm from '../../../../containers/SearchForm'
 
 class PageHeaderAds extends Component {
   render() {

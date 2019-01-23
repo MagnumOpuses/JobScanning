@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DisplayNumber } from '../../components'
 
 const ResultStats = ({ total, processedList, sources }) => {
   return (

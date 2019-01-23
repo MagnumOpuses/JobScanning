@@ -18,10 +18,10 @@ import JobsList from '../../../../components/jobList/JobsList'
 import theme from '../../../../styles/theme'
 
 class AdsPage extends Component {
-  state = { activeItem: 'list' }
+  state = { activeComponent: 'list' }
 
   changeComponent = componentName => {
-    this.setState({ activeItem: componentName })
+    this.setState({ activeComponent: componentName })
   }
 
   selectAd = selectedAd => {
@@ -36,6 +36,7 @@ class AdsPage extends Component {
   }
 
   render() {
+    const { activeComponent } = this.state
     const { selectedJob } = this.props
 
     return (
@@ -50,20 +51,20 @@ class AdsPage extends Component {
         >
           <Menu>
             <MenuItem
-              selected={this.state.activeItem === 'list'}
-              onClick={() => this.changeComponent('list')}
+              selected={activeComponent === 'list'}
+              onClick={() => this.setState({ activeComponent: 'list' })}
             >
               LISTA
             </MenuItem>
             <MenuItem
-              selected={this.state.activeItem === 'map'}
-              onClick={() => this.changeComponent('map')}
+              selected={activeComponent === 'map'}
+              onClick={() => this.setState({ activeComponent: 'map' })}
             >
               KARTA
             </MenuItem>
             <MenuItem
-              selected={this.state.activeItem === 'overview'}
-              onClick={() => this.changeComponent('overview')}
+              selected={activeComponent === 'overview'}
+              onClick={() => this.setState({ activeComponent: 'overview' })}
             >
               ÖVERSIKT
             </MenuItem>
@@ -72,14 +73,14 @@ class AdsPage extends Component {
             <ResultStats />
             <div
               style={{
-                display: this.state.activeItem === 'list' ? 'block' : 'none',
+                display: activeComponent === 'list' ? 'block' : 'none',
                 height: '100%'
               }}
             >
               <JobsList selectAd={this.selectAd} />
             </div>
-            {this.state.activeItem === 'map' && <JobMap desktop />}
-            {this.state.activeItem === 'overview' && <SourceRanking />}
+            {activeComponent === 'map' && <JobMap desktop />}
+            {activeComponent === 'overview' && <SourceRanking />}
           </SideMenu>
 
           {Object.keys(selectedJob).length > 0 && (
@@ -193,13 +194,4 @@ const EllipseContainer = styled.div`
   height: 220px;
   width: 250px;
   overflow: hidden;
-`
-
-const H2 = styled.h2`
-  display: inline-block;
-  margin: 0;
-  font-size: 2.6rem;
-  font-weight: normal;
-  word-break: break-word;
-  hyphens: auto;
 `

@@ -1,14 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import CountUp from 'react-countup'
-
-import { ButtonLink, DisplayNumber } from '../components'
-
-import theme from '../styles/theme'
-import { diagonalSlide } from '../styles/animations/diagonalSlide'
-import breakpoint from '../styles/breakpoints'
-import homePageBackground from '../images/background.png'
+import { Link } from 'react-router-dom'
 import jt_logowhite from '../images/logo/2x/jt_logowhite@2x.png'
+import homePageBackground from '../images/background.png'
+import { diagonalSlide } from '../styles/animations/diagonalSlide'
 
 export default () => {
   return (
@@ -18,25 +14,28 @@ export default () => {
         <h1>Alla jobb på ett ställe</h1>
         <Logo alt="JT" src={jt_logowhite} />
         <FlexContainer>
-          <p>
-            <DisplayNumber>
-              <CountUp start={15000} end={294293} duration={8} separator=" " />
-            </DisplayNumber>{' '}
+          <H2>
+            <CountUp
+              start={15000}
+              end={294293}
+              duration={8}
+              separator=" "
+              style={{ fontWeight: 'bold' }}
+            />{' '}
             jobbannonser från
-          </p>
-          <p>
-            <DisplayNumber>
-              <CountUp start={0} end={1009} duration={10} separator=" " />
-            </DisplayNumber>{' '}
+          </H2>
+          <H2>
+            <CountUp
+              start={0}
+              end={1009}
+              duration={10}
+              separator=" "
+              style={{ fontWeight: 'bold' }}
+            />{' '}
             rekryteringssajter
-          </p>
+          </H2>
         </FlexContainer>
-        <ButtonLink
-          path={'/search'}
-          label={'Gå vidare'}
-          margin={'2rem 0 1rem 0'}
-          bgcolor={theme.primary}
-        />
+        <StyledLink to="/search">Gå vidare</StyledLink>
       </Header>
     </Container>
   )
@@ -89,4 +88,21 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const StyledLink = styled(Link)`
+  margin: 2rem 0 1rem 0;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  padding: 1.3rem 7rem;
+  background: ${props => props.theme.primary};
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  border-radius: 10rem;
+`
+
+const H2 = styled.h2`
+  font-weight: normal;
 `
