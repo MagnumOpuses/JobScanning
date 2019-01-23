@@ -19,6 +19,18 @@ class AdsList extends Component {
     offset: 0
   }
 
+  componentDidUpdate() {
+    if (this.props.isFetching && this.state.offset !== 0) {
+      this.setState({ offset: 0 })
+    }
+  }
+
+  calculateInfiniteScrollHeight = () => {
+    const { processedList } = this.props
+    const height = (processedList.length - 1) * 17
+    return height > 90 ? '90%' : `${height}%`
+  }
+
   redirectToAdPage = id => {
     this.props.history.push(`/jobs/${id}`)
   }

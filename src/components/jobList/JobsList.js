@@ -44,7 +44,7 @@ class JobsList extends Component {
   }
 
   render() {
-    const { isFetching, error, hits, processedList } = this.props
+    const { isFetching, error, hits, processedList, selectedJob } = this.props
 
     if (isFetching) {
       return <CustomLoader size="massive" content="Laddar" />
@@ -84,6 +84,7 @@ class JobsList extends Component {
                     ? () => this.props.selectAd(item)
                     : () => this.redirectToAdPage(item.group.id)
                 }
+                selected={item.id === selectedJob.id}
               >
                 <LogoPlaceholder employer={item.employer} />
                 <ItemInfo>
@@ -120,13 +121,22 @@ class JobsList extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { isFetching, hits, processedList, error, searchTerm, location } = ads
+  const {
+    isFetching,
+    error,
+    hits,
+    processedList,
+    selectedJob,
+    searchTerm,
+    location
+  } = ads
 
   return {
     isFetching,
     error,
     hits,
     processedList,
+    selectedJob,
     searchTerm,
     location
   }
@@ -143,6 +153,21 @@ const List = styled.ul`
   width: 100%;
   overflow: auto;
   display: grid;
+
+  &::-webkit-scrollbar {
+    /* width: 20px !important; */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: none !important;
+    border-radius: 10px !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.secondary} !important;
+    border-radius: 10px !important;
+  }
 `
 
 const ListItem = styled.li`
@@ -151,11 +176,21 @@ const ListItem = styled.li`
   grid-gap: 2rem;
   align-items: start;
   padding: 1.5rem;
-  transition: all .2s
+  transition: all 0.2s;
+  background: ${props =>
+    props.selected
+      ? `linear-gradient(165deg, rgba(0,0,0,0) 80%, ${props.theme.green3} 80%)`
+      : 'none'};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 3px 3px rgba(210, 237, 234, 1);
+    background: ${props =>
+      props.selected
+        ? `#eee linear-gradient(165deg, rgba(0,0,0,0) 80%, ${
+            props.theme.green3
+          } 80%)`
+        : '#eee'};
+    box-shadow: ${props => `0 3px 3px ${props.theme.green3}`};
   }
 `
 
@@ -164,7 +199,7 @@ const ItemInfo = styled.div`
   display: grid;
 `
 
-const ItemTitle = styled.h2`
+const ItemTitle = styled.h3`
   font-size: ${props => props.theme.fontSizeMedium};
   overflow: hidden;
   white-space: nowrap;

@@ -116,11 +116,11 @@ const CustomMenu = styled(Menu)`
     margin: 0;
 
     & > * {
-      background: ${theme.brightestSecondary};
-      border-top: 2px solid ${theme.secondary};
-      border-bottom: 2px solid ${theme.secondary};
-      border-left: 1px solid ${theme.secondary};
-      border-right: 1px solid ${theme.secondary};
+      background: ${theme.green0};
+      border-top: 2px solid ${theme.green4};
+      border-bottom: 2px solid ${theme.green4};
+      border-left: 1px solid ${theme.green4};
+      border-right: 1px solid ${theme.green4};
       border-radius: 0;
       box-shadow: none;
     }

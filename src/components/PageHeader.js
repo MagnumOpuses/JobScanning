@@ -12,7 +12,7 @@ const PageHeader = ({ children }) => (
       width="165px"
       bottom="5px"
       left="-50px"
-      bgcolor={theme.secondary}
+      bgcolor={theme.green4}
       boxshadow
       zIndex="-1"
     />
@@ -22,7 +22,7 @@ const PageHeader = ({ children }) => (
       width="85px"
       bottom="35px"
       left="71px"
-      bgcolor={theme.brightSecondary}
+      bgcolor={theme.green0}
       zIndex="-2"
     />
     <Link to="/">

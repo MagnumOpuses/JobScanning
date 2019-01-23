@@ -29,21 +29,23 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-weight: bold;
     font-size: 2em;
+    font-weight: ${theme.fonts.h1.fontWeightDesktop};
 
     @media screen and (min-width: ${breakpoints.tablet}) {
-    font-size: 2.5em;
+      font-size: ${theme.fonts.h1.fontSizeDesktop};
     }
   }
 
   h2 {
-    font-weight: bold;
-    font-size: 1.4rem;
+    font-size: ${theme.fonts.h2.fontSizeDesktop} !important;
+    font-weight: ${theme.fonts.h2.fontWeightDesktop};
+    margin: ${theme.fonts.h2.margin} !important;
   }
 
   h3 {
-    font-size: 1.4rem;
+    font-size: ${theme.fonts.h3.fontSizeDesktop};
+    font-weight: ${theme.fonts.h3.fontWeightDesktop};
   }
 `
 

@@ -25,7 +25,7 @@ export const buttonStyle = css`
 
   &:disabled {
     color: ${props => props.theme.lightGrey};
-    background: ${props => props.theme.brightestSecondary};
+    /* background: ${props => props.theme.brightestSecondary}; */
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2) !important;
     border: 1px solid ${props => props.theme.brightestSecondary};
     opacity: 1 !important;

@@ -28,7 +28,7 @@ const Header = styled.header`
   width: 100%;
   display: flex;
   z-index: 1;
-  border-top: 5px solid ${theme.secondary};
+  border-top: 5px solid ${theme.green4};
 `
 
 const StyledLink = styled(Link)`
@@ -41,7 +41,6 @@ const StyledLink = styled(Link)`
 
 const Logo = styled.img`
   height: 50px;
-  margin: 1rem;
   z-index: 1000;
 `
 

@@ -13,7 +13,6 @@ import {
   JobMap,
   ResultStats
 } from '../../../../components'
-import JobDetailsDesktop from './JobDetailsDesktop'
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../../components/jobList/JobsList'
 import theme from '../../../../styles/theme'
@@ -26,6 +25,8 @@ class AdsPage extends Component {
   }
 
   selectAd = selectedAd => {
+    console.log(selectedAd)
+
     const duplicatedGroupId = _.filter(this.props.hits, item => {
       return item.group.id === selectedAd.group.id
     })
@@ -80,35 +81,26 @@ class AdsPage extends Component {
             {this.state.activeItem === 'map' && <JobMap desktop />}
             {this.state.activeItem === 'overview' && <SourceRanking />}
           </SideMenu>
-          <div style={{ gridRow: '2/3', paddingLeft: '2rem' }}>
-            {Object.keys(selectedJob).length > 0 && (
-              <>
-                <H2>{selectedJob.header}</H2>
-                <h3>{selectedJob.employer.name}</h3>
-                <p>
-                  <BoldText>Kommun:</BoldText>{' '}
-                  {selectedJob.location &&
-                    selectedJob.location.translations['sv-SE']}
-                </p>
-                <p>
-                  <BoldText>Publicerad:</BoldText>{' '}
-                  {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                </p>
-              </>
 
-              // <JobDetailsDesktop selectedAd={selectedJob} />
-            )}
-
-            {Object.keys(selectedJob).length > 0 && (
-              <div>
-                <DescriptionContainer
-                  text={selectedJob.content.text}
-                  source={selectedJob.duplicatedGroupId}
-                />
-                {/* <p>{selectedJob.content.text.substring(0, 1200)}</p> */}
-              </div>
-            )}
-          </div>
+          {Object.keys(selectedJob).length > 0 && (
+            <JobDetails>
+              <h1>{selectedJob.header}</h1>
+              <h2>{selectedJob.employer.name}</h2>
+              <p>
+                <BoldText>Kommun:</BoldText>{' '}
+                {selectedJob.location &&
+                  selectedJob.location.translations['sv-SE']}
+              </p>
+              <p>
+                <BoldText>Publicerad:</BoldText>{' '}
+                {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
+              </p>
+              <DescriptionContainer
+                text={selectedJob.content.text}
+                source={selectedJob.duplicatedGroupId}
+              />
+            </JobDetails>
+          )}
         </GridContainer>
         <EllipseContainer>
           <Ellipse
@@ -147,6 +139,23 @@ export default connect(
   { selectJob, unselectJob }
 )(AdsPage)
 
+const JobDetails = styled.div`
+  grid-row: 2/3;
+  padding-left: 5rem;
+
+  h1 {
+    margin: 0 0 15px 0;
+  }
+
+  h2 {
+    font-weight: normal !important;
+  }
+
+  p {
+    font-size: 20px !important;
+  }
+`
+
 const Menu = styled.div`
   grid-row: 1/2;
   grid-column: 1/2;
@@ -163,7 +172,7 @@ const MenuItem = styled.div`
   justify-content: center;
   font-size: 20px;
   font-weight: 700;
-  color: ${props => (props.selected ? theme.secondary : theme.brightSecondary)};
+  color: ${props => (props.selected ? theme.secondary : '#000')};
   transition: all 0.2s;
 
   &:hover {
@@ -184,7 +193,6 @@ const EllipseContainer = styled.div`
   height: 220px;
   width: 250px;
   overflow: hidden;
-  background: linear-gradient(#fff 0%, rgba(0, 0, 0, 0) 75%);
 `
 
 const H2 = styled.h2`
