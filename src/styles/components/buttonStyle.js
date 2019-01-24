@@ -5,17 +5,17 @@ export const buttonStyle = css`
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  background: ${props => props.theme.secondary};
+  background: ${props => props.theme.green4};
   box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2);
-  border: 1px solid ${props => props.theme.secondary};
+  border: 1px solid ${props => props.theme.green4};
   border-radius: 10rem;
   transition: 0.1s all ease;
 
   &:hover {
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.green4};
     background: ${props => props.theme.white};
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-    border: 1px solid ${props => props.theme.secondary};
+    border: 1px solid ${props => props.theme.green4};
   }
 
   &:active,
@@ -25,29 +25,29 @@ export const buttonStyle = css`
 
   &:disabled {
     color: ${props => props.theme.lightGrey};
-    /* background: ${props => props.theme.brightestSecondary}; */
+    /* background: ${props => props.theme.green0}; */
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid ${props => props.theme.brightestSecondary};
+    border: 1px solid ${props => props.theme.green0};
     opacity: 1 !important;
   }
 `
 
 export const buttonStyleCorners = css`
-  color: ${props => props.theme.secondary};
+  color: ${props => props.theme.green4};
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
   background: ${props => props.theme.white};
   /* box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2); */
-  border: 1px solid ${props => props.theme.secondary};
+  border: 1px solid ${props => props.theme.green4};
   border-radius: 0.28571429rem;
   transition: 0.1s all ease;
 
   &:hover {
     color: ${props => props.theme.white};
-    background: ${props => props.theme.secondary};
+    background: ${props => props.theme.green4};
     /* box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5); */
-    border: 1px solid ${props => props.theme.secondary};
+    border: 1px solid ${props => props.theme.green4};
   }
 
   &:active,
@@ -57,9 +57,9 @@ export const buttonStyleCorners = css`
 
   &:disabled {
     color: ${props => props.theme.lightGrey};
-    background: ${props => props.theme.brightestSecondary};
+    background: ${props => props.theme.green0};
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid ${props => props.theme.brightestSecondary};
+    border: 1px solid ${props => props.theme.green0};
     opacity: 1 !important;
   }
 `

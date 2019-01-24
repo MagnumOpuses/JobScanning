@@ -85,7 +85,7 @@ class SearchFormContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         countiesAndMunicipalities={countiesAndMunicipalities}
         upward={this.props.upward}
-        desktop={this.props.desktop}
+        isDesktop={this.props.isDesktop}
         getCurrentPosition={this.getCurrentPosition}
       />
     )

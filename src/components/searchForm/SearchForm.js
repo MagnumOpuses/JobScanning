@@ -7,7 +7,7 @@ import breakpoint from '../../styles/breakpoints'
 const SearchForm = ({
   handleSubmit,
   countiesAndMunicipalities,
-  desktop,
+  isDesktop,
   searchTerm,
   location,
   handleChange,
@@ -15,7 +15,7 @@ const SearchForm = ({
   getCurrentPosition
 }) => {
   return (
-    <CustomForm onSubmit={handleSubmit} desktop={desktop}>
+    <CustomForm onSubmit={handleSubmit} className={isDesktop && 'isDesktop'}>
       <Form.Field required={true}>
         <Input
           name="searchTerm"
@@ -75,10 +75,9 @@ const CustomForm = styled(Form)`
     flex-direction: column;
     height: 350px;
     width: 88%;
-    padding: ${props => (props.desktop ? 0 : '3rem 2rem')};
-    background: ${props => (props.desktop ? 'none' : props.theme.green0)};
-    box-shadow: ${props =>
-      props.desktop ? 'none' : '0 0.3rem 0.5rem rgba(0, 0, 0, 0.5)'};
+    padding: 3rem 2rem;
+    background: ${props => props.theme.green0};
+    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     z-index: 1000;
     overflow: visible;

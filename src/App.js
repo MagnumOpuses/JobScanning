@@ -71,6 +71,12 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: ${props => props.theme.fonts.bodyCopy.fontSizeDesktop}
   }
+
+  .isDesktop {
+      padding: 0 !important;
+      background: none !important;
+      box-shadow: none !important;
+    }
 `
 
 class App extends Component {

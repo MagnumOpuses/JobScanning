@@ -1,8 +1,5 @@
 export default {
   primary: '#FFEB9E',
-  secondary: '#3FD8C9',
-  brightSecondary: '#D2EDEA',
-  brightestSecondary: '#F1FFFF',
   white: '#fff',
   lightGrey: '#9B9B9B',
   darkGrey: '#4A4A4A',

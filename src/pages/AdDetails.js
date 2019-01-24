@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import _ from 'lodash'
 import {
   NoResultsBox,
-  PageHeaderAds,
+  PageHeader,
   GridContainer,
   SubHeader,
   Title,
@@ -64,7 +64,7 @@ class AdDetails extends Component {
   render() {
     return (
       <GridContainer rows={'85px 1fr'}>
-        <PageHeaderAds />
+        <PageHeader ads />
         {this.getAdDetails(this.props.match.params.id)}
       </GridContainer>
     )
@@ -85,7 +85,6 @@ export default connect(
 )(AdDetails)
 
 const StyledDiv = styled.div`
-  background: ${props => props.theme.primary};
   padding: 3rem 1rem;
   box-shadow: 0 -0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 `

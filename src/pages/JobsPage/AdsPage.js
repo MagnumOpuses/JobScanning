@@ -10,7 +10,7 @@ import {
   AdsList,
   SourceRanking,
   GridContainer,
-  PageHeaderAds,
+  PageHeader,
   JobMap,
   ResultStats
 } from '../../components'
@@ -39,7 +39,7 @@ class AdsPage extends Component {
         <Responsive maxWidth={breakpoint.tablet}>
           <GridContainer rows={'185px calc(100vh - 185px)'}>
             <Header>
-              <PageHeaderAds />
+              <PageHeader ads />
 
               <ResultStats />
 

@@ -39,7 +39,6 @@ class AdsList extends Component {
     this.setState(prevState => ({
       offset: prevState.offset + 10
     }))
-    console.log(this.state.offset)
 
     this.props.fetchMoreJobs(
       this.props.searchTerm,
@@ -156,7 +155,7 @@ const ListItem = styled.li`
   grid-template-columns: 30% 1fr;
   grid-gap: 2rem;
   align-items: start;
-  border-bottom: 2px solid ${props => props.theme.secondary};
+  border-bottom: 2px solid ${props => props.theme.green4};
   padding: 1.5rem;
 `
 

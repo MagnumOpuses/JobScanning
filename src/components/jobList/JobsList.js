@@ -165,7 +165,7 @@ const List = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.secondary} !important;
+    background: ${props => props.theme.green4} !important;
     border-radius: 10px !important;
   }
 `
@@ -179,16 +179,16 @@ const ListItem = styled.li`
   transition: all 0.2s;
   background: ${props =>
     props.selected
-      ? `linear-gradient(165deg, rgba(0,0,0,0) 80%, ${props.theme.green3} 80%)`
+      ? `linear-gradient(165deg, rgba(0,0,0,0) 70%, ${props.theme.green3} 100%)`
       : 'none'};
 
   &:hover {
     transform: translateY(-2px);
     background: ${props =>
       props.selected
-        ? `#eee linear-gradient(165deg, rgba(0,0,0,0) 80%, ${
+        ? `#eee linear-gradient(165deg, rgba(0,0,0,0) 70%, ${
             props.theme.green3
-          } 80%)`
+          } 100%)`
         : '#eee'};
     box-shadow: ${props => `0 3px 3px ${props.theme.green3}`};
   }

@@ -67,7 +67,7 @@ const Header = styled.header`
   min-height: 55vh;
   text-align: center;
   padding: 2.5rem 0 4rem;
-  background: ${props => props.theme.secondary};
+  background: ${props => props.theme.green4};
   border-bottom-left-radius: 90% 80%;
   border-bottom-right-radius: 90% 80%;
   box-shadow: 0 0.3rem 2rem 0.3rem rgba(0, 0, 0, 0.6);

@@ -6,8 +6,7 @@ import GridContainer from './reusables/GridContainer'
 import CustomLoader from './reusables/CustomLoader'
 import LogoPlaceholder from './reusables/LogoPlaceholder'
 import NoResultsBox from './reusables/NoResultsBox'
-import PageHeader from './PageHeader'
-import PageHeaderAds from '../pages/JobsPage/components/PageHeaderAds'
+import PageHeader from '../pages/JobsPage/components/PageHeader'
 
 import AdsList from '../pages/JobsPage/components/AdsList'
 
@@ -33,7 +32,6 @@ export {
   LogoPlaceholder,
   NoResultsBox,
   PageHeader,
-  PageHeaderAds,
   SubHeader,
   Title,
   InfoContainer,

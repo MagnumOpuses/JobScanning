@@ -11,8 +11,7 @@ export default CustomLoader
 const StyledLoader = styled(Loader)`
   &&& {
     :after {
-      border-color: ${props =>
-        `${props.theme.secondary} transparent transparent`};
+      border-color: ${props => `${props.theme.green4} transparent transparent`};
     }
   }
 `

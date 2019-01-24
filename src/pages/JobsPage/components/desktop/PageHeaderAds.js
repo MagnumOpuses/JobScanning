@@ -15,7 +15,7 @@ class PageHeaderAds extends Component {
           <H1>JobScanner</H1>
         </StyledLink>
         <div style={{ flex: '1' }}>
-          <SearchForm desktop={true} upward={false} />
+          <SearchForm isDesktop upward={false} />
         </div>
       </Header>
     )

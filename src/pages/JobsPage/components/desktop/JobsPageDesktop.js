@@ -109,7 +109,7 @@ class AdsPage extends Component {
             width="170px"
             bottom="-60px"
             right="-20px"
-            bgcolor={theme.secondary}
+            bgcolor={theme.green4}
             zIndex={-2}
           />
           <Ellipse
@@ -117,7 +117,7 @@ class AdsPage extends Component {
             width="140px"
             bottom="-60px"
             right="82px"
-            bgcolor={theme.brightSecondary}
+            bgcolor={theme.green1}
             zIndex={-1}
           />
         </EllipseContainer>
@@ -173,11 +173,11 @@ const MenuItem = styled.div`
   justify-content: center;
   font-size: 20px;
   font-weight: 700;
-  color: ${props => (props.selected ? theme.secondary : '#000')};
+  color: ${props => (props.selected ? theme.green4 : '#000')};
   transition: all 0.2s;
 
   &:hover {
-    color: ${theme.secondary};
+    color: ${theme.green4};
   }
 `
 
