@@ -20,8 +20,6 @@ class SearchFormContainer extends React.Component {
   }
 
   handleChange = (event, data) => {
-    console.log(data.value)
-
     this.setState({ [data.name]: data.value })
   }
 

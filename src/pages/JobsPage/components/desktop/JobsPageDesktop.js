@@ -16,6 +16,7 @@ import {
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../../components/jobList/JobsList'
 import theme from '../../../../styles/theme'
+import images from '../../../../images/index'
 
 class AdsPage extends Component {
   state = { activeComponent: 'list' }
@@ -87,15 +88,32 @@ class AdsPage extends Component {
             <JobDetails>
               <h1>{selectedJob.header}</h1>
               <h2>{selectedJob.employer.name}</h2>
-              <p>
-                <BoldText>Kommun:</BoldText>{' '}
-                {selectedJob.location &&
-                  selectedJob.location.translations['sv-SE']}
-              </p>
-              <p>
-                <BoldText>Publicerad:</BoldText>{' '}
-                {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-              </p>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div>
+                  <p>
+                    <BoldText>Kommun:</BoldText>{' '}
+                    {selectedJob.location &&
+                      selectedJob.location.translations['sv-SE']}
+                  </p>
+                  <p>
+                    <BoldText>Publicerad:</BoldText>{' '}
+                    {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
+                  </p>
+                </div>
+                <div>
+                  <p>Publicerad hos</p>
+                  {selectedJob.duplicatedGroupId.length > 1 ? (
+                    'Se nedan'
+                  ) : [selectedJob.source.site.name] in images ? (
+                    <SourceLogo
+                      src={images[selectedJob.source.site.name]}
+                      alt={selectedJob.source.site.name}
+                    />
+                  ) : (
+                    <p>{selectedJob.source.site.name}</p>
+                  )}
+                </div>
+              </div>
               <DescriptionContainer
                 text={selectedJob.content.text}
                 source={selectedJob.duplicatedGroupId}
@@ -143,6 +161,7 @@ export default connect(
 const JobDetails = styled.div`
   grid-row: 2/3;
   padding-left: 5rem;
+  max-width: 740px;
 
   h1 {
     margin: 0 0 15px 0;
@@ -194,4 +213,9 @@ const EllipseContainer = styled.div`
   height: 220px;
   width: 250px;
   overflow: hidden;
+`
+
+const SourceLogo = styled.img`
+  max-height: 50px;
+  width: auto;
 `

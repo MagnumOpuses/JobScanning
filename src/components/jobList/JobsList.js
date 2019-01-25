@@ -200,7 +200,7 @@ const ItemInfo = styled.div`
 `
 
 const ItemTitle = styled.h3`
-  font-size: ${props => props.theme.fontSizeMedium};
+  font-size: 20px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
