@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DisplayNumber } from '../../components'
 
 const ResultStats = ({ total, processedList, sources }) => {
   return (
@@ -9,7 +8,8 @@ const ResultStats = ({ total, processedList, sources }) => {
         margin: '0',
         alignSelf: 'center',
         textAlign: 'center',
-        padding: '1rem 0'
+        padding: '2rem 0',
+        fontSize: '20px'
       }}
     >
       <BoldText>{processedList ? processedList.length : 0}</BoldText> (

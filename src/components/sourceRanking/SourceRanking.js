@@ -96,27 +96,27 @@ const OrderedList = styled.ol`
     }
 
     :nth-child(3n - 1) .arrow {
-      background: ${props => props.theme.secondary};
+      background: ${props => props.theme.green4};
       .score {
-        background: ${props => props.theme.secondary};
+        background: ${props => props.theme.green4};
       }
     }
 
     :nth-child(3n - 1) .arrow:before {
       border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0)
-        rgba(255, 255, 255, 0) ${props => props.theme.secondary};
+        rgba(255, 255, 255, 0) ${props => props.theme.green4};
     }
 
     :nth-child(3n) .arrow {
-      background: ${props => props.theme.brightSecondary};
+      background: ${props => props.theme.green2};
       .score {
-        background: ${props => props.theme.brightSecondary};
+        background: ${props => props.theme.green2};
       }
     }
 
     :nth-child(3n) .arrow:before {
       border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0)
-        rgba(255, 255, 255, 0) ${props => props.theme.brightSecondary};
+        rgba(255, 255, 255, 0) ${props => props.theme.green2};
     }
   }
 

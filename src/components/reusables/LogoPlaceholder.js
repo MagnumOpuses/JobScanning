@@ -26,7 +26,8 @@ const StyledH3 = styled.h3`
   text-align: center;
   word-break: break-word;
   hyphens: auto;
-  background: ${props => props.theme.brightestSecondary};
+  background: ${props => props.theme.green0};
   margin: 0 !important;
   padding: 1rem;
+  font-size: 16px;
 `

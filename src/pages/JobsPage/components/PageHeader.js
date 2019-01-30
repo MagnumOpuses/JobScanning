@@ -7,16 +7,27 @@ import { Icon } from 'semantic-ui-react'
 import { Ellipse } from '../../../components'
 import jt_logowhite from '../../../images/logo/1x/jt_logowhite.png'
 
-class PageHeaderAds extends Component {
+class PageHeader extends Component {
   render() {
     return (
-      <Header>
+      <Header
+        ads={this.props.ads}
+        style={
+          !this.props.ads
+            ? {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'flex-end'
+              }
+            : {}
+        }
+      >
         <Ellipse
           height="195px"
           width="165px"
           bottom="5px"
           left="-50px"
-          bgcolor={theme.secondary}
+          bgcolor={theme.green4}
           boxshadow
           zIndex="1"
         />
@@ -26,21 +37,37 @@ class PageHeaderAds extends Component {
           width="85px"
           bottom="35px"
           left="71px"
-          bgcolor={theme.brightSecondary}
+          bgcolor={theme.green0}
         />
         <Link to="/">
           <Logo alt="JobTech" src={jt_logowhite} />
         </Link>
 
-        <Children>
-          <SearchTerm>
-            {this.props.searchTerm
-              ? `#${this.props.searchTerm}`
-              : 'Inga sökord'}
-          </SearchTerm>
-          <CustomLink to="/search">
-            <CustomIcon name="search" size="large" />
-          </CustomLink>
+        <Children
+          style={
+            this.props.ads && {
+              height: '3rem',
+              display: 'flex',
+              position: 'absolute',
+              right: '1.5rem',
+              bottom: '1.5rem'
+            }
+          }
+        >
+          {this.props.ads ? (
+            <>
+              <SearchTerm>
+                {this.props.searchTerm
+                  ? `#${this.props.searchTerm}`
+                  : 'Inga sökord'}
+              </SearchTerm>
+              <CustomLink to="/search">
+                <CustomIcon name="search" size="large" />
+              </CustomLink>
+            </>
+          ) : (
+            this.props.children
+          )}
         </Children>
       </Header>
     )
@@ -57,13 +84,13 @@ function mapStateToProps({ ads }) {
 export default connect(
   mapStateToProps,
   null
-)(PageHeaderAds)
+)(PageHeader)
 
 const Header = styled.header`
   height: 100%;
   width: 100%;
-  background: ${theme.primary};
-  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: ${({ ads }) =>
+    ads ? '0 0.3rem 0.5rem rgba(0, 0, 0, 0.3)' : 'none'};
   position: relative;
   z-index: 1;
 `
@@ -77,11 +104,6 @@ const Logo = styled.img`
 `
 
 const Children = styled.div`
-  height: 3rem;
-  display: flex;
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
   z-index: 1000;
 `
 
@@ -101,7 +123,7 @@ const SearchTerm = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  background: ${theme.brightSecondary};
+  background: ${theme.green1};
   border-radius: 1.5rem;
   box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4);
 `
@@ -111,7 +133,7 @@ const CustomIcon = styled(Icon)`
     color: #fff;
     padding: 1.5rem 2.3rem;
     margin-left: 2rem;
-    background: ${theme.secondary};
+    background: ${theme.green4};
     display: flex;
     justify-content: center;
     align-items: center;

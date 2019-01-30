@@ -56,7 +56,7 @@ const Checkmark = styled.span`
     display: none;
     width: 12px;
     height: 24px;
-    border: solid ${props => props.theme.secondary};
+    border: solid ${props => props.theme.green4};
     border-width: 0 6px 6px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
