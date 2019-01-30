@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import images from '../../../images/'
-import { buttonStyle, buttonStyleCorners } from '../../../styles/components'
+import { buttonStyleCorners } from '../../../styles/components'
 
 const DescriptionContainer = ({ text, source }) => (
   <DescriptionBox>
-    <h3 style={{ fontSize: '2.4rem' }}>Annons</h3>
+    <h3 style={{ fontSize: '2.4rem', marginBottom: '15px' }}>Annons</h3>
     {text && <DescriptionText>{text.substring(0, 1200)}</DescriptionText>}
     {source.length > 1 ? (
       <MultipleLinks>
@@ -46,10 +46,13 @@ const DescriptionBox = styled.div`
   grid-row: 4 / 5;
   position: relative;
   background: ${props => props.theme.white};
-  padding: 1rem;
+  /* padding: 1rem; */
 `
 
 const DescriptionText = styled.p`
+  max-width: 740px;
+  font-size: 20px;
+  line-height: 27px;
   white-space: pre-line;
   background: -webkit-linear-gradient(
     #000 0%,

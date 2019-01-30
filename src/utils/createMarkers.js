@@ -8,26 +8,34 @@ export default async list => {
   for (const city in groupedByLocation) {
     try {
       let geocode = await fetchLocation(city)
-      let radius = 0.001
       let steps = (1 / 360) * 100
+      let latRadius = 0.0005
+      let lngRadius = 0.001
 
-      groupedByLocation[city].forEach((obj, index) => {
+      // eslint-disable-next-line
+      groupedByLocation[city].forEach((obj, i) => {
         const centerLat = geocode.geometry.location.lat
         const centerLng = geocode.geometry.location.lng
 
         let newLat = centerLat
         let newLng = centerLng
 
-        newLat -= Math.sin(index * steps) * radius
-        newLng -= Math.cos(index * steps) * radius
+        newLat -= Math.sin(i * steps) * latRadius
+        newLng -= Math.cos(i * steps) * lngRadius
 
-        radius += 0.0001
+        if (i < 5) {
+          latRadius += 0.0005
+          lngRadius += 0.001
+        } else {
+          latRadius += 0.00005
+          lngRadius += 0.0001
+        }
 
         obj.geocode = {
           geometry: { location: { lat: newLat, lng: newLng } }
         }
 
-        if (index === 0) {
+        if (i === 0) {
           obj.geocode = {
             geometry: { location: { lat: centerLat, lng: centerLng } }
           }

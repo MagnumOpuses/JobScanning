@@ -1,5 +1,4 @@
 import BoldText from './reusables/BoldText'
-import ButtonLink from './reusables/ButtonLink'
 import Checkbox from './reusables/Checkbox'
 import DisplayNumber from './reusables/DisplayNumber'
 import Ellipse from './reusables/Ellipse'
@@ -7,8 +6,7 @@ import GridContainer from './reusables/GridContainer'
 import CustomLoader from './reusables/CustomLoader'
 import LogoPlaceholder from './reusables/LogoPlaceholder'
 import NoResultsBox from './reusables/NoResultsBox'
-import PageHeader from './PageHeader'
-import PageHeaderAds from '../pages/JobsPage/components/PageHeaderAds'
+import PageHeader from '../pages/JobsPage/components/PageHeader'
 
 import AdsList from '../pages/JobsPage/components/AdsList'
 
@@ -20,12 +18,12 @@ import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
 import { default as JobMap } from './jobMap/JobMapContainer'
 import { default as SourceRanking } from './sourceRanking/SourceRankingContainer'
 import { default as ResultStats } from './resultStats/ResultStatsContainer'
+import { default as SearchForm } from './searchForm/SearchFormContainer'
 
 export {
   AdsList,
   SourceRanking,
   BoldText,
-  ButtonLink,
   Checkbox,
   DisplayNumber,
   Ellipse,
@@ -34,11 +32,11 @@ export {
   LogoPlaceholder,
   NoResultsBox,
   PageHeader,
-  PageHeaderAds,
   SubHeader,
   Title,
   InfoContainer,
   DescriptionContainer,
   JobMap,
-  ResultStats
+  ResultStats,
+  SearchForm
 }

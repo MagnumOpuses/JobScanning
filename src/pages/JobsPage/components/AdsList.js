@@ -14,9 +14,34 @@ import {
 } from '../../../components'
 
 class AdsList extends Component {
-  state = {
-    items: [],
-    offset: 0
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      items: [],
+      offset: 0
+    }
+    this.listRef = React.createRef()
+  }
+
+  handleScroll = () => {
+    this.props.handleScroll(this.listRef)
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
+  componentDidUpdate() {
+    if (this.props.isFetching && this.state.offset !== 0) {
+      this.setState({ offset: 0 })
+    }
+  }
+
+  calculateInfiniteScrollHeight = () => {
+    const { processedList } = this.props
+    const height = (processedList.length - 1) * 17
+    return height > 90 ? '100vh' : `${height}vh`
   }
 
   redirectToAdPage = id => {
@@ -27,7 +52,6 @@ class AdsList extends Component {
     this.setState(prevState => ({
       offset: prevState.offset + 10
     }))
-    console.log(this.state.offset)
 
     this.props.fetchMoreJobs(
       this.props.searchTerm,
@@ -37,15 +61,24 @@ class AdsList extends Component {
   }
 
   render() {
-    if (this.props.ads.isFetching) {
+    const { isFetching, error, hits, processedList } = this.props
+
+    if (isFetching) {
       return <CustomLoader size="massive" content="Laddar" />
-    } else if (this.props.ads.error) {
+    } else if (error) {
+      return <NoResultsBox />
+    } else if (Object.keys(hits).length === 0) {
       return <NoResultsBox />
     } else {
       return (
-        <List id="scrollableDiv">
+        <List
+          id="scrollableDiv"
+          style={{ height: this.calculateInfiniteScrollHeight() }}
+          ref={this.listRef}
+          onScroll={this.handleScroll}
+        >
           <InfiniteScroll
-            dataLength={this.props.ads.processedList.length}
+            dataLength={processedList.length}
             next={this.fetchMoreData}
             hasMore={true}
             style={{ overflow: 'visible' }}
@@ -62,14 +95,10 @@ class AdsList extends Component {
               </div>
             }
           >
-            {this.props.ads.processedList.map((item, i) => (
+            {processedList.map((item, i) => (
               <ListItem
                 key={i}
-                onClick={
-                  this.props.selectAd
-                    ? () => this.props.selectAd(item)
-                    : () => this.redirectToAdPage(item.group.id)
-                }
+                onClick={() => this.redirectToAdPage(item.group.id)}
               >
                 <LogoPlaceholder employer={item.employer} />
                 <ItemInfo>
@@ -106,9 +135,13 @@ class AdsList extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { searchTerm, location } = ads
+  const { isFetching, error, hits, processedList, searchTerm, location } = ads
+
   return {
-    ads,
+    isFetching,
+    error,
+    hits,
+    processedList,
     searchTerm,
     location
   }
@@ -133,7 +166,7 @@ const ListItem = styled.li`
   grid-template-columns: 30% 1fr;
   grid-gap: 2rem;
   align-items: start;
-  border-bottom: 2px solid ${props => props.theme.secondary};
+  border-bottom: 2px solid ${props => props.theme.green4};
   padding: 1.5rem;
 `
 
@@ -143,7 +176,7 @@ const ItemInfo = styled.div`
 `
 
 const ItemTitle = styled.h2`
-  font-size: ${props => props.theme.fontSizeMedium};
+  font-size: 20px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

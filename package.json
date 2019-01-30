@@ -9,7 +9,6 @@
     "react": "^16.6.3",
     "react-countup": "^4.0.0-alpha.6",
     "react-dom": "^16.6.3",
-    "react-ga": "^2.5.6",
     "react-google-maps": "^9.4.5",
     "react-infinite-scroll-component": "^4.2.0",
     "react-redux": "^5.0.7",

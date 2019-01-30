@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { BoldText, GridContainer, PageHeader } from '../components'
-import SearchForm from '../containers/SearchForm'
+import styled from 'styled-components'
+import { BoldText, GridContainer, PageHeader, SearchForm } from '../components'
+import breakpoints from '../styles/breakpoints'
+// import SearchForm from '../containers/SearchForm'
 
 class SearchPage extends Component {
   render() {
@@ -10,10 +12,10 @@ class SearchPage extends Component {
           <h1>Alla jobb på ett ställe</h1>
         </PageHeader>
 
-        <p>
+        <P>
           <BoldText>294 293</BoldText> jobb från <BoldText>1009</BoldText>{' '}
           jobbsajter
-        </p>
+        </P>
 
         <SearchForm upward={true} />
       </GridContainer>
@@ -22,3 +24,15 @@ class SearchPage extends Component {
 }
 
 export default SearchPage
+
+const P = styled.p`
+  font-size: 24px;
+
+  @media screen and (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+    font-size: 20px;
+  }
+`

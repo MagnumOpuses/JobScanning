@@ -9,23 +9,28 @@ import numberOfUniqueSources from '../../utils/numberOfUniqueSources'
 import {
   AdsList,
   SourceRanking,
-  DisplayNumber,
   GridContainer,
-  PageHeaderAds,
-  JobMap
+  PageHeader,
+  JobMap,
+  ResultStats
 } from '../../components'
-import JobsPageDesktop from './components/desktop/NewJobsPageDesktop'
-
-const DISPLAY_STATES = {
-  list: <AdsList />,
-  map: <JobMap />,
-  overview: <SourceRanking />
-}
+import JobsPageDesktop from './components/desktop/JobsPageDesktop'
 
 class AdsPage extends Component {
-  state = { activeItem: 'list' }
+  constructor(props) {
+    super(props)
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    this.state = {
+      activeComponent: 'list',
+      headerVisible: true,
+      lastScrollTop: 0
+    }
+    this.headerRef = React.createRef()
+  }
+
+  changeComponent = componentName => {
+    this.setState({ activeComponent: componentName })
+  }
 
   getNumberOfSources = () => {
     let { ads } = this.props
@@ -35,62 +40,91 @@ class AdsPage extends Component {
     return number
   }
 
-  render() {
-    const { activeItem } = this.state
+  handleScroll = ref => {
+    const refScrollTop = ref.current.scrollTop
+    const headerHeight = this.headerRef.current.offsetHeight
+    const { lastScrollTop } = this.state
 
-    const activeComponent = DISPLAY_STATES[activeItem]
+    if (Math.abs(this.state.lastScrollTop - refScrollTop) <= 5) {
+      return
+    }
+
+    if (refScrollTop > lastScrollTop && refScrollTop > headerHeight) {
+      this.setState({
+        headerVisible: false,
+        lastScrollTop: refScrollTop
+      })
+      console.log('hide')
+    } else {
+      this.setState({
+        headerVisible: true,
+        lastScrollTop: refScrollTop
+      })
+      console.log('show')
+    }
+
+    console.log(ref.current)
+  }
+
+  render() {
+    const { activeComponent } = this.state
 
     return (
       <React.Fragment>
         <Responsive maxWidth={breakpoint.tablet}>
           <GridContainer rows={'185px calc(100vh - 185px)'}>
-            <Header>
-              <PageHeaderAds />
+            <Header
+              ref={this.headerRef}
+              style={{
+                transition: 'all .2s',
+                transform: this.state.headerVisible
+                  ? 'translateY(0)'
+                  : 'translateY(-185px)'
+              }}
+            >
+              <PageHeader ads />
 
-              <p
-                style={{
-                  fontSize: theme.fontSizeMedium,
-                  margin: '0',
-                  alignSelf: 'center',
-                  textAlign: 'center',
-                  padding: '1rem 0'
-                }}
-              >
-                <DisplayNumber>
-                  {this.props.ads.total ? this.props.ads.total : 0}
-                </DisplayNumber>{' '}
-                jobbannonser från{' '}
-                <DisplayNumber>{this.getNumberOfSources()}</DisplayNumber>{' '}
-                rekryteringssajter
-              </p>
+              <ResultStats />
 
               <CustomMenu borderless fluid widths={3}>
                 <CustomMenuItem
                   name="list"
-                  active={activeItem === 'list'}
+                  active={activeComponent === 'list'}
                   content="Lista"
-                  onClick={this.handleItemClick}
+                  onClick={() => this.setState({ activeComponent: 'list' })}
                 />
 
                 <CustomMenuItem
                   name="map"
-                  active={activeItem === 'map'}
+                  active={activeComponent === 'map'}
                   content="Karta"
-                  onClick={this.handleItemClick}
+                  onClick={() => this.setState({ activeComponent: 'map' })}
                 />
 
                 <CustomMenuItem
                   name="overview"
-                  active={activeItem === 'overview'}
+                  active={activeComponent === 'overview'}
                   content="Översikt"
-                  onClick={this.handleItemClick}
+                  onClick={() => this.setState({ activeComponent: 'overview' })}
                 />
               </CustomMenu>
             </Header>
-            <Content>{activeComponent}</Content>
+            <div style={{ marginTop: '185px' }}>
+              <div
+                style={{
+                  display: activeComponent === 'list' ? 'block' : 'none',
+                  height: '100%',
+                  marginTop: '-185px'
+                }}
+              >
+                <AdsList handleScroll={this.handleScroll} />
+              </div>
+              {activeComponent === 'map' && <JobMap />}
+              {activeComponent === 'overview' && <SourceRanking />}
+            </div>
           </GridContainer>
         </Responsive>
-        <Responsive minWidth={breakpoint.tablet}>
+        <Responsive minWidth={769}>
           <JobsPageDesktop />
         </Responsive>
       </React.Fragment>
@@ -116,11 +150,11 @@ const CustomMenu = styled(Menu)`
     margin: 0;
 
     & > * {
-      background: ${theme.brightestSecondary};
-      border-top: 2px solid ${theme.secondary};
-      border-bottom: 2px solid ${theme.secondary};
-      border-left: 1px solid ${theme.secondary};
-      border-right: 1px solid ${theme.secondary};
+      background: ${theme.green0};
+      border-top: 2px solid ${theme.green4};
+      border-bottom: 2px solid ${theme.green4};
+      border-left: 1px solid ${theme.green4};
+      border-right: 1px solid ${theme.green4};
       border-radius: 0;
       box-shadow: none;
     }
@@ -168,8 +202,4 @@ const Header = styled.div`
   right: 0;
   z-index: 1000;
   background: #fff;
-`
-
-const Content = styled.div`
-  grid-row: 2/3;
 `

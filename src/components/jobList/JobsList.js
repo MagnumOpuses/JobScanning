@@ -9,10 +9,22 @@ import format from 'date-fns/format'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CustomLoader, LogoPlaceholder, NoResultsBox } from '../../components'
 
-class AdsList extends Component {
+class JobsList extends Component {
   state = {
     items: [],
     offset: 0
+  }
+
+  componentDidUpdate() {
+    if (this.props.isFetching && this.state.offset !== 0) {
+      this.setState({ offset: 0 })
+    }
+  }
+
+  calculateInfiniteScrollHeight = () => {
+    const { processedList } = this.props
+    const height = (processedList.length - 1) * 17
+    return height > 100 ? '100%' : `${height}%`
   }
 
   redirectToAdPage = id => {
@@ -23,7 +35,6 @@ class AdsList extends Component {
     this.setState(prevState => ({
       offset: prevState.offset + 10
     }))
-    console.log(this.state.offset)
 
     this.props.fetchMoreJobs(
       this.props.searchTerm,
@@ -33,17 +44,18 @@ class AdsList extends Component {
   }
 
   render() {
-    const { isFetching, error, hits, processedList } = this.props
+    const { isFetching, error, hits, processedList, selectedJob } = this.props
 
     if (isFetching) {
       return <CustomLoader size="massive" content="Laddar" />
-    } else if (error) {
-      return <NoResultsBox />
-    } else if (Object.keys(hits).length === 0) {
+    } else if (error || Object.keys(hits).length === 0) {
       return <NoResultsBox />
     } else {
       return (
-        <List id="scrollableDiv">
+        <List
+          id="scrollableDiv"
+          style={{ height: this.calculateInfiniteScrollHeight() }}
+        >
           <InfiniteScroll
             dataLength={processedList.length}
             next={this.fetchMoreData}
@@ -65,11 +77,10 @@ class AdsList extends Component {
             {processedList.map((item, i) => (
               <ListItem
                 key={i}
-                onClick={
-                  this.props.selectAd
-                    ? () => this.props.selectAd(item)
-                    : () => this.redirectToAdPage(item.group.id)
-                }
+                onClick={() => {
+                  this.props.selectAd(item)
+                }}
+                selected={item.id === selectedJob.id}
               >
                 <LogoPlaceholder employer={item.employer} />
                 <ItemInfo>
@@ -106,13 +117,22 @@ class AdsList extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { isFetching, hits, processedList, error, searchTerm, location } = ads
+  const {
+    isFetching,
+    error,
+    hits,
+    processedList,
+    selectedJob,
+    searchTerm,
+    location
+  } = ads
 
   return {
     isFetching,
     error,
     hits,
     processedList,
+    selectedJob,
     searchTerm,
     location
   }
@@ -122,14 +142,28 @@ export default withRouter(
   connect(
     mapStateToProps,
     { fetchMoreJobs }
-  )(AdsList)
+  )(JobsList)
 )
 
 const List = styled.ul`
-  height: 100%;
   width: 100%;
   overflow: auto;
   display: grid;
+
+  &::-webkit-scrollbar {
+    /* width: 20px !important; */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: none !important;
+    border-radius: 10px !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.green4} !important;
+    border-radius: 10px !important;
+  }
 `
 
 const ListItem = styled.li`
@@ -138,11 +172,21 @@ const ListItem = styled.li`
   grid-gap: 2rem;
   align-items: start;
   padding: 1.5rem;
-  transition: all .2s
+  transition: all 0.2s;
+  background: ${props =>
+    props.selected
+      ? `linear-gradient(165deg, rgba(0,0,0,0) 70%, ${props.theme.green3} 100%)`
+      : 'none'};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 3px 3px rgba(210, 237, 234, 1);
+    background: ${props =>
+      props.selected
+        ? `#eee linear-gradient(165deg, rgba(0,0,0,0) 70%, ${
+            props.theme.green3
+          } 100%)`
+        : '#eee'};
+    box-shadow: ${props => `0 3px 3px ${props.theme.green3}`};
   }
 `
 
@@ -151,8 +195,8 @@ const ItemInfo = styled.div`
   display: grid;
 `
 
-const ItemTitle = styled.h2`
-  font-size: ${props => props.theme.fontSizeMedium};
+const ItemTitle = styled.h3`
+  font-size: 20px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -42,7 +42,6 @@ const createScoreboard = hits => {
     test = [...test, { source: element[0], score: element[1] }]
   })
 
-  console.log(test)
   return test
 }
 
