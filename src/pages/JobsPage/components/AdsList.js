@@ -14,9 +14,22 @@ import {
 } from '../../../components'
 
 class AdsList extends Component {
-  state = {
-    items: [],
-    offset: 0
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      items: [],
+      offset: 0
+    }
+    this.listRef = React.createRef()
+  }
+
+  handleScroll = () => {
+    this.props.handleScroll(this.listRef)
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
   }
 
   componentDidUpdate() {
@@ -28,7 +41,7 @@ class AdsList extends Component {
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
     const height = (processedList.length - 1) * 17
-    return height > 90 ? '100%' : `${height}%`
+    return height > 90 ? '100vh' : `${height}vh`
   }
 
   redirectToAdPage = id => {
@@ -61,6 +74,8 @@ class AdsList extends Component {
         <List
           id="scrollableDiv"
           style={{ height: this.calculateInfiniteScrollHeight() }}
+          ref={this.listRef}
+          onScroll={this.handleScroll}
         >
           <InfiniteScroll
             dataLength={processedList.length}
@@ -83,11 +98,7 @@ class AdsList extends Component {
             {processedList.map((item, i) => (
               <ListItem
                 key={i}
-                onClick={
-                  this.props.selectAd
-                    ? () => this.props.selectAd(item)
-                    : () => this.redirectToAdPage(item.group.id)
-                }
+                onClick={() => this.redirectToAdPage(item.group.id)}
               >
                 <LogoPlaceholder employer={item.employer} />
                 <ItemInfo>

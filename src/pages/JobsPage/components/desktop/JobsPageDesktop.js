@@ -75,7 +75,7 @@ class AdsPage extends Component {
             <div
               style={{
                 display: activeComponent === 'list' ? 'block' : 'none',
-                height: '100%'
+                height: '90%'
               }}
             >
               <JobsList selectAd={this.selectAd} />
@@ -204,6 +204,8 @@ const SideMenu = styled.div`
   grid-row: 2/3;
   grid-column: 1/2;
   height: 75vh;
+  display: flex;
+  flex-direction: column;
 `
 
 const EllipseContainer = styled.div`

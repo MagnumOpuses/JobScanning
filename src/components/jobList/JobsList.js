@@ -24,7 +24,7 @@ class JobsList extends Component {
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
     const height = (processedList.length - 1) * 17
-    return height > 90 ? '90%' : `${height}%`
+    return height > 100 ? '100%' : `${height}%`
   }
 
   redirectToAdPage = id => {
@@ -48,9 +48,7 @@ class JobsList extends Component {
 
     if (isFetching) {
       return <CustomLoader size="massive" content="Laddar" />
-    } else if (error) {
-      return <NoResultsBox />
-    } else if (Object.keys(hits).length === 0) {
+    } else if (error || Object.keys(hits).length === 0) {
       return <NoResultsBox />
     } else {
       return (
@@ -79,11 +77,9 @@ class JobsList extends Component {
             {processedList.map((item, i) => (
               <ListItem
                 key={i}
-                onClick={
-                  this.props.selectAd
-                    ? () => this.props.selectAd(item)
-                    : () => this.redirectToAdPage(item.group.id)
-                }
+                onClick={() => {
+                  this.props.selectAd(item)
+                }}
                 selected={item.id === selectedJob.id}
               >
                 <LogoPlaceholder employer={item.employer} />

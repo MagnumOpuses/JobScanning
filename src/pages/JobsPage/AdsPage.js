@@ -17,7 +17,16 @@ import {
 import JobsPageDesktop from './components/desktop/JobsPageDesktop'
 
 class AdsPage extends Component {
-  state = { activeComponent: 'list' }
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      activeComponent: 'list',
+      headerVisible: true,
+      lastScrollTop: 0
+    }
+    this.headerRef = React.createRef()
+  }
 
   changeComponent = componentName => {
     this.setState({ activeComponent: componentName })
@@ -31,6 +40,32 @@ class AdsPage extends Component {
     return number
   }
 
+  handleScroll = ref => {
+    const refScrollTop = ref.current.scrollTop
+    const headerHeight = this.headerRef.current.offsetHeight
+    const { lastScrollTop } = this.state
+
+    if (Math.abs(this.state.lastScrollTop - refScrollTop) <= 5) {
+      return
+    }
+
+    if (refScrollTop > lastScrollTop && refScrollTop > headerHeight) {
+      this.setState({
+        headerVisible: false,
+        lastScrollTop: refScrollTop
+      })
+      console.log('hide')
+    } else {
+      this.setState({
+        headerVisible: true,
+        lastScrollTop: refScrollTop
+      })
+      console.log('show')
+    }
+
+    console.log(ref.current)
+  }
+
   render() {
     const { activeComponent } = this.state
 
@@ -38,7 +73,15 @@ class AdsPage extends Component {
       <React.Fragment>
         <Responsive maxWidth={breakpoint.tablet}>
           <GridContainer rows={'185px calc(100vh - 185px)'}>
-            <Header>
+            <Header
+              ref={this.headerRef}
+              style={{
+                transition: 'all .2s',
+                transform: this.state.headerVisible
+                  ? 'translateY(0)'
+                  : 'translateY(-185px)'
+              }}
+            >
               <PageHeader ads />
 
               <ResultStats />
@@ -66,18 +109,19 @@ class AdsPage extends Component {
                 />
               </CustomMenu>
             </Header>
-            <Content>
+            <div style={{ marginTop: '185px' }}>
               <div
                 style={{
                   display: activeComponent === 'list' ? 'block' : 'none',
-                  height: '100%'
+                  height: '100%',
+                  marginTop: '-185px'
                 }}
               >
-                <AdsList />
+                <AdsList handleScroll={this.handleScroll} />
               </div>
               {activeComponent === 'map' && <JobMap />}
               {activeComponent === 'overview' && <SourceRanking />}
-            </Content>
+            </div>
           </GridContainer>
         </Responsive>
         <Responsive minWidth={769}>
@@ -158,8 +202,4 @@ const Header = styled.div`
   right: 0;
   z-index: 1000;
   background: #fff;
-`
-
-const Content = styled.div`
-  grid-row: 2/3;
 `

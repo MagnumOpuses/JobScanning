@@ -46,7 +46,7 @@ class AdDetails extends Component {
           <Title employer={employer} adHeader={header} />
 
           <InfoContainer
-            location={location.translations['sv-SE']}
+            location={location ? location.translations['sv-SE'] : false}
             firstSeenAt={source.firstSeenAt}
             deadline={application.deadline}
           />
