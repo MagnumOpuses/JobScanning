@@ -7,7 +7,14 @@ const LogoPlaceholder = ({ employer, padding, desktop }) => {
       <StyledImg src={employer.logoUrl} padding={padding} desktop={desktop} />
     )
   } else if (employer.name) {
-    return <StyledH3>{employer.name.match(/\b\w/g).join('')}</StyledH3>
+    return (
+      <StyledH3>
+        {employer.name
+          .match(/\b\w/g)
+          .splice(0, 3)
+          .join('')}
+      </StyledH3>
+    )
   } else {
     return null
   }
