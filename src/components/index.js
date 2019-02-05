@@ -15,7 +15,7 @@ import Title from './reusables/adcomponents/Title'
 import InfoContainer from './reusables/adcomponents/InfoContainer'
 import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
 
-import { default as JobMap } from './jobMap/JobMapContainer'
+import { default as JobMap } from './jobMapHeat/JobMapContainer'
 import { default as SourceRanking } from './sourceRanking/SourceRankingContainer'
 import { default as ResultStats } from './resultStats/ResultStatsContainer'
 import { default as SearchForm } from './searchForm/SearchFormContainer'

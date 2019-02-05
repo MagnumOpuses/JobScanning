@@ -82,8 +82,8 @@ class JobsList extends Component {
                 }}
                 selected={item.id === selectedJob.id}
               >
-                <LogoPlaceholder employer={item.employer} />
                 <ItemInfo>
+                  <LogoPlaceholder employer={item.employer} />
                   <ItemTitle>{item.header}</ItemTitle>
                   <p>
                     {item.location
@@ -167,11 +167,8 @@ const List = styled.ul`
 `
 
 const ListItem = styled.li`
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  grid-gap: 2rem;
-  align-items: start;
-  padding: 1.5rem;
+  position: relative;
+  padding: 1.5rem 0;
   transition: all 0.2s;
   background: ${props =>
     props.selected
@@ -190,16 +187,10 @@ const ListItem = styled.li`
   }
 `
 
-const ItemInfo = styled.div`
-  grid-column: 2/3;
-  display: grid;
-`
+const ItemInfo = styled.div``
 
 const ItemTitle = styled.h3`
   font-size: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `
 
 // const ItemDeadline = styled.p`

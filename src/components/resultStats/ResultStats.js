@@ -9,12 +9,14 @@ const ResultStats = ({ total, processedList, sources }) => {
         alignSelf: 'center',
         textAlign: 'center',
         padding: '2rem 0',
-        fontSize: '20px'
+        fontSize: '20px',
+        whiteSpace: 'pre-line'
       }}
     >
-      <BoldText>{processedList ? processedList.length : 0}</BoldText> (
-      {total ? total : 0}) jobbannonser från <BoldText>{sources}</BoldText>{' '}
-      rekryteringssajter
+      Visar <BoldText>{processedList ? processedList.length : 0}</BoldText> av{' '}
+      {total ? total : 0} möjliga jobbannonser från{'\n'}
+      <BoldText>{sources}</BoldText> rekryteringssajter. Scrolla ner för att se
+      fler.
     </p>
   )
 }

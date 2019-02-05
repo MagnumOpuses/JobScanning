@@ -7,7 +7,14 @@ const LogoPlaceholder = ({ employer, padding, desktop }) => {
       <StyledImg src={employer.logoUrl} padding={padding} desktop={desktop} />
     )
   } else if (employer.name) {
-    return <StyledH3>{employer.name}</StyledH3>
+    return (
+      <StyledH3>
+        {employer.name
+          .match(/\b\w/g)
+          .splice(0, 3)
+          .join('')}
+      </StyledH3>
+    )
   } else {
     return null
   }
@@ -21,13 +28,21 @@ const StyledImg = styled.img`
   padding: ${props => (props.padding ? '0.5rem' : '0')};
 `
 
-const StyledH3 = styled.h3`
+const StyledH3 = styled.p`
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  width: 75px;
+  margin: 0 25px 5px 0 !important;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: 700;
   overflow: hidden;
   text-align: center;
   word-break: break-word;
   hyphens: auto;
   background: ${props => props.theme.green0};
-  margin: 0 !important;
-  padding: 1rem;
-  font-size: 16px;
+  shape-outside: circle(50%);
 `
