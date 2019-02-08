@@ -11,12 +11,14 @@ import {
   GridContainer,
   DescriptionContainer,
   JobMap,
-  ResultStats
+  ResultStats,
+  TextEnrichment
 } from '../../../../components'
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../../components/jobList/JobsList'
 import theme from '../../../../styles/theme'
 import images from '../../../../images/index'
+import { fetchTextEnrichment } from '../../../../redux/thunks/index'
 
 class AdsPage extends Component {
   state = { activeComponent: 'list' }
@@ -33,6 +35,7 @@ class AdsPage extends Component {
     })
 
     const selectedJob = { ...selectedAd, duplicatedGroupId }
+    this.props.fetchTextEnrichment(selectedJob)
     this.props.selectJob(selectedJob)
   }
 
@@ -114,6 +117,8 @@ class AdsPage extends Component {
                   )}
                 </div>
               </div>
+              {selectedJob.enrichment &&
+                selectedJob.enrichment.status === 200 && <TextEnrichment />}
               <DescriptionContainer
                 text={selectedJob.content.text}
                 source={selectedJob.duplicatedGroupId}
@@ -127,7 +132,7 @@ class AdsPage extends Component {
             width="170px"
             bottom="-60px"
             right="-20px"
-            bgcolor={theme.green4}
+            bgcolor={`linear-gradient(#fff, ${theme.green4})`}
             zIndex={-2}
           />
           <Ellipse
@@ -135,7 +140,7 @@ class AdsPage extends Component {
             width="140px"
             bottom="-60px"
             right="82px"
-            bgcolor={theme.green1}
+            bgcolor={`linear-gradient(#fff, ${theme.green1})`}
             zIndex={-1}
           />
         </EllipseContainer>
@@ -155,7 +160,7 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob }
+  { selectJob, unselectJob, fetchTextEnrichment }
 )(AdsPage)
 
 const JobDetails = styled.div`
@@ -215,6 +220,7 @@ const EllipseContainer = styled.div`
   height: 220px;
   width: 250px;
   overflow: hidden;
+  z-index: -1;
 `
 
 const SourceLogo = styled.img`

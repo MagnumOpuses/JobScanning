@@ -49,8 +49,6 @@ export default DescriptionContainer
 const DescriptionBox = styled.div`
   grid-row: 4 / 5;
   position: relative;
-  background: ${props => props.theme.white};
-  /* padding: 1rem; */
 `
 
 const DescriptionText = styled.p`

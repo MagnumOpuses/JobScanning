@@ -8,6 +8,7 @@ class SearchPage extends Component {
   render() {
     return (
       <GridContainer rows={'85px 6% 1fr'} gap={true} center={true}>
+        {/* <FlexContainer> */}
         <PageHeader>
           <h1>Alla jobb på ett ställe</h1>
         </PageHeader>
@@ -18,6 +19,7 @@ class SearchPage extends Component {
         </P>
 
         <SearchForm upward={true} />
+        {/* </FlexContainer> */}
       </GridContainer>
     )
   }
@@ -35,4 +37,9 @@ const P = styled.p`
   @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     font-size: 20px;
   }
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `

@@ -9,7 +9,7 @@ const LogoPlaceholder = ({ employer, padding }) => {
       <StyledH3>
         {employer.name
           .match(/\b\w/g)
-          .splice(0, 3)
+          .slice(0, 3)
           .join('')}
       </StyledH3>
     )

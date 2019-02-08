@@ -43,10 +43,10 @@ const SearchForm = ({
           />
         </Form.Field>
 
-        <Checkbox
+        {/* <Checkbox
           label="Använd min nuvarande position"
           onChange={getCurrentPosition}
-        />
+        /> */}
       </div>
 
       <div style={{ textAlign: 'center' }}>
