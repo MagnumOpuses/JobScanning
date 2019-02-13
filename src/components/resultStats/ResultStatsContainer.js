@@ -5,7 +5,7 @@ import ResultStats from './ResultStats'
 class ResultStatsContainer extends React.Component {
   getNumberOfSources = () => {
     const { hits } = this.props
-    const allSources = hits.map(item => item.source.site.name)
+    const allSources = hits.map(item => item.sources.name)
     const uniqueSources = [...new Set(allSources)].length
     return uniqueSources
   }

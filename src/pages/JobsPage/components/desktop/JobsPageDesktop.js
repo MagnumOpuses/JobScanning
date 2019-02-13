@@ -27,14 +27,9 @@ class AdsPage extends Component {
     this.setState({ activeComponent: componentName })
   }
 
-  selectAd = selectedAd => {
-    console.log(selectedAd)
+  selectAd = selectedJob => {
+    console.log(selectedJob)
 
-    const duplicatedGroupId = _.filter(this.props.hits, item => {
-      return item.group.id === selectedAd.group.id
-    })
-
-    const selectedJob = { ...selectedAd, duplicatedGroupId }
     this.props.fetchTextEnrichment(selectedJob)
     this.props.selectJob(selectedJob)
   }
@@ -94,16 +89,14 @@ class AdsPage extends Component {
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>
                   <p>
-                    <BoldText>Kommun:</BoldText>{' '}
-                    {selectedJob.location &&
-                      selectedJob.location.translations['sv-SE']}
+                    <BoldText>Kommun:</BoldText> {selectedJob.location}
                   </p>
-                  <p>
+                  {/* <p>
                     <BoldText>Publicerad:</BoldText>{' '}
                     {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p>
+                  </p> */}
                 </div>
-                <div>
+                {/* <div>
                   <p>Publicerad hos</p>
                   {selectedJob.duplicatedGroupId.length > 1 ? (
                     'Se nedan'
@@ -115,13 +108,13 @@ class AdsPage extends Component {
                   ) : (
                     <p>{selectedJob.source.site.name}</p>
                   )}
-                </div>
+                </div> */}
               </div>
               {selectedJob.enrichment &&
                 selectedJob.enrichment.status === 200 && <TextEnrichment />}
               <DescriptionContainer
-                text={selectedJob.content.text}
-                source={selectedJob.duplicatedGroupId}
+                text={selectedJob.content}
+                // source={selectedJob.duplicatedGroupId}
               />
             </JobDetails>
           )}

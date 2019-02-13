@@ -21,7 +21,7 @@ class AdDetails extends Component {
     let { hits, processedList } = this.props
 
     let duplicatedGroupId = _.filter(hits, item => {
-      return item.group.id === groupId
+      return item.id === groupId
     })
 
     if (!processedList.length > 0) {
@@ -36,25 +36,22 @@ class AdDetails extends Component {
         header
       } = duplicatedGroupId[0]
       return (
-        <GridContainer rows={'11vh auto auto auto'}>
-          <SubHeader
+        <GridContainer>
+          {/* <SubHeader
             siteName={
               duplicatedGroupId.length > 1 ? 'Se nedan' : source.site.name
             }
-          />
+          /> */}
 
           <Title employer={employer} adHeader={header} />
 
           <InfoContainer
-            location={location ? location.translations['sv-SE'] : false}
-            firstSeenAt={source.firstSeenAt}
+            location={location ? location : false}
+            // firstSeenAt={source.firstSeenAt}
             deadline={application.deadline}
           />
           <StyledDiv>
-            <DescriptionContainer
-              text={content.text}
-              source={duplicatedGroupId}
-            />
+            <DescriptionContainer text={content} source={duplicatedGroupId} />
           </StyledDiv>
         </GridContainer>
       )

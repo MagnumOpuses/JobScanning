@@ -21,7 +21,6 @@ const Title = ({ employer, adHeader }) => (
 export default Title
 
 const StyledDiv = styled.div`
-  grid-row: 2 / 3;
   border-top: 2px solid ${props => props.theme.green4};
   border-bottom: 2px solid ${props => props.theme.green4};
 

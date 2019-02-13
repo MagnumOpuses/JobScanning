@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchMoreJobs } from '../../../redux/actions'
+import { fetchMoreJobs, selectJob } from '../../../redux/actions'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import distanceInWordsStrict from 'date-fns/distance_in_words_strict'
 import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import {
-  CustomLoader,
-  LogoPlaceholder,
-  NoResultsBox
-} from '../../../components'
+import { CustomLoader, LogoPlaceholder } from '../../../components'
 
 class AdsList extends Component {
   constructor(props) {
@@ -44,8 +40,9 @@ class AdsList extends Component {
     return height > 90 ? '100vh' : `${height}vh`
   }
 
-  redirectToAdPage = id => {
-    this.props.history.push(`/jobs/${id}`)
+  redirectToAdPage = job => {
+    this.props.selectJob(job)
+    this.props.history.push(`/jobs/${job.id}`)
   }
 
   fetchMoreData = () => {
@@ -61,58 +58,43 @@ class AdsList extends Component {
   }
 
   render() {
-    const { isFetching, error, hits, processedList } = this.props
+    const { processedList } = this.props
 
-    if (isFetching) {
-      return <CustomLoader size="massive" content="Laddar" />
-    } else if (error) {
-      return <NoResultsBox />
-    } else if (Object.keys(hits).length === 0) {
-      return <NoResultsBox />
-    } else {
-      return (
-        <List
-          id="scrollableDiv"
-          style={{ height: this.calculateInfiniteScrollHeight() }}
-          ref={this.listRef}
-          onScroll={this.handleScroll}
+    return (
+      <List
+        id="scrollableDiv"
+        style={{ height: this.calculateInfiniteScrollHeight() }}
+        ref={this.listRef}
+        onScroll={this.handleScroll}
+      >
+        <InfiniteScroll
+          dataLength={processedList.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          style={{ overflow: 'visible' }}
+          scrollableTarget="scrollableDiv"
+          scrollThreshold={0.9}
+          loader={
+            <div
+              style={{
+                position: 'relative',
+                marginTop: '5rem'
+              }}
+            >
+              <CustomLoader size="big" content="Hämtar fler" />
+            </div>
+          }
         >
-          <InfiniteScroll
-            dataLength={processedList.length}
-            next={this.fetchMoreData}
-            hasMore={true}
-            style={{ overflow: 'visible' }}
-            scrollableTarget="scrollableDiv"
-            scrollThreshold={0.9}
-            loader={
-              <div
-                style={{
-                  position: 'relative',
-                  marginTop: '5rem'
-                }}
-              >
-                <CustomLoader size="big" content="Hämtar fler" />
-              </div>
-            }
-          >
-            {processedList.map((item, i) => (
-              <ListItem
-                key={i}
-                onClick={() => this.redirectToAdPage(item.group.id)}
-              >
-                <LogoPlaceholder employer={item.employer} />
-                <ItemInfo>
-                  <ItemTitle>{item.header}</ItemTitle>
-                  <p>
-                    {item.location
-                      ? item.location.translations['sv-SE']
-                      : 'Finns inte'}
-                  </p>
-                  <p>
-                    Inlagd:{' '}
-                    {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p>
-                  {/* <ItemDeadline>
+          {processedList.map((item, i) => (
+            <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
+              <LogoPlaceholder employer={item.employer} />
+              <ItemInfo>
+                <ItemTitle>{item.header}</ItemTitle>
+                <p>{item.location ? item.location : 'Finns inte'}</p>
+                {/* <p>
+                  Inlagd: {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
+                </p> */}
+                {/* <ItemDeadline>
                     {item.application.deadline
                       ? distanceInWordsStrict(
                           Date.now(),
@@ -124,22 +106,20 @@ class AdsList extends Component {
                         )
                       : 'Se annonsen för datum'}
                   </ItemDeadline> */}
-                </ItemInfo>
-              </ListItem>
-            ))}
-          </InfiniteScroll>
-        </List>
-      )
-    }
+              </ItemInfo>
+            </ListItem>
+          ))}
+        </InfiniteScroll>
+      </List>
+    )
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { isFetching, error, hits, processedList, searchTerm, location } = ads
+  const { isFetching, hits, processedList, searchTerm, location } = ads
 
   return {
     isFetching,
-    error,
     hits,
     processedList,
     searchTerm,
@@ -150,7 +130,7 @@ function mapStateToProps({ ads }) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchMoreJobs }
+    { fetchMoreJobs, selectJob }
   )(AdsList)
 )
 

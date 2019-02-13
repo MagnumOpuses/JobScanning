@@ -1,12 +1,24 @@
 const createScoreboard = hits => {
-  let scoreboard = hits.reduce((allSources, job) => {
-    if (job.source.site.name in allSources) {
-      allSources[job.source.site.name]++
-    } else {
-      allSources[job.source.site.name] = 1
-    }
-    return allSources
-  }, {})
+  // let scoreboard = hits.reduce((allSources, job) => {
+  //   if (job.sources.name in allSources) {
+  //     allSources[job.sources.name]++
+  //   } else {
+  //     allSources[job.sources.name] = 1
+  //   }
+  //   return allSources
+  // }, {})
+
+  const scoreboard = {}
+
+  hits.forEach(obj => {
+    obj.sources.forEach(source => {
+      if (source.name in scoreboard) {
+        scoreboard[source.name]++
+      } else {
+        scoreboard[source.name] = 1
+      }
+    })
+  })
 
   let ordered = Object.keys(scoreboard).sort(
     (a, b) => scoreboard[b] - scoreboard[a]

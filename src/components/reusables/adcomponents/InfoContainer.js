@@ -26,6 +26,5 @@ const InfoContainer = ({ location, firstSeenAt, deadline }) => (
 export default InfoContainer
 
 const StyledDiv = styled.div`
-  grid-row: 3 / 4;
   padding: 1.5rem;
 `

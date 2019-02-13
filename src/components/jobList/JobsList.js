@@ -85,15 +85,11 @@ class JobsList extends Component {
                 <ItemInfo>
                   <LogoPlaceholder employer={item.employer} />
                   <ItemTitle>{item.header}</ItemTitle>
-                  <p>
-                    {item.location
-                      ? item.location.translations['sv-SE']
-                      : 'Finns inte'}
-                  </p>
-                  <p>
+                  <p>{item.location ? item.location : 'Finns inte'}</p>
+                  {/* <p>
                     Inlagd:{' '}
                     {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p>
+                  </p> */}
                   {/* <ItemDeadline>
                     {item.application.deadline
                       ? distanceInWordsStrict(

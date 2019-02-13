@@ -9,11 +9,8 @@ export default async (queryString, locationType, location, offset) => {
       headers: { 'api-key': process.env.REACT_APP_DEV_API_KEY },
       params: {
         q: queryString,
-        [locationType]: location,
         offset: offset,
-        limit: 10,
-        'utan-erfarenhet': false,
-        dataset: 'auranest'
+        limit: 10
       }
     })
   } catch (error) {

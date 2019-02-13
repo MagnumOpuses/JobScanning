@@ -15,6 +15,23 @@ import {
   ResultStats
 } from '../../components'
 import JobsPageDesktop from './components/desktop/JobsPageDesktop'
+import { CustomLoader, NoResultsBox } from '../../components/index'
+import posed from 'react-pose'
+
+const SlideUpAndDown = posed.div({
+  hidden: {
+    transform: 'translateY(-213px)',
+    transition: {
+      default: { ease: 'linear', duration: 300 }
+    }
+  },
+  visible: {
+    transform: 'translateY(0px)',
+    transition: {
+      default: { ease: 'linear', duration: 300 }
+    }
+  }
+})
 
 class AdsPage extends Component {
   constructor(props) {
@@ -33,9 +50,9 @@ class AdsPage extends Component {
   }
 
   getNumberOfSources = () => {
-    let { ads } = this.props
+    let { hits } = this.props
 
-    const number = numberOfUniqueSources(ads.hits)
+    const number = numberOfUniqueSources(hits)
 
     return number
   }
@@ -43,6 +60,7 @@ class AdsPage extends Component {
   handleScroll = ref => {
     const refScrollTop = ref.current.scrollTop
     const headerHeight = this.headerRef.current.offsetHeight
+
     const { lastScrollTop } = this.state
 
     if (Math.abs(this.state.lastScrollTop - refScrollTop) <= 5) {
@@ -54,20 +72,45 @@ class AdsPage extends Component {
         headerVisible: false,
         lastScrollTop: refScrollTop
       })
-      console.log('hide')
     } else {
       this.setState({
         headerVisible: true,
         lastScrollTop: refScrollTop
       })
-      console.log('show')
     }
+  }
 
-    console.log(ref.current)
+  getContent = () => {
+    const { activeComponent } = this.state
+    const { hits, isFetching, error } = this.props
+
+    if (isFetching) {
+      return <CustomLoader size="massive" content="Laddar" />
+    } else if (error) {
+      return <NoResultsBox />
+    } else if (Object.keys(hits).length === 0) {
+      return <NoResultsBox />
+    } else {
+      return (
+        <div style={{ marginTop: '185px' }}>
+          <div
+            style={{
+              display: activeComponent === 'list' ? 'block' : 'none',
+              height: '100%',
+              marginTop: '-185px'
+            }}
+          >
+            <AdsList handleScroll={this.handleScroll} />
+          </div>
+          {activeComponent === 'map' && <JobMap />}
+          {activeComponent === 'overview' && <SourceRanking />}
+        </div>
+      )
+    }
   }
 
   render() {
-    const { activeComponent } = this.state
+    const { activeComponent, headerVisible } = this.state
 
     return (
       <React.Fragment>
@@ -75,12 +118,7 @@ class AdsPage extends Component {
           <GridContainer rows={'185px calc(100vh - 185px)'}>
             <Header
               ref={this.headerRef}
-              style={{
-                transition: 'all .2s',
-                transform: this.state.headerVisible
-                  ? 'translateY(0)'
-                  : 'translateY(-185px)'
-              }}
+              pose={headerVisible ? 'visible' : 'hidden'}
             >
               <PageHeader ads />
 
@@ -109,19 +147,7 @@ class AdsPage extends Component {
                 />
               </CustomMenu>
             </Header>
-            <div style={{ marginTop: '185px' }}>
-              <div
-                style={{
-                  display: activeComponent === 'list' ? 'block' : 'none',
-                  height: '100%',
-                  marginTop: '-185px'
-                }}
-              >
-                <AdsList handleScroll={this.handleScroll} />
-              </div>
-              {activeComponent === 'map' && <JobMap />}
-              {activeComponent === 'overview' && <SourceRanking />}
-            </div>
+            {this.getContent()}
           </GridContainer>
         </Responsive>
         <Responsive minWidth={769}>
@@ -132,9 +158,13 @@ class AdsPage extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ ads }) {
+  const { hits, error, isFetching } = ads
+
   return {
-    ads: state.ads
+    hits,
+    error,
+    isFetching
   }
 }
 
@@ -193,13 +223,12 @@ const CustomMenuItem = styled(Menu.Item)`
   }
 `
 
-const Header = styled.div`
+const Header = styled(SlideUpAndDown)`
   grid-row: 1/2;
-  display: grid;
-  grid-template-rows: 8.5rem 5.5rem 4.5rem;
   position: fixed;
   left: 0;
   right: 0;
   z-index: 1000;
   background: #fff;
+  transition: all 0.2s;
 `

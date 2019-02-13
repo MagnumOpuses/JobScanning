@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const LogoPlaceholder = ({ employer, padding }) => {
+  console.log(employer)
+
   if (employer.logoUrl) {
     return <StyledImg src={employer.logoUrl} padding={padding} />
   } else if (employer.name) {

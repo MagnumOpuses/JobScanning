@@ -48,9 +48,9 @@ function getNumberOfJobsInCounties(jobs) {
   }
 
   jobs.forEach(job => {
-    if (job.location && job.location.translations['sv-SE']) {
+    if (job.location) {
       countiesAndMunicipalities.forEach(item => {
-        if (job.location.translations['sv-SE'] === item.text) {
+        if (job.location === item.text) {
           numberOfJobsInCounties[item.county] += 1
         }
       })

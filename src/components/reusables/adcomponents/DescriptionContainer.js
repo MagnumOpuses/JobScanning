@@ -11,7 +11,7 @@ const DescriptionContainer = ({ text, source }) => (
         {text.replace(/\n/g, '\n\n').substring(0, 1200)}
       </DescriptionText>
     )}
-    {source.length > 1 ? (
+    {/* {source.length > 1 ? (
       <MultipleLinks>
         <p>Vi hittade annonsen på {source.length} olika sajter</p>
         <p>Välj vilken du vill gå till!</p>
@@ -40,14 +40,13 @@ const DescriptionContainer = ({ text, source }) => (
       >
         Gå till annonsen
       </StyledLink>
-    )}
+    )} */}
   </DescriptionBox>
 )
 
 export default DescriptionContainer
 
 const DescriptionBox = styled.div`
-  grid-row: 4 / 5;
   position: relative;
 `
 
