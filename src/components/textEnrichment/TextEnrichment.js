@@ -1,102 +1,61 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Icon } from 'semantic-ui-react'
-import { animated, Transition } from 'react-spring/renderprops'
+import { animated, Spring } from 'react-spring/renderprops'
+import OneWord from './animations/OneWord'
+import TwoWords from './animations/TwoWords'
+import ThreeWords from './animations/ThreeWords'
+import FourWords from './animations/FourWords'
+import Word from './animations/TestHooks'
 
-function setTransform(i) {
-  if (i === 0) {
-    return 'translate(-100px, -80px)'
-  } else if (i === 1) {
-    return 'translate(100px, -80px)'
-  } else if (i === 2) {
-    return 'translate(100px, 80px)'
-  } else if (i === 3) {
-    return 'translate(-100px, 80px)'
+function renderList(words) {
+  if (words.length === 1) {
+    return <Word word={words} />
+  } else if (words.length === 2) {
+    return <TwoWords words={words} />
+  } else if (words.length === 3) {
+    return <ThreeWords words={words} />
+  } else if (words.length === 4) {
+    return <FourWords words={words} />
   }
 }
 
-const TextEnrichment = ({ competencies, traits }) => {
-  console.log(competencies)
+const TextEnrichment = ({ icon, list }) => {
   return (
-    <>
-      <CompetenciesContainer>
-        {competencies.map((competence, i) => {
-          return (
-            <Transition
-              config={{ duration: 500 }}
-              items={competence}
-              from={{
-                position: 'absolute',
-                transform: 'translate(-50%, -50%)'
-              }}
-              enter={{
-                transform: setTransform(i)
-              }}
-              leave={{ opacity: 0 }}
-            >
-              {competence =>
-                competence &&
-                (props => <Item style={props}>{competence.concept_label}</Item>)
-              }
-            </Transition>
-          )
-        })}
+    <Spring native from={{ height: 0 }} to={{ height: 200 }}>
+      {({ height }) => (
+        <Container style={{ height }}>
+          <Spring delay={1000} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+            {({ opacity }) => (
+              <StyledIcon
+                style={{ opacity }}
+                name={icon}
+                size="huge"
+                color="black"
+              />
+            )}
+          </Spring>
 
-        <Icon name="briefcase" size="huge" />
-      </CompetenciesContainer>
-
-      <TraitsContainer>
-        {traits.map((trait, i) => {
-          return (
-            <Transition
-              config={{ duration: 500 }}
-              items={trait}
-              from={{
-                position: 'absolute',
-                transform: 'translate(-50%, -50%)'
-              }}
-              enter={{
-                transform: setTransform(i)
-              }}
-              leave={{ opacity: 0 }}
-            >
-              {trait =>
-                trait &&
-                (props => <Item style={props}>{trait.concept_label}</Item>)
-              }
-            </Transition>
-          )
-        })}
-
-        <Icon name="user outline" size="huge" />
-      </TraitsContainer>
-    </>
+          {renderList(list)}
+        </Container>
+      )}
+    </Spring>
   )
 }
 
 export default TextEnrichment
 
-const CompetenciesContainer = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
+const Container = styled(animated.div)`
+  height: 200px;
+  width: 400px;
   position: relative;
+  /* border: 1px solid #000; */
 `
 
-const TraitsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  position: relative;
-`
-
-const Item = styled(animated.li)`
-  display: flex;
-  width: max-content;
-  list-style: none;
-  padding: 10px;
-  backface-visibility: hidden;
-  font-weight: bolder;
+const StyledIcon = styled(Icon)`
+  margin: 0 0 0 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `

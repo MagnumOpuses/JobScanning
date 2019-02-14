@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import _ from 'lodash'
@@ -29,6 +29,10 @@ class AdDetails extends Component {
       location,
       sources
     } = this.props.selectedJob
+
+    if (!sources) {
+      return <Redirect to="/" />
+    }
 
     const siteName = sources.length > 1 ? 'Se nedan' : sources[0].name
 
@@ -89,7 +93,11 @@ class AdDetails extends Component {
             </InfoContainer>
 
             <StyledDiv>
-              <DescriptionContainer text={content} sources={sources} />
+              <DescriptionContainer
+                text={content}
+                characters={800}
+                sources={sources}
+              />
             </StyledDiv>
           </GridContainer>
         )}

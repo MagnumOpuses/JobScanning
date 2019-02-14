@@ -22,7 +22,7 @@ export default LogoPlaceholder
 
 const StyledImg = styled.img`
   width: 100px;
-  margin: 0 25px 5px 5px !important;
+  margin-right: 1.5rem;
 `
 
 const StyledH3 = styled.p`
@@ -32,7 +32,7 @@ const StyledH3 = styled.p`
   align-items: center;
   height: 75px;
   width: 75px;
-  margin: 0 25px 5px 5px !important;
+  margin: 0 25px 5px 0 !important;
   border-radius: 50%;
   font-size: 25px;
   font-weight: 700;
@@ -42,5 +42,4 @@ const StyledH3 = styled.p`
   hyphens: auto;
   color: #fff;
   background: ${props => props.theme.green4};
-  shape-outside: circle(50%);
 `

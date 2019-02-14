@@ -9,7 +9,7 @@ import sv from 'date-fns/locale/sv'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CustomLoader, LogoPlaceholder } from '../../../components'
 
-class AdsList extends Component {
+class MobileJobsList extends Component {
   constructor(props) {
     super(props)
 
@@ -90,25 +90,33 @@ class AdsList extends Component {
         >
           {processedList.map((item, i) => (
             <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
-              <LogoPlaceholder employer={item.employer} />
               <ItemInfo>
-                <ItemTitle>{item.header}</ItemTitle>
-                <p>{item.location ? item.location : 'Finns inte'}</p>
-                {/* <p>
-                  Inlagd: {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                </p> */}
+                <LogoPlaceholder employer={item.employer} />
+                <div style={{ flex: '1  ', fontSize: '18px' }}>
+                  <ItemTitle>{item.header}</ItemTitle>
+                  <P>
+                    {item.employer.name ? item.employer.name : ''} &bull;{' '}
+                    {item.location ? item.location : ''}
+                  </P>
+                </div>
+
                 {/* <ItemDeadline>
-                    {item.application.deadline
-                      ? distanceInWordsStrict(
-                          Date.now(),
-                          item.application.deadline,
-                          {
-                            addSuffix: true,
-                            locale: sv
-                          }
-                        )
-                      : 'Se annonsen för datum'}
-                  </ItemDeadline> */}
+                      {item.application.deadline
+                        ? distanceInWordsStrict(
+                            Date.now(),
+                            item.application.deadline,
+                            {
+                              addSuffix: true,
+                              locale: sv
+                            }
+                          )
+                        : 'Se annonsen för datum'}
+                    </ItemDeadline> */}
+
+                {/* <p>
+                    Inlagd:{' '}
+                    {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
+                  </p> */}
               </ItemInfo>
             </ListItem>
           ))}
@@ -134,7 +142,7 @@ export default withRouter(
   connect(
     mapStateToProps,
     { fetchMoreJobs, selectJob }
-  )(AdsList)
+  )(MobileJobsList)
 )
 
 const List = styled.ul`
@@ -145,28 +153,23 @@ const List = styled.ul`
 `
 
 const ListItem = styled.li`
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  grid-gap: 2rem;
-  align-items: start;
+  list-style: none;
   border-bottom: 2px solid ${props => props.theme.green4};
   padding: 1.5rem;
 `
 
-const ItemInfo = styled.div`
-  grid-column: 2/3;
-  display: grid;
-`
+const ItemInfo = styled.div``
 
 const ItemTitle = styled.h2`
-  font-size: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  font-size: 18px;
 `
 
-// const ItemDeadline = styled.p`
-//   justify-self: end;
-//   align-self: end;
-//   padding: 1rem;
-// `
+const ItemDeadline = styled.p`
+  justify-self: end;
+  align-self: end;
+  padding: 1rem;
+`
+
+const P = styled.p`
+  font-size: 18px;
+`

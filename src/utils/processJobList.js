@@ -4,7 +4,7 @@ export default list => {
   const removedPassedDeadlines = removePassedDeadlines(list)
   // const removedDuplicates = removeDuplicates(removedPassedDeadlines)
 
-  return removedPassedDeadlines
+  return list
 }
 
 const removePassedDeadlines = list => {

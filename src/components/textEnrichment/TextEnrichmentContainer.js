@@ -14,16 +14,21 @@ class TextEnrichmentContainer extends Component {
 
   render() {
     const { selectedJob } = this.props
-
+    const list1 = ['ReactJS', 'SQL', 'NodeJS', 'Redux']
+    const list2 = ['Trevlig', 'Effektiv', 'Självgående', 'Social']
     return (
-      <TextEnrichment
-        competencies={this.sortEnrichment(
-          selectedJob.enrichment.data.enriched_candidates.competencies
-        )}
-        traits={this.sortEnrichment(
-          selectedJob.enrichment.data.enriched_candidates.traits
-        )}
-      />
+      <div style={{ display: 'flex' }}>
+        <TextEnrichment list={list1} icon="briefcase" />
+        <TextEnrichment list={list2} icon="user" />
+        {/* <TextEnrichment
+          list={selectedJob.enrichment.data.enriched_candidates.competencies}
+          icon="briefcase"
+        />
+        <TextEnrichment
+          list={selectedJob.enrichment.data.enriched_candidates.traits}
+          icon="user"
+        /> */}
+      </div>
     )
   }
 }

@@ -6,7 +6,8 @@ const ResultStats = ({ total, processedList, sources }) => {
   return (
     <P>
       Visar <BoldText>{processedList ? processedList.length : 0}</BoldText> av{' '}
-      {total ? total : 0} möjliga jobbannonser från{'\n'}
+      {total ? total.toLocaleString('se-SV') : 0} möjliga jobbannonser från
+      {'\n'}
       <BoldText>{sources}</BoldText> rekryteringssajter.{'\n'}
       Scrolla ner för att se fler.
     </P>

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import posed from 'react-pose'
 import { Menu } from 'semantic-ui-react'
 import {
-  AdsList,
+  MobileJobsList,
   CustomLoader,
   SourceRanking,
   GridContainer,
@@ -103,7 +103,7 @@ class MobileJobsPage extends Component {
               marginTop: `-${headerHeight}`
             }}
           >
-            <AdsList handleScroll={this.handleScroll} />
+            <MobileJobsList handleScroll={this.handleScroll} />
           </div>
           {activeComponent === 'map' && <JobMap />}
           {activeComponent === 'overview' && <SourceRanking />}

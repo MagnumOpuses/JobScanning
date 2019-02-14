@@ -8,7 +8,7 @@ import LogoPlaceholder from './reusables/LogoPlaceholder'
 import NoResultsBox from './reusables/NoResultsBox'
 import PageHeader from '../pages/JobsPage/components/PageHeader'
 
-import AdsList from '../pages/JobsPage/components/AdsList'
+import MobileJobsList from '../pages/JobsPage/components/MobileJobsList'
 
 import DescriptionContainer from './reusables/DescriptionContainer'
 
@@ -19,7 +19,7 @@ import { default as SearchForm } from './searchForm/SearchFormContainer'
 import { default as TextEnrichment } from './textEnrichment/TextEnrichmentContainer'
 
 export {
-  AdsList,
+  MobileJobsList,
   SourceRanking,
   BoldText,
   Checkbox,
