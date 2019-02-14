@@ -5,12 +5,12 @@ export default async (queryString, locationType, location, offset) => {
     return await axios({
       method: 'get',
       baseURL: process.env.REACT_APP_DEV_API_URL,
-      url: '/sok',
+      url: '/search',
       headers: { 'api-key': process.env.REACT_APP_DEV_API_KEY },
       params: {
-        q: queryString,
-        offset: offset,
-        limit: 10
+        offset: 0,
+        limit: 10,
+        q: queryString
       }
     })
   } catch (error) {

@@ -84,8 +84,10 @@ class JobsList extends Component {
               >
                 <ItemInfo>
                   <LogoPlaceholder employer={item.employer} />
-                  <ItemTitle>{item.header}</ItemTitle>
-                  <p>{item.location ? item.location : 'Finns inte'}</p>
+                  <div style={{ flex: '1  ' }}>
+                    <ItemTitle>{item.header}</ItemTitle>
+                    <p>{item.location ? item.location : 'Finns inte'}</p>
+                  </div>
                   {/* <p>
                     Inlagd:{' '}
                     {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
@@ -183,7 +185,10 @@ const ListItem = styled.li`
   }
 `
 
-const ItemInfo = styled.div``
+const ItemInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const ItemTitle = styled.h3`
   font-size: 20px;

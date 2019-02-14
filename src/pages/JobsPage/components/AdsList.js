@@ -63,7 +63,10 @@ class AdsList extends Component {
     return (
       <List
         id="scrollableDiv"
-        style={{ height: this.calculateInfiniteScrollHeight() }}
+        style={{
+          height: this.calculateInfiniteScrollHeight(),
+          paddingTop: '241px'
+        }}
         ref={this.listRef}
         onScroll={this.handleScroll}
       >

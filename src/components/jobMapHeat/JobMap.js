@@ -68,7 +68,7 @@ const MyMapComponent = compose(
           options={{
             strokeWeight: 2,
             fillColor: getFillColor(props.numberOfJobsInCounties[laen]),
-            fillOpacity: 0.1
+            fillOpacity: 0.8
           }}
           onMouseOver={() => console.log('enter', laen)}
           onMouseOut={() => console.log('leave', laen)}

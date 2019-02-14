@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const LogoPlaceholder = ({ employer, padding }) => {
-  console.log(employer)
-
   if (employer.logoUrl) {
     return <StyledImg src={employer.logoUrl} padding={padding} />
   } else if (employer.name) {
@@ -23,7 +21,6 @@ const LogoPlaceholder = ({ employer, padding }) => {
 export default LogoPlaceholder
 
 const StyledImg = styled.img`
-  float: left;
   width: 100px;
   margin: 0 25px 5px 5px !important;
 `

@@ -7,8 +7,8 @@ const ResultStats = ({ total, processedList, sources }) => {
     <P>
       Visar <BoldText>{processedList ? processedList.length : 0}</BoldText> av{' '}
       {total ? total : 0} möjliga jobbannonser från{'\n'}
-      <BoldText>{sources}</BoldText> rekryteringssajter. Scrolla ner för att se
-      fler.
+      <BoldText>{sources}</BoldText> rekryteringssajter.{'\n'}
+      Scrolla ner för att se fler.
     </P>
   )
 }
@@ -30,5 +30,6 @@ const P = styled.p`
 
   @media screen and (max-width: ${breakpoints.tablet}) {
     padding: 1rem 0rem;
+    white-space: normal;
   }
 `

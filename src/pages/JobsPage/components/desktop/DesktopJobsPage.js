@@ -20,7 +20,7 @@ import theme from '../../../../styles/theme'
 import images from '../../../../images/index'
 import { fetchTextEnrichment } from '../../../../redux/thunks/index'
 
-class AdsPage extends Component {
+class DesktopJobsPage extends Component {
   state = { activeComponent: 'list' }
 
   changeComponent = componentName => {
@@ -43,7 +43,7 @@ class AdsPage extends Component {
         <PageHeaderAds />
 
         <GridContainer
-          width={'75%'}
+          width={'85%'}
           rows={'50px auto'}
           columns={'2fr 3fr'}
           margin={'5rem 0 0 0'}
@@ -114,7 +114,7 @@ class AdsPage extends Component {
                 selectedJob.enrichment.status === 200 && <TextEnrichment />}
               <DescriptionContainer
                 text={selectedJob.content}
-                // source={selectedJob.duplicatedGroupId}
+                sources={selectedJob.sources}
               />
             </JobDetails>
           )}
@@ -154,7 +154,7 @@ function mapStateToProps({ ads }) {
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob, fetchTextEnrichment }
-)(AdsPage)
+)(DesktopJobsPage)
 
 const JobDetails = styled.div`
   grid-row: 2/3;

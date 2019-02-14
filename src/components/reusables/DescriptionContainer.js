@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import images from '../../../images/'
-import { buttonStyleCorners } from '../../../styles/components'
+import images from '../../images'
+import { buttonStyleCorners } from '../../styles/components'
 
-const DescriptionContainer = ({ text, source }) => (
+const DescriptionContainer = ({ text, sources }) => (
   <DescriptionBox>
     <h3 style={{ fontSize: '2.4rem', marginBottom: '15px' }}>Annons</h3>
     {text && (
@@ -11,36 +11,36 @@ const DescriptionContainer = ({ text, source }) => (
         {text.replace(/\n/g, '\n\n').substring(0, 1200)}
       </DescriptionText>
     )}
-    {/* {source.length > 1 ? (
+    {sources.length > 1 ? (
       <MultipleLinks>
-        <p>Vi hittade annonsen på {source.length} olika sajter</p>
+        <p>Vi hittade annonsen på {sources.length} olika sajter</p>
         <p>Välj vilken du vill gå till!</p>
-        <div>
-          {source.map((item, i) => (
+        <SourcesContainer>
+          {sources.map((source, i) => (
             <a
               key={i}
-              href={item.source.url}
+              href={source.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {[item.source.site.name] in images ? (
-                <SourceLogo sourceLogo={images[item.source.site.name]} />
+              {[source.name] in images ? (
+                <SourceLogo sourceLogo={images[source.name]} />
               ) : (
-                <p>{item.source.site.name}</p>
+                <p>{source.name}</p>
               )}
             </a>
           ))}
-        </div>
+        </SourcesContainer>
       </MultipleLinks>
     ) : (
       <StyledLink
-        href={source[0].source.url}
+        href={sources[0].url}
         target="_blank"
         rel="noopener noreferrer"
       >
         Gå till annonsen
       </StyledLink>
-    )} */}
+    )}
   </DescriptionBox>
 )
 
@@ -93,10 +93,15 @@ const MultipleLinks = styled.div`
 `
 
 const SourceLogo = styled.div`
-  height: 5rem;
+  height: 10rem;
   width: 10rem;
   background: ${props => `url(${props.sourceLogo})`};
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+`
+
+const SourcesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `
