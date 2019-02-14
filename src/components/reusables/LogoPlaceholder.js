@@ -1,17 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const LogoPlaceholder = ({ employer, padding, desktop }) => {
+const LogoPlaceholder = ({ employer, padding }) => {
   if (employer.logoUrl) {
-    return (
-      <StyledImg src={employer.logoUrl} padding={padding} desktop={desktop} />
-    )
+    return <StyledImg src={employer.logoUrl} padding={padding} />
   } else if (employer.name) {
     return (
       <StyledH3>
         {employer.name
           .match(/\b\w/g)
-          .splice(0, 3)
+          .slice(0, 3)
           .join('')}
       </StyledH3>
     )
@@ -23,9 +21,8 @@ const LogoPlaceholder = ({ employer, padding, desktop }) => {
 export default LogoPlaceholder
 
 const StyledImg = styled.img`
-  height: ${props => (props.desktop ? '100%' : 'auto')};
-  width: ${props => (props.desktop ? 'auto' : '100%')};
-  padding: ${props => (props.padding ? '0.5rem' : '0')};
+  width: 100px;
+  margin-right: 1.5rem;
 `
 
 const StyledH3 = styled.p`
@@ -43,6 +40,6 @@ const StyledH3 = styled.p`
   text-align: center;
   word-break: break-word;
   hyphens: auto;
-  background: ${props => props.theme.green0};
-  shape-outside: circle(50%);
+  color: #fff;
+  background: ${props => props.theme.green4};
 `

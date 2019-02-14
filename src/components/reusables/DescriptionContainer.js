@@ -1,40 +1,41 @@
 import React from 'react'
 import styled from 'styled-components'
-import images from '../../../images/'
-import { buttonStyleCorners } from '../../../styles/components'
+import images from '../../images'
+import { buttonStyleCorners } from '../../styles/components'
+import breakpoints from '../../styles/breakpoints'
 
-const DescriptionContainer = ({ text, source }) => (
+const DescriptionContainer = ({ text, characters, sources }) => (
   <DescriptionBox>
     <h3 style={{ fontSize: '2.4rem', marginBottom: '15px' }}>Annons</h3>
     {text && (
       <DescriptionText>
-        {text.replace(/\n/g, '\n\n').substring(0, 1200)}
+        {text.replace(/\n/g, '\n\n').substring(0, characters)}
       </DescriptionText>
     )}
-    {source.length > 1 ? (
+    {sources.length > 1 ? (
       <MultipleLinks>
-        <p>Vi hittade annonsen på {source.length} olika sajter</p>
+        <p>Vi hittade annonsen på {sources.length} olika sajter</p>
         <p>Välj vilken du vill gå till!</p>
-        <div>
-          {source.map((item, i) => (
-            <a
+        <SourcesContainer>
+          {sources.map((source, i) => (
+            <A
               key={i}
-              href={item.source.url}
+              href={source.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {[item.source.site.name] in images ? (
-                <SourceLogo sourceLogo={images[item.source.site.name]} />
+              {[source.name] in images ? (
+                <SourceLogo sourceLogo={images[source.name]} />
               ) : (
-                <p>{item.source.site.name}</p>
+                <p>{source.name}</p>
               )}
-            </a>
+            </A>
           ))}
-        </div>
+        </SourcesContainer>
       </MultipleLinks>
     ) : (
       <StyledLink
-        href={source[0].source.url}
+        href={sources[0].url}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -47,10 +48,7 @@ const DescriptionContainer = ({ text, source }) => (
 export default DescriptionContainer
 
 const DescriptionBox = styled.div`
-  grid-row: 4 / 5;
   position: relative;
-  background: ${props => props.theme.white};
-  /* padding: 1rem; */
 `
 
 const DescriptionText = styled.p`
@@ -67,6 +65,50 @@ const DescriptionText = styled.p`
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
 `
 
+const MultipleLinks = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 35%;
+  transform: translate(-50%, 65%);
+  width: 70%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+
+  @media screen and (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
+`
+
+const SourcesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+`
+
+const A = styled.a`
+  flex: 1 1 45%;
+  max-width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5%;
+`
+
+const SourceLogo = styled.div`
+  height: 12rem;
+  width: 100%;
+  background: ${props => `url(${props.sourceLogo})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`
+
 const StyledLink = styled.a`
   ${buttonStyleCorners}
   &:link,
@@ -78,28 +120,4 @@ const StyledLink = styled.a`
     transform: translate(-50%, -15%);
     padding: 1.5rem;
   }
-`
-
-const MultipleLinks = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: 5%;
-  transform: translate(-50%, -5%);
-  width: 90%;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-`
-
-const SourceLogo = styled.div`
-  height: 5rem;
-  width: 10rem;
-  background: ${props => `url(${props.sourceLogo})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 `

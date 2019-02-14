@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { fetchMoreJobs } from '../../redux/actions'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-// import distanceInWordsStrict from 'date-fns/distance_in_words_strict'
+import distanceInWordsStrict from 'date-fns/distance_in_words_strict'
 import format from 'date-fns/format'
-// import sv from 'date-fns/locale/sv'
+import sv from 'date-fns/locale/sv'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CustomLoader, LogoPlaceholder, NoResultsBox } from '../../components'
 
@@ -84,28 +84,29 @@ class JobsList extends Component {
               >
                 <ItemInfo>
                   <LogoPlaceholder employer={item.employer} />
-                  <ItemTitle>{item.header}</ItemTitle>
-                  <p>
-                    {item.location
-                      ? item.location.translations['sv-SE']
-                      : 'Finns inte'}
-                  </p>
-                  <p>
+                  <div style={{ flex: '1  ', fontSize: '18px' }}>
+                    <ItemTitle>{item.header}</ItemTitle>
+                    <P>
+                      {item.employer.name ? item.employer.name : ''} &bull;{' '}
+                      {item.location ? item.location : ''}
+                    </P>
+                    {/* <ItemDeadline>
+                      {item.application.deadline
+                        ? distanceInWordsStrict(
+                            Date.now(),
+                            item.application.deadline,
+                            {
+                              addSuffix: true,
+                              locale: sv
+                            }
+                          )
+                        : 'Se annonsen för datum'}
+                    </ItemDeadline> */}
+                  </div>
+                  {/* <p>
                     Inlagd:{' '}
                     {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p>
-                  {/* <ItemDeadline>
-                    {item.application.deadline
-                      ? distanceInWordsStrict(
-                          Date.now(),
-                          item.application.deadline,
-                          {
-                            addSuffix: true,
-                            locale: sv
-                          }
-                        )
-                      : 'Se annonsen för datum'}
-                  </ItemDeadline> */}
+                  </p> */}
                 </ItemInfo>
               </ListItem>
             ))}
@@ -168,7 +169,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   position: relative;
-  padding: 1.5rem 0;
+  padding: 2rem 0 2rem 1rem;
   transition: all 0.2s;
   background: ${props =>
     props.selected
@@ -187,14 +188,20 @@ const ListItem = styled.li`
   }
 `
 
-const ItemInfo = styled.div``
-
-const ItemTitle = styled.h3`
-  font-size: 20px;
+const ItemInfo = styled.div`
+  display: flex;
+  align-items: center;
 `
 
-// const ItemDeadline = styled.p`
-//   justify-self: end;
-//   align-self: end;
-//   padding: 1rem;
-// `
+const ItemTitle = styled.h3`
+  font-size: 18px;
+`
+
+const P = styled.p`
+  font-size: 18px;
+`
+
+const ItemDeadline = styled(P)`
+  justify-self: end;
+  align-self: end;
+`

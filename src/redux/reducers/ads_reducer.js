@@ -24,33 +24,33 @@ const initialState = {
 
 function getNumberOfJobsInCounties(jobs) {
   const numberOfJobsInCounties = {
-    ['Blekinge län']: 0,
-    ['Dalarnas län']: 0,
-    ['Gotlands län']: 0,
-    ['Gävleborgs län']: 0,
-    ['Hallands län']: 0,
-    ['Jämtlands län']: 0,
-    ['Jönköpings län']: 0,
-    ['Kalmar län']: 0,
-    ['Kronobergs län']: 0,
-    ['Norrbottens län']: 0,
-    ['Skåne län']: 0,
-    ['Stockholms län']: 0,
-    ['Södermanlands län']: 0,
-    ['Uppsala län']: 0,
-    ['Värmlands län']: 0,
-    ['Västerbottens län']: 0,
-    ['Västernorrlands län']: 0,
-    ['Västmanlands län']: 0,
-    ['Västra Götalands län']: 0,
-    ['Örebro län']: 0,
-    ['Östergötlands län']: 0
+    'Blekinge län': 0,
+    'Dalarnas län': 0,
+    'Gotlands län': 0,
+    'Gävleborgs län': 0,
+    'Hallands län': 0,
+    'Jämtlands län': 0,
+    'Jönköpings län': 0,
+    'Kalmar län': 0,
+    'Kronobergs län': 0,
+    'Norrbottens län': 0,
+    'Skåne län': 0,
+    'Stockholms län': 0,
+    'Södermanlands län': 0,
+    'Uppsala län': 0,
+    'Värmlands län': 0,
+    'Västerbottens län': 0,
+    'Västernorrlands län': 0,
+    'Västmanlands län': 0,
+    'Västra Götalands län': 0,
+    'Örebro län': 0,
+    'Östergötlands län': 0
   }
 
   jobs.forEach(job => {
-    if (job.location && job.location.translations['sv-SE']) {
+    if (job.location) {
       countiesAndMunicipalities.forEach(item => {
-        if (job.location.translations['sv-SE'] === item.text) {
+        if (job.location === item.text) {
           numberOfJobsInCounties[item.county] += 1
         }
       })

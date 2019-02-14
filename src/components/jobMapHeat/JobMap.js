@@ -66,8 +66,12 @@ const MyMapComponent = compose(
           onClick={() => console.log(laen)}
           visible={true}
           options={{
-            fillColor: getFillColor(props.numberOfJobsInCounties[laen])
+            strokeWeight: 2,
+            fillColor: getFillColor(props.numberOfJobsInCounties[laen]),
+            fillOpacity: 0.8
           }}
+          onMouseOver={() => console.log('enter', laen)}
+          onMouseOut={() => console.log('leave', laen)}
         />
       )
     })}

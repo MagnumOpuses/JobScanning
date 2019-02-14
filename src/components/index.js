@@ -8,20 +8,18 @@ import LogoPlaceholder from './reusables/LogoPlaceholder'
 import NoResultsBox from './reusables/NoResultsBox'
 import PageHeader from '../pages/JobsPage/components/PageHeader'
 
-import AdsList from '../pages/JobsPage/components/AdsList'
+import MobileJobsList from '../pages/JobsPage/components/MobileJobsList'
 
-import SubHeader from './reusables/adcomponents/SubHeader'
-import Title from './reusables/adcomponents/Title'
-import InfoContainer from './reusables/adcomponents/InfoContainer'
-import DescriptionContainer from './reusables/adcomponents/DescriptionContainer'
+import DescriptionContainer from './reusables/DescriptionContainer'
 
 import { default as JobMap } from './jobMapHeat/JobMapContainer'
 import { default as SourceRanking } from './sourceRanking/SourceRankingContainer'
 import { default as ResultStats } from './resultStats/ResultStatsContainer'
 import { default as SearchForm } from './searchForm/SearchFormContainer'
+import { default as TextEnrichment } from './textEnrichment/TextEnrichmentContainer'
 
 export {
-  AdsList,
+  MobileJobsList,
   SourceRanking,
   BoldText,
   Checkbox,
@@ -32,11 +30,9 @@ export {
   LogoPlaceholder,
   NoResultsBox,
   PageHeader,
-  SubHeader,
-  Title,
-  InfoContainer,
   DescriptionContainer,
   JobMap,
   ResultStats,
-  SearchForm
+  SearchForm,
+  TextEnrichment
 }
