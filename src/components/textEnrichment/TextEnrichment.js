@@ -6,37 +6,39 @@ import OneWord from './animations/OneWord'
 import TwoWords from './animations/TwoWords'
 import ThreeWords from './animations/ThreeWords'
 import FourWords from './animations/FourWords'
-import Word from './animations/TestHooks'
 
-function renderList(words) {
-  if (words.length === 1) {
-    return <Word word={words} />
-  } else if (words.length === 2) {
-    return <TwoWords words={words} />
-  } else if (words.length === 3) {
-    return <ThreeWords words={words} />
-  } else if (words.length === 4) {
-    return <FourWords words={words} />
+function renderList(list) {
+  if (list.length === 1) {
+    return <OneWord words={list} />
+  } else if (list.length === 2) {
+    return <TwoWords words={list} />
+  } else if (list.length === 3) {
+    return <ThreeWords words={list} />
+  } else if (list.length >= 4) {
+    return <FourWords words={list} />
   }
 }
 
-const TextEnrichment = ({ icon, list }) => {
+const TextEnrichment = ({ header, icon, list }) => {
   return (
     <Spring native from={{ height: 0 }} to={{ height: 200 }}>
       {({ height }) => (
         <Container style={{ height }}>
-          <Spring delay={1000} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-            {({ opacity }) => (
-              <StyledIcon
-                style={{ opacity }}
-                name={icon}
-                size="huge"
-                color="black"
-              />
-            )}
-          </Spring>
+          <p style={{ textAlign: 'center' }}>{header}</p>
+          <div style={{ height: '100%', position: 'relative' }}>
+            <Spring delay={1000} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {({ opacity }) => (
+                <StyledIcon
+                  style={{ opacity }}
+                  name={icon}
+                  size="huge"
+                  color="black"
+                />
+              )}
+            </Spring>
 
-          {renderList(list)}
+            {renderList(list)}
+          </div>
         </Container>
       )}
     </Spring>
@@ -49,7 +51,6 @@ const Container = styled(animated.div)`
   height: 200px;
   width: 400px;
   position: relative;
-  /* border: 1px solid #000; */
 `
 
 const StyledIcon = styled(Icon)`

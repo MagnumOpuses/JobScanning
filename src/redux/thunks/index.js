@@ -10,7 +10,7 @@ export const fetchTextEnrichment = job => async dispatch => {
       data: {
         doc_id: job.id,
         doc_headline: job.header,
-        doc_text: job.content.text,
+        doc_text: job.content,
         include_sentences: false
       }
     })
