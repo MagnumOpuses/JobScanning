@@ -6,6 +6,7 @@ import theme from '../../../styles/theme'
 import { Icon } from 'semantic-ui-react'
 import { Ellipse } from '../../../components'
 import jt_logowhite from '../../../images/logo/1x/jt_logowhite.png'
+import breakpoints from '../../../styles/breakpoints'
 
 class PageHeader extends Component {
   render() {
@@ -87,7 +88,7 @@ export default connect(
 )(PageHeader)
 
 const Header = styled.header`
-  height: 100%;
+  height: 8.5rem;
   width: 100%;
   box-shadow: ${({ ads }) =>
     ads ? '0 0.3rem 0.5rem rgba(0, 0, 0, 0.3)' : 'none'};

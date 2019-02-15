@@ -54,7 +54,7 @@ export default async list => {
 
 const groupByLocation = list => {
   const groupedByLocation = list.reduce((acc, obj) => {
-    const city = obj.location.translations['sv-SE']
+    const city = obj.location
     if (!acc[city]) {
       acc[city] = []
     }

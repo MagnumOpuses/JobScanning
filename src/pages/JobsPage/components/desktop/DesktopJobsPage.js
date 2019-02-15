@@ -11,28 +11,26 @@ import {
   GridContainer,
   DescriptionContainer,
   JobMap,
-  ResultStats
+  ResultStats,
+  TextEnrichment
 } from '../../../../components'
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../../components/jobList/JobsList'
 import theme from '../../../../styles/theme'
 import images from '../../../../images/index'
+import { fetchTextEnrichment } from '../../../../redux/thunks/index'
 
-class AdsPage extends Component {
+class DesktopJobsPage extends Component {
   state = { activeComponent: 'list' }
 
   changeComponent = componentName => {
     this.setState({ activeComponent: componentName })
   }
 
-  selectAd = selectedAd => {
-    console.log(selectedAd)
+  selectAd = selectedJob => {
+    this.props.selectJob({})
 
-    const duplicatedGroupId = _.filter(this.props.hits, item => {
-      return item.group.id === selectedAd.group.id
-    })
-
-    const selectedJob = { ...selectedAd, duplicatedGroupId }
+    // this.props.fetchTextEnrichment(selectedJob)
     this.props.selectJob(selectedJob)
   }
 
@@ -45,7 +43,7 @@ class AdsPage extends Component {
         <PageHeaderAds />
 
         <GridContainer
-          width={'75%'}
+          width={'85%'}
           rows={'50px auto'}
           columns={'2fr 3fr'}
           margin={'5rem 0 0 0'}
@@ -86,21 +84,19 @@ class AdsPage extends Component {
 
           {Object.keys(selectedJob).length > 0 && (
             <JobDetails>
-              <h1>{selectedJob.header}</h1>
-              <h2>{selectedJob.employer.name}</h2>
+              <h1 style={{ fontSize: '32px' }}>{selectedJob.header}</h1>
+              <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>
                   <p>
-                    <BoldText>Kommun:</BoldText>{' '}
-                    {selectedJob.location &&
-                      selectedJob.location.translations['sv-SE']}
+                    <BoldText>Kommun:</BoldText> {selectedJob.location}
                   </p>
-                  <p>
+                  {/* <p>
                     <BoldText>Publicerad:</BoldText>{' '}
                     {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p>
+                  </p> */}
                 </div>
-                <div>
+                {/* <div>
                   <p>Publicerad hos</p>
                   {selectedJob.duplicatedGroupId.length > 1 ? (
                     'Se nedan'
@@ -112,11 +108,15 @@ class AdsPage extends Component {
                   ) : (
                     <p>{selectedJob.source.site.name}</p>
                   )}
-                </div>
+                </div> */}
               </div>
+              {selectedJob.enrichment &&
+                selectedJob.enrichment.status === 200 && <TextEnrichment />}
+              <TextEnrichment />
               <DescriptionContainer
-                text={selectedJob.content.text}
-                source={selectedJob.duplicatedGroupId}
+                text={selectedJob.content}
+                characters={1200}
+                sources={selectedJob.sources}
               />
             </JobDetails>
           )}
@@ -127,7 +127,7 @@ class AdsPage extends Component {
             width="170px"
             bottom="-60px"
             right="-20px"
-            bgcolor={theme.green4}
+            bgcolor={`linear-gradient(#fff, ${theme.green4})`}
             zIndex={-2}
           />
           <Ellipse
@@ -135,7 +135,7 @@ class AdsPage extends Component {
             width="140px"
             bottom="-60px"
             right="82px"
-            bgcolor={theme.green1}
+            bgcolor={`linear-gradient(#fff, ${theme.green1})`}
             zIndex={-1}
           />
         </EllipseContainer>
@@ -155,8 +155,8 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob }
-)(AdsPage)
+  { selectJob, unselectJob, fetchTextEnrichment }
+)(DesktopJobsPage)
 
 const JobDetails = styled.div`
   grid-row: 2/3;
@@ -197,6 +197,7 @@ const MenuItem = styled.div`
 
   &:hover {
     color: ${theme.green4};
+    transform: scale(1.05);
   }
 `
 
@@ -215,6 +216,7 @@ const EllipseContainer = styled.div`
   height: 220px;
   width: 250px;
   overflow: hidden;
+  z-index: -1;
 `
 
 const SourceLogo = styled.img`
