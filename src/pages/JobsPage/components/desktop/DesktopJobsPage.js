@@ -28,9 +28,7 @@ class DesktopJobsPage extends Component {
   }
 
   selectAd = selectedJob => {
-    this.props.selectJob({})
-
-    // this.props.fetchTextEnrichment(selectedJob)
+    this.props.fetchTextEnrichment(selectedJob)
     this.props.selectJob(selectedJob)
   }
 
@@ -112,7 +110,6 @@ class DesktopJobsPage extends Component {
               </div>
               {selectedJob.enrichment &&
                 selectedJob.enrichment.status === 200 && <TextEnrichment />}
-              <TextEnrichment />
               <DescriptionContainer
                 text={selectedJob.content}
                 characters={1200}
@@ -197,7 +194,6 @@ const MenuItem = styled.div`
 
   &:hover {
     color: ${theme.green4};
-    transform: scale(1.05);
   }
 `
 

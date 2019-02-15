@@ -18,7 +18,9 @@ const FourWords = ({ words }) => {
         to={{ opacity: 1, top: '20%', left: '25%' }}
       >
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>{words[0]}</Word>
+          <Word style={{ opacity, top, left, transform }}>
+            {words[0].concept_label}
+          </Word>
         )}
       </Spring>
       <Spring
@@ -27,7 +29,9 @@ const FourWords = ({ words }) => {
         to={{ opacity: 1, top: '20%', left: '75%' }}
       >
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>{words[1]}</Word>
+          <Word style={{ opacity, top, left, transform }}>
+            {words[1].concept_label}
+          </Word>
         )}
       </Spring>
       <Spring
@@ -36,7 +40,9 @@ const FourWords = ({ words }) => {
         to={{ opacity: 1, top: '80%', left: '75%' }}
       >
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>{words[2]}</Word>
+          <Word style={{ opacity, top, left, transform }}>
+            {words[2].concept_label}
+          </Word>
         )}
       </Spring>
       <Spring
@@ -45,7 +51,9 @@ const FourWords = ({ words }) => {
         to={{ opacity: 1, top: '80%', left: '25%' }}
       >
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>{words[3]}</Word>
+          <Word style={{ opacity, top, left, transform }}>
+            {words[3].concept_label}
+          </Word>
         )}
       </Spring>
     </>

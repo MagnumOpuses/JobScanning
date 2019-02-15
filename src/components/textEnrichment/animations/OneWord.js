@@ -9,11 +9,13 @@ const start = {
   transform: 'translate(-50%, -50%)'
 }
 
-const OneWord = ({ word }) => {
+const OneWord = ({ words }) => {
   return (
     <Spring delay={1500} from={start} to={{ opacity: 1, top: '10%' }}>
       {({ opacity, top, left, transform }) => (
-        <Word style={{ opacity, top, left, transform }}>{word}</Word>
+        <Word style={{ opacity, top, left, transform }}>
+          {words[0].concept_label}
+        </Word>
       )}
     </Spring>
   )

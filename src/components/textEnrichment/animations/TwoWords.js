@@ -14,12 +14,16 @@ const TwoWords = ({ words }) => {
     <>
       <Spring delay={1500} from={start} to={{ opacity: 1, left: '25%' }}>
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>{words[0]}</Word>
+          <Word style={{ opacity, top, left, transform }}>
+            {words[0].concept_label}
+          </Word>
         )}
       </Spring>
       <Spring delay={1600} from={start} to={{ opacity: 1, left: '75%' }}>
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>{words[1]}</Word>
+          <Word style={{ opacity, top, left, transform }}>
+            {words[1].concept_label}
+          </Word>
         )}
       </Spring>
     </>
