@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { selectJob, unselectJob } from '../../../../redux/actions'
+import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
 import format from 'date-fns/format'
 import _ from 'lodash'
@@ -13,12 +13,12 @@ import {
   JobMap,
   ResultStats,
   TextEnrichment
-} from '../../../../components'
+} from '../../../components'
 import PageHeaderAds from './PageHeaderAds'
-import JobsList from '../../../../components/jobList/JobsList'
-import theme from '../../../../styles/theme'
-import images from '../../../../images/index'
-import { fetchTextEnrichment } from '../../../../redux/thunks/index'
+import JobsList from '../../../components/jobList/JobsList'
+import theme from '../../../styles/theme'
+import images from '../../../images/index'
+import { fetchTextEnrichment } from '../../../redux/thunks/index'
 
 class DesktopJobsPage extends Component {
   state = { activeComponent: 'list' }
@@ -86,9 +86,11 @@ class DesktopJobsPage extends Component {
               <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>
-                  <p>
-                    <BoldText>Kommun:</BoldText> {selectedJob.location}
-                  </p>
+                  {selectedJob.location && (
+                    <p style={{ marginBottom: '15px' }}>
+                      <BoldText>Kommun:</BoldText> {selectedJob.location}
+                    </p>
+                  )}
                   {/* <p>
                     <BoldText>Publicerad:</BoldText>{' '}
                     {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}

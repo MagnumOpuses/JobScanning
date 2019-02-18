@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Dropdown, Form, Input } from 'semantic-ui-react'
-import { Checkbox } from '../../components'
+// import { Checkbox } from '../../components'
 import breakpoint from '../../styles/breakpoints'
 
 const SearchForm = ({
