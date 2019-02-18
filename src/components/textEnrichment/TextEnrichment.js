@@ -48,7 +48,7 @@ const TextEnrichment = ({ header, icon, list }) => {
 export default TextEnrichment
 
 const Container = styled(animated.div)`
-  height: 200px;
+  /* height: 200px; */
   width: 400px;
   position: relative;
 `
