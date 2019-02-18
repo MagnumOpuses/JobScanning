@@ -21,8 +21,8 @@ export const searchJobs = (term, location) => async dispatch => {
   })
 
   const locationType = location.length > 2 ? 'kommun' : 'lan'
-  // let { data } = await fetchJobs(term, locationType, location)
-  let data = mockData
+  let { data } = await fetchJobs(term, locationType, location)
+  // let data = mockData
 
   const processedList = processJobList(data.hits)
 
