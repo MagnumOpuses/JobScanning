@@ -18,7 +18,7 @@ class TextEnrichmentContainer extends Component {
     // const list1 = ['ReactJS', 'SQL', 'NodeJS', 'Redux']
     // const list2 = ['Trevlig', 'Effektiv', 'Självgående', 'Social']
     return (
-      <div style={{ display: 'flex', margin: '3rem 0' }}>
+      <div style={{ display: 'flex', margin: '3rem 0 6rem' }}>
         {selectedJob.enrichment.data.enriched_candidates.competencies.length >
           0 && (
           <TextEnrichment

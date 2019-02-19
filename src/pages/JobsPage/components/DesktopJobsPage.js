@@ -88,7 +88,7 @@ class DesktopJobsPage extends Component {
                 <div>
                   {selectedJob.location && (
                     <p style={{ marginBottom: '15px' }}>
-                      <BoldText>Kommun:</BoldText> {selectedJob.location}
+                      <BoldText>Ort:</BoldText> {selectedJob.location}
                     </p>
                   )}
                   {/* <p>

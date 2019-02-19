@@ -2,7 +2,7 @@ import fetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
 import createMarkers from '../../utils/createMarkers'
 import store from '../store/index'
-import mockData from './mockData.json'
+import mockData2 from './mockData2.json'
 
 export const SEARCH_TERM = 'SEARCH_TERM'
 export const JOBS_REQUEST = 'JOBS_REQUEST'
@@ -22,7 +22,7 @@ export const searchJobs = (term, location) => async dispatch => {
 
   const locationType = location.length > 2 ? 'kommun' : 'lan'
   // let { data } = await fetchJobs(term, locationType, location)
-  let data = mockData
+  let data = mockData2
 
   const processedList = processJobList(data.hits)
 
