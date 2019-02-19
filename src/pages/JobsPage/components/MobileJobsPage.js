@@ -48,6 +48,14 @@ class MobileJobsPage extends Component {
     this.setState({ headerHeight: `${this.headerRef.current.clientHeight}px` })
   }
 
+  componentDidUpdate() {
+    if (this.headerRef.current.clientHeight !== this.state.headerHeight) {
+      this.setState({
+        headerHeight: this.headerRef.current.clientHeight
+      })
+    }
+  }
+
   changeComponent = componentName => {
     this.setState({ activeComponent: componentName })
   }
@@ -61,8 +69,11 @@ class MobileJobsPage extends Component {
   }
 
   handleScroll = ref => {
+    const { headerHeight } = this.state
+
     const refScrollTop = ref.current.scrollTop
-    const headerHeight = this.headerRef.current.offsetHeight
+    // const headerHeight = this.headerRef.current.offsetHeight
+    // console.log(headerHeight)
 
     const { lastScrollTop } = this.state
 
@@ -100,7 +111,7 @@ class MobileJobsPage extends Component {
             style={{
               display: activeComponent === 'list' ? 'block' : 'none',
               height: '100%',
-              marginTop: `-${headerHeight}`
+              marginTop: `-${headerHeight}px`
             }}
           >
             <MobileJobsList handleScroll={this.handleScroll} />
@@ -116,7 +127,7 @@ class MobileJobsPage extends Component {
     const { activeComponent, headerHeight, headerVisible } = this.state
 
     return (
-      <GridContainer rows={`${headerHeight} calc(100vh - ${headerHeight})`}>
+      <GridContainer rows={`${headerHeight}px calc(100vh - ${headerHeight}px)`}>
         <Header
           ref={this.headerRef}
           pose={headerVisible ? 'visible' : 'hidden'}
@@ -148,7 +159,9 @@ class MobileJobsPage extends Component {
             />
           </CustomMenu>
         </Header>
-        <div style={{ marginTop: headerHeight }}>{this.getContent()}</div>
+        <div style={{ marginTop: `${headerHeight}px` }}>
+          {this.getContent()}
+        </div>
       </GridContainer>
     )
   }

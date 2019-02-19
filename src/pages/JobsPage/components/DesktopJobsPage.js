@@ -8,9 +8,9 @@ import {
   BoldText,
   Ellipse,
   SourceRanking,
-  GridContainer,
   DescriptionContainer,
   JobMap,
+  NoResultsBox,
   ResultStats,
   TextEnrichment
 } from '../../../components'
@@ -37,36 +37,37 @@ class DesktopJobsPage extends Component {
     const { selectedJob } = this.props
 
     return (
-      <GridContainer rows={'100px calc(100vh - 100px)'} center>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
         <PageHeaderAds />
 
-        <GridContainer
-          width={'85%'}
-          rows={'50px auto'}
-          columns={'2fr 3fr'}
-          margin={'5rem 0 0 0'}
-        >
-          <Menu>
-            <MenuItem
-              selected={activeComponent === 'list'}
-              onClick={() => this.setState({ activeComponent: 'list' })}
-            >
-              LISTA
-            </MenuItem>
-            <MenuItem
-              selected={activeComponent === 'map'}
-              onClick={() => this.setState({ activeComponent: 'map' })}
-            >
-              KARTA
-            </MenuItem>
-            <MenuItem
-              selected={activeComponent === 'overview'}
-              onClick={() => this.setState({ activeComponent: 'overview' })}
-            >
-              ÖVERSIKT
-            </MenuItem>
-          </Menu>
+        <FlexContainer>
           <SideMenu>
+            <Menu>
+              <MenuItem
+                selected={activeComponent === 'list'}
+                onClick={() => this.setState({ activeComponent: 'list' })}
+              >
+                LISTA
+              </MenuItem>
+              <MenuItem
+                selected={activeComponent === 'map'}
+                onClick={() => this.setState({ activeComponent: 'map' })}
+              >
+                KARTA
+              </MenuItem>
+              <MenuItem
+                selected={activeComponent === 'overview'}
+                onClick={() => this.setState({ activeComponent: 'overview' })}
+              >
+                ÖVERSIKT
+              </MenuItem>
+            </Menu>
             <ResultStats />
             <div
               style={{
@@ -76,11 +77,13 @@ class DesktopJobsPage extends Component {
             >
               <JobsList selectAd={this.selectAd} />
             </div>
-            {activeComponent === 'map' && <JobMap desktop />}
-            {activeComponent === 'overview' && <SourceRanking />}
+            {!Object.keys(this.props.selectedJob).length > 0
+              ? ''
+              : (activeComponent === 'map' && <JobMap desktop />,
+                activeComponent === 'overview' && <SourceRanking />)}
           </SideMenu>
 
-          {Object.keys(selectedJob).length > 0 && (
+          {Object.keys(selectedJob).length > 0 ? (
             <JobDetails>
               <h1 style={{ fontSize: '32px' }}>{selectedJob.header}</h1>
               <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
@@ -118,8 +121,10 @@ class DesktopJobsPage extends Component {
                 sources={selectedJob.sources}
               />
             </JobDetails>
+          ) : (
+            <JobDetails />
           )}
-        </GridContainer>
+        </FlexContainer>
         <EllipseContainer>
           <Ellipse
             height="220px"
@@ -138,7 +143,7 @@ class DesktopJobsPage extends Component {
             zIndex={-1}
           />
         </EllipseContainer>
-      </GridContainer>
+      </div>
     )
   }
 }
@@ -157,13 +162,20 @@ export default connect(
   { selectJob, unselectJob, fetchTextEnrichment }
 )(DesktopJobsPage)
 
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  margin-top: 5rem;
+`
+
 const JobDetails = styled.div`
-  grid-row: 2/3;
-  padding-left: 5rem;
+  margin-left: 8rem;
+  width: 740px;
   max-width: 740px;
 
   h1 {
-    margin: 0 0 15px 0;
+    margin: 9rem 0 15px 0;
   }
 
   h2 {
@@ -175,24 +187,22 @@ const JobDetails = styled.div`
   }
 `
 
-const Menu = styled.div`
-  grid-row: 1/2;
-  grid-column: 1/2;
-  height: 50px;
+const Menu = styled.ul`
+  min-height: 50px;
   display: flex;
   align-items: center;
+  list-style: none;
 `
 
-const MenuItem = styled.div`
-  height: 100%;
+const MenuItem = styled.li`
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   font-size: 20px;
   font-weight: 700;
+  padding: 1rem;
   color: ${props => (props.selected ? theme.green4 : '#000')};
   transition: all 0.2s;
+  cursor: pointer;
 
   &:hover {
     color: ${theme.green4};
@@ -200,9 +210,9 @@ const MenuItem = styled.div`
 `
 
 const SideMenu = styled.div`
-  grid-row: 2/3;
-  grid-column: 1/2;
   height: 75vh;
+  width: 480px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
 `
