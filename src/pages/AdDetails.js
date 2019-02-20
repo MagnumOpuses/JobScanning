@@ -7,20 +7,23 @@ import {
   LogoPlaceholder,
   NoResultsBox,
   PageHeader,
-  GridContainer,
-  DescriptionContainer
+  DescriptionContainer,
+  TextEnrichment
 } from '../components'
 import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import { BoldText } from '../components'
 import images from '../images/index'
+import { fetchTextEnrichment } from '../redux/thunks/index'
 
 class AdDetails extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
+    this.props.fetchTextEnrichment(this.props.selectedJob)
   }
 
   render() {
+    const { selectedJob } = this.props
     const {
       application,
       content,
@@ -37,13 +40,13 @@ class AdDetails extends Component {
     const siteName = sources.length > 1 ? 'Se nedan' : sources[0].name
 
     return (
-      <GridContainer rows={'85px 1fr'}>
+      <div>
         <PageHeader ads />
 
         {!Object.keys(this.props.selectedJob).length > 0 ? (
           <NoResultsBox adDetails />
         ) : (
-          <GridContainer>
+          <div>
             <StyledHeader>
               <div>
                 <Link to="/jobs">{`< tillbaka`}</Link>
@@ -76,12 +79,8 @@ class AdDetails extends Component {
 
             <InfoContainer>
               <p>
-                <BoldText>Kommun:</BoldText> {location}
+                <BoldText>Ort:</BoldText> {location}
               </p>
-              {/* <p>
-            <BoldText>Publicerad:</BoldText>{' '}
-            {format(firstSeenAt, 'YYYY-MM-DD HH:mm')}
-          </p> */}
               <p>
                 <BoldText>Sök jobbet senast:</BoldText>{' '}
                 {application.deadline
@@ -92,6 +91,18 @@ class AdDetails extends Component {
               </p>
             </InfoContainer>
 
+            {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
+                }}
+              >
+                <TextEnrichment mobile />
+              </div>
+            )}
+
             <StyledDiv>
               <DescriptionContainer
                 text={content}
@@ -99,9 +110,9 @@ class AdDetails extends Component {
                 sources={sources}
               />
             </StyledDiv>
-          </GridContainer>
+          </div>
         )}
-      </GridContainer>
+      </div>
     )
   }
 }
@@ -118,15 +129,14 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  null
+  { fetchTextEnrichment }
 )(AdDetails)
 
 const StyledHeader = styled.div`
-  grid-row: 1 / 2;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 1rem;
+  padding: 1rem;
 `
 
 const SourceLogo = styled.img`
@@ -153,14 +163,14 @@ const Heading = styled.div`
   border-top: 2px solid ${props => props.theme.green4};
   border-bottom: 2px solid ${props => props.theme.green4};
 
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
   align-items: center;
 
   width: 100%;
+  padding: 2rem 1rem;
   overflow: hidden;
 `
 
 const InfoContainer = styled.div`
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
 `

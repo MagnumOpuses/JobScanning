@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
 import format from 'date-fns/format'
+import sv from 'date-fns/locale/sv'
 import _ from 'lodash'
 import {
   BoldText,
@@ -10,7 +11,6 @@ import {
   SourceRanking,
   DescriptionContainer,
   JobMap,
-  NoResultsBox,
   ResultStats,
   TextEnrichment
 } from '../../../components'
@@ -87,19 +87,27 @@ class DesktopJobsPage extends Component {
             <JobDetails>
               <h1 style={{ fontSize: '32px' }}>{selectedJob.header}</h1>
               <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                  {selectedJob.location && (
-                    <p style={{ marginBottom: '15px' }}>
-                      <BoldText>Ort:</BoldText> {selectedJob.location}
-                    </p>
-                  )}
-                  {/* <p>
-                    <BoldText>Publicerad:</BoldText>{' '}
-                    {format(selectedJob.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p> */}
-                </div>
-                {/* <div>
+
+              {selectedJob.location && (
+                <p style={{ marginBottom: '15px' }}>
+                  <BoldText>Ort:</BoldText> {selectedJob.location}
+                </p>
+              )}
+
+              <p>
+                <BoldText>Sök jobbet senast:</BoldText>{' '}
+                {selectedJob.application.deadline
+                  ? format(
+                      new Date(selectedJob.application.deadline),
+                      'D MMMM',
+                      {
+                        locale: sv
+                      }
+                    )
+                  : 'Se annonsen för datum'}
+              </p>
+
+              {/* <div>
                   <p>Publicerad hos</p>
                   {selectedJob.duplicatedGroupId.length > 1 ? (
                     'Se nedan'
@@ -112,9 +120,12 @@ class DesktopJobsPage extends Component {
                     <p>{selectedJob.source.site.name}</p>
                   )}
                 </div> */}
-              </div>
-              {selectedJob.enrichment &&
-                selectedJob.enrichment.status === 200 && <TextEnrichment />}
+
+              {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
+                <div style={{ display: 'flex', margin: '3rem 0 6rem' }}>
+                  <TextEnrichment />
+                </div>
+              )}
               <DescriptionContainer
                 text={selectedJob.content}
                 characters={1200}
