@@ -18,7 +18,7 @@ import numberOfUniqueSources from '../../../utils/numberOfUniqueSources'
 
 const SlideUpAndDown = posed.div({
   hidden: {
-    transform: 'translateY(-241px)',
+    transform: 'translateY(-269px)',
     transition: {
       default: { ease: 'linear', duration: 300 }
     }
@@ -136,7 +136,7 @@ class MobileJobsPage extends Component {
 
           <ResultStats />
 
-          <CustomMenu borderless fluid widths={3}>
+          <CustomMenu borderless fluid widths={2}>
             <CustomMenuItem
               name="list"
               active={activeComponent === 'list'}
@@ -144,12 +144,12 @@ class MobileJobsPage extends Component {
               onClick={() => this.setState({ activeComponent: 'list' })}
             />
 
-            <CustomMenuItem
+            {/* <CustomMenuItem
               name="map"
               active={activeComponent === 'map'}
               content="Karta"
               onClick={() => this.setState({ activeComponent: 'map' })}
-            />
+            /> */}
 
             <CustomMenuItem
               name="overview"

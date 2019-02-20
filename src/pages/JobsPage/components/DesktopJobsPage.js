@@ -4,7 +4,6 @@ import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
 import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
-import _ from 'lodash'
 import {
   BoldText,
   Ellipse,
@@ -17,7 +16,6 @@ import {
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../components/jobList/JobsList'
 import theme from '../../../styles/theme'
-import images from '../../../images/index'
 import { fetchTextEnrichment } from '../../../redux/thunks/index'
 
 class DesktopJobsPage extends Component {
@@ -55,12 +53,12 @@ class DesktopJobsPage extends Component {
               >
                 LISTA
               </MenuItem>
-              <MenuItem
+              {/* <MenuItem
                 selected={activeComponent === 'map'}
                 onClick={() => this.setState({ activeComponent: 'map' })}
               >
                 KARTA
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem
                 selected={activeComponent === 'overview'}
                 onClick={() => this.setState({ activeComponent: 'overview' })}
@@ -88,8 +86,27 @@ class DesktopJobsPage extends Component {
               <h1 style={{ fontSize: '32px' }}>{selectedJob.header}</h1>
               <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
 
+              {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
+                <div
+                  style={{
+                    display: 'flex',
+                    margin: '3rem 0 6rem',
+                    padding: '2.5rem 0 0',
+                    borderTop: `2px solid ${theme.green4}`
+                  }}
+                >
+                  <TextEnrichment />
+                </div>
+              )}
+
               {selectedJob.location && (
-                <p style={{ marginBottom: '15px' }}>
+                <p
+                  style={{
+                    padding: '2rem 0 0',
+                    marginBottom: '15px',
+                    borderTop: `2px solid ${theme.green4}`
+                  }}
+                >
                   <BoldText>Ort:</BoldText> {selectedJob.location}
                 </p>
               )}
@@ -120,12 +137,6 @@ class DesktopJobsPage extends Component {
                     <p>{selectedJob.source.site.name}</p>
                   )}
                 </div> */}
-
-              {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
-                <div style={{ display: 'flex', margin: '3rem 0 6rem' }}>
-                  <TextEnrichment />
-                </div>
-              )}
               <DescriptionContainer
                 text={selectedJob.content}
                 characters={1200}
@@ -236,9 +247,4 @@ const EllipseContainer = styled.div`
   width: 250px;
   overflow: hidden;
   z-index: -1;
-`
-
-const SourceLogo = styled.img`
-  max-height: 50px;
-  width: auto;
 `

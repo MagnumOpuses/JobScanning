@@ -29,8 +29,8 @@ const StyledH3 = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75px;
-  width: 75px;
+  height: 65px;
+  width: 65px;
   margin: 0 25px 0 15px !important;
   border-radius: 50%;
   font-size: 25px;

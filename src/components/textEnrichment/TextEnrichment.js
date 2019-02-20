@@ -35,8 +35,7 @@ const TextEnrichment = ({ header, icon, list, mobile }) => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center'
+                justifyContent: 'center'
               }}
             >
               <Spring delay={1000} from={{ opacity: 0 }} to={{ opacity: 1 }}>
@@ -44,7 +43,7 @@ const TextEnrichment = ({ header, icon, list, mobile }) => {
                   <Icon
                     style={{ opacity, margin: '0 1rem 0 0' }}
                     name={icon}
-                    size="huge"
+                    size="big"
                     color="black"
                   />
                 )}
@@ -91,7 +90,7 @@ const TextEnrichment = ({ header, icon, list, mobile }) => {
                 <StyledIcon
                   style={{ opacity }}
                   name={icon}
-                  size="huge"
+                  size="big"
                   color="black"
                 />
               )}

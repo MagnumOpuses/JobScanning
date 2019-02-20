@@ -1,17 +1,13 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-import distanceInWordsStrict from 'date-fns/distance_in_words_strict'
 import format from 'date-fns/format'
-import sv from 'date-fns/locale/sv'
 import { Icon } from 'semantic-ui-react'
-import { LogoPlaceholder } from '../../../components'
 
 const JobMapWindow = ({ marker, markers, closeMapWindow, history }) => {
   console.log(marker)
 
   const {
-    application,
     employer,
     group,
     header,

@@ -2,7 +2,6 @@ import _ from 'lodash'
 
 export default list => {
   const removedPassedDeadlines = removePassedDeadlines(list)
-  // const removedDuplicates = removeDuplicates(removedPassedDeadlines)
 
   return list
 }
@@ -16,8 +15,4 @@ const removePassedDeadlines = list => {
     )
   })
   return deadlinesInFuture
-}
-
-const removeDuplicates = list => {
-  return _.uniqBy(list, 'group.id')
 }

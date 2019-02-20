@@ -6,7 +6,6 @@ import theme from '../../../styles/theme'
 import { Icon } from 'semantic-ui-react'
 import { Ellipse } from '../../../components'
 import jt_logowhite from '../../../images/logo/1x/jt_logowhite.png'
-import breakpoints from '../../../styles/breakpoints'
 
 class PageHeader extends Component {
   render() {

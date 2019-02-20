@@ -10,7 +10,7 @@ const AdsPage = () => {
       <Responsive maxWidth={breakpoint.tabletLandscape}>
         <MobileJobsPage />
       </Responsive>
-      <Responsive minWidth={769}>
+      <Responsive minWidth={1025}>
         <DesktopJobsPage />
       </Responsive>
     </>

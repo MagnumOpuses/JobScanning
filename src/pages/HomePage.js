@@ -32,7 +32,7 @@ export default () => {
               separator=" "
               style={{ fontWeight: 'bold' }}
             />{' '}
-            rekryteringssajter
+            webbplatser
           </H2>
         </FlexContainer>
         <StyledLink to="/search">Gå vidare</StyledLink>

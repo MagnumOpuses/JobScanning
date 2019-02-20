@@ -65,7 +65,7 @@ class MobileJobsList extends Component {
         id="scrollableDiv"
         style={{
           height: this.calculateInfiniteScrollHeight(),
-          paddingTop: '241px'
+          paddingTop: '269px'
         }}
         ref={this.listRef}
         onScroll={this.handleScroll}
@@ -74,7 +74,7 @@ class MobileJobsList extends Component {
           dataLength={processedList.length}
           next={this.fetchMoreData}
           hasMore={true}
-          style={{ overflow: 'visible' }}
+          style={{ overflow: 'visible', wordBreak: 'break-word' }}
           scrollableTarget="scrollableDiv"
           scrollThreshold={0.9}
           loader={
@@ -155,7 +155,7 @@ const List = styled.ul`
 const ListItem = styled.li`
   list-style: none;
   border-bottom: 2px solid ${props => props.theme.green4};
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
 `
 
 const ItemInfo = styled.div`

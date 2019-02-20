@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import _ from 'lodash'
 import {
   LogoPlaceholder,
   NoResultsBox,
@@ -15,6 +14,7 @@ import sv from 'date-fns/locale/sv'
 import { BoldText } from '../components'
 import images from '../images/index'
 import { fetchTextEnrichment } from '../redux/thunks/index'
+import theme from '../styles/theme'
 
 class AdDetails extends Component {
   componentDidMount() {
@@ -91,6 +91,20 @@ class AdDetails extends Component {
               </div>
             </Heading>
 
+            {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  borderBottom: `2px solid ${theme.green4}`,
+                  padding: '2rem 0 0'
+                }}
+              >
+                <TextEnrichment mobile />
+              </div>
+            )}
+
             <InfoContainer>
               <p>
                 <BoldText>Ort:</BoldText> {location}
@@ -104,18 +118,6 @@ class AdDetails extends Component {
                   : 'Se annonsen för datum'}
               </p>
             </InfoContainer>
-
-            {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center'
-                }}
-              >
-                <TextEnrichment mobile />
-              </div>
-            )}
 
             <StyledDiv>
               <DescriptionContainer
