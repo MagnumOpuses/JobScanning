@@ -13,12 +13,10 @@ class TextEnrichmentContainer extends Component {
   }
 
   render() {
-    const { selectedJob } = this.props
+    const { selectedJob, mobile } = this.props
 
-    // const list1 = ['ReactJS', 'SQL', 'NodeJS', 'Redux']
-    // const list2 = ['Trevlig', 'Effektiv', 'Självgående', 'Social']
     return (
-      <div style={{ display: 'flex', margin: '3rem 0' }}>
+      <>
         {selectedJob.enrichment.data.enriched_candidates.competencies.length >
           0 && (
           <TextEnrichment
@@ -27,6 +25,7 @@ class TextEnrichmentContainer extends Component {
               selectedJob.enrichment.data.enriched_candidates.competencies
             )}
             icon="briefcase"
+            mobile={mobile}
           />
         )}
         {selectedJob.enrichment.data.enriched_candidates.traits.length > 0 && (
@@ -36,9 +35,10 @@ class TextEnrichmentContainer extends Component {
               selectedJob.enrichment.data.enriched_candidates.traits
             )}
             icon="user"
+            mobile={mobile}
           />
         )}
-      </div>
+      </>
     )
   }
 }

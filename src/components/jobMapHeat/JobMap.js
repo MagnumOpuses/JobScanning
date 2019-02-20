@@ -20,8 +20,6 @@ const getPixelPositionOffset = (width, height) => ({
 })
 
 function getFillColor(number) {
-  console.log(number)
-
   if (number > 15) {
     return '#0f0'
   } else if (number > 10) {
@@ -63,15 +61,15 @@ const MyMapComponent = compose(
         <Polygon
           key={laen}
           paths={laenPaths}
-          onClick={() => console.log(laen)}
+          // onClick={() => console.log(laen)}
           visible={true}
           options={{
             strokeWeight: 2,
             fillColor: getFillColor(props.numberOfJobsInCounties[laen]),
             fillOpacity: 0.8
           }}
-          onMouseOver={() => console.log('enter', laen)}
-          onMouseOut={() => console.log('leave', laen)}
+          // onMouseOver={() => console.log('enter', laen)}
+          // onMouseOut={() => console.log('leave', laen)}
         />
       )
     })}
@@ -91,7 +89,7 @@ class JobMap extends React.Component {
       numberOfJobsInCounties
     } = this.props
 
-    console.log(numberOfJobsInCounties)
+    // console.log(numberOfJobsInCounties)
 
     return (
       <MyMapComponent
