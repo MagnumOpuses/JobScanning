@@ -158,7 +158,10 @@ const ListItem = styled.li`
   padding: 1.5rem;
 `
 
-const ItemInfo = styled.div``
+const ItemInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const ItemTitle = styled.h2`
   font-size: 18px;

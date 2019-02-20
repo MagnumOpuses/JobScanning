@@ -20,6 +20,7 @@ const FourWords = ({ words }) => {
         {({ opacity, top, left, transform }) => (
           <Word style={{ opacity, top, left, transform }}>
             {words[0].concept_label}
+            {/* {parseFloat(words[0].prediction * 100).toFixed(0)}% */}
           </Word>
         )}
       </Spring>
@@ -31,6 +32,7 @@ const FourWords = ({ words }) => {
         {({ opacity, top, left, transform }) => (
           <Word style={{ opacity, top, left, transform }}>
             {words[1].concept_label}
+            {/* {parseFloat(words[1].prediction * 100).toFixed(0)}% */}
           </Word>
         )}
       </Spring>
@@ -42,6 +44,7 @@ const FourWords = ({ words }) => {
         {({ opacity, top, left, transform }) => (
           <Word style={{ opacity, top, left, transform }}>
             {words[2].concept_label}
+            {/* {parseFloat(words[2].prediction * 100).toFixed(0)}% */}
           </Word>
         )}
       </Spring>
@@ -53,6 +56,7 @@ const FourWords = ({ words }) => {
         {({ opacity, top, left, transform }) => (
           <Word style={{ opacity, top, left, transform }}>
             {words[3].concept_label}
+            {/* {parseFloat(words[3].prediction * 100).toFixed(0)}% */}
           </Word>
         )}
       </Spring>
@@ -66,4 +70,6 @@ const Word = styled(animated.div)`
   position: absolute;
   font-size: 16px;
   font-weight: bolder;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  /* padding: 1rem 1rem 2rem; */
 `
