@@ -32,11 +32,12 @@ const Header = styled.header`
 `
 
 const StyledLink = styled(Link)`
+  position: absolute;
   display: flex;
   align-items: baseline;
   height: 50px;
-  margin: 1rem;
-  z-index: 1000;
+  margin: 0.5rem;
+  z-index: 2000;
 `
 
 const Logo = styled.img`

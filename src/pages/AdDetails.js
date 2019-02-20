@@ -67,14 +67,28 @@ class AdDetails extends Component {
 
             <Heading>
               <LogoPlaceholder employer={employer} padding={true} />
-              <h1
+              <div
                 style={{
-                  fontSize: '20px',
                   margin: '0 0 0 2rem'
                 }}
               >
-                {header}
-              </h1>
+                <h1
+                  style={{
+                    fontSize: '20px'
+                  }}
+                >
+                  {header}
+                </h1>
+                <h2
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: 'normal',
+                    margin: '0 !important'
+                  }}
+                >
+                  {selectedJob.employer.name}
+                </h2>
+              </div>
             </Heading>
 
             <InfoContainer>
