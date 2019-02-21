@@ -24,9 +24,9 @@ export const searchJobs = (term, location) => async dispatch => {
 
   const processedList = processJobList(data.hits)
 
-  const markers = await createMarkers(processedList)
+  // const markers = await createMarkers(processedList)
 
-  data = { ...data, processedList, markers }
+  data = { ...data, processedList }
 
   if (data.hits.length > 0) {
     dispatch({
@@ -43,17 +43,17 @@ export const searchJobs = (term, location) => async dispatch => {
 }
 
 export const fetchMoreJobs = (term, location, offset) => async dispatch => {
-  const locationType = location.length > 2 ? 'kommun' : 'lan'
-  let { data } = await fetchJobs(term, locationType, location, offset)
+  // const locationType = location.length > 2 ? 'kommun' : 'lan'
+  let { data } = await fetchJobs(term, offset)
 
   const processedList = processJobList(data.hits)
 
   // const markers = await createMarkers(processedList)
 
-  const storeProcessedList = store.getState().ads.processedList
-  const markers = await createMarkers([...processedList, ...storeProcessedList])
+  // const storeProcessedList = store.getState().ads.processedList
+  // const markers = await createMarkers([...processedList, ...storeProcessedList])
 
-  data = { hits: data.hits, processedList, markers }
+  data = { hits: data.hits, processedList }
 
   if (data.hits.length > 0) {
     dispatch({

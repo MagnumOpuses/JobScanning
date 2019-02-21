@@ -98,10 +98,10 @@ export default (state = initialState, action) => {
         ...state.processedList,
         ...action.payload.processedList
       ]
-      let markers = _.uniqBy(
-        [...state.markers, ...action.payload.markers],
-        'id'
-      )
+      // let markers = _.uniqBy(
+      //   [...state.markers, ...action.payload.markers],
+      //   'id'
+      // )
       const scoreboard = createScoreboard(hits)
       const numberOfJobsInCounties = getNumberOfJobsInCounties(hits)
 
@@ -109,7 +109,7 @@ export default (state = initialState, action) => {
         ...state,
         hits,
         processedList,
-        markers,
+        // markers,
         scoreboard,
         numberOfJobsInCounties
       }
