@@ -38,7 +38,7 @@ const TextEnrichment = ({ header, icon, list, mobile }) => {
                 justifyContent: 'center'
               }}
             >
-              <Spring delay={1000} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              <Spring delay={500} from={{ opacity: 0 }} to={{ opacity: 1 }}>
                 {({ opacity }) => (
                   <Icon
                     style={{ opacity, margin: '0 1rem 0 0' }}
@@ -54,7 +54,7 @@ const TextEnrichment = ({ header, icon, list, mobile }) => {
                   return (
                     <Spring
                       native
-                      delay={2000 + 300 * i}
+                      delay={750 + 150 * i}
                       from={{
                         opacity: 0
                       }}

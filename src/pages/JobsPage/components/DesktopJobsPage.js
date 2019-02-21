@@ -51,19 +51,20 @@ class DesktopJobsPage extends Component {
                 selected={activeComponent === 'list'}
                 onClick={() => this.setState({ activeComponent: 'list' })}
               >
-                LISTA
+                <p>LISTA</p>
               </MenuItem>
               {/* <MenuItem
                 selected={activeComponent === 'map'}
                 onClick={() => this.setState({ activeComponent: 'map' })}
-              >
+              ><p>
                 KARTA
+                </p>
               </MenuItem> */}
               <MenuItem
                 selected={activeComponent === 'overview'}
                 onClick={() => this.setState({ activeComponent: 'overview' })}
               >
-                ÖVERSIKT
+                <p>ÖVERSIKT</p>
               </MenuItem>
             </Menu>
             <ResultStats />
@@ -226,8 +227,30 @@ const MenuItem = styled.li`
   transition: all 0.2s;
   cursor: pointer;
 
+  & p {
+    display: inline-block;
+    position: relative;
+  }
+
   &:hover {
     color: ${theme.green4};
+    & p:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+
+  & p:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: ${theme.green4};
+    visibility: ${props => (props.selected ? 'visible' : 'hidden')};
+    transform: ${props => (props.selected ? 'scaleX(1)' : 'scaleX(0)')};
+    transition: all 0.2s ease-in-out 0s;
   }
 `
 

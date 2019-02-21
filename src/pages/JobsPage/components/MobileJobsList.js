@@ -90,17 +90,21 @@ class MobileJobsList extends Component {
         >
           {processedList.map((item, i) => (
             <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
-              <ItemInfo>
-                <LogoPlaceholder employer={item.employer} />
-                <div style={{ flex: '1  ', fontSize: '18px' }}>
-                  <ItemTitle>{item.header}</ItemTitle>
-                  <P>
-                    {item.employer.name ? item.employer.name : ''} &bull;{' '}
-                    {item.location ? item.location : ''}
-                  </P>
-                </div>
+              <LogoPlaceholder employer={item.employer} />
+              <div style={{ flex: '1  ', fontSize: '18px' }}>
+                <ItemTitle>{item.header}</ItemTitle>
+                <P>
+                  {item.employer.name ? item.employer.name : ''}
+                  {item.employer.name && item.location ? (
+                    <span> &bull; </span>
+                  ) : (
+                    ' '
+                  )}
+                  {item.location ? item.location : ''}
+                </P>
+              </div>
 
-                {/* <ItemDeadline>
+              {/* <ItemDeadline>
                       {item.application.deadline
                         ? distanceInWordsStrict(
                             Date.now(),
@@ -113,11 +117,10 @@ class MobileJobsList extends Component {
                         : 'Se annonsen för datum'}
                     </ItemDeadline> */}
 
-                {/* <p>
+              {/* <p>
                     Inlagd:{' '}
                     {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
                   </p> */}
-              </ItemInfo>
             </ListItem>
           ))}
         </InfiniteScroll>
@@ -153,14 +156,11 @@ const List = styled.ul`
 `
 
 const ListItem = styled.li`
+  display: flex;
+  align-items: center;
   list-style: none;
   border-bottom: 2px solid ${props => props.theme.green4};
   padding: 1.5rem 1rem;
-`
-
-const ItemInfo = styled.div`
-  display: flex;
-  align-items: center;
 `
 
 const ItemTitle = styled.h2`

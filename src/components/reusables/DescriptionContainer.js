@@ -98,6 +98,11 @@ const A = styled.a`
   justify-content: center;
   align-items: center;
   margin: 2.5%;
+  padding: 5px;
+
+  &:hover {
+    background: #eee;
+  }
 `
 
 const SourceLogo = styled.div`

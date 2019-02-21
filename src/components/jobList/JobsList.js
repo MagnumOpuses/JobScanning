@@ -84,10 +84,15 @@ class JobsList extends Component {
               >
                 <ItemInfo>
                   <LogoPlaceholder employer={item.employer} />
-                  <div style={{ flex: '1  ', fontSize: '18px' }}>
+                  <div style={{ flex: '1', fontSize: '18px' }}>
                     <ItemTitle>{item.header}</ItemTitle>
                     <P>
-                      {item.employer.name ? item.employer.name : ''} &bull;{' '}
+                      {item.employer.name ? item.employer.name : ''}
+                      {item.employer.name && item.location ? (
+                        <span> &bull; </span>
+                      ) : (
+                        ' '
+                      )}
                       {item.location ? item.location : ''}
                     </P>
                     {/* <ItemDeadline>

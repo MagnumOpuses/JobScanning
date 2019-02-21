@@ -13,18 +13,8 @@ const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
         {scoreboard.map(item => (
           <ListItem key={item.source}>
             {getLogo(item.source)}
-
             <Score className="score">
-              {item.score}
-              <p
-                style={{
-                  display: 'inline-block',
-                  fontSize: '1.375rem',
-                  margin: '6px 0 0 0'
-                }}
-              >
-                st
-              </p>
+              <span>{item.score}</span>st
             </Score>
           </ListItem>
         ))}
@@ -35,32 +25,10 @@ const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
 
 export default SourceRanking
 
-const ListItem = styled.li`
-  height: 5rem;
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  grid-column-gap: 25px;
-  align-items: center;
-`
-
-const Score = styled.span`
-  height: 5rem;
-  width: 5rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${props => props.theme.white};
-  font-size: ${props => props.theme.fontSizeLarge};
-  font-weight: 600;
-`
-
 const OrderedList = styled.ol`
   list-style: none;
 
   & li {
-    margin-top: 1rem;
-
     :nth-child(3n + 1) .score {
       background: ${props => props.theme.primary};
     }
@@ -73,4 +41,24 @@ const OrderedList = styled.ol`
       background: ${props => props.theme.green2};
     }
   }
+`
+
+const ListItem = styled.li`
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+`
+
+const Score = styled.span`
+  min-height: 6rem;
+  min-width: 6rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.white};
+  font-size: ${props => props.theme.fontSizeLarge};
+  font-weight: 700;
 `

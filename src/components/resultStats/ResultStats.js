@@ -4,13 +4,15 @@ import breakpoints from '../../styles/breakpoints'
 
 const ResultStats = ({ total, processedList, sources }) => {
   return (
-    <P>
-      Visar <BoldText>{processedList ? processedList.length : 0}</BoldText> av{' '}
-      {total ? total.toLocaleString('se-SV') : 0} möjliga jobbannonser från
-      {'\n'}
-      <BoldText>{sources}</BoldText> webbplatser.{'\n'}
-      Scrolla ner för att se fler.
-    </P>
+    <>
+      <P>
+        Visar <BoldText>{processedList ? processedList.length : 0}</BoldText> av{' '}
+        {total ? total.toLocaleString('se-SV') : 0} jobbannonser från
+        {'\n'}
+        <BoldText>{sources}</BoldText> webbplatser.{'\n'}
+      </P>
+      <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P>
+    </>
   )
 }
 
