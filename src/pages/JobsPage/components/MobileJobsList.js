@@ -36,6 +36,10 @@ class MobileJobsList extends Component {
 
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
+    if (processedList.length <= 2) {
+      return '50vh'
+    }
+
     const height = (processedList.length - 1) * 35
     return height > 90 ? '100vh' : `${height}vh`
   }

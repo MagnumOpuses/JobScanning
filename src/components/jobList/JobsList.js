@@ -23,7 +23,7 @@ class JobsList extends Component {
 
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
-    const height = (processedList.length - 1) * 20
+    const height = processedList.length * 20 - 5
     return height > 100 ? '100%' : `${height}%`
   }
 
