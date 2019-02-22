@@ -40,7 +40,7 @@ class MobileJobsList extends Component {
       return '50vh'
     }
 
-    const height = (processedList.length - 1) * 35
+    const height = (processedList.length - 1) * 30
     return height > 90 ? '100vh' : `${height}vh`
   }
 

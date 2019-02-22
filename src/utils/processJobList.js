@@ -3,7 +3,7 @@ import _ from 'lodash'
 export default list => {
   const removedPassedDeadlines = removePassedDeadlines(list)
 
-  return removedPassedDeadlines
+  return list
 }
 
 const removePassedDeadlines = list => {
