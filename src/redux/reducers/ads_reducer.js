@@ -73,7 +73,7 @@ export default (state = initialState, action) => {
     }
 
     case JOBS_SUCCESS: {
-      const scoreboard = createScoreboard(action.payload.hits)
+      const scoreboard = createScoreboard(action.payload.processedList)
       const numberOfJobsInCounties = getNumberOfJobsInCounties(
         action.payload.hits
       )
@@ -104,7 +104,7 @@ export default (state = initialState, action) => {
       //   [...state.markers, ...action.payload.markers],
       //   'id'
       // )
-      const scoreboard = createScoreboard(hits)
+      const scoreboard = createScoreboard(processedList)
       const numberOfJobsInCounties = getNumberOfJobsInCounties(hits)
 
       return {
