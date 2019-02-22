@@ -94,10 +94,12 @@ export default (state = initialState, action) => {
 
     case JOBS_ADD_MORE: {
       const hits = [...state.hits, ...action.payload.hits]
-      const processedList = [
+      let processedList = [
         ...state.processedList,
         ...action.payload.processedList
       ]
+
+      processedList = _.uniqBy(processedList, 'id')
       // let markers = _.uniqBy(
       //   [...state.markers, ...action.payload.markers],
       //   'id'

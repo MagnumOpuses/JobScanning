@@ -4,36 +4,45 @@ import { connect } from 'react-redux'
 import TextEnrichment from './TextEnrichment'
 
 class TextEnrichmentContainer extends Component {
-  sortEnrichment = list => {
-    return list
-      .sort((a, b) => {
-        return a.prediction - b.prediction
+  state = {
+    skills: this.props.selectedJob.detected_keywords.skills,
+    traits: this.props.selectedJob.detected_keywords.traits
+  }
+
+  componentDidUpdate() {
+    if (
+      this.state.skills[0] !==
+        this.props.selectedJob.detected_keywords.skills[0] ||
+      this.state.traits[0] !==
+        this.props.selectedJob.detected_keywords.traits[0]
+    ) {
+      this.setState({
+        skills: this.props.selectedJob.detected_keywords.skills,
+        traits: this.props.selectedJob.detected_keywords.traits
       })
-      .slice(-4)
+    }
   }
 
   render() {
     const { selectedJob, mobile } = this.props
+    const {
+      detected_keywords: { skills, traits }
+    } = selectedJob
 
     return (
       <>
-        {selectedJob.enrichment.data.enriched_candidates.competencies.length >
-          0 && (
+        {skills.length > 0 && (
           <TextEnrichment
             header="Eftertraktade kompetenser"
-            list={this.sortEnrichment(
-              selectedJob.enrichment.data.enriched_candidates.competencies
-            )}
+            list={this.state.skills.slice(0, 4)}
             icon="briefcase"
             mobile={mobile}
           />
         )}
-        {selectedJob.enrichment.data.enriched_candidates.traits.length > 0 && (
+        {traits.length > 0 && (
           <TextEnrichment
             header="Eftertraktade förmågor"
-            list={this.sortEnrichment(
-              selectedJob.enrichment.data.enriched_candidates.traits
-            )}
+            list={this.state.traits.slice(0, 4)}
             icon="user"
             mobile={mobile}
           />

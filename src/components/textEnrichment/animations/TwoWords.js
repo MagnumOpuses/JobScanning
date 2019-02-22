@@ -14,16 +14,12 @@ const TwoWords = ({ words }) => {
     <>
       <Spring delay={1500} from={start} to={{ opacity: 1, left: '25%' }}>
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>
-            {words[0].concept_label}
-          </Word>
+          <Word style={{ opacity, top, left, transform }}>{words[0]}</Word>
         )}
       </Spring>
       <Spring delay={1600} from={start} to={{ opacity: 1, left: '75%' }}>
         {({ opacity, top, left, transform }) => (
-          <Word style={{ opacity, top, left, transform }}>
-            {words[1].concept_label}
-          </Word>
+          <Word style={{ opacity, top, left, transform }}>{words[1]}</Word>
         )}
       </Spring>
     </>
@@ -33,6 +29,7 @@ const TwoWords = ({ words }) => {
 export default TwoWords
 
 const Word = styled(animated.div)`
+  text-transform: capitalize;
   position: absolute;
   font-size: 16px;
   font-weight: bolder;

@@ -61,12 +61,10 @@ const TextEnrichment = ({ header, icon, list, mobile }) => {
                       to={{
                         opacity: 1
                       }}
-                      key={word.concept_label}
+                      key={word}
                     >
                       {({ opacity }) => (
-                        <ListItem style={{ opacity }}>
-                          {word.concept_label}
-                        </ListItem>
+                        <ListItem style={{ opacity }}>{word}</ListItem>
                       )}
                     </Spring>
                   )
@@ -125,6 +123,7 @@ const List = styled.ul`
 `
 
 const ListItem = styled(animated.li)`
+  text-transform: capitalize;
   padding: 5px;
   font-size: 16px;
   font-weight: bolder;

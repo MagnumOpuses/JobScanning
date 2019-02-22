@@ -9,7 +9,7 @@ export default async (queryString, offset) => {
       headers: { 'api-key': process.env.REACT_APP_DEV_API_KEY },
       params: {
         offset: offset,
-        limit: 10,
+        limit: 20,
         q: queryString
       }
     })

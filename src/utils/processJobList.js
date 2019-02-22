@@ -9,9 +9,6 @@ export default list => {
 const removePassedDeadlines = list => {
   const dateNow = Date.now()
   return _.filter(list, item => {
-    return (
-      Date.parse(item.application.deadline) > dateNow ||
-      item.application.deadline === null
-    )
+    return Date.parse(item.application.deadline) > dateNow
   })
 }

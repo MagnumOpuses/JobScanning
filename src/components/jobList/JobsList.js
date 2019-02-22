@@ -23,17 +23,13 @@ class JobsList extends Component {
 
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
-    const height = (processedList.length - 1) * 17
+    const height = (processedList.length - 1) * 20
     return height > 100 ? '100%' : `${height}%`
-  }
-
-  redirectToAdPage = id => {
-    this.props.history.push(`/jobs/${id}`)
   }
 
   fetchMoreData = () => {
     this.setState(prevState => ({
-      offset: prevState.offset + 10
+      offset: prevState.offset + 20
     }))
 
     this.props.fetchMoreJobs(
@@ -154,7 +150,6 @@ export default withRouter(
 const List = styled.ul`
   width: 100%;
   overflow: auto;
-  display: grid;
 
   &::-webkit-scrollbar {
     /* width: 20px !important; */

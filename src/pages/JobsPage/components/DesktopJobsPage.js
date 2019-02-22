@@ -16,7 +16,6 @@ import {
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../components/jobList/JobsList'
 import theme from '../../../styles/theme'
-import { fetchTextEnrichment } from '../../../redux/thunks/index'
 
 class DesktopJobsPage extends Component {
   state = { activeComponent: 'list' }
@@ -26,7 +25,6 @@ class DesktopJobsPage extends Component {
   }
 
   selectAd = selectedJob => {
-    this.props.fetchTextEnrichment(selectedJob)
     this.props.selectJob(selectedJob)
   }
 
@@ -87,7 +85,7 @@ class DesktopJobsPage extends Component {
               <h1 style={{ fontSize: '32px' }}>{selectedJob.header}</h1>
               <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
 
-              {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
+              {selectedJob.detected_keywords && (
                 <div
                   style={{
                     display: 'flex',
@@ -182,7 +180,7 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob, fetchTextEnrichment }
+  { selectJob, unselectJob }
 )(DesktopJobsPage)
 
 const FlexContainer = styled.div`

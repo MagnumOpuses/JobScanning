@@ -36,7 +36,7 @@ class MobileJobsList extends Component {
 
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
-    const height = (processedList.length - 1) * 17
+    const height = (processedList.length - 1) * 35
     return height > 90 ? '100vh' : `${height}vh`
   }
 
@@ -47,7 +47,7 @@ class MobileJobsList extends Component {
 
   fetchMoreData = () => {
     this.setState(prevState => ({
-      offset: prevState.offset + 10
+      offset: prevState.offset + 20
     }))
 
     this.props.fetchMoreJobs(

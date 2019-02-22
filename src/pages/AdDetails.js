@@ -13,13 +13,11 @@ import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import { BoldText } from '../components'
 import images from '../images/index'
-import { fetchTextEnrichment } from '../redux/thunks/index'
 import theme from '../styles/theme'
 
 class AdDetails extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
-    this.props.fetchTextEnrichment(this.props.selectedJob)
   }
 
   render() {
@@ -91,7 +89,7 @@ class AdDetails extends Component {
               </div>
             </Heading>
 
-            {selectedJob.enrichment && selectedJob.enrichment.status === 200 && (
+            {selectedJob.detected_keywords && (
               <div
                 style={{
                   display: 'flex',
@@ -143,10 +141,7 @@ function mapStateToProps({ ads }) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { fetchTextEnrichment }
-)(AdDetails)
+export default connect(mapStateToProps)(AdDetails)
 
 const StyledHeader = styled.div`
   display: flex;

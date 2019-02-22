@@ -68,16 +68,17 @@ const DescriptionText = styled.p`
 const MultipleLinks = styled.div`
   position: absolute;
   left: 50%;
-  bottom: 35%;
-  transform: translate(-50%, 65%);
+  bottom: 0;
+  transform: translate(-50%, 75%);
   width: 70%;
   background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-  padding: 1rem;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem 0 1rem;
+  margin-bottom: 5rem;
 
   @media screen and (max-width: ${breakpoints.tablet}) {
     width: 100%;
