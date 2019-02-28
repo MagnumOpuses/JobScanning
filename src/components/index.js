@@ -17,6 +17,7 @@ import { default as SourceRanking } from './sourceRanking/SourceRankingContainer
 import { default as ResultStats } from './resultStats/ResultStatsContainer'
 import { default as SearchForm } from './searchForm/SearchFormContainer'
 import { default as TextEnrichment } from './textEnrichment/TextEnrichmentContainer'
+import { default as EnrichmentRanking } from './enrichmentRanking/EnrichmentRankingContainer'
 
 export {
   MobileJobsList,
@@ -34,5 +35,6 @@ export {
   JobMap,
   ResultStats,
   SearchForm,
-  TextEnrichment
+  TextEnrichment,
+  EnrichmentRanking
 }

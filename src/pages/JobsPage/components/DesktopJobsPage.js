@@ -11,7 +11,8 @@ import {
   DescriptionContainer,
   JobMap,
   ResultStats,
-  TextEnrichment
+  TextEnrichment,
+  EnrichmentRanking
 } from '../../../components'
 import PageHeaderAds from './PageHeaderAds'
 import JobsList from '../../../components/jobList/JobsList'
@@ -65,13 +66,14 @@ class DesktopJobsPage extends Component {
                 <p>ÖVERSIKT</p>
               </MenuItem>
             </Menu>
-            <ResultStats />
+
             <div
               style={{
                 display: activeComponent === 'list' ? 'block' : 'none',
                 height: '90%'
               }}
             >
+              <ResultStats />
               <JobsList selectAd={this.selectAd} />
             </div>
             {Object.keys(this.props.hits).length === 0
@@ -80,8 +82,9 @@ class DesktopJobsPage extends Component {
                 (activeComponent === 'overview' && <SourceRanking />)}
           </SideMenu>
 
-          {Object.keys(selectedJob).length > 0 ? (
-            <JobDetails>
+          {Object.keys(selectedJob).length > 0 &&
+          activeComponent !== 'overview' ? (
+            <Content>
               <h1 style={{ fontSize: '32px' }}>{selectedJob.header}</h1>
               <h2 style={{ fontSize: '30px' }}>{selectedJob.employer.name}</h2>
 
@@ -141,9 +144,13 @@ class DesktopJobsPage extends Component {
                 characters={1200}
                 sources={selectedJob.sources}
               />
-            </JobDetails>
+            </Content>
           ) : (
-            <JobDetails />
+            <Content>
+              {activeComponent === 'overview' && this.props.hits.length > 0 && (
+                <EnrichmentRanking />
+              )}
+            </Content>
           )}
         </FlexContainer>
         <EllipseContainer>
@@ -190,7 +197,7 @@ const FlexContainer = styled.div`
   margin-top: 5rem;
 `
 
-const JobDetails = styled.div`
+const Content = styled.div`
   margin-left: 8rem;
   width: 740px;
   max-width: 740px;

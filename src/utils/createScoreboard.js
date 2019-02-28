@@ -1,17 +1,8 @@
-const createScoreboard = hits => {
-  // let scoreboard = hits.reduce((allSources, job) => {
-  //   if (job.sources.name in allSources) {
-  //     allSources[job.sources.name]++
-  //   } else {
-  //     allSources[job.sources.name] = 1
-  //   }
-  //   return allSources
-  // }, {})
-
+const createScoreboard = jobs => {
   const scoreboard = {}
 
-  hits.forEach(obj => {
-    obj.sources.forEach(source => {
+  jobs.forEach(job => {
+    job.sources.forEach(source => {
       if (source.name in scoreboard) {
         scoreboard[source.name]++
       } else {
@@ -25,18 +16,12 @@ const createScoreboard = hits => {
   )
   ordered = ordered.length > 10 ? ordered.slice(0, 10) : ordered
 
-  let sortedScoreboard = []
+  const sortedScoreboard = []
   ordered.forEach(source => {
-    sortedScoreboard.push([source, scoreboard[source]])
+    sortedScoreboard.push({ source: source, score: scoreboard[source] })
   })
 
-  let test = []
-
-  sortedScoreboard.forEach(element => {
-    test = [...test, { source: element[0], score: element[1] }]
-  })
-
-  return test
+  return sortedScoreboard
 }
 
 export default createScoreboard

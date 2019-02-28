@@ -60,6 +60,32 @@ function getNumberOfJobsInCounties(jobs) {
   return numberOfJobsInCounties
 }
 
+function countAndSort(jobs, target) {
+  const scoreboard = {}
+
+  jobs.forEach(job => {
+    job.detected_keywords[target].forEach(word => {
+      if (word in scoreboard) {
+        scoreboard[word]++
+      } else {
+        scoreboard[word] = 1
+      }
+    })
+  })
+
+  let ordered = Object.keys(scoreboard).sort(
+    (a, b) => scoreboard[b] - scoreboard[a]
+  )
+  ordered = ordered.length > 10 ? ordered.slice(0, 10) : ordered
+
+  const sortedScoreboard = []
+  ordered.forEach(word => {
+    sortedScoreboard.push({ keyword: word, score: scoreboard[word] })
+  })
+
+  return sortedScoreboard
+}
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case JOBS_REQUEST: {
@@ -78,13 +104,18 @@ export default (state = initialState, action) => {
         action.payload.hits
       )
 
+      const topCompetences = countAndSort(action.payload.hits, 'skills')
+      const topTraits = countAndSort(action.payload.hits, 'traits')
+
       return {
         ...state,
         isFetching: false,
         error: false,
         ...action.payload,
         scoreboard,
-        numberOfJobsInCounties
+        numberOfJobsInCounties,
+        topCompetences,
+        topTraits
       }
     }
 
@@ -107,13 +138,18 @@ export default (state = initialState, action) => {
       const scoreboard = createScoreboard(hits)
       const numberOfJobsInCounties = getNumberOfJobsInCounties(hits)
 
+      const topCompetences = countAndSort(hits, 'skills')
+      const topTraits = countAndSort(hits, 'traits')
+
       return {
         ...state,
         hits,
         processedList,
         // markers,
         scoreboard,
-        numberOfJobsInCounties
+        numberOfJobsInCounties,
+        topCompetences,
+        topTraits
       }
     }
 
