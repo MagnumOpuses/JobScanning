@@ -5,7 +5,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'everywhere',
     text: 'Hela Sverige',
-    value: 'Hela Sverige'
+    value: ''
   },
 
   {
