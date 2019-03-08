@@ -67,6 +67,11 @@ const OrderedList = styled.ol`
     .keyword {
       text-transform: capitalize;
       margin-right: 10rem;
+
+      @media screen and (max-width: ${({ theme }) =>
+          theme.breakpoints.tablet}) {
+        margin-right: 0;
+      }
     }
   }
 `

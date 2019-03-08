@@ -14,7 +14,7 @@
 
 # testing
 /coverage
-mockData.json
+/mocks
 
 # production
 /build

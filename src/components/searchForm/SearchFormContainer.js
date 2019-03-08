@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { searchJobs } from '../../redux/actions/index'
+import { setLocation, searchJobs } from '../../redux/actions/index'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { countiesAndMunicipalities } from '../../utils/searchOptions'
@@ -19,8 +19,19 @@ class SearchFormContainer extends React.Component {
     })
   }
 
+  componentDidUpdate() {
+    if (this.state.location !== this.props.location) {
+      this.setState({ location: this.props.location })
+    }
+  }
+
   handleChange = (event, data) => {
     this.setState({ [data.name]: data.value })
+    console.log(this.state)
+  }
+
+  handleLocationChange = (event, data) => {
+    this.props.setLocation(data.value)
   }
 
   handleSubmit = async event => {
@@ -80,6 +91,7 @@ class SearchFormContainer extends React.Component {
         searchTerm={this.state.searchTerm}
         location={this.state.location}
         handleChange={this.handleChange}
+        handleLocationChange={this.handleLocationChange}
         handleSubmit={this.handleSubmit}
         countiesAndMunicipalities={countiesAndMunicipalities}
         upward={this.props.upward}
@@ -102,6 +114,6 @@ function mapStateToProps({ ads }) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { searchJobs }
+    { setLocation, searchJobs }
   )(SearchFormContainer)
 )

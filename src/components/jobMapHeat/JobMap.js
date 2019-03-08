@@ -4,15 +4,15 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker,
   OverlayView,
   Polygon
 } from 'react-google-maps'
-import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer'
 import JobMapWindow from './components/JobMapWindow'
-import markerSelected from '../../images/markerIcons/markerSelected.png'
-import markerUnselected from '../../images/markerIcons/markerUnselected.png'
-import data from './laen-kustlinjer.geo.json'
+import _ from 'lodash'
+import counties from './laen-kustlinjer.geo.json'
+import municipalities from './kommuner-kustlinjer.geo.json'
+import { countiesAndMunicipalities } from '../../utils/searchOptions'
+import mapStyles from './mapStyles.json'
 
 const getPixelPositionOffset = (width, height) => ({
   x: -(width / 2),
@@ -28,6 +28,8 @@ function getFillColor(number) {
     return '#090'
   } else if (number > 0) {
     return '#050'
+  } else {
+    return '#ddd'
   }
 }
 
@@ -42,46 +44,130 @@ const MyMapComponent = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(props => (
-  <GoogleMap
-    defaultZoom={4.8}
-    defaultCenter={{ lat: 62.173276, lng: 14.942265 }}
-    defaultOptions={{
-      disableDefaultUI: true
-    }}
-  >
-    {data.features.map(feature => {
-      const laen = feature.properties.name
-      const laenPaths = feature.geometry.coordinates.map(array => {
-        return array[0].map(coords => {
-          return { lng: coords[0], lat: coords[1] }
-        })
-      })
-      return (
-        <Polygon
-          key={laen}
-          paths={laenPaths}
-          // onClick={() => console.log(laen)}
-          visible={true}
-          options={{
-            strokeWeight: 2,
-            fillColor: getFillColor(props.numberOfJobsInCounties[laen]),
-            fillOpacity: 0.8
-          }}
-          // onMouseOver={() => console.log('enter', laen)}
-          // onMouseOut={() => console.log('leave', laen)}
-        />
-      )
-    })}
+)(props => {
+  let googleMap = React.createRef()
 
-    {console.log(props.numberOfJobsInCounties)}
-  </GoogleMap>
-))
+  function getZoomAndCenter() {
+    console.log(googleMap.current.getZoom())
+
+    let test = googleMap.current.getCenter().lat()
+    console.log(test)
+  }
+
+  return (
+    <GoogleMap
+      defaultZoom={5}
+      defaultCenter={{ lat: 63, lng: 15 }}
+      center={props.center}
+      zoom={props.zoom}
+      defaultOptions={{
+        disableDefaultUI: true,
+        // scrollwheel: false,
+        styles: mapStyles
+      }}
+      ref={googleMap}
+      onDragEnd={() => getZoomAndCenter()}
+    >
+      {props.showCounties &&
+        counties.features.map(feature => {
+          const county = feature.properties.name
+          const countyPaths = feature.geometry.coordinates.map(array => {
+            return array[0].map(coords => {
+              return { lng: coords[0], lat: coords[1] }
+            })
+          })
+          return (
+            <Polygon
+              key={county}
+              paths={countyPaths}
+              onClick={() =>
+                props.handleClickedCounty(
+                  feature.properties['ref:se:länskod'],
+                  feature.properties.name,
+                  countyPaths
+                )
+              }
+              visible={true}
+              options={{
+                strokeColor: '#fff',
+                strokeWeight: 1.5,
+                fillColor: getFillColor(props.numberOfJobsInCounties[county]),
+                fillOpacity: 1
+              }}
+              // onMouseOver={() => console.log('enter', county)}
+              // onMouseOut={() => console.log('leave', county)}
+            />
+          )
+        })}
+      {props.showMunicipalities && props.municipalitiesPolygons}
+    </GoogleMap>
+  )
+})
 
 class JobMap extends React.Component {
+  state = {
+    center: { lat: 63, lng: 15 },
+    zoom: 5,
+    showCounties: true,
+    showMunicipalities: false,
+    municipalitiesPaths: []
+  }
+
+  handleClickedCounty = (countyCode, countyName, countyPaths) => {
+    this.props.handleLocationChange(countyName)
+
+    const flattenedCountyPaths = countyPaths.flat()
+
+    const averageCoords = {
+      lng: _.sumBy(flattenedCountyPaths, 'lng') / flattenedCountyPaths.length,
+      lat: _.sumBy(flattenedCountyPaths, 'lat') / flattenedCountyPaths.length
+    }
+
+    const filteredMunicipalities = municipalities.features.filter(
+      municipality =>
+        municipality.properties['ref:se:kommun:kod'].substring(0, 2) ===
+        countyCode
+    )
+
+    console.log(filteredMunicipalities)
+
+    const municipalitiesPolygons = filteredMunicipalities.map(municipality => {
+      const municipalityName = municipality.properties.short_name
+
+      const municipalitiesPaths = municipality.geometry.coordinates.map(
+        array => {
+          return array[0].map(coords => {
+            return { lng: coords[0], lat: coords[1] }
+          })
+        }
+      )
+      return (
+        <Polygon
+          key={municipalityName}
+          paths={municipalitiesPaths}
+          onClick={() => this.props.handleLocationChange(municipalityName)}
+          visible={true}
+          options={{
+            strokeColor: '#fff',
+            strokeWeight: 1.5,
+            fillColor: '#ddd',
+            fillOpacity: 1
+          }}
+        />
+      )
+    })
+
+    this.setState({
+      center: averageCoords,
+      zoom: 7,
+      showCounties: false,
+      showMunicipalities: true,
+      municipalitiesPolygons: municipalitiesPolygons
+    })
+  }
+
   render() {
     const {
-      markers,
       selectedJob,
       processedList,
       toggleInfoWindow,
@@ -89,17 +175,35 @@ class JobMap extends React.Component {
       numberOfJobsInCounties
     } = this.props
 
-    // console.log(numberOfJobsInCounties)
-
     return (
-      <MyMapComponent
-        markers={markers}
-        selectedJob={selectedJob}
-        processedList={processedList}
-        toggleInfoWindow={toggleInfoWindow}
-        desktop={desktop}
-        numberOfJobsInCounties={numberOfJobsInCounties}
-      />
+      <>
+        <MyMapComponent
+          selectedJob={selectedJob}
+          processedList={processedList}
+          toggleInfoWindow={toggleInfoWindow}
+          desktop={desktop}
+          numberOfJobsInCounties={numberOfJobsInCounties}
+          center={this.state.center}
+          zoom={this.state.zoom}
+          handleClickedCounty={this.handleClickedCounty}
+          handleClickedMunicipality={this.handleClickedMunicipality}
+          showCounties={this.state.showCounties}
+          showMunicipalities={this.state.showMunicipalities}
+          municipalitiesPolygons={this.state.municipalitiesPolygons}
+        />
+        <button
+          onClick={() =>
+            this.setState({
+              showCounties: true,
+              showMunicipalities: false,
+              center: { lat: 63, lng: 15 },
+              zoom: 5
+            })
+          }
+        >
+          ZOOMA UT
+        </button>
+      </>
     )
   }
 }

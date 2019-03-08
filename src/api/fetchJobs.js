@@ -1,16 +1,17 @@
 import axios from 'axios'
 
-export default async (queryString, offset) => {
+export default async (q, place, offset) => {
   try {
     return await axios({
       method: 'get',
       baseURL: process.env.REACT_APP_DEV_API_URL,
       url: '/search',
-      headers: { 'api-key': process.env.REACT_APP_DEV_API_KEY },
+      // headers: { 'api-key': process.env.REACT_APP_DEV_API_KEY },
       params: {
-        offset: offset,
-        limit: 20,
-        q: queryString
+        q,
+        place,
+        offset,
+        limit: 20
       }
     })
   } catch (error) {

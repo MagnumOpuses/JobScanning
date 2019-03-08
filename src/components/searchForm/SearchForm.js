@@ -11,9 +11,12 @@ const SearchForm = ({
   searchTerm,
   location,
   handleChange,
+  handleLocationChange,
   upward,
   getCurrentPosition
 }) => {
+  console.log(location)
+
   return (
     <CustomForm onSubmit={handleSubmit} className={isDesktop && 'isDesktop'}>
       <Form.Field required={true}>
@@ -34,7 +37,7 @@ const SearchForm = ({
           <StyledDropdown
             name="location"
             value={location}
-            onChange={handleChange}
+            onChange={handleLocationChange}
             placeholder="Ange plats"
             search
             selection

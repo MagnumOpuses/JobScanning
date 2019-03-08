@@ -11,7 +11,6 @@ const ResultStats = ({ total, processedList, sources }) => {
         {'\n'}
         <BoldText>{sources}</BoldText> webbplatser.{'\n'}
       </P>
-      <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P>
     </>
   )
 }
@@ -25,7 +24,7 @@ const BoldText = styled.span`
 
 const P = styled.p`
   margin: 0;
-  padding: 2rem 0;
+  padding: 0 0 2rem;
   align-self: center;
   text-align: center;
   font-size: 20px;

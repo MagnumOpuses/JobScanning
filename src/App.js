@@ -82,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={{ ...theme, breakpoints }}>
         <AppContainer>
           <GlobalStyle />
           <Switch>

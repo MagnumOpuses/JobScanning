@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 const LogoPlaceholder = ({ employer, padding }) => {
   if (employer.logoUrl) {
-    return <StyledImg src={employer.logoUrl} padding={padding} />
+    return (
+      <StyledImg src={employer.logoUrl} alt={employer.name} padding={padding} />
+    )
   } else if (employer.name) {
     return (
       <StyledH3>

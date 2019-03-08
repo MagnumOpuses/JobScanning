@@ -1,0 +1,937 @@
+{
+  "hits": [
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        },
+        "url": "https://se.indeed.com/visajobb?jk=7ecba7bb0b4ac00c"
+      },
+      "content": "Brath växer ständigt och nya mål skapar nya utmaningar. Vi söker därför en utvecklare till vårt kontor i Örnsköldsvik. Om du har PHP och MySQL i ryggsäcken och kanske en del Apache-vana så skulle vi vilja berätta varför du ska höra av dig till oss.\nBrath är ett av regionens allra snabbast växande företag, vi har ökat från 4 till 18 personer på ungefär ett år. Vi är i absoluta framkant när det gäller sökmotoroptimering, som är ryggraden i företaget. Vi arbetar idag främst med sökmotoroptimering och pay per click men har en hel del andra ägg i korgen, en trädgårdsbutik bland annat. Vi har hög teknisk kompetens i företaget men saknar någon som kan ansvara för all den utveckling vi behöver, både back end, särskilt för ett större projekt vi arbetar nu men även en del front end i mindre satsningar. Om det låter som något som intresserar kanske vi kan passa på att berätta att vi är övertygade om att vi har de bästa villkoren för vår personal, 6 timmars arbetsdag är inte kärnan, det är bara ett symptom av hur vi ser på vår personal.\nMeriterande om du kan\nPHP\nMySQL\nApache och server\nCSS\nWordPress\nDet är viktigt att du vill ta ansvar för hela de projekt vi driver, framför allt i de inhouse-projekt där vi utvecklar vårt eget dagliga arbete. Vi ger gärna fria tyglar om du vill ha det.\nLåter det intressant? Kontakta oss för mer information på job@brath.se\nFler lediga jobb hos Brath.\nMagnus Bråth",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "php",
+          "mysql"
+        ],
+        "traits": []
+      },
+      "employer": {
+        "name": "M Brath AB"
+      },
+      "geolocation": {
+        "lat": null,
+        "lng": null
+      },
+      "header": "Utvecklare",
+      "id": "55f2fc5a-ef99-410f-8e89-c19913305338",
+      "location": "Ornsköldsvik",
+      "markup": "<document><header>Brath växer ständigt och nya mål skapar nya utmaningar. Vi söker därför en utvecklare till vårt kontor i Örnsköldsvik. Om du har PHP och MySQL i ryggsäcken och kanske en del Apache-vana så skulle vi vilja berätta varför du ska höra av dig till oss.</header><paragraph>\nBrath är ett av regionens allra snabbast växande företag, vi har ökat från 4 till 18 personer på ungefär ett år. Vi är i absoluta framkant när det gäller sökmotoroptimering, som är ryggraden i företaget. Vi arbetar idag främst med sökmotoroptimering och pay per click men har en hel del andra ägg i korgen, en trädgårdsbutik bland annat. Vi har hög teknisk kompetens i företaget men saknar någon som kan ansvara för all den utveckling vi behöver, både back end, särskilt för ett större projekt vi arbetar nu men även en del front end i mindre satsningar. Om det låter som något som intresserar kanske vi kan passa på att berätta att vi är övertygade om att vi har de bästa villkoren för vår personal, 6 timmars arbetsdag är inte kärnan, det är bara ett symptom av hur vi ser på vår personal.</paragraph><header>Meriterande om du kan</header><list><item>PHP</item>\n<item>MySQL</item>\n<item>Apache och server</item>\n<item>CSS</item>\n<item>WordPress</item>\n</list><paragraph>Det är viktigt att du vill ta ansvar för hela de projekt vi driver, framför allt i de inhouse-projekt där vi utvecklar vårt eget dagliga arbete. Vi ger gärna fria tyglar om du vill ha det.</paragraph><paragraph>\nLåter det intressant? Kontakta oss för mer information på job@brath.se</paragraph><paragraph>\nFler lediga jobb hos Brath.</paragraph><header>Magnus Bråth</header></document>",
+      "sources": [
+        {
+          "id": "55f2fc5a-ef99-410f-8e89-c19913305338",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=7ecba7bb0b4ac00c"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vi är ständigt på jakt efter rätt person till rätt plats. Projekten på Weightpoint handlar om allt från omfattande digital strategier till att vara med och utveckla vår egen produkt: Decor. Kunderna finns både i Sverige och utomlands. Vi sitter i ljusa, luftiga lokaler högst upp i huset på Kungsgatan 19.\nÄr du någon vi behöver? Skicka en spontanansökan till: jobb@weightpoint.se\nJust nu söker vi:\nUtvecklare\nVi söker en utvecklare som brinner för problemlösning, kommunikation och som har rätt inställning till kod. Vi tycker det är viktigare att brinna för uppgiften och lära längs vägen än att hålla sig i sin \"comfort zone\".\nKrav:\nGoda kunskaper i engelska i tal och skrift\nHTML5, CSS3 och JS\nGoda kunskaper inom olika CMS – WordPress, Drupal etc.\nIntresserad av och följer utvecklingen kring sk. Responsiv design.\nKunskaper inom Photoshop, Illustrator etc.\nEtt eller flera programmeringsspråk, gärna PHP eller Java.\nBonus\nEtt grafiskt intresse\nErfarenhet inom e-handel\nErfarenhet av GIT\nSå ansöker du:\nSkicka din ansökan, cv och ev. portfolio till jobb@weightpoint.se. Skriv i ämnesraden vilket jobb du söker.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "html5",
+          "problemlösning",
+          "kommunikation",
+          "css3",
+          "engelska",
+          "e-handel",
+          "git",
+          "adobe illustrator",
+          "php",
+          "adobe photoshop",
+          "programmeringsspråk",
+          "cms",
+          "java",
+          "drupal",
+          "wordpress"
+        ],
+        "traits": []
+      },
+      "employer": {
+        "name": "Weightpoint AB"
+      },
+      "geolocation": {
+        "lat": "11.97456",
+        "lng": "57.70887"
+      },
+      "header": "Utvecklare",
+      "id": "a4713233-9d4d-479e-9aee-8f47f69ab1d1",
+      "location": "Göteborg",
+      "markup": "<document><paragraph>Vi är ständigt på jakt efter rätt person till rätt plats. Projekten på Weightpoint handlar om allt från omfattande digital strategier till att vara med och utveckla vår egen produkt: Decor. Kunderna finns både i Sverige och utomlands. Vi sitter i ljusa, luftiga lokaler högst upp i huset på Kungsgatan 19.</paragraph><paragraph>\nÄr du någon vi behöver? Skicka en spontanansökan till: jobb@weightpoint.se</paragraph><paragraph>\nJust nu söker vi:</paragraph><header>Utvecklare</header><paragraph>\nVi söker en utvecklare som brinner för problemlösning, kommunikation och som har rätt inställning till kod. Vi tycker det är viktigare att brinna för uppgiften och lära längs vägen än att hålla sig i sin \"comfort zone\".</paragraph><paragraph>Krav:</paragraph><list><item>Goda kunskaper i engelska i tal och skrift</item><item>HTML5, CSS3 och JS</item><item>Goda kunskaper inom olika CMS – WordPress, Drupal etc.</item><item>Intresserad av och följer utvecklingen kring sk. Responsiv design.</item><item>Kunskaper inom Photoshop, Illustrator etc.</item><item>Ett eller flera programmeringsspråk, gärna PHP eller Java.</item></list><paragraph>Bonus</paragraph><list><item>Ett grafiskt intresse</item><item>Erfarenhet inom e-handel</item><item>Erfarenhet av GIT</item></list><header>Så ansöker du:</header><paragraph>\nSkicka din ansökan, cv och ev. portfolio till jobb@weightpoint.se. Skriv i ämnesraden vilket jobb du söker.</paragraph></document>",
+      "sources": [
+        {
+          "id": "a4713233-9d4d-479e-9aee-8f47f69ab1d1",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=72a3614cf9f473ff"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Drivna Utvecklare inom e-handel till Designonline i Kalmar sökes.\nOm tjänsten\nVi söker nu dig som vill bli del av ett härligt gäng, där vi blandar skratt och hög kvalité för att leverera det bästa till våra kunder. Att jobba som utvecklare hos oss passar dig som gillar variation, uppskattar problemlösning och vill utvecklas i din profession.\nSom utvecklare kommer du att tillsammans med dina kollegor ansvara för utveckling av företagets system och tekniska processer. Arbetsplatsen präglas av drivkraft och stort fokus på digitala marknadsplattformar och användarvänliga system.\nMed ett intresse för programmering och ett naturligt engagemang för att delta i teamet både på ett personligt och yrkesmässigt plan bidrar du till vår affärsmässiga utveckling som organisation. Som utvecklare är du delaktig i olika projekt som syftar till att skapa effektiva system och processer, där det ges stort utrymme att komma med egna idéer.\nHos Designonline får du jobba i site-teamet som utvecklar e-handelsplattformen. Du kommer bygga tjänster och funktioner både till besökare och kunder men även verktyg som används av anställda i bolaget. Du får vara med i hela utvecklingsprocessen, från vision och planering till deploy i produktion. Tillsammans med teamet levererar du plattformen som hela bolaget bygger på.\nPlaceringsort är Kalmar.\nKvalifikationer\nVi tror att du har minst 4 års erfarenhet av att ha arbetat med IT i någon form samt erfarenhet av att jobba i större projekt sen tidigare. Dina kompetenser finns bland annat inom .NET MVC, Episerver Commerce, SQL, CSS och Javascript. Har du erfarenhet av Cloudhosting, Serverless och komplexa integrationsflöden är det meriterande.\nSom person är du lösningsorienterad och trivs i en roll med mycket ansvar. Du är driven och vågar ta egna initiativ. Du är strukturerad och kan planera och organisera arbetet tillsammans med dina kollegor, vilket kräver en god samarbetsförmåga och är att du är lyhörd.\nTjänsten kräver goda kunskaper i svenska och engelska i tal och skrift.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "programmering",
+          "engelska",
+          "svenska",
+          "css",
+          "mvc",
+          "sql",
+          "episerver commerce",
+          "javascript",
+          "cloudhosting"
+        ],
+        "traits": [
+          "driven",
+          "lyhörd",
+          "samarbetsförmåga",
+          "strukturerad",
+          "lösningsorienterad"
+        ]
+      },
+      "employer": {
+        "name": "SCAND. DESIGN ONLINE AB"
+      },
+      "geolocation": {
+        "lat": "16.35678",
+        "lng": "56.663445"
+      },
+      "header": "Utvecklare",
+      "id": "3ad7e092-9cc3-4654-95a8-f267464c34a8",
+      "location": "Kalmar",
+      "markup": "<document><paragraph>Drivna Utvecklare inom e-handel till Designonline i Kalmar sökes.</paragraph><paragraph>Om tjänsten</paragraph><paragraph>Vi söker nu dig som vill bli del av ett härligt gäng, där vi blandar skratt och hög kvalité för att leverera det bästa till våra kunder. Att jobba som utvecklare hos oss passar dig som gillar variation, uppskattar problemlösning och vill utvecklas i din profession.</paragraph><paragraph>Som utvecklare kommer du att tillsammans med dina kollegor ansvara för utveckling av företagets system och tekniska processer. Arbetsplatsen präglas av drivkraft och stort fokus på digitala marknadsplattformar och användarvänliga system.</paragraph><paragraph>Med ett intresse för programmering och ett naturligt engagemang för att delta i teamet både på ett personligt och yrkesmässigt plan bidrar du till vår affärsmässiga utveckling som organisation. Som utvecklare är du delaktig i olika projekt som syftar till att skapa effektiva system och processer, där det ges stort utrymme att komma med egna idéer.</paragraph><paragraph>Hos Designonline får du jobba i site-teamet som utvecklar e-handelsplattformen. Du kommer bygga tjänster och funktioner både till besökare och kunder men även verktyg som används av anställda i bolaget. Du får vara med i hela utvecklingsprocessen, från vision och planering till deploy i produktion. Tillsammans med teamet levererar du plattformen som hela bolaget bygger på.</paragraph><paragraph>Placeringsort är Kalmar.</paragraph><paragraph>Kvalifikationer</paragraph><paragraph>Vi tror att du har minst 4 års erfarenhet av att ha arbetat med IT i någon form samt erfarenhet av att jobba i större projekt sen tidigare. Dina kompetenser finns bland annat inom .NET MVC, Episerver Commerce, SQL, CSS och Javascript. Har du erfarenhet av Cloudhosting, Serverless och komplexa integrationsflöden är det meriterande.</paragraph><paragraph>Som person är du lösningsorienterad och trivs i en roll med mycket ansvar. Du är driven och vågar ta egna initiativ. Du är strukturerad och kan planera och organisera arbetet tillsammans med dina kollegor, vilket kräver en god samarbetsförmåga och är att du är lyhörd.</paragraph><paragraph>Tjänsten kräver goda kunskaper i svenska och engelska i tal och skrift.</paragraph></document>",
+      "sources": [
+        {
+          "id": "3ad7e092-9cc3-4654-95a8-f267464c34a8",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=210edc8ae065e8db"
+        }
+      ]
+    },
+    {
+      "application": {
+        "deadline": "2019-03-04T23:00:00+00:00",
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Utvecklare\nVill du arbeta som utvecklare i Solna i sommar?\nSommarjobb på SKB är en möjlighet för dig att dels få en bild av hur det är att arbeta inom ett industriföretag samtidigt som det bidrar till att ge dig värdefull arbetslivserfarenhet.\nSKB söker nu en utvecklare som vill vara med i en vardag där arbetet i stort handlar om att beräkna radionuklidinventariet i låg- och medelaktivt avfall.  Här får du möjlighet att bidra till arbetet och samla praktisk erfarenhet i datahantering och programmering. Arbetsplatsen ger dig även erfarenhet från arbete med radiofysik/radiokemi. Arbetet kommer att pågå ca 5 veckor under perioden v.23-29 och/eller v.33-35.\nArbetsuppgifter:\nUtveckla en enhetlig databas där innehållet i dagsläget förekommer i en mängd olika former och utdrag från flera olika andra databaser. Eventuellt tillkommer viss analys av data.\nVi söker dig som:\nStuderar en eftergymnasial utbildning och innehar en kandidatexamen eller motsvarande kunskapsnivå. Du har läst kurser inom matematik, fysik, kemi och programmering. Vidare är det krav på tidigare erfarenhet av programmering. Bekväm både i svenska och engelska i såväl tal som skrift.\nMeriterande kurser är teknisk fysik, kemiteknik, kärnkraftsteknik eller liknande. Även meriterande med erfarenhet av SQL-programmering.\nSom person är du noggrann och lösningsorienterad.\nAnsökan:\nSkicka in CV och personligt brev genom att ansöka nedan senast den 4 mars 2019.\nFör ytterligare information om tjänsten är du välkommen att kontakta rekryterande chef Ella Ekeroth via ella.ekeroth@skb.se. För information om rekryteringsprocessen kontaktar du rekryterare Ellen Schagerström via sommarjobb@vattenfall.com.\nVi ser fram emot din ansökan.\nDet kan förekomma att säkerhetsprövning kommer att genomföras innan anställning. Säkerhetsprövningen omfattar registerkontroll och säkerhetsintervju i enlighet med säkerhetsskyddslagen. Utöver säkerhetsprövning görs drogtest.\nOm SKB:\nSvensk Kärnbränslehantering AB, SKB, har uppdraget att ta hand om det radioaktiva avfallet från Sveriges kärnkraftverk och skydda människor och miljön, nu och i framtiden. Våra ägare är de svenska kärnkraftsföretagen. Arbetet står under ständig granskning av myndigheter och experter. I vårt system ingår bland annat slutförvaring av radioaktivt driftavfall samt mellanlagring av det använda bränslet. För att uppnå säkerhet på lång sikt behöver systemet kompletteras med ett slutförvar för använt kärnbränsle. Därför har SKB sökt tillstånd för att få bygga ett kärnbränsleförvar i Forsmark i Östhammars kommun. Detta blir ett av de största infrastrukturprojekten i Sverige.\nSKB är ett företag med bred kompetens. Här finns tekniker, naturvetare, ekonomer, jurister, IT-specialister, kommunikatörer och samhällsvetare. I slutet av 2017 var vi cirka 500 anställda i Forsmark, Stockholm och Oskarshamn. Många av våra anställda arbetar med den dagliga driften av våra anläggningar. Läs mer på www.skb.se.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare",
+          "kemist"
+        ],
+        "skills": [
+          "radiokemi",
+          "radiofysik",
+          "svenska",
+          "engelska",
+          "kemi",
+          "matematik",
+          "datahantering",
+          "programmering",
+          "fysik",
+          "teknisk fysik",
+          "kärnkraftsteknologi",
+          "sql"
+        ],
+        "traits": [
+          "lösningsorienterad",
+          "noggrann"
+        ]
+      },
+      "employer": {
+        "logoUrl": "https://www.itjobb.se//assets/uploads/company/242/images/180508084055_274885.jpg",
+        "name": "Vattenfall AB"
+      },
+      "geolocation": {
+        "lat": null,
+        "lng": null
+      },
+      "header": "Utvecklare",
+      "id": "28b0f715-c2b3-400b-a9b0-43054c40b990",
+      "location": "Stockholms län",
+      "markup": "<document><header>Utvecklare</header><paragraph>Vill du arbeta som utvecklare i Solna i sommar?</paragraph><paragraph>Sommarjobb på SKB är en möjlighet för dig att dels få en bild av hur det är att arbeta inom ett industriföretag samtidigt som det bidrar till att ge dig värdefull arbetslivserfarenhet.</paragraph><paragraph>SKB söker nu en utvecklare som vill vara med i en vardag där arbetet i stort handlar om att beräkna radionuklidinventariet i låg- och medelaktivt avfall.  Här får du möjlighet att bidra till arbetet och samla praktisk erfarenhet i datahantering och programmering. Arbetsplatsen ger dig även erfarenhet från arbete med radiofysik/radiokemi. Arbetet kommer att pågå ca 5 veckor under perioden v.23-29 och/eller v.33-35.</paragraph><header>Arbetsuppgifter:</header><paragraph>&#13;\nUtveckla en enhetlig databas där innehållet i dagsläget förekommer i en mängd olika former och utdrag från flera olika andra databaser. Eventuellt tillkommer viss analys av data.  &#13;\n </paragraph><header>Vi söker dig som:</header><paragraph>&#13;\nStuderar en eftergymnasial utbildning och innehar en kandidatexamen eller motsvarande kunskapsnivå. Du har läst kurser inom matematik, fysik, kemi och programmering. Vidare är det krav på tidigare erfarenhet av programmering. Bekväm både i svenska och engelska i såväl tal som skrift.</paragraph><paragraph>Meriterande kurser är teknisk fysik, kemiteknik, kärnkraftsteknik eller liknande. Även meriterande med erfarenhet av SQL-programmering.</paragraph><paragraph>Som person är du noggrann och lösningsorienterad.</paragraph><header>Ansökan:</header><paragraph>&#13;\nSkicka in CV och personligt brev genom att ansöka nedan senast den 4 mars 2019. &#13;\nFör ytterligare information om tjänsten är du välkommen att kontakta rekryterande chef Ella Ekeroth via ella.ekeroth@skb.se. För information om rekryteringsprocessen kontaktar du rekryterare Ellen Schagerström via sommarjobb@vattenfall.com.</paragraph><paragraph>Vi ser fram emot din ansökan.</paragraph><paragraph>Det kan förekomma att säkerhetsprövning kommer att genomföras innan anställning. Säkerhetsprövningen omfattar registerkontroll och säkerhetsintervju i enlighet med säkerhetsskyddslagen. Utöver säkerhetsprövning görs drogtest.</paragraph><header>Om SKB:</header><paragraph>&#13;\nSvensk Kärnbränslehantering AB, SKB, har uppdraget att ta hand om det radioaktiva avfallet från Sveriges kärnkraftverk och skydda människor och miljön, nu och i framtiden. Våra ägare är de svenska kärnkraftsföretagen. Arbetet står under ständig granskning av myndigheter och experter. I vårt system ingår bland annat slutförvaring av radioaktivt driftavfall samt mellanlagring av det använda bränslet. För att uppnå säkerhet på lång sikt behöver systemet kompletteras med ett slutförvar för använt kärnbränsle. Därför har SKB sökt tillstånd för att få bygga ett kärnbränsleförvar i Forsmark i Östhammars kommun. Detta blir ett av de största infrastrukturprojekten i Sverige.</paragraph><paragraph>SKB är ett företag med bred kompetens. Här finns tekniker, naturvetare, ekonomer, jurister, IT-specialister, kommunikatörer och samhällsvetare. I slutet av 2017 var vi cirka 500 anställda i Forsmark, Stockholm och Oskarshamn. Många av våra anställda arbetar med den dagliga driften av våra anläggningar. Läs mer på www.skb.se.</paragraph></document>",
+      "sources": [
+        {
+          "id": "28b0f715-c2b3-400b-a9b0-43054c40b990",
+          "name": "Itjobb",
+          "url": "https://www.teknikjobb.se/annons/utvecklare-2"
+        },
+        {
+          "id": "08dc37e5-d60c-487d-bd9b-d98c817bf8bc",
+          "name": "Teknikjobb",
+          "url": "https://www.teknikjobb.se/annons/utvecklare-2"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        },
+        "url": "https://se.indeed.com/visajobb?jk=3f5d4737d0d7c3b1"
+      },
+      "content": "Drivna Utvecklare inom e-handel till Designonline i Kalmar sökes.\nOm tjänsten\nVi söker nu dig som vill bli del av ett härligt gäng, där vi blandar skratt och hög kvalité för att leverera det bästa till våra kunder. Att jobba som utvecklare hos oss passar dig som gillar variation, uppskattar problemlösning och vill utvecklas i din profession.\nSom utvecklare kommer du att tillsammans med dina kollegor ansvara för utveckling av företagets system och tekniska processer. Arbetsplatsen präglas av drivkraft och stort fokus på digitala marknadsplattformar och användarvänliga system.\nMed ett intresse för programmering och ett naturligt engagemang för att delta i teamet både på ett personligt och yrkesmässigt plan bidrar du till vår affärsmässiga utveckling som organisation. Som utvecklare är du delaktig i olika projekt som syftar till att skapa effektiva system och processer, där det ges stort utrymme att komma med egna idéer.\nHos Designonline får du jobba i site-teamet som utvecklar e-handelsplattformen. Du kommer bygga tjänster och funktioner både till besökare och kunder men även verktyg som används av anställda i bolaget. Du får vara med i hela utvecklingsprocessen, från vision och planering till deploy i produktion. Tillsammans med teamet levererar du plattformen som hela bolaget bygger på.\nPlaceringsort är Kalmar.\nKvalifikationer\nVi tror att du har minst 4 års erfarenhet av att ha arbetat med IT i någon form samt erfarenhet av att jobba i större projekt sen tidigare. Dina kompetenser finns bland annat inom .NET MVC, Episerver Commerce, SQL, CSS och Javascript. Har du erfarenhet av Cloudhosting, Serverless och komplexa integrationsflöden är det meriterande.\nSom person är du lösningsorienterad och trivs i en roll med mycket ansvar. Du är driven och vågar ta egna initiativ. Du är strukturerad och kan planera och organisera arbetet tillsammans med dina kollegor, vilket kräver en god samarbetsförmåga och är att du är lyhörd.\nTjänsten kräver goda kunskaper i svenska och engelska i tal och skrift.\nOm arbetsgivaren\nDesignonline startades 2002 och har idag kunder i fler än sjuttio länder. Våra webbplatser administreras med en toppmodern E-handelsplattform byggd för att växa med all tänkbar funktionalitet i många språk och med avancerad logistik. Vår ambition är inte att presentera allt som finns på marknaden, utan ett urval av det allra bästa. Därför lägger vi ett stort arbete på att finna produkter som ger det lilla extra till ditt hem.\nLäs mer på www.designoline.se\nHur du ansöker\nI denna rekrytering samarbetar Designonline med Telin Rekrytering &amp; Konsult och du söker tjänsten via www.telinrekrytering.se\nVi arbetar med löpande urval så vänta inte med att skicka in din ansökan.\nVi tar ej emot ansökningar via e-post på grund av den nya lagstiftningen GDPR.\nFör att din ansökan skall vara giltig, vänligen registrera dig och ansök via vår hemsida.\nHar du frågor eller vill veta mer är du välkommen att kontakta ansvarig rekryterare Linda Petersson på telefon 070-377 45 74 eller e-post linda@telinrekrytering.se\nVälkommen med din ansökan.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "programmering",
+          "engelska",
+          "svenska",
+          "css",
+          "mvc",
+          "sql",
+          "episerver commerce",
+          "javascript",
+          "cloudhosting"
+        ],
+        "traits": [
+          "driven",
+          "lyhörd",
+          "samarbetsförmåga",
+          "strukturerad",
+          "lösningsorienterad"
+        ]
+      },
+      "employer": {
+        "name": "Design Online"
+      },
+      "geolocation": {
+        "lat": "16.35678",
+        "lng": "56.663445"
+      },
+      "header": "Utvecklare",
+      "id": "ef0d1157-1861-4e6c-a449-f3bbbd1a5856",
+      "location": "Kalmar",
+      "markup": "<document><header>Drivna Utvecklare inom e-handel till Designonline i Kalmar sökes.</header><header>Om tjänsten</header><paragraph>Vi söker nu dig som vill bli del av ett härligt gäng, där vi blandar skratt och hög kvalité för att leverera det bästa till våra kunder. Att jobba som utvecklare hos oss passar dig som gillar variation, uppskattar problemlösning och vill utvecklas i din profession.</paragraph><paragraph>Som utvecklare kommer du att tillsammans med dina kollegor ansvara för utveckling av företagets system och tekniska processer. Arbetsplatsen präglas av drivkraft och stort fokus på digitala marknadsplattformar och användarvänliga system.</paragraph><paragraph>Med ett intresse för programmering och ett naturligt engagemang för att delta i teamet både på ett personligt och yrkesmässigt plan bidrar du till vår affärsmässiga utveckling som organisation. Som utvecklare är du delaktig i olika projekt som syftar till att skapa effektiva system och processer, där det ges stort utrymme att komma med egna idéer.</paragraph><paragraph>Hos Designonline får du jobba i site-teamet som utvecklar e-handelsplattformen. Du kommer bygga tjänster och funktioner både till besökare och kunder men även verktyg som används av anställda i bolaget. Du får vara med i hela utvecklingsprocessen, från vision och planering till deploy i produktion. Tillsammans med teamet levererar du plattformen som hela bolaget bygger på.</paragraph><paragraph>Placeringsort är Kalmar.</paragraph><header>Kvalifikationer</header><paragraph>Vi tror att du har minst 4 års erfarenhet av att ha arbetat med IT i någon form samt erfarenhet av att jobba i större projekt sen tidigare. Dina kompetenser finns bland annat inom .NET MVC, Episerver Commerce, SQL, CSS och Javascript. Har du erfarenhet av Cloudhosting, Serverless och komplexa integrationsflöden är det meriterande.</paragraph><paragraph>Som person är du lösningsorienterad och trivs i en roll med mycket ansvar. Du är driven och vågar ta egna initiativ. Du är strukturerad och kan planera och organisera arbetet tillsammans med dina kollegor, vilket kräver en god samarbetsförmåga och är att du är lyhörd.</paragraph><paragraph>Tjänsten kräver goda kunskaper i svenska och engelska i tal och skrift.</paragraph><header>Om arbetsgivaren</header><paragraph>Designonline startades 2002 och har idag kunder i fler än sjuttio länder. Våra webbplatser administreras med en toppmodern E-handelsplattform byggd för att växa med all tänkbar funktionalitet i många språk och med avancerad logistik. Vår ambition är inte att presentera allt som finns på marknaden, utan ett urval av det allra bästa. Därför lägger vi ett stort arbete på att finna produkter som ger det lilla extra till ditt hem.</paragraph><paragraph>Läs mer på www.designoline.se</paragraph><header>Hur du ansöker</header><paragraph>I denna rekrytering samarbetar Designonline med Telin Rekrytering &amp;amp; Konsult och du söker tjänsten via www.telinrekrytering.se</paragraph><paragraph>Vi arbetar med löpande urval så vänta inte med att skicka in din ansökan.</paragraph><paragraph>Vi tar ej emot ansökningar via e-post på grund av den nya lagstiftningen GDPR.</paragraph><paragraph>För att din ansökan skall vara giltig, vänligen registrera dig och ansök via vår hemsida.</paragraph><paragraph>Har du frågor eller vill veta mer är du välkommen att kontakta ansvarig rekryterare Linda Petersson på telefon 070-377 45 74 eller e-post linda@telinrekrytering.se</paragraph><header>Välkommen med din ansökan.</header></document>",
+      "sources": [
+        {
+          "id": "ef0d1157-1861-4e6c-a449-f3bbbd1a5856",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=3f5d4737d0d7c3b1"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        },
+        "url": "https://se.indeed.com/visajobb?jk=a376980f70a5306a"
+      },
+      "content": "Brath växer ständigt och nya mål skapar nya utmaningar. Vi söker därför en utvecklare till vårt kontor i Örnsköldsvik. Om du har PHP och MySQL i ryggsäcken och kanske en del Apache-vana så skulle vi vilja berätta varför du ska höra av dig till oss.\nBrath är ett av regionens allra snabbast växande företag, vi har ökat från 4 till 18 personer på ungefär ett år. Vi är i absoluta framkant när det gäller sökmotoroptimering, som är ryggraden i företaget. Vi arbetar idag främst med sökmotoroptimering och pay per click. Vi har hög teknisk kompetens i företaget men saknar någon som kan ansvara för all den utveckling vi behöver, både back end, särskilt för ett större projekt vi arbetar nu men även en del front end i mindre satsningar. Om det låter som något som intresserar kanske vi kan passa på att berätta att vi är övertygade om att vi har de bästa villkoren för vår personal, 6 timmars arbetsdag är inte kärnan, det är bara ett symptom av hur vi ser på vår personal.\nMeriterande om du kan\nPHP\nMySQL\nApache och server\nCSS\nWordPress\nDet är viktigt att du vill ta ansvar för hela de projekt vi driver, framför allt i de inhouse-projekt där vi utvecklar vårt eget dagliga arbete. Vi ger gärna fria tyglar om du vill ha det.\nLåter det intressant? Kontakta oss för mer information på job@brath.se\nFler lediga jobb hos Brath.\nMagnus Bråth",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "php",
+          "mysql"
+        ],
+        "traits": []
+      },
+      "employer": {
+        "name": "M Brath AB"
+      },
+      "geolocation": {
+        "lat": null,
+        "lng": null
+      },
+      "header": "Utvecklare",
+      "id": "817b2dbc-38e8-4c95-bd15-8e80328b1119",
+      "location": "Ornsköldsvik",
+      "markup": "<document><header>Brath växer ständigt och nya mål skapar nya utmaningar. Vi söker därför en utvecklare till vårt kontor i Örnsköldsvik. Om du har PHP och MySQL i ryggsäcken och kanske en del Apache-vana så skulle vi vilja berätta varför du ska höra av dig till oss.</header><paragraph>\nBrath är ett av regionens allra snabbast växande företag, vi har ökat från 4 till 18 personer på ungefär ett år. Vi är i absoluta framkant när det gäller sökmotoroptimering, som är ryggraden i företaget. Vi arbetar idag främst med sökmotoroptimering och pay per click. Vi har hög teknisk kompetens i företaget men saknar någon som kan ansvara för all den utveckling vi behöver, både back end, särskilt för ett större projekt vi arbetar nu men även en del front end i mindre satsningar. Om det låter som något som intresserar kanske vi kan passa på att berätta att vi är övertygade om att vi har de bästa villkoren för vår personal, 6 timmars arbetsdag är inte kärnan, det är bara ett symptom av hur vi ser på vår personal.</paragraph><header>Meriterande om du kan</header><list><item>PHP</item>\n<item>MySQL</item>\n<item>Apache och server</item>\n<item>CSS</item>\n<item>WordPress</item>\n</list><paragraph>Det är viktigt att du vill ta ansvar för hela de projekt vi driver, framför allt i de inhouse-projekt där vi utvecklar vårt eget dagliga arbete. Vi ger gärna fria tyglar om du vill ha det.</paragraph><paragraph>\nLåter det intressant? Kontakta oss för mer information på job@brath.se</paragraph><paragraph>\nFler lediga jobb hos Brath.</paragraph><header>Magnus Bråth</header></document>",
+      "sources": [
+        {
+          "id": "817b2dbc-38e8-4c95-bd15-8e80328b1119",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=a376980f70a5306a"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vem är du?\nDu brinner för utveckling och älskar att arbeta tillsammans för att ständigt leverera kvalitet, då är du personen vi söker. Vi ser gärna att du har åtminstone tre års erfarenhet, men viktigast är att du kan visa oss att du har huvudet på skaft och att du kan lösa problem både självständigt och i grupp.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [],
+        "traits": []
+      },
+      "employer": {
+        "name": "Softhouse"
+      },
+      "geolocation": {
+        "lat": "14.805852",
+        "lng": "56.879005"
+      },
+      "header": "Utvecklare",
+      "id": "5b663ba7-a212-48da-8ed2-d33470ab8fc9",
+      "location": "Växjö",
+      "markup": "<document><paragraph>Vem är du?</paragraph><paragraph>\nDu brinner för utveckling och älskar att arbeta tillsammans för att ständigt leverera kvalitet, då är du personen vi söker. Vi ser gärna att du har åtminstone tre års erfarenhet, men viktigast är att du kan visa oss att du har huvudet på skaft och att du kan lösa problem både självständigt och i grupp.</paragraph></document>",
+      "sources": [
+        {
+          "id": "5b663ba7-a212-48da-8ed2-d33470ab8fc9",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=bf3a23dc2dd4c95f"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Synective Labs växer och söker fler utvecklare till Göteborg, Linköping och Stockholm!\nUtvecklare\nembedded\ninom Automotive och Industry systems eller FPGA-design\nSom ett av Sveriges vassaste specialistteam inom Embedded- och FPGA-teknik förstärker vi nu kompetensen ytterligare. Vi befinner oss i en expansiv fas där våra lösningar efterfrågas i många spännande applikationer.\nVi söker dig med ett brinnande intresse för avancerad teknikutveckling som vill vidareutveckla dina tidigare erfarenheter.\nHos oss får du jobba med avancerade lösningar i teknikens framkant, i en konsultroll ute hos våra kunder eller i projekt \"in house\". Du blir en del av vårt team där din kompetens inom våra huvudområden Automotive systems, Embedded systems och FPGA-design blir en väsentlig del av företagets fortsatta utveckling.\nMeriterande är:\nErfarenhet av att jobba med Embedded systems.\nErfarenhet av Machine Learning och bild/signalbehandling.\nErfarenhet av VHDL eller Verilog.\nErfarenhet av C/C++ programmering gärna även OpenCL.\nErfarenhet av algoritmutveckling.\nErfarenhet av Autosar, fordonsbussar (CAN teknik mfl), Simulink och ISO26262.\nDin profil\nVi söker dig som har en civilingenjörsexamen eller motsvarande. Hos oss och våra kunder arbetar vi oftast i team av varierande storlek, därför värdesätter vi samarbetsförmåga och social kompetens.\nVi erbjuder\nSom anställd har du stora möjligheter att utvecklas med oss, kanske framför allt genom intressanta och utmanande projekt!\nSynective har över 25 anställda fördelade på våra kontor i Stockholm, Göteborg och Linköping. Vi är ett erfaret team med bra spridning i både kompetens och åldrar. Samarbete och kundnytta står högt på agendan, liksom ett väl fungerande företag med hög trivselfaktor.\nVi svarar gärna på frågor:\nGöteborg: Joel Klingspor, 070-3676070\nLinköping: Magnus Peterson, 013-4651042\nStockholm: Gunnar Stjernberg, 0708-688445\nEller hör av dig via email: work@synective.se.\nVälkommen med din ansökan!\nSynective is your partner for accelerated computing and high speed computations. Our focus is to solve your computational challenges, turning problems into opportunities, independantly of if your technology area is advanced algorithms in embedded systems or large scale HPC problems. With a long experience in turning slow CPU-based implementations into fast FPGA or GPU accelerated high performance applications, we cooperate with all major hardware and tools vendors, to simply be able to offer you the solution that best fits your application!\nSynective was founded back in 2003 around a group of experts on using FPGAs for high performance computations, with the mission to bring acceleration technology out to customers around the world.\nSynective also started early using GPU technology for generic computations, long before CUDA and OpenCL was introduced and enabled this technology to a broader audience.\nSynective has offices in Stockholm, Gothenburg and Linköping, Sweden, and offers its solutions and expertise to customer all around the world. Visit our website\nwww.synective.se\nSökord: utvecklare, programmering, programmerare, ingenjör, civilingenjör, teknik, utveckling",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "simulink",
+          "signalbehandling",
+          "verilog",
+          "algoritm",
+          "autosar",
+          "machine learning",
+          "vhdl",
+          "teknikutveckling",
+          "embedded system",
+          "c",
+          "c++",
+          "programmering",
+          "opencl"
+        ],
+        "traits": [
+          "social",
+          "samarbetsförmåga"
+        ]
+      },
+      "employer": {
+        "name": "Synective Labs AB"
+      },
+      "geolocation": {
+        "lat": "15.621373",
+        "lng": "58.41081"
+      },
+      "header": "Utvecklare",
+      "id": "ac79f702-f8ed-45a6-94f8-e7f6a328d94e",
+      "location": "Linköping",
+      "markup": "<document><header>Synective Labs växer och söker fler utvecklare till Göteborg, Linköping och Stockholm!</header><header>Utvecklare</header><header>embedded</header><paragraph>\ninom Automotive och Industry systems eller FPGA-design</paragraph><paragraph>\nSom ett av Sveriges vassaste specialistteam inom Embedded- och FPGA-teknik förstärker vi nu kompetensen ytterligare. Vi befinner oss i en expansiv fas där våra lösningar efterfrågas i många spännande applikationer.</paragraph><paragraph>Vi söker dig med ett brinnande intresse för avancerad teknikutveckling som vill vidareutveckla dina tidigare erfarenheter.</paragraph><paragraph>Hos oss får du jobba med avancerade lösningar i teknikens framkant, i en konsultroll ute hos våra kunder eller i projekt \"in house\". Du blir en del av vårt team där din kompetens inom våra huvudområden Automotive systems, Embedded systems och FPGA-design blir en väsentlig del av företagets fortsatta utveckling.</paragraph><header>Meriterande är:</header><list><item>Erfarenhet av att jobba med Embedded systems.</item>\n<item>Erfarenhet av Machine Learning och bild/signalbehandling.</item>\n<item>Erfarenhet av VHDL eller Verilog.</item>\n<item>Erfarenhet av C/C++ programmering gärna även OpenCL.</item>\n<item>Erfarenhet av algoritmutveckling.</item>\n<item>Erfarenhet av Autosar, fordonsbussar (CAN teknik mfl), Simulink och ISO26262.</item>\n</list><header>Din profil</header><paragraph>\nVi söker dig som har en civilingenjörsexamen eller motsvarande. Hos oss och våra kunder arbetar vi oftast i team av varierande storlek, därför värdesätter vi samarbetsförmåga och social kompetens.</paragraph><header>Vi erbjuder</header><paragraph>\nSom anställd har du stora möjligheter att utvecklas med oss, kanske framför allt genom intressanta och utmanande projekt!</paragraph><paragraph>Synective har över 25 anställda fördelade på våra kontor i Stockholm, Göteborg och Linköping. Vi är ett erfaret team med bra spridning i både kompetens och åldrar. Samarbete och kundnytta står högt på agendan, liksom ett väl fungerande företag med hög trivselfaktor.</paragraph><header>Vi svarar gärna på frågor:</header><paragraph>\nGöteborg: Joel Klingspor, 070-3676070</paragraph><paragraph>\nLinköping: Magnus Peterson, 013-4651042</paragraph><paragraph>\nStockholm: Gunnar Stjernberg, 0708-688445</paragraph><paragraph>Eller hör av dig via email: work@synective.se.</paragraph><header>Välkommen med din ansökan!</header><paragraph>Synective is your partner for accelerated computing and high speed computations. Our focus is to solve your computational challenges, turning problems into opportunities, independantly of if your technology area is advanced algorithms in embedded systems or large scale HPC problems. With a long experience in turning slow CPU-based implementations into fast FPGA or GPU accelerated high performance applications, we cooperate with all major hardware and tools vendors, to simply be able to offer you the solution that best fits your application!</paragraph><paragraph>Synective was founded back in 2003 around a group of experts on using FPGAs for high performance computations, with the mission to bring acceleration technology out to customers around the world. Synective also started early using GPU technology for generic computations, long before CUDA and OpenCL was introduced and enabled this technology to a broader audience.</paragraph><paragraph>Synective has offices in Stockholm, Gothenburg and Linköping, Sweden, and offers its solutions and expertise to customer all around the world. Visit our website www.synective.se</paragraph><paragraph>Sökord: utvecklare, programmering, programmerare, ingenjör, civilingenjör, teknik, utveckling</paragraph></document>",
+      "sources": [
+        {
+          "id": "ac79f702-f8ed-45a6-94f8-e7f6a328d94e",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=f435fe7f8bd337ae"
+        },
+        {
+          "id": "e151e13d-e582-487a-ab27-cee6e16495d9",
+          "name": "Metrojobb",
+          "url": "http://www.metrojobb.se/jobb/1697199-utvecklare"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Softhouse etablerar sig i Jönköping och vi söker fler medarbetare!\nOm oss\nVi på Softhouse jobbar med agil mjukvaruutveckling och vi digitaliserar Sverige genom människor, verksamheter och produkter. Vi började utveckla agil mjukvara redan 1996 och idag jobbar nästan 200 medarbetare hos oss, fördelat på våra olika kontor runt om i Sverige och Bosnien. Vi är ett privatägt företag med engagerade och vassa medarbetare som tillsammans tog agil metodik till Sverige för över 20 år sedan. Vi har rådgivit och coachat åtskilliga agila transformationer och utbildat flera tusen Scrum Masters sedan dess.\nHur vi arbetar\nHär jobbar vi tillsammans i team och delar med oss av resultat, insikter och erfarenheter regelbundet. Här vill vi växa, lära oss och ständigt utvecklas. Tänker du likadant som oss? Just nu söker vi\njavautvecklare\noch\nsystemarkitekter\ntill vårt kontor i\nJönköping\n.\nVi kan erbjuda dig duktiga kollegor, spännande utvecklingsmöjligheter och en riktigt rolig arbetsplats, i alla fall om vi får säga det själva. Vi jobbar agilt i allt vi gör och tänker alltid annorlunda. Hos oss är våra medarbetare alltid i fokus och du styr din egen utveckling framåt tillsammans med din närmaste chef. Vill du vara med och påverka och jobba inom flera spännande branscher tillsammans med ett team eller ute på egna konsultuppdrag så är vi rätt plats för dig.\nVem är du?\nVi vill att du brinner för utveckling och trivs med att arbeta tillsammans med andra för att ständigt leverera hög kvalité. Vi ser gärna att du har en högskole-/universitetsexamen och några års erfarenhet men det viktigaste är att du har viljan och drivet. Du är van att lösa problem både självständigt och i grupp och vi hoppas att du vill växa tillsammans med oss på Softhouse.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "högskoleexamen",
+          "universitetsexamen"
+        ],
+        "traits": []
+      },
+      "employer": {
+        "name": "Softhouse"
+      },
+      "geolocation": {
+        "lat": "14.161788",
+        "lng": "57.78261"
+      },
+      "header": "Utvecklare",
+      "id": "6d80ac64-2298-40f3-9039-c679bec49a7a",
+      "location": "Jönköping",
+      "markup": "<document><paragraph>Softhouse etablerar sig i Jönköping och vi söker fler medarbetare!</paragraph><header>Om oss</header><paragraph>\nVi på Softhouse jobbar med agil mjukvaruutveckling och vi digitaliserar Sverige genom människor, verksamheter och produkter. Vi började utveckla agil mjukvara redan 1996 och idag jobbar nästan 200 medarbetare hos oss, fördelat på våra olika kontor runt om i Sverige och Bosnien. Vi är ett privatägt företag med engagerade och vassa medarbetare som tillsammans tog agil metodik till Sverige för över 20 år sedan. Vi har rådgivit och coachat åtskilliga agila transformationer och utbildat flera tusen Scrum Masters sedan dess.</paragraph><header>Hur vi arbetar</header><paragraph>\nHär jobbar vi tillsammans i team och delar med oss av resultat, insikter och erfarenheter regelbundet. Här vill vi växa, lära oss och ständigt utvecklas. Tänker du likadant som oss? Just nu söker vi </paragraph><header>javautvecklare</header><paragraph> och </paragraph><header>systemarkitekter</header><paragraph> till vårt kontor i </paragraph><header>Jönköping</header><paragraph>.</paragraph><paragraph>\nVi kan erbjuda dig duktiga kollegor, spännande utvecklingsmöjligheter och en riktigt rolig arbetsplats, i alla fall om vi får säga det själva. Vi jobbar agilt i allt vi gör och tänker alltid annorlunda. Hos oss är våra medarbetare alltid i fokus och du styr din egen utveckling framåt tillsammans med din närmaste chef. Vill du vara med och påverka och jobba inom flera spännande branscher tillsammans med ett team eller ute på egna konsultuppdrag så är vi rätt plats för dig.</paragraph><header>Vem är du?</header><paragraph>\nVi vill att du brinner för utveckling och trivs med att arbeta tillsammans med andra för att ständigt leverera hög kvalité. Vi ser gärna att du har en högskole-/universitetsexamen och några års erfarenhet men det viktigaste är att du har viljan och drivet. Du är van att lösa problem både självständigt och i grupp och vi hoppas att du vill växa tillsammans med oss på Softhouse.</paragraph></document>",
+      "sources": [
+        {
+          "id": "6d80ac64-2298-40f3-9039-c679bec49a7a",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=77f3864462073c19"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Din profil\nCivilingenjör eller motsvarande med inriktning mot datalogi, teknisk fysik eller liknande.\nUtmärkta kunskaper i objektorienterad programmering (helst Java eller C#).\nIntresse eller erfarenhet av GUI-programmering med t.ex. WPF eller SWT.\nFörmåga att se helheter och lätt för att ta till dig ny och komplicerad kod.\nErfarenhet från större mjukvaruprojekt är meriterande.\nPersonligt intresse för fysik, teknik och ingenjörsberäkningar är inget krav men bidrar positivt till att förstå vår produkt och bransch.Utvecklare av COMSOL Multiphysics\nMed COMSOL Multiphysics simulerar ingenjörer och experter världen över multifysik och utvecklar fysikappar med COMSOL Application Builder, ett grafiskt verktyg som gör det lätt att skapa egna användargränssnitt med komplicerade beräkningar och modeller i bakgrunden. Tack vara COMSOL Server kan apparna sedan delas vidare och köras i en webbläsare eller med en native-klient.\nOm tjänsten\nDu kommer vara en del av teamet som utvecklar Application Builder, COMSOL Server och ”motorn” i GUI-delen av COMSOL Multiphysics. Det innebär att vi tar fram lösningar som övriga utvecklare använder för att smidigt kunna lägga till ny funktionalitet och användargränsnitt inom sina respektive områden. Ditt fokus kommer initialt vara vidareutveckling av GUI-delen i COMSOL Multiphysics. I den rollen kommer du arbeta med hela kedjan från datasidan i back-end delarna till kommunikationslagren, client/server, och front-end-ramverken.\nDina arbetsuppgifter innebär främst utveckling i Java (och till viss del C#), men även att du följer produktutvecklingsprocessen från kravspecifikation till implementation, testning och dokumentation.\nCOMSOL erbjuder\nArbete i en kvalificerad grupp med stark teamkänsla på ett lönsamt, världsomspännande och växande mjukvaruföretag grundat i Sverige\nRoliga och varierande utvecklingsuppgifter med stor möjlighet att påverka en produkt som används av tiotusentals ingenjörer och forskare över hela världen\nEn kreativ och dynamisk miljö COMSOL är ett snabbväxande företag grundat i Sverige med huvudkontor i centrala Stockholm, där vi bedriver större delen av utvecklingen och är cirka 90 anställda. Sedan 15 år tillbaka har vi revolutionerat hur ingenjörer simulerar multifysik med finita elementmetoden (FEM), och vi har idag 23 kontor runt om i världen. Våra produkter används t.ex. för att göra bilar energisnålare och för att förbättra mottagningen till mobiltelefoner.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "teknisk fysik",
+          "datalogi",
+          "gui",
+          "comsol multiphysics",
+          "back end",
+          "client/server",
+          "front end",
+          "wpf",
+          "objektorienterad programmering",
+          "java",
+          "fysik",
+          "c-sharp",
+          "testning",
+          "dokumentation"
+        ],
+        "traits": [
+          "teamkänsla",
+          "kreativ"
+        ]
+      },
+      "employer": {
+        "name": "COMSOL AB"
+      },
+      "geolocation": {
+        "lat": "18.06858",
+        "lng": "59.329323"
+      },
+      "header": "Utvecklare",
+      "id": "18ec10fc-b6e9-49a5-a489-ad10788c19d2",
+      "location": "Stockholm",
+      "markup": "<document><paragraph>Din profil</paragraph><list><item>Civilingenjör eller motsvarande med inriktning mot datalogi, teknisk fysik eller liknande.</item>\n<item>Utmärkta kunskaper i objektorienterad programmering (helst Java eller C#).</item>\n<item>Intresse eller erfarenhet av GUI-programmering med t.ex. WPF eller SWT.</item>\n<item>Förmåga att se helheter och lätt för att ta till dig ny och komplicerad kod.</item>\n<item>Erfarenhet från större mjukvaruprojekt är meriterande.</item>\n<item>Personligt intresse för fysik, teknik och ingenjörsberäkningar är inget krav men bidrar positivt till att förstå vår produkt och bransch.Utvecklare av COMSOL Multiphysics</item>\n</list><paragraph>Med COMSOL Multiphysics simulerar ingenjörer och experter världen över multifysik och utvecklar fysikappar med COMSOL Application Builder, ett grafiskt verktyg som gör det lätt att skapa egna användargränssnitt med komplicerade beräkningar och modeller i bakgrunden. Tack vara COMSOL Server kan apparna sedan delas vidare och köras i en webbläsare eller med en native-klient.</paragraph><paragraph>Om tjänsten</paragraph><paragraph>Du kommer vara en del av teamet som utvecklar Application Builder, COMSOL Server och ”motorn” i GUI-delen av COMSOL Multiphysics. Det innebär att vi tar fram lösningar som övriga utvecklare använder för att smidigt kunna lägga till ny funktionalitet och användargränsnitt inom sina respektive områden. Ditt fokus kommer initialt vara vidareutveckling av GUI-delen i COMSOL Multiphysics. I den rollen kommer du arbeta med hela kedjan från datasidan i back-end delarna till kommunikationslagren, client/server, och front-end-ramverken.</paragraph><paragraph>Dina arbetsuppgifter innebär främst utveckling i Java (och till viss del C#), men även att du följer produktutvecklingsprocessen från kravspecifikation till implementation, testning och dokumentation.</paragraph><paragraph>COMSOL erbjuder</paragraph><list><item>Arbete i en kvalificerad grupp med stark teamkänsla på ett lönsamt, världsomspännande och växande mjukvaruföretag grundat i Sverige</item>\n<item>Roliga och varierande utvecklingsuppgifter med stor möjlighet att påverka en produkt som används av tiotusentals ingenjörer och forskare över hela världen</item>\n<item>En kreativ och dynamisk miljö COMSOL är ett snabbväxande företag grundat i Sverige med huvudkontor i centrala Stockholm, där vi bedriver större delen av utvecklingen och är cirka 90 anställda. Sedan 15 år tillbaka har vi revolutionerat hur ingenjörer simulerar multifysik med finita elementmetoden (FEM), och vi har idag 23 kontor runt om i världen. Våra produkter används t.ex. för att göra bilar energisnålare och för att förbättra mottagningen till mobiltelefoner.</item>\n</list></document>",
+      "sources": [
+        {
+          "id": "18ec10fc-b6e9-49a5-a489-ad10788c19d2",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=9b0ac73cf97d0ffa"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Om denna position\nVi söker nu en fullstack utvecklare för att bygga vår nya plattform med vårt team i Stockholm. Du är primärt inriktad mot backend och har PHP som ditt primära språk men trivs även med att jobba med front-end tillsammans med övriga teamet. Du ska ha god kunskap kring databasmodellering och skiktade arkitekturer samt erfarenhet av att jobba med systemintegrationer. Du har +3 års professionell erfarenhet och tycker om nya utmaningar i en snabb, entreprenöriell miljö.\nMycket goda kunskaper\nObjektorienterad PHP\nArbetat med något MVC-ramverk (Laravel, Symfony, Zend)\nArbetat med databaser och datamodellering (MySQL, NoSQL)\nJavascript\nHTML5\nCSS/SASS\nArbetat agilt (Scrum/Kanban)\nGIT\nLinux\nMeriterande\nAPI design\nGrafdatabaser (Neo4j, ArangoDB)\nSökmotorer (Elastic, Sphinx)\nCI/CD\nArbetat med kösystem (Redis)\nDocker\nSystemadmin\nSystemarkitektur\nMolntjänster (AWS, Google, Linode)\nAngular / React / Vue\nDu är en strukturerad och ansvarstagande person som gillar att driva ditt eget arbete framåt, arbeta självständigt och har god kommunikationsförmåga. Du testar gärna nya teknologier och vill hålla dig uppdaterad med det senaste inom systemutveckling. Du pratar obehindrat svenska och engelska.\nDet är meriterande om du har eftergymnasial utbildning inom systemvetenskap, datavetenskap eller motsvarande men det är inget krav.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "design",
+          "mysql",
+          "react",
+          "systemutveckling",
+          "svenska",
+          "engelska",
+          "databaser",
+          "vue",
+          "nosql",
+          "back end",
+          "datamodellering",
+          "php",
+          "databasmodellering",
+          "front end",
+          "systemintegration",
+          "systemvetenskap",
+          "datavetenskap"
+        ],
+        "traits": [
+          "snabb",
+          "kommunikativ",
+          "arbeta självständigt",
+          "strukturerad",
+          "ansvarstagande"
+        ]
+      },
+      "employer": {
+        "name": "WorkaroundTown Sverige AB"
+      },
+      "geolocation": {
+        "lat": "18.06858",
+        "lng": "59.329323"
+      },
+      "header": "Utvecklare",
+      "id": "7b336de6-8df2-407d-b240-7f2393d53bfd",
+      "location": "Stockholm",
+      "markup": "<document><paragraph>Om denna position</paragraph><paragraph>Vi söker nu en fullstack utvecklare för att bygga vår nya plattform med vårt team i Stockholm. Du är primärt inriktad mot backend och har PHP som ditt primära språk men trivs även med att jobba med front-end tillsammans med övriga teamet. Du ska ha god kunskap kring databasmodellering och skiktade arkitekturer samt erfarenhet av att jobba med systemintegrationer. Du har +3 års professionell erfarenhet och tycker om nya utmaningar i en snabb, entreprenöriell miljö.</paragraph><paragraph>Mycket goda kunskaper</paragraph><list><item>Objektorienterad PHP</item>\n<item>Arbetat med något MVC-ramverk (Laravel, Symfony, Zend)</item>\n<item>Arbetat med databaser och datamodellering (MySQL, NoSQL)</item>\n<item>Javascript</item>\n<item>HTML5</item>\n<item>CSS/SASS</item>\n<item>Arbetat agilt (Scrum/Kanban)</item>\n<item>GIT</item>\n<item>Linux</item>\n</list><paragraph>Meriterande</paragraph><list><item>API design</item>\n<item>Grafdatabaser (Neo4j, ArangoDB)</item>\n<item>Sökmotorer (Elastic, Sphinx)</item>\n<item>CI/CD</item>\n<item>Arbetat med kösystem (Redis)</item>\n<item>Docker</item>\n<item>Systemadmin</item>\n<item>Systemarkitektur</item>\n<item>Molntjänster (AWS, Google, Linode)</item>\n<item>Angular / React / Vue</item>\n</list><paragraph>Du är en strukturerad och ansvarstagande person som gillar att driva ditt eget arbete framåt, arbeta självständigt och har god kommunikationsförmåga. Du testar gärna nya teknologier och vill hålla dig uppdaterad med det senaste inom systemutveckling. Du pratar obehindrat svenska och engelska.</paragraph><paragraph>Det är meriterande om du har eftergymnasial utbildning inom systemvetenskap, datavetenskap eller motsvarande men det är inget krav.</paragraph></document>",
+      "sources": [
+        {
+          "id": "7b336de6-8df2-407d-b240-7f2393d53bfd",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=851fdd6e745ac17d"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vi välkomnar just nu en duktig backend-utvecklare som trivs i en miljö där vi arbetar nära och tillsammans med våra kunder för att utveckla nya intressanta digitala tjänster. Tillsammans kan vi lösa de problem vi ställs inför och hoppas att du har samma attityd. Om du brinner för det du arbetar med så kan vi erbjuda något spännande.\nJust nu söker vi främst dig med passion för utveckling och hög kompetens inom C#, SQL och .NET. Det är meriterande om du har kunskap inom NoSQL, .NET Core och Node.js, men också om du har intresse eller erfarenhet av front-end arbete.\nSom utvecklare på Invativa får du:\nUtveckla nya digitala lösningar tillsammans med våra kunder.\nArbeta i ett teknikteam som arbetar agilt tillsammans med ett design- och ett affärsteam.\nArbeta med utmanande integrationer till affärskritiska system.\nMöta och jobba med lösningar som når över 10 000 personer dagligen.\nTesta och labba med ny teknik.\nVi hoppas att du:\nHar ett genuint intresse för utveckling och vill ligga i framkant inom ditt område.\nTar egna initiativ när det behövs.\nKombinerar dina C# kunskaper med kunskaper inom SQL och .NET.\nHar en relevant utbildning som exempelvis civilingenjör, systemutvecklare eller motsvarande arbetslivserfarenhet.\nTycker det är roligt att identifiera problem och sedan lösa dem.\nGillar att samarbeta med människor för att uppnå resultat.\nSjälvklart gillar att ha roligt på jobbet!\nInvativa har funnits i över 20 år. Målet är att gemensamt ta oss framåt på en resa där vi utvecklas tillsammans med våra kunder. Vi strävar efter långa relationer med våra kunder, vilket gör att vi även kan ha en rakare dialog och vi försöker gemensamt komplettera våra styrkor och svagheter.\nPassar inte profilen dig exakt, men du känner att Invativa verkar vara en arbetsplats som hade passat dig, sök! Vem vet, kanske har du någon annan kompetens som kompletterar? Vi är övertygade om att kunskap kan utvecklas med tiden.\nDe flesta hos oss på Invativa har en bred kompetens inom flera områden. Ofta med någon specialitet. Vi hoppas att du är likadan och att du gillar nya utmaningar. Vi ska ligga i framkant och att följa paradigmskiften är vår vardag.\nVill du läsa mer om dina framtida kollegor kan du göra det på Digitalisten, börja t.ex. med att läsa om vår fullstackare Andreas.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare",
+          "backend-utvecklare"
+        ],
+        "skills": [
+          "sql",
+          "c-sharp",
+          "arbetslivserfarenhet",
+          "node.js",
+          "nosql",
+          "front end"
+        ],
+        "traits": []
+      },
+      "employer": {
+        "name": "Invativa"
+      },
+      "geolocation": {
+        "lat": "11.97456",
+        "lng": "57.70887"
+      },
+      "header": "Utvecklare",
+      "id": "3c134b8d-886b-4af9-8841-3111c8f5c451",
+      "location": "Göteborg",
+      "markup": "<document><paragraph>Vi välkomnar just nu en duktig backend-utvecklare som trivs i en miljö där vi arbetar nära och tillsammans med våra kunder för att utveckla nya intressanta digitala tjänster. Tillsammans kan vi lösa de problem vi ställs inför och hoppas att du har samma attityd. Om du brinner för det du arbetar med så kan vi erbjuda något spännande.</paragraph><paragraph>\nJust nu söker vi främst dig med passion för utveckling och hög kompetens inom C#, SQL och .NET. Det är meriterande om du har kunskap inom NoSQL, .NET Core och Node.js, men också om du har intresse eller erfarenhet av front-end arbete.</paragraph><header>Som utvecklare på Invativa får du:</header><list><item>Utveckla nya digitala lösningar tillsammans med våra kunder.</item>\n<item>Arbeta i ett teknikteam som arbetar agilt tillsammans med ett design- och ett affärsteam.</item>\n<item>Arbeta med utmanande integrationer till affärskritiska system.</item>\n<item>Möta och jobba med lösningar som når över 10 000 personer dagligen.</item>\n<item>Testa och labba med ny teknik.</item>\n</list><header>Vi hoppas att du:</header><list><item>Har ett genuint intresse för utveckling och vill ligga i framkant inom ditt område.</item>\n<item>Tar egna initiativ när det behövs.</item>\n<item>Kombinerar dina C# kunskaper med kunskaper inom SQL och .NET.</item>\n<item>Har en relevant utbildning som exempelvis civilingenjör, systemutvecklare eller motsvarande arbetslivserfarenhet.</item>\n<item>Tycker det är roligt att identifiera problem och sedan lösa dem.</item>\n<item>Gillar att samarbeta med människor för att uppnå resultat.</item>\n<item>Självklart gillar att ha roligt på jobbet!</item>\n</list><paragraph>Invativa har funnits i över 20 år. Målet är att gemensamt ta oss framåt på en resa där vi utvecklas tillsammans med våra kunder. Vi strävar efter långa relationer med våra kunder, vilket gör att vi även kan ha en rakare dialog och vi försöker gemensamt komplettera våra styrkor och svagheter.</paragraph><paragraph>\nPassar inte profilen dig exakt, men du känner att Invativa verkar vara en arbetsplats som hade passat dig, sök! Vem vet, kanske har du någon annan kompetens som kompletterar? Vi är övertygade om att kunskap kan utvecklas med tiden.</paragraph><paragraph>\nDe flesta hos oss på Invativa har en bred kompetens inom flera områden. Ofta med någon specialitet. Vi hoppas att du är likadan och att du gillar nya utmaningar. Vi ska ligga i framkant och att följa paradigmskiften är vår vardag.</paragraph><paragraph>\nVill du läsa mer om dina framtida kollegor kan du göra det på Digitalisten, börja t.ex. med att läsa om vår fullstackare Andreas.</paragraph></document>",
+      "sources": [
+        {
+          "id": "3c134b8d-886b-4af9-8841-3111c8f5c451",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=d0033e4390638e68"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Om KITS\nKITS är ett it-konsultbolag i Göteborg. Vi är en blandning av talanger och experter. Våra experter är de bästa konsulterna inom sina respektive teknik-/verksamhetsområden och våra talanger är på väg mot att bli experter. Vi har stort fokus på kompetensutveckling och kompetensspridning inom våra teknik- och verksamhetsområden.\nVi jobbar metodiskt och målinriktat med att hela tiden utveckla KITS till ett bättre bolag där det är högt i tak, processerna är agila och där det är kul på jobbet. Vi vill gärna träffa dig för att se hur vi kan forma och utvecklas tillsammans.kits.se\nprivate boolean vassUtvecklare = true\nIf (vassUtvecklare ) {\nJava, C# eller annat språk spelar ingen roll.\nDu är en driven människa som tycker om nya utmaningar\noch älskar att lära dig nya tekniker. Om du är en\nteamplayer som gillar att umgås med dina kollegor och\ndela dina erfarenheter. Då är du rätt type för oss.\n}",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "c-sharp"
+        ],
+        "traits": [
+          "driven",
+          "metodiskt"
+        ]
+      },
+      "employer": {
+        "name": "KITS"
+      },
+      "geolocation": {
+        "lat": "11.97456",
+        "lng": "57.70887"
+      },
+      "header": "Utvecklare",
+      "id": "35265a47-93a9-47c6-89b7-e08e48511c95",
+      "location": "Göteborg",
+      "markup": "<document><header>Om KITS</header><paragraph>\nKITS är ett it-konsultbolag i Göteborg. Vi är en blandning av talanger och experter. Våra experter är de bästa konsulterna inom sina respektive teknik-/verksamhetsområden och våra talanger är på väg mot att bli experter. Vi har stort fokus på kompetensutveckling och kompetensspridning inom våra teknik- och verksamhetsområden.</paragraph><paragraph>\nVi jobbar metodiskt och målinriktat med att hela tiden utveckla KITS till ett bättre bolag där det är högt i tak, processerna är agila och där det är kul på jobbet. Vi vill gärna träffa dig för att se hur vi kan forma och utvecklas tillsammans.kits.se</paragraph><header>private boolean vassUtvecklare = true</header><paragraph>\nIf (vassUtvecklare ) {</paragraph><paragraph>\n Java, C# eller annat språk spelar ingen roll.</paragraph><paragraph>\n Du är en driven människa som tycker om nya utmaningar</paragraph><paragraph>\n och älskar att lära dig nya tekniker. Om du är en</paragraph><paragraph>\n teamplayer som gillar att umgås med dina kollegor och</paragraph><paragraph>\n dela dina erfarenheter. Då är du rätt type för oss.</paragraph><paragraph>\n}</paragraph></document>",
+      "sources": [
+        {
+          "id": "35265a47-93a9-47c6-89b7-e08e48511c95",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=263f775c9e96be3b"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vem är du?\nDu brinner för utveckling och älskar att arbeta tillsammans för att ständigt leverera kvalitet, då är du personen vi söker. Du har minst 2 års relevant erfarenhet av mjukvaruutveckling, men viktigast är att du kan visa oss att du har huvudet på skaft och att du kan lösa problem både självständigt och i grupp.",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "mjukvaruutveckling"
+        ],
+        "traits": []
+      },
+      "employer": {
+        "name": "Softhouse"
+      },
+      "geolocation": {
+        "lat": "15.5869",
+        "lng": "56.161224"
+      },
+      "header": "Utvecklare",
+      "id": "fab97a7d-a12d-401f-9cc8-2127d1c369fa",
+      "location": "Karlskrona",
+      "markup": "<document><paragraph>Vem är du?</paragraph><paragraph>\nDu brinner för utveckling och älskar att arbeta tillsammans för att ständigt leverera kvalitet, då är du personen vi söker. Du har minst 2 års relevant erfarenhet av mjukvaruutveckling, men viktigast är att du kan visa oss att du har huvudet på skaft och att du kan lösa problem både självständigt och i grupp.</paragraph></document>",
+      "sources": [
+        {
+          "id": "fab97a7d-a12d-401f-9cc8-2127d1c369fa",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=62c69b63f5ef4495"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Ghost Competence söker utvecklare till Tieto i Luleå.\nUppdraget är en del av vår bemanningsverksamhet, du blir anställd av Ghost Competence men Intentionen är att du efter 6 månader ska kunna bli anställd direkt hos Tieto, förutsatt att alla parter är nöjda med samarbetet.\nInformation om tjänsten\nGhost Competence söker för Tietos räkning utvecklare som brinner för programmering och gillar att arbeta i team.\nHos Tieto har du goda chanser att utvecklas i din roll och utbyta idéer med kompetenta kollegor.\nDu kommer att arbeta i nya fräscha lokaler i centrala Luleå, och du kommer att få chansen att förkovra dig i den senaste tekniken, och blicka in i framtiden.\nInformation om kundföretaget\nTieto arbetar för att utveckla både sina kunders verksamhet och samhället genom IT. De tror också på individens förmåga att tillsammans med andra åstadkomma detta genom att aktivt uppmuntra självständigt tänkande och handlande. De är Nordens största helhetsleverantör av IT-tjänster för både privat och offentlig sektor.\nVi söker dig som\nÄr utbildad inom data eller elektronik\nHar erfarenhet av C/C++\nHar goda kunskaper i engelska\nHar kunskap om 4G/5G eller annan trådlös teknik.\nVi ser att du har jobbat några år efter examen, och att du nu känner att du vill kunna jobba med det absolut senaste inom ny teknik.\nFAKTA.\nSTART:\nEnligt överenskommelse\nORT:\nLuleå\nURVAL:\nSker löpande\nSISTA ANSÖKNINGSDAG:\n14/9/2018\nKONTAKT:\nMarcus Skårman\nUrval sker löpande, så var snabb in med din ansökan. Sök tjänsten genom att trycka på \"sök jobbet\". Skapa en användare och ladda upp ditt CV och personliga brev så har du större möjlighet att bli kontaktad av en av våra rekryterare. Har du frågor kring tjänsten är du välkommen att kontakta oss på marcus@ghostcompetence.se",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "trådlös",
+          "5g",
+          "engelska",
+          "elektronik",
+          "c++",
+          "programmering",
+          "c"
+        ],
+        "traits": [
+          "tänkande"
+        ]
+      },
+      "employer": {
+        "name": "Ghost Competence AB"
+      },
+      "geolocation": {
+        "lat": "22.156702",
+        "lng": "65.584816"
+      },
+      "header": "Utvecklare",
+      "id": "4e8ecf0b-5fa2-4482-bead-6696cc302273",
+      "location": "Luleå",
+      "markup": "<document><paragraph>Ghost Competence söker utvecklare till Tieto i Luleå.</paragraph><paragraph>Uppdraget är en del av vår bemanningsverksamhet, du blir anställd av Ghost Competence men Intentionen är att du efter 6 månader ska kunna bli anställd direkt hos Tieto, förutsatt att alla parter är nöjda med samarbetet.</paragraph><paragraph>Information om tjänsten</paragraph><paragraph>Ghost Competence söker för Tietos räkning utvecklare som brinner för programmering och gillar att arbeta i team.</paragraph><paragraph>Hos Tieto har du goda chanser att utvecklas i din roll och utbyta idéer med kompetenta kollegor.</paragraph><paragraph>Du kommer att arbeta i nya fräscha lokaler i centrala Luleå, och du kommer att få chansen att förkovra dig i den senaste tekniken, och blicka in i framtiden.</paragraph><paragraph>Information om kundföretaget</paragraph><paragraph>Tieto arbetar för att utveckla både sina kunders verksamhet och samhället genom IT. De tror också på individens förmåga att tillsammans med andra åstadkomma detta genom att aktivt uppmuntra självständigt tänkande och handlande. De är Nordens största helhetsleverantör av IT-tjänster för både privat och offentlig sektor.</paragraph><paragraph>Vi söker dig som</paragraph><paragraph>Är utbildad inom data eller elektronik</paragraph><list><item>Har erfarenhet av C/C++</item>\n<item>Har goda kunskaper i engelska</item>\n<item>Har kunskap om 4G/5G eller annan trådlös teknik.</item>\n</list><paragraph>Vi ser att du har jobbat några år efter examen, och att du nu känner att du vill kunna jobba med det absolut senaste inom ny teknik.</paragraph><paragraph>FAKTA.</paragraph><header>START:</header><paragraph>Enligt överenskommelse</paragraph><header>ORT:</header><paragraph>Luleå</paragraph><header>URVAL:</header><paragraph>Sker löpande</paragraph><header>SISTA ANSÖKNINGSDAG:</header><paragraph>14/9/2018</paragraph><header>KONTAKT:</header><paragraph>Marcus Skårman</paragraph><paragraph>Urval sker löpande, så var snabb in med din ansökan. Sök tjänsten genom att trycka på \"sök jobbet\". Skapa en användare och ladda upp ditt CV och personliga brev så har du större möjlighet att bli kontaktad av en av våra rekryterare. Har du frågor kring tjänsten är du välkommen att kontakta oss på marcus@ghostcompetence.se</paragraph></document>",
+      "sources": [
+        {
+          "id": "4e8ecf0b-5fa2-4482-bead-6696cc302273",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=39bd986e2c19359c"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vi håller på att växa och är nu på jakt efter nya kumpaner. Vi har flertalet välkända kunder inom fintech, betting, IoT som skriker efter mer resurser, det är där DU kommer in i bilden.\nSom konsult hos Kumpan erbjuder vi följande:\nKonkurrensmässig lön\nPensionsavtal\nMöjlighet till bonus / delägarskap\nFriskvårdsbidrag\nHackdays\nTeamfrukost en gång i veckan\nMinst en aktivitet i månaden där vi alla träffas och tar en AW eller hittar på något kul ihop.\nVi tror att du har följande kvalifikationer:\nGedigna kunskaper inom JavaScript och React\nBrinner för ny teknik\nHar du dessutom erfarenhet inom något av nedanstående är det meriterande:\nJava / Scala, Elixir, NodeJS, Go\nVi använder oss av arbetsprov i urvalsprocessen (ej på intervju utan i lugn och ro hemma)\nOm Kumpan:\nKumpan är en konsult &amp; webbyrå med omfattande erfarenhet av att ta fram responsiva webbsidor, enkla kampanjsajter, smartphone appar, banners, broschyrer, illustrationer &amp; grafiska profiler. Enkelt uttryckt kan det sägas att vi har ett brett register som bottnar i vår kärlek till design och teknik. Vår kärna är grafisk design, webb- och apputveckling.\nKumpan har sin grund i ett företag vänner emellan och den grunden har förblivit och skall så vara för att bibehålla familjära kultur - det många organisationer vill skapa ur tomma intet sitter i väggarna hos oss.\nArbetsgivare:\nKumpan Grafisk Form AB\nFiskargatan 8\n11620 Stockholm\nSverige",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "node.js",
+          "scala",
+          "javascript",
+          "react",
+          "webbsidor",
+          "broschyrer",
+          "illustration"
+        ],
+        "traits": [
+          "lugn"
+        ]
+      },
+      "employer": {
+        "name": "Jobshark AB"
+      },
+      "geolocation": {
+        "lat": "18.06858",
+        "lng": "59.329323"
+      },
+      "header": "Utvecklare",
+      "id": "182f9fe3-6c5e-426b-966f-50ee6d5de82e",
+      "location": "Stockholm",
+      "markup": "<document><paragraph>Vi håller på att växa och är nu på jakt efter nya kumpaner. Vi har flertalet välkända kunder inom fintech, betting, IoT som skriker efter mer resurser, det är där DU kommer in i bilden.</paragraph><paragraph>Som konsult hos Kumpan erbjuder vi följande:</paragraph><list><item>Konkurrensmässig lön</item><item>\nPensionsavtal</item><item>\nMöjlighet till bonus / delägarskap</item><item>\nFriskvårdsbidrag</item><item>\nHackdays</item><item>\nTeamfrukost en gång i veckan</item><item>Minst en aktivitet i månaden där vi alla träffas och tar en AW eller hittar på något kul ihop.</item></list><paragraph>Vi tror att du har följande kvalifikationer:</paragraph><list><item>\nGedigna kunskaper inom JavaScript och React</item><item>\nBrinner för ny teknik</item></list><paragraph>Har du dessutom erfarenhet inom något av nedanstående är det meriterande:</paragraph><list><item>\nJava / Scala, Elixir, NodeJS, Go</item></list><paragraph>Vi använder oss av arbetsprov i urvalsprocessen (ej på intervju utan i lugn och ro hemma)</paragraph><header>Om Kumpan:</header><paragraph>Kumpan är en konsult &amp;amp; webbyrå med omfattande erfarenhet av att ta fram responsiva webbsidor, enkla kampanjsajter, smartphone appar, banners, broschyrer, illustrationer &amp;amp; grafiska profiler. Enkelt uttryckt kan det sägas att vi har ett brett register som bottnar i vår kärlek till design och teknik. Vår kärna är grafisk design, webb- och apputveckling.</paragraph><paragraph>Kumpan har sin grund i ett företag vänner emellan och den grunden har förblivit och skall så vara för att bibehålla familjära kultur - det många organisationer vill skapa ur tomma intet sitter i väggarna hos oss.</paragraph><paragraph>Arbetsgivare:</paragraph><paragraph>Kumpan Grafisk Form AB</paragraph><paragraph>Fiskargatan 8</paragraph><paragraph>11620 Stockholm</paragraph><paragraph>Sverige</paragraph></document>",
+      "sources": [
+        {
+          "id": "182f9fe3-6c5e-426b-966f-50ee6d5de82e",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=e22fcfb6227eab79"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Synective Labs växer och söker fler utvecklare till Göteborg, Linköping och Stockholm!\nUtvecklare\nembedded\ninom Automotive och Industry systems eller FPGA-design\nSom ett av Sveriges vassaste specialistteam inom Embedded- och FPGA-teknik förstärker vi nu kompetensen ytterligare. Vi befinner oss i en expansiv fas där våra lösningar efterfrågas i många spännande applikationer.\nVi söker dig med ett brinnande intresse för avancerad teknikutveckling som vill vidareutveckla dina tidigare erfarenheter.\nHos oss får du jobba med avancerade lösningar i teknikens framkant, i en konsultroll ute hos våra kunder eller i projekt \"in house\". Du blir en del av vårt team där din kompetens inom våra huvudområden Automotive systems, Embedded systems och FPGA-design blir en väsentlig del av företagets fortsatta utveckling.\nLäs mer om Synective Labs här.\nMeriterande är:\nErfarenhet av att jobba med Embedded systems.\nErfarenhet av Machine Learning och bild/signalbehandling.\nErfarenhet av VHDL eller Verilog.\nErfarenhet av C/C++ programmering gärna även OpenCL.\nErfarenhet av algoritmutveckling.\nErfarenhet av Autosar, fordonsbussar (CAN teknik mfl), Simulink och ISO26262.\nDin profil\nVi söker dig som har en civilingenjörsexamen eller motsvarande. Hos oss och våra kunder arbetar vi oftast i team av varierande storlek, därför värdesätter vi samarbetsförmåga och social kompetens.\nVi erbjuder\nSom anställd har du stora möjligheter att utvecklas med oss, kanske framför allt genom intressanta och utmanande projekt!\nSynective har över 25 anställda fördelade på våra kontor i Stockholm, Göteborg och Linköping. Vi är ett erfaret team med bra spridning i både kompetens och åldrar. Samarbete och kundnytta står högt på agendan, liksom ett väl fungerande företag med hög trivselfaktor.\nVi svarar gärna på frågor:\nGöteborg: Joel Klingspor, 070-3676070\nLinköping: Magnus Peterson, 013-4651042\nStockholm: Gunnar Stjernberg, 0708-688445\nEller hör av dig via email: work@synective.se.\nVälkommen med din ansökan!\nSynective is your partner for accelerated computing and high speed computations. Our focus is to solve your computational challenges, turning problems into opportunities, independantly of if your technology area is advanced algorithms in embedded systems or large scale HPC problems. With a long experience in turning slow CPU-based implementations into fast FPGA or GPU accelerated high performance applications, we cooperate with all major hardware and tools vendors, to simply be able to offer you the solution that best fits your application!\nSynective was founded back in 2003 around a group of experts on using FPGAs for high performance computations, with the mission to bring acceleration technology out to customers around the world.\nSynective also started early using GPU technology for generic computations, long before CUDA and OpenCL was introduced and enabled this technology to a broader audience.\nSynective has offices in Stockholm, Gothenburg and Linköping, Sweden, and offers its solutions and expertise to customer all around the world. Visit our website\nwww.synective.se\nSökord: utvecklare, programmering, programmerare, ingenjör, civilingenjör, teknik, utveckling",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "simulink",
+          "signalbehandling",
+          "verilog",
+          "algoritm",
+          "autosar",
+          "machine learning",
+          "vhdl",
+          "teknikutveckling",
+          "embedded system",
+          "c",
+          "c++",
+          "programmering",
+          "opencl"
+        ],
+        "traits": [
+          "social",
+          "samarbetsförmåga"
+        ]
+      },
+      "employer": {
+        "name": "Synective Labs AB"
+      },
+      "geolocation": {
+        "lat": "18.06858",
+        "lng": "59.329323"
+      },
+      "header": "Utvecklare",
+      "id": "6e188424-3ff4-4102-aa62-a6c76707d5e7",
+      "location": "Stockholm",
+      "markup": "<document><header>Synective Labs växer och söker fler utvecklare till Göteborg, Linköping och Stockholm!</header><header>Utvecklare</header><header>embedded</header><paragraph>\ninom Automotive och Industry systems eller FPGA-design</paragraph><paragraph>\nSom ett av Sveriges vassaste specialistteam inom Embedded- och FPGA-teknik förstärker vi nu kompetensen ytterligare. Vi befinner oss i en expansiv fas där våra lösningar efterfrågas i många spännande applikationer.</paragraph><paragraph>\nVi söker dig med ett brinnande intresse för avancerad teknikutveckling som vill vidareutveckla dina tidigare erfarenheter.</paragraph><paragraph>\nHos oss får du jobba med avancerade lösningar i teknikens framkant, i en konsultroll ute hos våra kunder eller i projekt \"in house\". Du blir en del av vårt team där din kompetens inom våra huvudområden Automotive systems, Embedded systems och FPGA-design blir en väsentlig del av företagets fortsatta utveckling.</paragraph><paragraph>\nLäs mer om Synective Labs här.</paragraph><header>Meriterande är:</header><list><item>Erfarenhet av att jobba med Embedded systems.</item>\n<item>Erfarenhet av Machine Learning och bild/signalbehandling.</item>\n<item>Erfarenhet av VHDL eller Verilog.</item>\n<item>Erfarenhet av C/C++ programmering gärna även OpenCL.</item>\n<item>Erfarenhet av algoritmutveckling.</item>\n<item>Erfarenhet av Autosar, fordonsbussar (CAN teknik mfl), Simulink och ISO26262.</item>\n</list><header>Din profil</header><paragraph>\nVi söker dig som har en civilingenjörsexamen eller motsvarande. Hos oss och våra kunder arbetar vi oftast i team av varierande storlek, därför värdesätter vi samarbetsförmåga och social kompetens.</paragraph><header>Vi erbjuder</header><paragraph>\nSom anställd har du stora möjligheter att utvecklas med oss, kanske framför allt genom intressanta och utmanande projekt!</paragraph><paragraph>\nSynective har över 25 anställda fördelade på våra kontor i Stockholm, Göteborg och Linköping. Vi är ett erfaret team med bra spridning i både kompetens och åldrar. Samarbete och kundnytta står högt på agendan, liksom ett väl fungerande företag med hög trivselfaktor.</paragraph><header>Vi svarar gärna på frågor:</header><paragraph>\nGöteborg: Joel Klingspor, 070-3676070</paragraph><paragraph>\nLinköping: Magnus Peterson, 013-4651042</paragraph><paragraph>\nStockholm: Gunnar Stjernberg, 0708-688445</paragraph><paragraph>\nEller hör av dig via email: work@synective.se.</paragraph><header>Välkommen med din ansökan!</header><paragraph>Synective is your partner for accelerated computing and high speed computations. Our focus is to solve your computational challenges, turning problems into opportunities, independantly of if your technology area is advanced algorithms in embedded systems or large scale HPC problems. With a long experience in turning slow CPU-based implementations into fast FPGA or GPU accelerated high performance applications, we cooperate with all major hardware and tools vendors, to simply be able to offer you the solution that best fits your application!</paragraph><paragraph>\nSynective was founded back in 2003 around a group of experts on using FPGAs for high performance computations, with the mission to bring acceleration technology out to customers around the world. Synective also started early using GPU technology for generic computations, long before CUDA and OpenCL was introduced and enabled this technology to a broader audience.</paragraph><paragraph>\nSynective has offices in Stockholm, Gothenburg and Linköping, Sweden, and offers its solutions and expertise to customer all around the world. Visit our website www.synective.se</paragraph><paragraph>Sökord: utvecklare, programmering, programmerare, ingenjör, civilingenjör, teknik, utveckling</paragraph></document>",
+      "sources": [
+        {
+          "id": "6e188424-3ff4-4102-aa62-a6c76707d5e7",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=f286b66fd86fd4ad"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vi håller på att växa och är nu på jakt efter nya kumpaner. Vi har flertalet välkända kunder inom fintech, betting, IoT som skriker efter mer resurser, det är där DU kommer in i bilden.\nSom konsult hos Kumpan erbjuder vi följande:\nKonkurrensmässig lön\nPensionsavtal\nMöjlighet till bonus / delägarskap\nFriskvårdsbidrag\nHackdays\nTeamfrukost en gång i veckan\nMinst en aktivitet i månaden där vi alla träffas och tar en AW eller hittar på något kul ihop.\nVi tror att du har följande kvalifikationer:\nGedigna kunskaper inom JavaScript och React\nBrinner för ny teknik\nHar du dessutom erfarenhet inom något av nedanstående är det meriterande:\nJava / Scala, Elixir, NodeJS, Go\nVi använder oss av arbetsprov i urvalsprocessen (ej på intervju utan i lugn och ro hemma)\nOm Kumpan:\nKumpan är en konsult &amp; webbyrå med omfattande erfarenhet av att ta fram responsiva webbsidor, enkla kampanjsajter, smartphone appar, banners, broschyrer, illustrationer &amp; grafiska profiler. Enkelt uttryckt kan det sägas att vi har ett brett register som bottnar i vår kärlek till design och teknik. Vår kärna är grafisk design, webb- och apputveckling.\nKumpan har sin grund i ett företag vänner emellan och den grunden har förblivit och skall så vara för att bibehålla familjära kultur - det många organisationer vill skapa ur tomma intet sitter i väggarna hos oss.\nArbetsgivare:\nKumpan Grafisk Form AB\nFiskargatan 8\n11620 Stockholm\nSverige",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "node.js",
+          "scala",
+          "javascript",
+          "react",
+          "webbsidor",
+          "broschyrer",
+          "illustration"
+        ],
+        "traits": [
+          "lugn"
+        ]
+      },
+      "employer": {
+        "name": "Jobshark AB"
+      },
+      "geolocation": {
+        "lat": "18.06858",
+        "lng": "59.329323"
+      },
+      "header": "Utvecklare",
+      "id": "2278722d-fea2-47cd-aff7-e3a0b431fbe5",
+      "location": "Stockholm",
+      "markup": "<document><paragraph>Vi håller på att växa och är nu på jakt efter nya kumpaner. Vi har flertalet välkända kunder inom fintech, betting, IoT som skriker efter mer resurser, det är där DU kommer in i bilden.</paragraph><paragraph>Som konsult hos Kumpan erbjuder vi följande:</paragraph><list><item>Konkurrensmässig lön</item><item>\nPensionsavtal</item><item>\nMöjlighet till bonus / delägarskap</item><item>\nFriskvårdsbidrag</item><item>\nHackdays</item><item>\nTeamfrukost en gång i veckan</item><item>Minst en aktivitet i månaden där vi alla träffas och tar en AW eller hittar på något kul ihop.</item></list><paragraph>Vi tror att du har följande kvalifikationer:</paragraph><list><item>\nGedigna kunskaper inom JavaScript och React</item><item>\nBrinner för ny teknik</item></list><paragraph>Har du dessutom erfarenhet inom något av nedanstående är det meriterande:</paragraph><list><item>\nJava / Scala, Elixir, NodeJS, Go</item></list><paragraph>Vi använder oss av arbetsprov i urvalsprocessen (ej på intervju utan i lugn och ro hemma)</paragraph><header>Om Kumpan:</header><paragraph>Kumpan är en konsult &amp;amp; webbyrå med omfattande erfarenhet av att ta fram responsiva webbsidor, enkla kampanjsajter, smartphone appar, banners, broschyrer, illustrationer &amp;amp; grafiska profiler. Enkelt uttryckt kan det sägas att vi har ett brett register som bottnar i vår kärlek till design och teknik. Vår kärna är grafisk design, webb- och apputveckling.</paragraph><paragraph>Kumpan har sin grund i ett företag vänner emellan och den grunden har förblivit och skall så vara för att bibehålla familjära kultur - det många organisationer vill skapa ur tomma intet sitter i väggarna hos oss.</paragraph><paragraph>Arbetsgivare:</paragraph><paragraph>Kumpan Grafisk Form AB</paragraph><paragraph>Fiskargatan 8</paragraph><paragraph>11620 Stockholm</paragraph><paragraph>Sverige</paragraph></document>",
+      "sources": [
+        {
+          "id": "2278722d-fea2-47cd-aff7-e3a0b431fbe5",
+          "name": "Indeed",
+          "url": "https://se.indeed.com/visajobb?jk=ec892c04da3e8d8a"
+        }
+      ]
+    },
+    {
+      "application": {
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Utvecklare\nAnsök nu\nAnsök nu\nSkriv ut\nSynective Labs växer och söker fler utvecklare till Göteborg, Linköping och Stockholm!\nUtvecklare\nembedded\ninom Automotive och Industry systems eller FPGA-design\nSom ett av Sveriges vassaste specialistteam inom Embedded- och FPGA-teknik förstärker vi nu kompetensen ytterligare. Vi befinner oss i en expansiv fas där våra lösningar efterfrågas i många spännande applikationer.\nVi söker dig med ett brinnande intresse för avancerad teknikutveckling som vill vidareutveckla dina tidigare erfarenheter.\nHos oss får du jobba med avancerade lösningar i teknikens framkant, i en konsultroll ute hos våra kunder eller i projekt \"in house\". Du blir en del av vårt team där din kompetens inom våra huvudområden Automotive systems, Embedded systems och FPGA-design blir en väsentlig del av företagets fortsatta utveckling.\nMeriterande är:\nErfarenhet av att jobba med Embedded systems.\nErfarenhet av Machine Learning och bild/signalbehandling.\nErfarenhet av VHDL eller Verilog.\nErfarenhet av C/C++ programmering gärna även OpenCL.\nErfarenhet av algoritmutveckling.\nErfarenhet av Autosar, fordonsbussar (CAN teknik mfl), Simulink och ISO26262.\nDin profil\nVi söker dig som har en civilingenjörsexamen eller motsvarande. Hos oss och våra kunder arbetar vi oftast i team av varierande storlek, därför värdesätter vi samarbetsförmåga och social kompetens.\nVi erbjuder\nSom anställd har du stora möjligheter att utvecklas med oss, kanske framför allt genom intressanta och utmanande projekt!\nSynective har över 25 anställda fördelade på våra kontor i Stockholm, Göteborg och Linköping. Vi är ett erfaret team med bra spridning i både kompetens och åldrar. Samarbete och kundnytta står högt på agendan, liksom ett väl fungerande företag med hög trivselfaktor.\nVi svarar gärna på frågor:\nGöteborg: Joel Klingspor, 070-3676070\nLinköping: Magnus Peterson, 013-4651042\nStockholm: Gunnar Stjernberg, 0708-688445\nEller hör av dig via email:\n[email protected]\nVälkommen med din ansökan!\nSynective is your partner for accelerated computing and high speed computations. Our focus is to solve your computational challenges, turning problems into opportunities, independantly of if your technology area is advanced algorithms in embedded systems or large scale HPC problems. With a long experience in turning slow CPU-based implementations into fast FPGA or GPU accelerated high performance applications, we cooperate with all major hardware and tools vendors, to simply be able to offer you the solution that best fits your application!\nSynective was founded back in 2003 around a group of experts on using FPGAs for high performance computations, with the mission to bring acceleration technology out to customers around the world.\nSynective also started early using GPU technology for generic computations, long before CUDA and OpenCL was introduced and enabled this technology to a broader audience.\nSynective has offices in Stockholm, Gothenburg and Linköping, Sweden, and offers its solutions and expertise to customer all around the world. Visit our website\nwww.synective.se\nSökord: utvecklare, programmering, programmerare, ingenjör, civilingenjör, teknik, utveckling",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare"
+        ],
+        "skills": [
+          "simulink",
+          "signalbehandling",
+          "verilog",
+          "algoritm",
+          "autosar",
+          "machine learning",
+          "vhdl",
+          "teknikutveckling",
+          "embedded system",
+          "c",
+          "c++",
+          "programmering",
+          "opencl"
+        ],
+        "traits": [
+          "social",
+          "samarbetsförmåga"
+        ]
+      },
+      "employer": {
+        "name": "Synective Labs AB"
+      },
+      "geolocation": {
+        "lat": "11.97456",
+        "lng": "57.70887"
+      },
+      "header": "Utvecklare",
+      "id": "ca4ea80e-1e77-4d6b-b986-7bbe01e4ab23",
+      "location": "Göteborg",
+      "markup": "<document><header>Utvecklare</header>\n               \n                   \n\n        Ansök nu \n\n\n\n        Ansök nu \n\n    \n\n    \n\n    \n\n    \n        \n    \n\n\n\n\n    \n             Skriv ut\n    \n                   \n               &#13;\n<header>Synective Labs växer och söker fler utvecklare till Göteborg, Linköping och Stockholm! </header><header>Utvecklare</header><header>embedded</header><paragraph> inom Automotive och Industry systems eller FPGA-design</paragraph>&#13;\n<paragraph> Som ett av Sveriges vassaste specialistteam inom Embedded- och FPGA-teknik förstärker vi nu kompetensen ytterligare. Vi befinner oss i en expansiv fas där våra lösningar efterfrågas i många spännande applikationer.</paragraph>&#13;\n<paragraph>Vi söker dig med ett brinnande intresse för avancerad teknikutveckling som vill vidareutveckla dina tidigare erfarenheter. </paragraph>&#13;\n<paragraph>Hos oss får du jobba med avancerade lösningar i teknikens framkant, i en konsultroll ute hos våra kunder eller i projekt \"in house\". Du blir en del av vårt team där din kompetens inom våra huvudområden Automotive systems, Embedded systems och FPGA-design blir en väsentlig del av företagets fortsatta utveckling. </paragraph>&#13;\n<header>Meriterande är:</header>&#13;\n<list><item>Erfarenhet av att jobba med Embedded systems.</item>&#13;\n<item>Erfarenhet av Machine Learning och bild/signalbehandling.</item>&#13;\n<item>Erfarenhet av VHDL eller Verilog.</item>&#13;\n<item>Erfarenhet av C/C++ programmering gärna även OpenCL.</item>&#13;\n<item>Erfarenhet av algoritmutveckling.</item>&#13;\n<item>Erfarenhet av Autosar, fordonsbussar (CAN teknik mfl), Simulink och ISO26262.</item>&#13;\n</list><header>Din profil</header><paragraph> Vi söker dig som har en civilingenjörsexamen eller motsvarande. Hos oss och våra kunder arbetar vi oftast i team av varierande storlek, därför värdesätter vi samarbetsförmåga och social kompetens.</paragraph><header>Vi erbjuder</header><paragraph> Som anställd har du stora möjligheter att utvecklas med oss, kanske framför allt genom intressanta och utmanande projekt!</paragraph>&#13;\n<paragraph>Synective har över 25 anställda fördelade på våra kontor i Stockholm, Göteborg och Linköping. Vi är ett erfaret team med bra spridning i både kompetens och åldrar. Samarbete och kundnytta står högt på agendan, liksom ett väl fungerande företag med hög trivselfaktor.</paragraph><header>Vi svarar gärna på frågor:</header><paragraph>   Göteborg: Joel Klingspor, 070-3676070</paragraph><paragraph> Linköping: Magnus Peterson, 013-4651042</paragraph><paragraph> Stockholm: Gunnar Stjernberg, 0708-688445 </paragraph>&#13;\n<paragraph>Eller hör av dig via email: [email protected]</paragraph>&#13;\n<header>Välkommen med din ansökan!</header>&#13;\n<paragraph>Synective is your partner for accelerated computing and high speed computations. Our focus is to solve your computational challenges, turning problems into opportunities, independantly of if your technology area is advanced algorithms in embedded systems or large scale HPC problems. With a long experience in turning slow CPU-based implementations into fast FPGA or GPU accelerated high performance applications, we cooperate with all major hardware and tools vendors, to simply be able to offer you the solution that best fits your application!</paragraph>&#13;\n<paragraph>Synective was founded back in 2003 around a group of experts on using FPGAs for high performance computations, with the mission to bring acceleration technology out to customers around the world. Synective also started early using GPU technology for generic computations, long before CUDA and OpenCL was introduced and enabled this technology to a broader audience.</paragraph>&#13;\n<paragraph>Synective has offices in Stockholm, Gothenburg and Linköping, Sweden, and offers its solutions and expertise to customer all around the world. Visit our website www.synective.se</paragraph>&#13;\n<paragraph>Sökord: utvecklare, programmering, programmerare, ingenjör, civilingenjör, teknik, utveckling</paragraph>\n            </document>",
+      "sources": [
+        {
+          "id": "ca4ea80e-1e77-4d6b-b986-7bbe01e4ab23",
+          "name": "Metrojobb",
+          "url": "http://www.metrojobb.se/jobb/1697200-utvecklare"
+        }
+      ]
+    },
+    {
+      "application": {
+        "deadline": "2019-03-16T22:59:59+00:00",
+        "reference": "Utvecklare",
+        "site": {
+          "name": null,
+          "url": null
+        }
+      },
+      "content": "Vi på Qualious söker en erfaren utvecklare. I denna roll kommer du att i projektform utveckla lösningar för att från produktdata och CAD-modell automatiskt skapa det underlag som behövs i produktion som till exempel ritningar, operationslistor samt maskinprogram. I rollen kommer du att programmera i Java eller C mot API:t för Siemens NX, CAD/CAM-system, men även i egenutvecklade plattformar i stordatormiljö.\n\nRollen erbjuder dig stimulerande arbetsuppgifter där du får möjlighet att arbeta inom programmering och produktionsteknik på ett utmanade och utvecklande sätt. Vi på Qualious ser långsiktigt på din anställning och vill att du ska utvecklas tillsammans med oss.\n\nHar du ett gediget intresse för programmering och produktionsteknik? Är du utvecklare och problemlösare som inspireras av att höja kvalitén med hjälp av automatiserade lösningar? Då vill vi gärna veta mer om dig så dra dig inte för att skicka in din ansökan redan idag!\n\nVi söker dig som har erfarenhet från en liknande roll och är utbildad högskole- eller civilingenjör med inriktning mot programmering eller maskinteknik. Du har erfarenhet och ett gediget intresse för programmering och produktionsteknik. Har du kunskaper inom C, Java, Siemens NX eller andra CAD/CAM-system är det meriterande. Du talar och skriver obehindrat på engelska och svenska. Fler språk är meriterande.\n\nSom person är du analytiskt, strukturerad och är noggrann när du arbetar. Du är ansvarsfull, kan arbeta i både grupp och självständigt.\n\nSom konsult hos oss har du möjlighet att utveckla din kompetens och bygga ditt CV genom uppdraget samtidigt som du får stöd och vägledning från din konsultchef. På Qualious finns även ett forum där våra anställda kan skapa kontakt och kommunicera.\n\nQualious startades för att hjälpa människor och företag att optimera sina förutsättningar för tillväxt genom skräddarsydda lösningar. \n\nVi är ett digitaliserat bemannings- och rekryteringsbolag vars viktigaste mål är att hjälpa dig att hitta ditt drömjobb så snabbt och träffsäkert som möjligt genom skräddarsydda tjänster. Vår fokus ligger på att matcha rätt kompetens med rätt jobb oavsett om arbetet sker på distans eller direkt på plats.\n\nSpråkriktighet är också en mycket viktig del av vår affärsidé vilket öppnar upp vår träffsäkerhet samt gynnar det digitaliserade arbetssättet vi använder oss av. Vi fokuserar även 100% på att bolaget och alla involverade processer ska vara miljövänliga.\n\nPå Qualious bryr vi oss om och stärker individer, både våra anställda och de vi möter i vår vardag. Hos oss bidrar alla med personlighet, arbetsglädje och engagemang både hos våra kunder och i team Qualious.\n\nTillsammans når vi perfektion!",
+      "detected_keywords": {
+        "occupations": [
+          "systemutvecklare",
+          "civilingenjör",
+          "högskoleingenjör"
+        ],
+        "skills": [
+          "ritningar",
+          "cad",
+          "engelska",
+          "svenska",
+          "maskinprogram",
+          "programmering",
+          "produktionsteknik",
+          "java",
+          "api",
+          "nx",
+          "stordator",
+          "maskin",
+          "c",
+          "cam"
+        ],
+        "traits": [
+          "ansvarstagande",
+          "noggrann",
+          "strukturerad"
+        ]
+      },
+      "employer": {
+        "logoUrl": "http://api.arbetsformedlingen.se/platsannons/23098940/logotyp",
+        "name": "Qualious AB"
+      },
+      "geolocation": {
+        "lat": null,
+        "lng": null
+      },
+      "header": "Utvecklare",
+      "id": "6397e60e-23e5-4001-9b6a-6d76bb21eb65",
+      "location": null,
+      "markup": null,
+      "sources": [
+        {
+          "id": "6397e60e-23e5-4001-9b6a-6d76bb21eb65",
+          "name": "Platsbanken",
+          "url": "https://www.arbetsformedlingen.se/Tjanster/Arbetssokande/Platsbanken/annonser/23098940"
+        }
+      ]
+    }
+  ],
+  "stats": {},
+  "total": 7629
+}

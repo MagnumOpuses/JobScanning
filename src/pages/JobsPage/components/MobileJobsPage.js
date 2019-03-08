@@ -11,7 +11,8 @@ import {
   NoResultsBox,
   PageHeader,
   JobMap,
-  ResultStats
+  ResultStats,
+  EnrichmentRanking
 } from '../../../components'
 import theme from '../../../styles/theme'
 import numberOfUniqueSources from '../../../utils/numberOfUniqueSources'
@@ -117,7 +118,12 @@ class MobileJobsPage extends Component {
             <MobileJobsList handleScroll={this.handleScroll} />
           </div>
           {activeComponent === 'map' && <JobMap />}
-          {activeComponent === 'overview' && <SourceRanking />}
+          {activeComponent === 'overview' && (
+            <div style={{ padding: '1.5rem' }}>
+              <SourceRanking />
+              <EnrichmentRanking />
+            </div>
+          )}
         </>
       )
     }
@@ -140,7 +146,7 @@ class MobileJobsPage extends Component {
             <CustomMenuItem
               name="list"
               active={activeComponent === 'list'}
-              content="Lista"
+              content="Annonser"
               onClick={() => this.setState({ activeComponent: 'list' })}
             />
 

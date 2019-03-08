@@ -3,6 +3,7 @@ import {
   JOBS_SUCCESS,
   JOBS_FAILURE,
   JOBS_ADD_MORE,
+  SET_LOCATION,
   JOB_SELECT,
   JOB_UNSELECT
 } from '../actions'
@@ -17,7 +18,6 @@ const initialState = {
   isFetching: false,
   hits: [],
   processedList: [],
-  markers: [],
   selectedJob: {},
   numberOfJobsInCounties: {}
 }
@@ -131,10 +131,6 @@ export default (state = initialState, action) => {
       ]
 
       processedList = _.uniqBy(processedList, 'id')
-      // let markers = _.uniqBy(
-      //   [...state.markers, ...action.payload.markers],
-      //   'id'
-      // )
       const scoreboard = createScoreboard(hits)
       const numberOfJobsInCounties = getNumberOfJobsInCounties(hits)
 
@@ -145,11 +141,17 @@ export default (state = initialState, action) => {
         ...state,
         hits,
         processedList,
-        // markers,
         scoreboard,
         numberOfJobsInCounties,
         topCompetences,
         topTraits
+      }
+    }
+
+    case SET_LOCATION: {
+      return {
+        ...state,
+        location: action.location
       }
     }
 

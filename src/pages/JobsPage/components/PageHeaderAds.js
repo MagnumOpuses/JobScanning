@@ -28,7 +28,7 @@ const Header = styled.header`
   width: 100%;
   display: flex;
   z-index: 1;
-  border-top: 5px solid ${theme.green4};
+  border-bottom: 5px solid ${theme.green4};
 `
 
 const StyledLink = styled(Link)`
