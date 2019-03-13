@@ -4,20 +4,12 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  OverlayView,
   Polygon
 } from 'react-google-maps'
-import JobMapWindow from './components/JobMapWindow'
 import _ from 'lodash'
 import counties from './laen-kustlinjer.geo.json'
 import municipalities from './kommuner-kustlinjer.geo.json'
-import { countiesAndMunicipalities } from '../../utils/searchOptions'
 import mapStyles from './mapStyles.json'
-
-const getPixelPositionOffset = (width, height) => ({
-  x: -(width / 2),
-  y: -(height - 2)
-})
 
 function getFillColor(number) {
   if (number > 15) {
@@ -48,10 +40,9 @@ const MyMapComponent = compose(
   let googleMap = React.createRef()
 
   function getZoomAndCenter() {
-    console.log(googleMap.current.getZoom())
-
-    let test = googleMap.current.getCenter().lat()
-    console.log(test)
+    console.log('zoom', googleMap.current.getZoom())
+    console.log('lat', googleMap.current.getCenter().lat())
+    console.log('lng', googleMap.current.getCenter().lng())
   }
 
   return (
@@ -62,15 +53,15 @@ const MyMapComponent = compose(
       zoom={props.zoom}
       defaultOptions={{
         disableDefaultUI: true,
-        // scrollwheel: false,
+        scrollwheel: false,
         styles: mapStyles
       }}
       ref={googleMap}
       onDragEnd={() => getZoomAndCenter()}
+      onZoomChanged={() => getZoomAndCenter()}
     >
       {props.showCounties &&
         counties.features.map(feature => {
-          const county = feature.properties.name
           const countyPaths = feature.geometry.coordinates.map(array => {
             return array[0].map(coords => {
               return { lng: coords[0], lat: coords[1] }
@@ -78,24 +69,24 @@ const MyMapComponent = compose(
           })
           return (
             <Polygon
-              key={county}
+              key={feature.properties.name}
               paths={countyPaths}
               onClick={() =>
                 props.handleClickedCounty(
                   feature.properties['ref:se:länskod'],
                   feature.properties.name,
-                  countyPaths
+                  feature.googleMapsConfig
                 )
               }
               visible={true}
               options={{
                 strokeColor: '#fff',
                 strokeWeight: 1.5,
-                fillColor: getFillColor(props.numberOfJobsInCounties[county]),
+                fillColor: getFillColor(
+                  props.numberOfJobsInCounties[feature.properties.name]
+                ),
                 fillOpacity: 1
               }}
-              // onMouseOver={() => console.log('enter', county)}
-              // onMouseOut={() => console.log('leave', county)}
             />
           )
         })}
@@ -113,23 +104,14 @@ class JobMap extends React.Component {
     municipalitiesPaths: []
   }
 
-  handleClickedCounty = (countyCode, countyName, countyPaths) => {
+  handleClickedCounty = (countyCode, countyName, countyConfig) => {
     this.props.handleLocationChange(countyName)
-
-    const flattenedCountyPaths = countyPaths.flat()
-
-    const averageCoords = {
-      lng: _.sumBy(flattenedCountyPaths, 'lng') / flattenedCountyPaths.length,
-      lat: _.sumBy(flattenedCountyPaths, 'lat') / flattenedCountyPaths.length
-    }
 
     const filteredMunicipalities = municipalities.features.filter(
       municipality =>
         municipality.properties['ref:se:kommun:kod'].substring(0, 2) ===
         countyCode
     )
-
-    console.log(filteredMunicipalities)
 
     const municipalitiesPolygons = filteredMunicipalities.map(municipality => {
       const municipalityName = municipality.properties.short_name
@@ -141,6 +123,7 @@ class JobMap extends React.Component {
           })
         }
       )
+
       return (
         <Polygon
           key={municipalityName}
@@ -158,8 +141,8 @@ class JobMap extends React.Component {
     })
 
     this.setState({
-      center: averageCoords,
-      zoom: 7,
+      center: countyConfig.center,
+      zoom: countyConfig.zoom,
       showCounties: false,
       showMunicipalities: true,
       municipalitiesPolygons: municipalitiesPolygons

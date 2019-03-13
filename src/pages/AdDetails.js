@@ -99,7 +99,7 @@ class AdDetails extends Component {
                   padding: '2rem 0 0'
                 }}
               >
-                <TextEnrichment mobile />
+                <TextEnrichment />
               </div>
             )}
 

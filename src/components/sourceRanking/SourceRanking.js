@@ -4,7 +4,7 @@ import getLogo from '../../utils/getLogo'
 
 const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
   return (
-    <div style={{ padding: '1.5rem' }}>
+    <div>
       <p>
         Topp {numberOfSources ? numberOfSources : 0} webbplatser för dig som
         letar efter annonser för {searchTerm}

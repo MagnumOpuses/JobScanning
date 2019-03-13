@@ -27,7 +27,6 @@ class SearchFormContainer extends React.Component {
 
   handleChange = (event, data) => {
     this.setState({ [data.name]: data.value })
-    console.log(this.state)
   }
 
   handleLocationChange = (event, data) => {
@@ -35,6 +34,8 @@ class SearchFormContainer extends React.Component {
   }
 
   handleSubmit = async event => {
+    console.log(this.state.searchTerm, this.state.location)
+
     event.preventDefault()
     this.props.searchJobs(this.state.searchTerm, this.state.location)
     this.props.history.push('/jobs')

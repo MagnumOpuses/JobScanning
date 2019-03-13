@@ -227,6 +227,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'uppsala_lan',
     text: 'Uppsala län',
+    county: 'Uppsala län',
     code: '03',
     value: 'Uppsala län'
   },
@@ -378,6 +379,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'ostergotlands_lan',
     text: 'Östergötlands län',
+    county: 'Östergötlands län',
     code: '05',
     value: 'Östergötlands län'
   },
@@ -489,6 +491,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'jonkopings_lan',
     text: 'Jönköpings län',
+    county: 'Jönköpings län',
     code: '06',
     value: 'Jönköpings län'
   },
@@ -600,6 +603,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'kronobergs_lan',
     text: 'Kronobergs län',
+    county: 'Kronobergs län',
     code: '07',
     value: 'Kronobergs län'
   },
@@ -671,6 +675,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'kalmar_lan',
     text: 'Kalmar län',
+    county: 'Kalmar län',
     code: '08',
     value: 'Kalmar län'
   },
@@ -774,6 +779,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'gotlands_lan',
     text: 'Gotlands län',
+    county: 'Gotlands län',
     code: '09',
     value: 'Gotlands län'
   },
@@ -789,6 +795,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'blekinge_lan',
     text: 'Blekinge län',
+    county: 'Blekinge län',
     code: '10',
     value: 'Blekinge län'
   },
@@ -836,6 +843,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'skane_lan',
     text: 'Skåne län',
+    county: 'Skåne län',
     code: '12',
     value: 'Skåne län'
   },
@@ -1107,6 +1115,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'hallands_lan',
     text: 'Hallands län',
+    county: 'Hallands län',
     code: '13',
     value: 'Hallands län'
   },
@@ -1162,6 +1171,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'vastra_gotalands_lan',
     text: 'Västra Götalands län',
+    county: 'Västra Götalands län',
     code: '14',
     value: 'Västra Götalands län'
   },
@@ -1561,6 +1571,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'varmlands_lan',
     text: 'Värmlands län',
+    county: 'Värmlands län',
     code: '17',
     value: 'Värmlands län'
   },
@@ -1696,6 +1707,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'orebro_lan',
     text: 'Örebro län',
+    county: 'Örebro län',
     code: '18',
     value: 'Örebro län'
   },
@@ -1799,6 +1811,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'vastmanlands_lan',
     text: 'Västmanlands län',
+    county: 'Västmanlands län',
     code: '19',
     value: 'Västmanlands län'
   },
@@ -1886,6 +1899,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'dalarnas_lan',
     text: 'Dalarnas län',
+    county: 'Dalarnas län',
     code: '20',
     value: 'Dalarnas län'
   },
@@ -2013,6 +2027,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'gavleborgs_lan',
     text: 'Gävleborgs län',
+    county: 'Gävleborgs län',
     code: '21',
     value: 'Gävleborgs län'
   },
@@ -2100,6 +2115,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'vasternorrlands_lan',
     text: 'Västernorrlands län',
+    county: 'Västernorrlands län',
     code: '22',
     value: 'Västernorrlands län'
   },
@@ -2163,6 +2179,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'jamtlands_lan',
     text: 'Jämtlands län',
+    county: 'Jämtlands län',
     code: '23',
     value: 'Jämtlands län'
   },
@@ -2234,6 +2251,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'vasterbottens_lan',
     text: 'Västerbottens län',
+    county: 'Västerbottens län',
     code: '24',
     value: 'Västerbottens län'
   },
@@ -2361,6 +2379,7 @@ export const countiesAndMunicipalities = [
   {
     key: 'norrbottens_lan',
     text: 'Norrbottens län',
+    county: 'Norrbottens län',
     code: '25',
     value: 'Norrbottens län'
   },

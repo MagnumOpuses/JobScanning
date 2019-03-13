@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import {
@@ -44,13 +43,26 @@ const DesktopJobDetails = ({ selectedJob }) => {
       {selectedJob.detected_keywords && (
         <div
           style={{
-            display: 'flex',
-            margin: '3rem 0 6rem',
-            padding: '2.5rem 0 0',
-            borderTop: `2px solid ${theme.green4}`
+            margin: '2rem 0',
+            padding: '1rem 0',
+            borderTop: `2px solid ${theme.green4}`,
+            borderBottom: `2px solid ${theme.green4}`
           }}
         >
-          <TextEnrichment />
+          <p>Vi hittade följande i annonsen som vi tror är relevant för dig</p>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              margin: '2rem 0 4rem'
+            }}
+          >
+            <TextEnrichment />
+          </div>
+          <p style={{ fontSize: '18px !important', fontStyle: 'italic' }}>
+            OBS: Informationen plockas ut av vår textanalys och kan vara
+            missvisande
+          </p>
         </div>
       )}
 

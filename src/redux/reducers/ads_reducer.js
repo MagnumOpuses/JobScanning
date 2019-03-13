@@ -9,7 +9,8 @@ import {
 } from '../actions'
 import _ from 'lodash'
 import createScoreboard from '../../utils/createScoreboard'
-import { countiesAndMunicipalities } from '../../utils/searchOptions'
+import getNumberOfJobsInPlace from '../../utils/getNumberOfJobsInPlace'
+import countAndSort from '../../utils/countAndSort'
 
 const initialState = {
   searchTerm: '',
@@ -20,70 +21,6 @@ const initialState = {
   processedList: [],
   selectedJob: {},
   numberOfJobsInCounties: {}
-}
-
-function getNumberOfJobsInCounties(jobs) {
-  const numberOfJobsInCounties = {
-    'Blekinge län': 0,
-    'Dalarnas län': 0,
-    'Gotlands län': 0,
-    'Gävleborgs län': 0,
-    'Hallands län': 0,
-    'Jämtlands län': 0,
-    'Jönköpings län': 0,
-    'Kalmar län': 0,
-    'Kronobergs län': 0,
-    'Norrbottens län': 0,
-    'Skåne län': 0,
-    'Stockholms län': 0,
-    'Södermanlands län': 0,
-    'Uppsala län': 0,
-    'Värmlands län': 0,
-    'Västerbottens län': 0,
-    'Västernorrlands län': 0,
-    'Västmanlands län': 0,
-    'Västra Götalands län': 0,
-    'Örebro län': 0,
-    'Östergötlands län': 0
-  }
-
-  jobs.forEach(job => {
-    if (job.location) {
-      countiesAndMunicipalities.forEach(item => {
-        if (job.location === item.text) {
-          numberOfJobsInCounties[item.county] += 1
-        }
-      })
-    }
-  })
-
-  return numberOfJobsInCounties
-}
-
-function countAndSort(jobs, target) {
-  const scoreboard = {}
-
-  jobs.forEach(job => {
-    job.detected_keywords[target].forEach(word => {
-      if (word in scoreboard) {
-        scoreboard[word]++
-      } else {
-        scoreboard[word] = 1
-      }
-    })
-  })
-
-  let ordered = Object.keys(scoreboard).sort(
-    (a, b) => scoreboard[b] - scoreboard[a]
-  )
-  ordered = ordered.length > 10 ? ordered.slice(0, 10) : ordered
-
-  const sortedScoreboard = []
-  ordered.forEach(word => {
-    sortedScoreboard.push({ keyword: word, score: scoreboard[word] })
-  })
-
-  return sortedScoreboard
 }
 
 export default (state = initialState, action) => {
@@ -100,9 +37,7 @@ export default (state = initialState, action) => {
 
     case JOBS_SUCCESS: {
       const scoreboard = createScoreboard(action.payload.hits)
-      const numberOfJobsInCounties = getNumberOfJobsInCounties(
-        action.payload.hits
-      )
+      const numberOfJobsInCounties = getNumberOfJobsInPlace(action.payload.hits)
 
       const topCompetences = countAndSort(action.payload.hits, 'skills')
       const topTraits = countAndSort(action.payload.hits, 'traits')
@@ -132,7 +67,7 @@ export default (state = initialState, action) => {
 
       processedList = _.uniqBy(processedList, 'id')
       const scoreboard = createScoreboard(hits)
-      const numberOfJobsInCounties = getNumberOfJobsInCounties(hits)
+      const numberOfJobsInCounties = getNumberOfJobsInPlace(hits)
 
       const topCompetences = countAndSort(hits, 'skills')
       const topTraits = countAndSort(hits, 'traits')

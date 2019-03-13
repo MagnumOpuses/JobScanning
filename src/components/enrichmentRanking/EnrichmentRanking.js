@@ -4,7 +4,7 @@ import BoldText from '../reusables/BoldText'
 
 const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
   return (
-    <div style={{ paddingTop: '66px' }}>
+    <div>
       <div>
         <H2>
           Topp <BoldText>{topCompetences.length}</BoldText> mest eftersökta
@@ -16,8 +16,7 @@ const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
           {topCompetences.map(competence => (
             <li key={competence.keyword}>
               <span className="keyword">{competence.keyword}</span>{' '}
-              {competence.score} gånger (
-              {Math.ceil((competence.score / hits.length) * 100)}%)
+              {competence.score} gånger
             </li>
           ))}
         </OrderedList>
@@ -33,7 +32,7 @@ const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
           {topTraits.map(trait => (
             <li key={trait.keyword}>
               <span className="keyword">{trait.keyword}</span> {trait.score}{' '}
-              gånger ({Math.ceil((trait.score / hits.length) * 100)}%)
+              gånger
             </li>
           ))}
         </OrderedList>
@@ -41,6 +40,8 @@ const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
     </div>
   )
 }
+// ({Math.ceil((competence.score / hits.length) * 100)}%)
+// ({Math.ceil((trait.score / hits.length) * 100)}%)
 
 export default EnrichmentRanking
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setLocation, selectJob, unselectJob } from '../../redux/actions'
-import _ from 'lodash'
 import JobMap from './JobMap'
 
 class JobMapContainer extends React.Component {

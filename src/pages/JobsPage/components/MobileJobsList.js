@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { fetchMoreJobs, selectJob } from '../../../redux/actions'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-import distanceInWordsStrict from 'date-fns/distance_in_words_strict'
-import format from 'date-fns/format'
-import sv from 'date-fns/locale/sv'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CustomLoader, LogoPlaceholder } from '../../../components'
 
@@ -107,24 +104,6 @@ class MobileJobsList extends Component {
                   {item.location ? item.location : ''}
                 </P>
               </div>
-
-              {/* <ItemDeadline>
-                      {item.application.deadline
-                        ? distanceInWordsStrict(
-                            Date.now(),
-                            item.application.deadline,
-                            {
-                              addSuffix: true,
-                              locale: sv
-                            }
-                          )
-                        : 'Se annonsen för datum'}
-                    </ItemDeadline> */}
-
-              {/* <p>
-                    Inlagd:{' '}
-                    {format(item.source.firstSeenAt, 'YYYY-MM-DD HH:mm')}
-                  </p> */}
             </ListItem>
           ))}
         </InfiniteScroll>
@@ -169,12 +148,6 @@ const ListItem = styled.li`
 
 const ItemTitle = styled.h2`
   font-size: 18px;
-`
-
-const ItemDeadline = styled.p`
-  justify-self: end;
-  align-self: end;
-  padding: 1rem;
 `
 
 const P = styled.p`

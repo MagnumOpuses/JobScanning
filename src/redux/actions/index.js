@@ -1,6 +1,6 @@
 import fetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
-// import mockData from '../../mocks/utvecklareResponse.json'
+import mockData from '../../mocks/ekonomiassistentResponse.json'
 
 export const SEARCH_TERM = 'SEARCH_TERM'
 export const JOBS_REQUEST = 'JOBS_REQUEST'
@@ -19,20 +19,26 @@ export const searchJobs = (term, location) => async dispatch => {
     location
   })
 
-  let { data } = await fetchJobs(term, location)
-  // let data = mockData
-  const processedList = processJobList(data.hits)
+  try {
+    // let { data } = await fetchJobs(term, location)
+    let data = mockData
+    const processedList = processJobList(data.hits)
 
-  data = { ...data, processedList }
+    data = { ...data, processedList }
 
-  if (data.hits.length > 0) {
+    if (!data.hits.length > 0) {
+      dispatch({
+        type: JOBS_FAILURE
+      })
+    }
+
     dispatch({
       type: JOBS_SUCCESS,
       payload: data
     })
-  }
+  } catch (error) {
+    console.log(error)
 
-  if (!data.hits.length > 0) {
     dispatch({
       type: JOBS_FAILURE
     })

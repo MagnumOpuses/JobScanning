@@ -15,8 +15,6 @@ const SearchForm = ({
   upward,
   getCurrentPosition
 }) => {
-  console.log(location)
-
   return (
     <CustomForm onSubmit={handleSubmit} className={isDesktop && 'isDesktop'}>
       <Form.Field required={true}>

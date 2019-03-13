@@ -11,6 +11,13 @@
         "ref:se:länskod": "09",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 57.63947984794726,
+          "lng": 18.982673767488215
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -294,6 +301,13 @@
         "ref:se:län:bokstav": "H",
         "ref:se:länskod": "08",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 7.5,
+        "center": {
+          "lat": 57.34678837215341,
+          "lng": 16.560922033046726
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -915,6 +929,13 @@
         "ref:se:länskod": "10",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 9,
+        "center": {
+          "lat": 56.2538648810412,
+          "lng": 15.238276523125585
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1184,6 +1205,13 @@
         "ref:se:län:bokstav": "Z",
         "ref:se:länskod": "23",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 6.5,
+        "center": {
+          "lat": 63.31389832158764,
+          "lng": 14.660753796798177
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -1473,6 +1501,13 @@
         "ref:se:län:bokstav": "AC",
         "ref:se:länskod": "24",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 7,
+        "center": {
+          "lat": 63.224985196823646,
+          "lng": 17.403431749894416
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2112,6 +2147,13 @@
         "ref:se:länskod": "07",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 8.5,
+        "center": {
+          "lat": 56.83787468553764,
+          "lng": 14.561791024173312
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -2405,6 +2447,13 @@
         "ref:se:län:bokstav": "O",
         "ref:se:länskod": "14",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 7.5,
+        "center": {
+          "lat": 58.260627259340794,
+          "lng": 13.097655465604342
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -3087,6 +3136,13 @@
         "ref:se:länskod": "17",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 7,
+        "center": {
+          "lat": 59.9020823422155,
+          "lng": 13.344276229021025
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -3322,6 +3378,13 @@
         "ref:se:län:bokstav": "W",
         "ref:se:länskod": "20",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 7,
+        "center": {
+          "lat": 61.203606290601314,
+          "lng": 14.73628001566475
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -3594,6 +3657,13 @@
         "ref:se:länskod": "04",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 59.13936936360815,
+          "lng": 16.8060158362009
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -3824,6 +3894,13 @@
         "ref:se:län:bokstav": "F",
         "ref:se:länskod": "06",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 57.55905283760874,
+          "lng": 14.428633229573972
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -4191,6 +4268,13 @@
         "ref:se:län:bokstav": "E",
         "ref:se:länskod": "05",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 58.37484873196288,
+          "lng": 15.64904536704832
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -4665,6 +4749,13 @@
         "ref:se:län:bokstav": "AB",
         "ref:se:länskod": "01",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 59.543737513868614,
+          "lng": 18.29543481483029
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5670,6 +5761,13 @@
         "ref:se:länskod": "19",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 59.75580778340549,
+          "lng": 16.221355005743593
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -5874,6 +5972,13 @@
         "ref:se:län:bokstav": "C",
         "ref:se:länskod": "03",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 60.05975327842501,
+          "lng": 17.692809145831934
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -6198,6 +6303,13 @@
         "ref:se:län:bokstav": "X",
         "ref:se:länskod": "21",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 7,
+        "center": {
+          "lat": 61.38400010929067,
+          "lng": 16.792876157825308
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -6646,6 +6758,13 @@
         "ref:se:län:bokstav": "Y",
         "ref:se:länskod": "22",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 6.5,
+        "center": {
+          "lat": 64.88672637999885,
+          "lng": 17.9122626265346
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -7214,6 +7333,13 @@
         "ref:se:länskod": "18",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 59.37530970652218,
+          "lng": 14.973039907824374
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7444,6 +7570,13 @@
         "ref:se:län:bokstav": "BD",
         "ref:se:länskod": "25",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 6,
+        "center": {
+          "lat": 67.27493397841475,
+          "lng": 20.02178006454822
+        }
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -8538,6 +8671,13 @@
         "ref:se:länskod": "13",
         "type": "multipolygon"
       },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 57.01734561241163,
+          "lng": 12.836089236574928
+        }
+      },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -8883,6 +9023,13 @@
         "ref:se:län:bokstav": "M",
         "ref:se:länskod": "12",
         "type": "multipolygon"
+      },
+      "googleMapsConfig": {
+        "zoom": 8,
+        "center": {
+          "lat": 55.97379351977028,
+          "lng": 13.60012296269895
+        }
       },
       "geometry": {
         "type": "MultiPolygon",

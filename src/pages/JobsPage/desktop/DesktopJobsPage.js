@@ -2,17 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
-import {
-  Ellipse,
-  SourceRanking,
-  JobMap,
-  ResultStats,
-  EnrichmentRanking
-} from '../../../components'
+import { Ellipse, JobMap, ResultStats } from '../../../components'
 import PageHeaderAds from '../components/PageHeaderAds'
 import JobsList from '../../../components/jobList/JobsList'
 import theme from '../../../styles/theme'
 import DesktopJobDetails from './components/DesktopJobDetails'
+import DesktopOverview from './components/DesktopOverview'
 
 class DesktopJobsPage extends Component {
   state = { activeComponent: 'list' }
@@ -25,9 +20,25 @@ class DesktopJobsPage extends Component {
     this.props.selectJob(selectedJob)
   }
 
-  render() {
+  getContent = () => {
     const { activeComponent } = this.state
     const { selectedJob } = this.props
+
+    if (Object.keys(this.props.hits).length === 0) {
+      return
+    }
+
+    if (activeComponent === 'list' && Object.keys(selectedJob).length > 0) {
+      return <DesktopJobDetails selectedJob={selectedJob} />
+    } else if (activeComponent === 'map') {
+      return <JobMap desktop />
+    } else if (activeComponent === 'overview') {
+      return <DesktopOverview />
+    }
+  }
+
+  render() {
+    const { activeComponent } = this.state
 
     return (
       <div
@@ -67,22 +78,9 @@ class DesktopJobsPage extends Component {
             {/* <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P> */}
           </SideMenu>
 
-          <Content>
-            {Object.keys(this.props.hits).length === 0
-              ? ''
-              : (activeComponent === 'map' && <JobMap desktop />) ||
-                (activeComponent === 'overview' && <SourceRanking />)}
-            {Object.keys(selectedJob).length > 0 &&
-            activeComponent === 'list' ? (
-              <DesktopJobDetails selectedJob={selectedJob} />
-            ) : (
-              <div>
-                {activeComponent === 'overview' &&
-                  this.props.hits.length > 0 && <EnrichmentRanking />}
-              </div>
-            )}
-          </Content>
+          <Content>{this.getContent()}</Content>
         </GridContainer>
+
         <EllipseContainer>
           <Ellipse
             height="220px"
@@ -121,7 +119,7 @@ export default connect(
 )(DesktopJobsPage)
 
 const GridContainer = styled.div`
-  width: 90%;
+  width: 95%;
   display: grid;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 480px 1fr;
