@@ -13,7 +13,7 @@ class JobMapContainer extends React.Component {
       processedList,
       selectedJob,
       desktop,
-      numberOfJobsInCounties
+      numberOfJobsInPlace
     } = this.props
 
     return (
@@ -21,7 +21,7 @@ class JobMapContainer extends React.Component {
         selectedJob={selectedJob}
         processedList={processedList}
         desktop={desktop}
-        numberOfJobsInCounties={numberOfJobsInCounties}
+        numberOfJobsInPlace={numberOfJobsInPlace}
         handleLocationChange={this.handleLocationChange}
       />
     )
@@ -29,13 +29,13 @@ class JobMapContainer extends React.Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, processedList, selectedJob, numberOfJobsInCounties } = ads
+  const { hits, processedList, selectedJob, numberOfJobsInPlace } = ads
 
   return {
     hits,
     processedList,
     selectedJob,
-    numberOfJobsInCounties
+    numberOfJobsInPlace
   }
 }
 

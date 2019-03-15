@@ -20,7 +20,7 @@ const initialState = {
   hits: [],
   processedList: [],
   selectedJob: {},
-  numberOfJobsInCounties: {}
+  numberOfJobsInPlace: {}
 }
 
 export default (state = initialState, action) => {
@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
 
     case JOBS_SUCCESS: {
       const scoreboard = createScoreboard(action.payload.hits)
-      const numberOfJobsInCounties = getNumberOfJobsInPlace(action.payload.hits)
+      const numberOfJobsInPlace = getNumberOfJobsInPlace(action.payload.hits)
 
       const topCompetences = countAndSort(action.payload.hits, 'skills')
       const topTraits = countAndSort(action.payload.hits, 'traits')
@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
         error: false,
         ...action.payload,
         scoreboard,
-        numberOfJobsInCounties,
+        numberOfJobsInPlace,
         topCompetences,
         topTraits
       }
@@ -67,7 +67,7 @@ export default (state = initialState, action) => {
 
       processedList = _.uniqBy(processedList, 'id')
       const scoreboard = createScoreboard(hits)
-      const numberOfJobsInCounties = getNumberOfJobsInPlace(hits)
+      const numberOfJobsInPlace = getNumberOfJobsInPlace(hits)
 
       const topCompetences = countAndSort(hits, 'skills')
       const topTraits = countAndSort(hits, 'traits')
@@ -77,7 +77,7 @@ export default (state = initialState, action) => {
         hits,
         processedList,
         scoreboard,
-        numberOfJobsInCounties,
+        numberOfJobsInPlace,
         topCompetences,
         topTraits
       }

@@ -119,10 +119,9 @@ export default connect(
 )(DesktopJobsPage)
 
 const GridContainer = styled.div`
-  width: 95%;
   display: grid;
   grid-template-rows: 50px 1fr;
-  grid-template-columns: 480px 1fr;
+  grid-template-columns: 480px 800px;
   grid-row-gap: 2rem;
   grid-column-gap: 5rem;
   margin-top: 5rem;
@@ -187,8 +186,6 @@ const SideMenu = styled.div`
 const Content = styled.div`
   grid-row: 2/3;
   grid-column: 2/3;
-  /* width: 740px; */
-  /* max-width: 740px; */
 
   h2 {
     font-weight: normal !important;

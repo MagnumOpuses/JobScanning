@@ -83,7 +83,7 @@ const MyMapComponent = compose(
                 strokeColor: '#fff',
                 strokeWeight: 1.5,
                 fillColor: getFillColor(
-                  props.numberOfJobsInCounties[feature.properties.name]
+                  props.numberOfJobsInPlace[feature.properties.name]
                 ),
                 fillOpacity: 1
               }}
@@ -133,7 +133,9 @@ class JobMap extends React.Component {
           options={{
             strokeColor: '#fff',
             strokeWeight: 1.5,
-            fillColor: '#ddd',
+            fillColor: getFillColor(
+              this.props.numberOfJobsInPlace[municipalityName]
+            ),
             fillOpacity: 1
           }}
         />
@@ -155,7 +157,7 @@ class JobMap extends React.Component {
       processedList,
       toggleInfoWindow,
       desktop,
-      numberOfJobsInCounties
+      numberOfJobsInPlace
     } = this.props
 
     return (
@@ -165,7 +167,7 @@ class JobMap extends React.Component {
           processedList={processedList}
           toggleInfoWindow={toggleInfoWindow}
           desktop={desktop}
-          numberOfJobsInCounties={numberOfJobsInCounties}
+          numberOfJobsInPlace={numberOfJobsInPlace}
           center={this.state.center}
           zoom={this.state.zoom}
           handleClickedCounty={this.handleClickedCounty}

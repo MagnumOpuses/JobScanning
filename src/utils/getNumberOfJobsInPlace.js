@@ -1,27 +1,29 @@
 import { countiesAndMunicipalities } from './searchOptions'
 
 export default function getNumberOfJobsInPlace(jobs) {
-  const numberOfJobsInCounties = {}
+  const numberOfJobsInPlace = {}
 
   jobs.forEach(job => {
     if (job.location) {
       countiesAndMunicipalities.forEach(place => {
         if (job.location === place.text) {
-          if (place.county in numberOfJobsInCounties) {
-            numberOfJobsInCounties[place.county].count += 1
+          if (place.county in numberOfJobsInPlace) {
+            numberOfJobsInPlace[place.county] += 1
           } else {
-            numberOfJobsInCounties[place.county] = { count: 1 }
+            numberOfJobsInPlace[place.county] = 1
           }
 
-          if (place.text in numberOfJobsInCounties[place.county]) {
-            numberOfJobsInCounties[place.county][place.text] += 1
+          if (place.text in numberOfJobsInPlace) {
+            numberOfJobsInPlace[place.text] += 1
           } else {
-            numberOfJobsInCounties[place.county][place.text] = 1
+            numberOfJobsInPlace[place.text] = 1
           }
         }
       })
     }
   })
 
-  return numberOfJobsInCounties
+  console.log(numberOfJobsInPlace)
+
+  return numberOfJobsInPlace
 }
