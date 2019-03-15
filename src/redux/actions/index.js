@@ -1,6 +1,5 @@
 import fetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
-import mockData from '../../mocks/ekonomiassistentResponse.json'
 
 export const SEARCH_TERM = 'SEARCH_TERM'
 export const JOBS_REQUEST = 'JOBS_REQUEST'
@@ -20,8 +19,7 @@ export const searchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    // let { data } = await fetchJobs(term, location)
-    let data = mockData
+    let { data } = await fetchJobs(term, location)
     const processedList = processJobList(data.hits)
 
     data = { ...data, processedList }
