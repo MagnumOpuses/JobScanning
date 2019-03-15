@@ -15,8 +15,8 @@ Easiest way to get started:
 3. Unzip the project
 4. Open a terminal of your liking, Terminal (Mac) or cmd/PowerShell (Windows)
 5. Navigate to the unzipped project
-6. Run the following command **npm i** or **npm install**
-7. Start the project by running **npm start**
+6. Run the following command `**npm` i** or `**npm install**`
+7. Start the project by running `**npm start**`
 8. DONE! The project will be running at [http://localhost:3000](http://localhost:3000)
 
 ## Create React App's README.md
