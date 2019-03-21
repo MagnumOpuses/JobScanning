@@ -31,7 +31,7 @@ class DesktopJobsPage extends Component {
     if (activeComponent === 'list' && Object.keys(selectedJob).length > 0) {
       return <DesktopJobDetails selectedJob={selectedJob} />
     } else if (activeComponent === 'map') {
-      return <JobMap desktop />
+      return <JobMap />
     } else if (activeComponent === 'overview') {
       return <DesktopOverview />
     }

@@ -1,29 +1,14 @@
+/* eslint-disable no-undef */
 import React from 'react'
 import { compose, withProps } from 'recompose'
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Polygon
-} from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
+import { Button } from 'semantic-ui-react'
+import styled from 'styled-components'
 import _ from 'lodash'
 import counties from './laen-kustlinjer.geo.json'
 import municipalities from './kommuner-kustlinjer.geo.json'
 import mapStyles from './mapStyles.json'
-
-function getFillColor(number) {
-  if (number > 15) {
-    return '#0f0'
-  } else if (number > 10) {
-    return '#0c0'
-  } else if (number > 5) {
-    return '#090'
-  } else if (number > 0) {
-    return '#050'
-  } else {
-    return '#ddd'
-  }
-}
+import Polygon from './Polygon'
 
 const MyMapComponent = compose(
   withProps({
@@ -31,62 +16,43 @@ const MyMapComponent = compose(
       process.env.REACT_APP_DEV_GOOGLE_MAPS_API_KEY
     }&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `74vh` }} />,
+    containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
   withGoogleMap
 )(props => {
-  let googleMap = React.createRef()
-
-  function getZoomAndCenter() {
-    console.log('zoom', googleMap.current.getZoom())
-    console.log('lat', googleMap.current.getCenter().lat())
-    console.log('lng', googleMap.current.getCenter().lng())
-  }
-
   return (
     <GoogleMap
       defaultZoom={5}
-      defaultCenter={{ lat: 63, lng: 15 }}
+      defaultCenter={{ lat: 63, lng: 21 }}
       center={props.center}
       zoom={props.zoom}
       defaultOptions={{
         disableDefaultUI: true,
-        scrollwheel: false,
+        // scrollwheel: false,
         styles: mapStyles
       }}
-      ref={googleMap}
-      onDragEnd={() => getZoomAndCenter()}
-      onZoomChanged={() => getZoomAndCenter()}
     >
       {props.showCounties &&
         counties.features.map(feature => {
+          const countyCode = feature.properties['ref:se:länskod']
+          const countyName = feature.properties.name
           const countyPaths = feature.geometry.coordinates.map(array => {
             return array[0].map(coords => {
               return { lng: coords[0], lat: coords[1] }
             })
           })
+          const googleMapsConfig = feature.googleMapsConfig
           return (
             <Polygon
-              key={feature.properties.name}
-              paths={countyPaths}
-              onClick={() =>
-                props.handleClickedCounty(
-                  feature.properties['ref:se:länskod'],
-                  feature.properties.name,
-                  feature.googleMapsConfig
-                )
-              }
-              visible={true}
-              options={{
-                strokeColor: '#fff',
-                strokeWeight: 1.5,
-                fillColor: getFillColor(
-                  props.numberOfJobsInPlace[feature.properties.name]
-                ),
-                fillOpacity: 1
-              }}
+              key={countyName}
+              placeCode={countyCode}
+              placeName={countyName}
+              placePaths={countyPaths}
+              googleMapsConfig={googleMapsConfig}
+              numberOfJobsInPlace={props.numberOfJobsInPlace}
+              handleClickedCounty={props.handleClickedCounty}
             />
           )
         })}
@@ -97,11 +63,30 @@ const MyMapComponent = compose(
 
 class JobMap extends React.Component {
   state = {
-    center: { lat: 63, lng: 15 },
+    center: { lat: 63, lng: 21 },
     zoom: 5,
     showCounties: true,
     showMunicipalities: false,
-    municipalitiesPaths: []
+    municipalitiesPaths: [],
+    activeComponent: 'now'
+  }
+
+  changeComponent = componentName => {
+    this.setState({ activeComponent: componentName })
+  }
+
+  getNumberOfJobsInPlace = () => {
+    const { location, numberOfJobsInPlace } = this.props
+
+    if (!location) {
+      return numberOfJobsInPlace.sweden
+    }
+
+    if (location in numberOfJobsInPlace) {
+      return numberOfJobsInPlace[location]
+    } else {
+      return 0
+    }
   }
 
   handleClickedCounty = (countyCode, countyName, countyConfig) => {
@@ -115,7 +100,6 @@ class JobMap extends React.Component {
 
     const municipalitiesPolygons = filteredMunicipalities.map(municipality => {
       const municipalityName = municipality.properties.short_name
-
       const municipalitiesPaths = municipality.geometry.coordinates.map(
         array => {
           return array[0].map(coords => {
@@ -124,20 +108,26 @@ class JobMap extends React.Component {
         }
       )
 
+      const flattenedCountyPaths = municipalitiesPaths.flat()
+
+      const averageCoords = {
+        center: {
+          lng:
+            _.sumBy(flattenedCountyPaths, 'lng') / flattenedCountyPaths.length,
+          lat:
+            _.sumBy(flattenedCountyPaths, 'lat') / flattenedCountyPaths.length
+        }
+      }
+
       return (
         <Polygon
           key={municipalityName}
-          paths={municipalitiesPaths}
-          onClick={() => this.props.handleLocationChange(municipalityName)}
-          visible={true}
-          options={{
-            strokeColor: '#fff',
-            strokeWeight: 1.5,
-            fillColor: getFillColor(
-              this.props.numberOfJobsInPlace[municipalityName]
-            ),
-            fillOpacity: 1
-          }}
+          placeName={municipalityName}
+          placePaths={municipalitiesPaths}
+          googleMapsConfig={averageCoords}
+          numberOfJobsInPlace={this.props.numberOfJobsInPlace}
+          handleClickedCounty={this.props.handleClickedCounty}
+          handleClickedMunicipality={this.props.handleLocationChange}
         />
       )
     })
@@ -152,45 +142,147 @@ class JobMap extends React.Component {
   }
 
   render() {
-    const {
-      selectedJob,
-      processedList,
-      toggleInfoWindow,
-      desktop,
-      numberOfJobsInPlace
-    } = this.props
+    const { searchTerm, location, numberOfJobsInPlace } = this.props
+    const { activeComponent } = this.state
 
     return (
-      <>
+      <MapContainer>
         <MyMapComponent
-          selectedJob={selectedJob}
-          processedList={processedList}
-          toggleInfoWindow={toggleInfoWindow}
-          desktop={desktop}
           numberOfJobsInPlace={numberOfJobsInPlace}
           center={this.state.center}
           zoom={this.state.zoom}
           handleClickedCounty={this.handleClickedCounty}
-          handleClickedMunicipality={this.handleClickedMunicipality}
           showCounties={this.state.showCounties}
           showMunicipalities={this.state.showMunicipalities}
           municipalitiesPolygons={this.state.municipalitiesPolygons}
         />
-        <button
-          onClick={() =>
-            this.setState({
-              showCounties: true,
-              showMunicipalities: false,
-              center: { lat: 63, lng: 15 },
-              zoom: 5
-            })
-          }
-        >
-          ZOOMA UT
-        </button>
-      </>
+        <MapSideMenu>
+          <Menu>
+            <MenuItem
+              selected={activeComponent === 'now'}
+              onClick={() => this.setState({ activeComponent: 'now' })}
+            >
+              <p>NULÄGE</p>
+            </MenuItem>
+            <MenuItem
+              selected={activeComponent === 'forecast'}
+              onClick={() => this.setState({ activeComponent: 'forecast' })}
+            >
+              <p>PROGNOS</p>
+            </MenuItem>
+          </Menu>
+          <p>
+            Just nu finns det {this.getNumberOfJobsInPlace()}
+            st annonser i {location ? location : 'hela Sverige'} för{' '}
+            {searchTerm}
+          </p>
+          <ZoomMenu>
+            <Button
+              circular
+              size={'huge'}
+              icon="zoom-in"
+              onClick={() =>
+                this.setState(prevState => ({
+                  zoom: prevState.zoom + 1
+                }))
+              }
+            />
+            <Button
+              circular
+              size={'huge'}
+              icon="zoom-out"
+              onClick={() =>
+                this.setState(prevState => ({
+                  zoom: prevState.zoom - 1,
+                  showCounties: prevState.zoom <= 6 ? true : false,
+                  showMunicipalities: prevState.zoom <= 6 ? false : true
+                }))
+              }
+            />
+            <Button
+              circular
+              size={'huge'}
+              icon="world"
+              onClick={() =>
+                this.setState({
+                  showCounties: true,
+                  showMunicipalities: false,
+                  center: { lat: 63, lng: 21 },
+                  zoom: 5
+                })
+              }
+            />
+          </ZoomMenu>
+        </MapSideMenu>
+      </MapContainer>
     )
   }
 }
 
 export default JobMap
+
+const MapContainer = styled.div`
+  position: relative;
+  height: 100%;
+`
+
+const MapSideMenu = styled.aside`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40%;
+  padding: 1rem;
+`
+
+const Menu = styled.ul`
+  grid-row: 1/2;
+  grid-column: 1/2;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 4rem;
+`
+
+const MenuItem = styled.li`
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 1rem;
+  color: #000;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  & p {
+    display: inline-block;
+    position: relative;
+  }
+
+  &:hover {
+    & p:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+
+  & p:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #000;
+    visibility: ${props => (props.selected ? 'visible' : 'hidden')};
+    transform: ${props => (props.selected ? 'scaleX(1)' : 'scaleX(0)')};
+    transition: all 0.2s ease-in-out 0s;
+  }
+`
+
+const ZoomMenu = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+`

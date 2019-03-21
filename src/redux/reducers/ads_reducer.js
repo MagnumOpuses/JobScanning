@@ -84,6 +84,13 @@ export default (state = initialState, action) => {
     }
 
     case SET_LOCATION: {
+      const jobsInSelectedLocation = _.remove(
+        state.processedList,
+        job => job.location === action.location
+      )
+
+      state.processedList.unshift(...jobsInSelectedLocation)
+
       return {
         ...state,
         location: action.location

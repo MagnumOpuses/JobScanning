@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setLocation, selectJob, unselectJob } from '../../redux/actions'
+import { setLocation } from '../../redux/actions'
 import JobMap from './JobMap'
 
 class JobMapContainer extends React.Component {
@@ -9,18 +9,12 @@ class JobMapContainer extends React.Component {
   }
 
   render() {
-    const {
-      processedList,
-      selectedJob,
-      desktop,
-      numberOfJobsInPlace
-    } = this.props
+    const { searchTerm, location, numberOfJobsInPlace } = this.props
 
     return (
       <JobMap
-        selectedJob={selectedJob}
-        processedList={processedList}
-        desktop={desktop}
+        searchTerm={searchTerm}
+        location={location}
         numberOfJobsInPlace={numberOfJobsInPlace}
         handleLocationChange={this.handleLocationChange}
       />
@@ -29,17 +23,16 @@ class JobMapContainer extends React.Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, processedList, selectedJob, numberOfJobsInPlace } = ads
+  const { searchTerm, location, numberOfJobsInPlace } = ads
 
   return {
-    hits,
-    processedList,
-    selectedJob,
+    searchTerm,
+    location,
     numberOfJobsInPlace
   }
 }
 
 export default connect(
   mapStateToProps,
-  { setLocation, selectJob, unselectJob }
+  { setLocation }
 )(JobMapContainer)
