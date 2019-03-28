@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setLocation } from '../../redux/actions'
+import { fetchMoreJobs, setLocation } from '../../redux/actions'
 import JobMap from './JobMap'
 
 class JobMapContainer extends React.Component {
   handleLocationChange = location => {
     this.props.setLocation(location)
+    this.props.fetchMoreJobs(this.props.searchTerm, this.props.location)
   }
 
   render() {
@@ -34,5 +35,5 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { setLocation }
+  { fetchMoreJobs, setLocation }
 )(JobMapContainer)

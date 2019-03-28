@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Dropdown, Form, Input } from 'semantic-ui-react'
-// import { Checkbox } from '../../components'
 import breakpoint from '../../styles/breakpoints'
 
 const SearchForm = ({
@@ -11,9 +10,7 @@ const SearchForm = ({
   searchTerm,
   location,
   handleChange,
-  handleLocationChange,
-  upward,
-  getCurrentPosition
+  upward
 }) => {
   return (
     <CustomForm onSubmit={handleSubmit} className={isDesktop && 'isDesktop'}>
@@ -35,7 +32,7 @@ const SearchForm = ({
           <StyledDropdown
             name="location"
             value={location}
-            onChange={handleLocationChange}
+            onChange={handleChange}
             placeholder="Ange plats"
             search
             selection
@@ -43,11 +40,6 @@ const SearchForm = ({
             upward={upward}
           />
         </Form.Field>
-
-        {/* <Checkbox
-          label="Använd min nuvarande position"
-          onChange={getCurrentPosition}
-        /> */}
       </div>
 
       <div style={{ textAlign: 'center' }}>

@@ -56,7 +56,42 @@ const MyMapComponent = compose(
             />
           )
         })}
-      {props.showMunicipalities && props.municipalitiesPolygons}
+
+      {props.showMunicipalities &&
+        props.filteredMunicipalities.map(municipality => {
+          const municipalityName = municipality.properties.short_name
+          const municipalitiesPaths = municipality.geometry.coordinates.map(
+            array => {
+              return array[0].map(coords => {
+                return { lng: coords[0], lat: coords[1] }
+              })
+            }
+          )
+
+          const flattenedCountyPaths = municipalitiesPaths.flat()
+
+          const averageCoords = {
+            center: {
+              lng:
+                _.sumBy(flattenedCountyPaths, 'lng') /
+                flattenedCountyPaths.length,
+              lat:
+                _.sumBy(flattenedCountyPaths, 'lat') /
+                flattenedCountyPaths.length
+            }
+          }
+
+          return (
+            <Polygon
+              key={municipalityName}
+              placeName={municipalityName}
+              placePaths={municipalitiesPaths}
+              googleMapsConfig={averageCoords}
+              numberOfJobsInPlace={props.numberOfJobsInPlace}
+              handleClickedMunicipality={props.handleClickedMunicipality}
+            />
+          )
+        })}
     </GoogleMap>
   )
 })
@@ -98,46 +133,12 @@ class JobMap extends React.Component {
         countyCode
     )
 
-    const municipalitiesPolygons = filteredMunicipalities.map(municipality => {
-      const municipalityName = municipality.properties.short_name
-      const municipalitiesPaths = municipality.geometry.coordinates.map(
-        array => {
-          return array[0].map(coords => {
-            return { lng: coords[0], lat: coords[1] }
-          })
-        }
-      )
-
-      const flattenedCountyPaths = municipalitiesPaths.flat()
-
-      const averageCoords = {
-        center: {
-          lng:
-            _.sumBy(flattenedCountyPaths, 'lng') / flattenedCountyPaths.length,
-          lat:
-            _.sumBy(flattenedCountyPaths, 'lat') / flattenedCountyPaths.length
-        }
-      }
-
-      return (
-        <Polygon
-          key={municipalityName}
-          placeName={municipalityName}
-          placePaths={municipalitiesPaths}
-          googleMapsConfig={averageCoords}
-          numberOfJobsInPlace={this.props.numberOfJobsInPlace}
-          handleClickedCounty={this.props.handleClickedCounty}
-          handleClickedMunicipality={this.props.handleLocationChange}
-        />
-      )
-    })
-
     this.setState({
       center: countyConfig.center,
       zoom: countyConfig.zoom,
       showCounties: false,
       showMunicipalities: true,
-      municipalitiesPolygons: municipalitiesPolygons
+      filteredMunicipalities: filteredMunicipalities
     })
   }
 
@@ -155,6 +156,8 @@ class JobMap extends React.Component {
           showCounties={this.state.showCounties}
           showMunicipalities={this.state.showMunicipalities}
           municipalitiesPolygons={this.state.municipalitiesPolygons}
+          filteredMunicipalities={this.state.filteredMunicipalities}
+          handleClickedMunicipality={this.props.handleLocationChange}
         />
         <MapSideMenu>
           <Menu>
@@ -179,7 +182,7 @@ class JobMap extends React.Component {
           <ZoomMenu>
             <Button
               circular
-              size={'huge'}
+              size={'massive'}
               icon="zoom-in"
               onClick={() =>
                 this.setState(prevState => ({
@@ -189,19 +192,20 @@ class JobMap extends React.Component {
             />
             <Button
               circular
-              size={'huge'}
+              size={'massive'}
               icon="zoom-out"
               onClick={() =>
                 this.setState(prevState => ({
                   zoom: prevState.zoom - 1,
                   showCounties: prevState.zoom <= 6 ? true : false,
-                  showMunicipalities: prevState.zoom <= 6 ? false : true
+                  showMunicipalities: prevState.zoom <= 6 ? false : true,
+                  center: prevState.zoom <= 6 && { lat: 63, lng: 21 }
                 }))
               }
             />
             <Button
               circular
-              size={'huge'}
+              size={'massive'}
               icon="world"
               onClick={() =>
                 this.setState({
@@ -230,7 +234,6 @@ const MapSideMenu = styled.aside`
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
   width: 40%;
   padding: 1rem;
 `

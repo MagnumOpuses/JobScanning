@@ -1,4 +1,3 @@
-import BoldText from './reusables/BoldText'
 import Checkbox from './reusables/Checkbox'
 import DisplayNumber from './reusables/DisplayNumber'
 import Ellipse from './reusables/Ellipse'
@@ -22,7 +21,6 @@ import { default as EnrichmentRanking } from './enrichmentRanking/EnrichmentRank
 export {
   MobileJobsList,
   SourceRanking,
-  BoldText,
   Checkbox,
   DisplayNumber,
   Ellipse,

@@ -3,6 +3,7 @@ import {
   JOBS_SUCCESS,
   JOBS_FAILURE,
   JOBS_ADD_MORE,
+  SET_SEARCH_TERM,
   SET_LOCATION,
   JOB_SELECT,
   JOB_UNSELECT
@@ -67,10 +68,17 @@ export default (state = initialState, action) => {
 
       processedList = _.uniqBy(processedList, 'id')
       const scoreboard = createScoreboard(hits)
-      const numberOfJobsInPlace = getNumberOfJobsInPlace(hits)
+      const numberOfJobsInPlace = getNumberOfJobsInPlace(processedList)
 
       const topCompetences = countAndSort(hits, 'skills')
       const topTraits = countAndSort(hits, 'traits')
+
+      const jobsInSelectedLocation = _.remove(
+        processedList,
+        job => job.location === state.location
+      )
+
+      processedList.unshift(...jobsInSelectedLocation)
 
       return {
         ...state,
@@ -80,6 +88,13 @@ export default (state = initialState, action) => {
         numberOfJobsInPlace,
         topCompetences,
         topTraits
+      }
+    }
+
+    case SET_SEARCH_TERM: {
+      return {
+        ...state,
+        searchTerm: action.searchTerm
       }
     }
 

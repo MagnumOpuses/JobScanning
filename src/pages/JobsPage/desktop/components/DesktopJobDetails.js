@@ -2,7 +2,6 @@ import React from 'react'
 import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import {
-  BoldText,
   DescriptionContainer,
   TextEnrichment
 } from '../../../../components/index'
@@ -25,12 +24,12 @@ const DesktopJobDetails = ({ selectedJob }) => {
                 marginBottom: '15px'
               }}
             >
-              <BoldText>Ort:</BoldText> {selectedJob.location}
+              <span className="bold">Ort:</span> {selectedJob.location}
             </p>
           )}
 
           <p>
-            <BoldText>Sök jobbet senast:</BoldText>{' '}
+            <span className="bold">Sök jobbet senast:</span>{' '}
             {selectedJob.application.deadline
               ? format(new Date(selectedJob.application.deadline), 'D MMMM', {
                   locale: sv

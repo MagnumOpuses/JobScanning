@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import BoldText from '../reusables/BoldText'
 
 const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
   return (
     <div>
       <div>
         <H2>
-          Topp <BoldText>{topCompetences.length}</BoldText> mest eftersökta
-          kompetenser i annonser för <BoldText>{searchTerm}</BoldText>.
+          Topp <span className="bold">{topCompetences.length}</span> mest
+          eftersökta kompetenser i annonser för{' '}
+          <span className="bold">{searchTerm}</span>.
         </H2>
         <p>I {hits.length} annonser efterfrågas</p>
 
@@ -23,8 +23,8 @@ const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
       </div>
       <div style={{ margin: '5rem 0' }}>
         <H2>
-          Topp <BoldText>{topTraits.length}</BoldText> mest eftersökta förmågor
-          i annonser för <BoldText>{searchTerm}</BoldText>.
+          Topp <span className="bold">{topTraits.length}</span> mest eftersökta
+          förmågor i annonser för <span className="bold">{searchTerm}</span>.
         </H2>
         <p>I {hits.length} annonser efterfrågas</p>
 

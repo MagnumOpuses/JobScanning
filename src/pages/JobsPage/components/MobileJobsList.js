@@ -43,7 +43,10 @@ class MobileJobsList extends Component {
 
   redirectToAdPage = job => {
     this.props.selectJob(job)
-    this.props.history.push(`/jobs/${job.id}`)
+    // this.props.history.push(`/jobs/${job.id}`)
+    this.props.history.push(
+      `/jobs/${job.location}/${this.props.searchTerm}/${job.offset}/${job.id}`
+    )
   }
 
   fetchMoreData = () => {

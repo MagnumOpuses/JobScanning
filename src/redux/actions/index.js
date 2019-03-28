@@ -2,11 +2,11 @@ import fetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
 import mockData from '../../mocks/ekonomiassistentResponse.json'
 
-export const SEARCH_TERM = 'SEARCH_TERM'
 export const JOBS_REQUEST = 'JOBS_REQUEST'
 export const JOBS_SUCCESS = 'JOBS_SUCCESS'
 export const JOBS_FAILURE = 'JOBS_FAILURE'
 export const JOBS_ADD_MORE = 'JOBS_ADD_MORE'
+export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
 export const SET_LOCATION = 'SET_LOCATION'
 export const JOB_SELECT = 'JOB_SELECT'
 export const JOB_UNSELECT = 'JOB_UNSELECT'
@@ -20,9 +20,9 @@ export const searchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    // let { data } = await fetchJobs(term, location)
-    let data = mockData
-    const processedList = processJobList(data.hits)
+    let { data } = await fetchJobs(term, location)
+    // let data = mockData
+    const processedList = processJobList({ list: data.hits, offset: 0 })
 
     data = { ...data, processedList }
 
@@ -48,7 +48,7 @@ export const searchJobs = (term, location) => async dispatch => {
 export const fetchMoreJobs = (term, location, offset) => async dispatch => {
   let { data } = await fetchJobs(term, location, offset)
 
-  const processedList = processJobList(data.hits)
+  const processedList = processJobList({ list: data.hits, offset })
 
   data = { hits: data.hits, processedList }
 
@@ -57,6 +57,13 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
       type: JOBS_ADD_MORE,
       payload: data
     })
+  }
+}
+
+export const setSearchTerm = searchTerm => {
+  return {
+    type: SET_SEARCH_TERM,
+    searchTerm
   }
 }
 

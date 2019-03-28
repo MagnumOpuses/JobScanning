@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { BoldText, Ellipse, PageHeader, SearchForm } from '../components'
+import { Ellipse, PageHeader, SearchForm } from '../components'
 import theme from '../styles/theme'
 import breakpoints from '../styles/breakpoints'
 
@@ -13,8 +13,8 @@ class SearchPage extends Component {
         </PageHeader>
 
         <P>
-          <BoldText>294 293</BoldText> jobb från <BoldText>1009</BoldText>{' '}
-          jobbsajter
+          <span className="bold">294 293</span> jobb från{' '}
+          <span className="bold">1009</span> jobbsajter
         </P>
 
         <SearchForm upward={true} />

@@ -4,8 +4,6 @@ export default function getNumberOfJobsInPlace(jobs) {
   const numberOfJobsInPlace = { sweden: 0 }
 
   jobs.forEach(job => {
-    console.log(job.id, job.location)
-
     if (job.location) {
       numberOfJobsInPlace.sweden += 1
       countiesAndMunicipalities.forEach(place => {

@@ -11,13 +11,13 @@ import {
 } from '../components'
 import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
-import { BoldText } from '../components'
 import images from '../images/index'
 import theme from '../styles/theme'
 
 class AdDetails extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
+    console.log(this.props.match.params)
   }
 
   render() {
@@ -105,10 +105,10 @@ class AdDetails extends Component {
 
             <InfoContainer>
               <p>
-                <BoldText>Ort:</BoldText> {location}
+                <span className="bold">Ort:</span> {location}
               </p>
               <p>
-                <BoldText>Sök jobbet senast:</BoldText>{' '}
+                <span className="bold">Sök jobbet senast:</span>{' '}
                 {application.deadline
                   ? format(new Date(application.deadline), 'D MMMM', {
                       locale: sv
