@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { selectJob } from '../redux/actions'
 import styled from 'styled-components'
 import {
   LogoPlaceholder,
@@ -13,15 +14,35 @@ import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import images from '../images/index'
 import theme from '../styles/theme'
+import fetchJobs from '../api/fetchJobs'
 
 class AdDetails extends Component {
-  componentDidMount() {
+  componentDidMount = async () => {
     window.scrollTo(0, 0)
     console.log(this.props.match.params)
+    const { location, profession, offset, id } = this.props.match.params
+    if (Object.keys(this.props.selectedJob).length === 0) {
+      console.log('hej')
+
+      const { data } = await fetchJobs(profession, location, offset)
+      console.log(data)
+
+      const selectedJob = data.hits.filter(job => job.id === id)
+      console.log(selectedJob)
+
+      this.props.selectJob(selectedJob[0])
+      if (window.innerWidth > 375) {
+        this.props.history.push('/jobs')
+      }
+    }
   }
 
   render() {
+    if (Object.keys(this.props.selectedJob).length === 0) {
+      return null
+    }
     const { selectedJob } = this.props
+
     const {
       application,
       content,
@@ -30,17 +51,13 @@ class AdDetails extends Component {
       location,
       sources
     } = this.props.selectedJob
-
     if (!sources) {
-      return <Redirect to="/" />
+      // return <Redirect to="/" />
     }
-
     const siteName = sources.length > 1 ? 'Se nedan' : sources[0].name
-
     return (
       <div>
         <PageHeader ads />
-
         {!Object.keys(this.props.selectedJob).length > 0 ? (
           <NoResultsBox adDetails />
         ) : (
@@ -62,7 +79,6 @@ class AdDetails extends Component {
                 )}
               </RightDiv>
             </StyledHeader>
-
             <Heading>
               <LogoPlaceholder employer={employer} padding={true} />
               <div
@@ -88,7 +104,6 @@ class AdDetails extends Component {
                 </h2>
               </div>
             </Heading>
-
             {selectedJob.detected_keywords && (
               <div
                 style={{
@@ -102,7 +117,6 @@ class AdDetails extends Component {
                 <TextEnrichment />
               </div>
             )}
-
             <InfoContainer>
               <p>
                 <span className="bold">Ort:</span> {location}
@@ -116,7 +130,6 @@ class AdDetails extends Component {
                   : 'Se annonsen för datum'}
               </p>
             </InfoContainer>
-
             <StyledDiv>
               <DescriptionContainer
                 text={content}
@@ -141,7 +154,10 @@ function mapStateToProps({ ads }) {
   }
 }
 
-export default connect(mapStateToProps)(AdDetails)
+export default connect(
+  mapStateToProps,
+  { selectJob }
+)(AdDetails)
 
 const StyledHeader = styled.div`
   display: flex;

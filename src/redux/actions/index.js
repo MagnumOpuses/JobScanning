@@ -46,16 +46,31 @@ export const searchJobs = (term, location) => async dispatch => {
 }
 
 export const fetchMoreJobs = (term, location, offset) => async dispatch => {
-  let { data } = await fetchJobs(term, location, offset)
+  // Dispatch that sets loading state to true
+  // dispatch({
+  //   type: JOBS_REQUEST,
+  //   term,
+  //   location
+  // })
 
-  const processedList = processJobList({ list: data.hits, offset })
+  try {
+    let { data } = await fetchJobs(term, location, offset)
 
-  data = { hits: data.hits, processedList }
+    const processedList = processJobList({ list: data.hits, offset })
 
-  if (data.hits.length > 0) {
+    data = { hits: data.hits, processedList }
+
+    if (data.hits.length > 0) {
+      dispatch({
+        type: JOBS_ADD_MORE,
+        payload: data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+
     dispatch({
-      type: JOBS_ADD_MORE,
-      payload: data
+      type: JOBS_FAILURE
     })
   }
 }

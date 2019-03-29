@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
 import { Ellipse, JobMap, ResultStats } from '../../../components'
@@ -18,21 +19,32 @@ class DesktopJobsPage extends Component {
 
   selectAd = selectedJob => {
     this.props.selectJob(selectedJob)
+    window.location.pathname = `/jobs/${selectedJob.location}/${
+      selectedJob.header
+    }/${selectedJob.offset}/${selectedJob.id}`
+    // this.props.history.push(
+    //   `/jobs/${selectedJob.location}/${selectedJob.header}/${
+    //     selectedJob.offset
+    //   }/${selectedJob.id}`
+    // )
   }
 
   getContent = () => {
     const { activeComponent } = this.state
     const { selectedJob } = this.props
 
-    if (Object.keys(this.props.hits).length === 0) {
-      return
-    }
+    // if (Object.keys(this.props.hits).length === 0) {
+    //   return
+    // }
 
     if (activeComponent === 'list' && Object.keys(selectedJob).length > 0) {
       return <DesktopJobDetails selectedJob={selectedJob} />
     } else if (activeComponent === 'map') {
       return <JobMap />
-    } else if (activeComponent === 'overview') {
+    } else if (
+      !Object.keys(this.props.hits).length === 0 &&
+      activeComponent === 'overview'
+    ) {
       return <DesktopOverview />
     }
   }
@@ -113,10 +125,12 @@ function mapStateToProps({ ads }) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { selectJob, unselectJob }
-)(DesktopJobsPage)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { selectJob, unselectJob }
+  )(DesktopJobsPage)
+)
 
 const GridContainer = styled.div`
   display: grid;
