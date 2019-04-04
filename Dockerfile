@@ -4,13 +4,17 @@ RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
+COPY ./vhosts/ /usr/src/app/vhosts/
 RUN npm install --silent && npm install react-scripts@1.1.1 -g
-COPY . /usr/src/app
+COPY ./ /usr/src/app/
 RUN npm run build
 
+
 # production environment
-FROM bitnami/nginx
-COPY --from=builder /usr/src/app/build /opt/bitnami/nginx/html
+FROM bitnami/nginx:latest
+WORKDIR /opt/bitnami/nginx
+COPY --from=builder /usr/src/app/build/ ./html/
+COPY --from=builder /usr/src/app/vhosts/ ./vhosts/
 USER 1001
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "/run.sh" ]
