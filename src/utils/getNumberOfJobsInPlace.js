@@ -32,7 +32,5 @@ export default function getNumberOfJobsInPlace(jobs) {
     }
   })
 
-  console.log(numberOfJobsInPlace)
-
   return numberOfJobsInPlace
 }

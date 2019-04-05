@@ -1,0 +1,21 @@
+$breakpoint-tablet: 768px;
+
+.DescriptionContainer {
+  position: relative;
+
+  &.__multiple-links-box {
+    width: 70%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem 0 1rem;
+    margin: 0 auto 50px;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
+  }
+}

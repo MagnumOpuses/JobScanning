@@ -7,7 +7,7 @@ import MobileJobsPage from './components/MobileJobsPage'
 const AdsPage = () => {
   return (
     <>
-      <Responsive maxWidth={breakpoint.tabletLandscape}>
+      <Responsive maxWidth={breakpoint.tablet}>
         <MobileJobsPage />
       </Responsive>
       <Responsive minWidth={1025}>

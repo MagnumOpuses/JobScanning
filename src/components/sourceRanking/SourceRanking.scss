@@ -1,0 +1,44 @@
+$breakpoint-tablet: 768px;
+
+.SourceRanking {
+  ol {
+    list-style: none;
+
+    li {
+      height: 50px;
+      width: 65%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem auto 0;
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
+      }
+
+      .score {
+        min-height: 6rem;
+        min-width: 6rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      &:nth-child(3n + 1) .score {
+        background: #ffeb9e;
+      }
+
+      &:nth-child(3n - 1) .score {
+        background: #02decc;
+      }
+
+      &:nth-child(3n) .score {
+        background: #a6f3ed;
+      }
+    }
+  }
+}

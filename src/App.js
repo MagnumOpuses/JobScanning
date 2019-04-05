@@ -81,6 +81,13 @@ const GlobalStyle = createGlobalStyle`
   .bold {
     font-weight: bold;
   }
+
+  .card-box-shadow {
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,0.10);
+    border-radius: 10px;
+  }
 `
 
 class App extends Component {

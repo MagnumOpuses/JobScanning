@@ -1,4 +1,4 @@
-import fetchJobs from '../../api/fetchJobs'
+import apiFetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
 import mockData from '../../mocks/ekonomiassistentResponse.json'
 
@@ -6,12 +6,13 @@ export const JOBS_REQUEST = 'JOBS_REQUEST'
 export const JOBS_SUCCESS = 'JOBS_SUCCESS'
 export const JOBS_FAILURE = 'JOBS_FAILURE'
 export const JOBS_ADD_MORE = 'JOBS_ADD_MORE'
+export const JOBS_NO_MORE = 'JOBS_NO_MORE'
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
 export const SET_LOCATION = 'SET_LOCATION'
 export const JOB_SELECT = 'JOB_SELECT'
 export const JOB_UNSELECT = 'JOB_UNSELECT'
 
-export const searchJobs = (term, location) => async dispatch => {
+export const fetchJobs = (term, location) => async dispatch => {
   // Dispatch that sets loading state to true
   dispatch({
     type: JOBS_REQUEST,
@@ -20,13 +21,14 @@ export const searchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    let { data } = await fetchJobs(term, location)
-    // let data = mockData
-    const processedList = processJobList({ list: data.hits, offset: 0 })
+    let res
+    let data = mockData
+    res = { data: data }
+    // const res = await apiFetchJobs(term, location)
+    const processedList = processJobList({ list: res.data.hits, offset: 0 })
+    res.data = { ...res.data, processedList }
 
-    data = { ...data, processedList }
-
-    if (!data.hits.length > 0) {
+    if (!res.data.hits.length > 0) {
       dispatch({
         type: JOBS_FAILURE
       })
@@ -34,11 +36,9 @@ export const searchJobs = (term, location) => async dispatch => {
 
     dispatch({
       type: JOBS_SUCCESS,
-      payload: data
+      payload: res.data
     })
   } catch (error) {
-    console.log(error)
-
     dispatch({
       type: JOBS_FAILURE
     })
@@ -46,29 +46,22 @@ export const searchJobs = (term, location) => async dispatch => {
 }
 
 export const fetchMoreJobs = (term, location, offset) => async dispatch => {
-  // Dispatch that sets loading state to true
-  // dispatch({
-  //   type: JOBS_REQUEST,
-  //   term,
-  //   location
-  // })
-
   try {
-    let { data } = await fetchJobs(term, location, offset)
+    const res = await apiFetchJobs(term, location, offset)
+    const processedList = processJobList({ list: res.data.hits, offset })
+    res.data = { hits: res.data.hits, processedList }
 
-    const processedList = processJobList({ list: data.hits, offset })
-
-    data = { hits: data.hits, processedList }
-
-    if (data.hits.length > 0) {
+    if (!res.data.hits.length > 0) {
       dispatch({
-        type: JOBS_ADD_MORE,
-        payload: data
+        type: JOBS_NO_MORE
       })
     }
-  } catch (error) {
-    console.log(error)
 
+    dispatch({
+      type: JOBS_ADD_MORE,
+      payload: res.data
+    })
+  } catch (error) {
     dispatch({
       type: JOBS_FAILURE
     })

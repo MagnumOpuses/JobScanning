@@ -3,6 +3,7 @@ import {
   JOBS_SUCCESS,
   JOBS_FAILURE,
   JOBS_ADD_MORE,
+  JOBS_NO_MORE,
   SET_SEARCH_TERM,
   SET_LOCATION,
   JOB_SELECT,
@@ -16,9 +17,9 @@ import countAndSort from '../../utils/countAndSort'
 const initialState = {
   searchTerm: '',
   location: '',
-  offset: 0,
   isFetching: false,
   hits: [],
+  hasMore: true,
   processedList: [],
   selectedJob: {},
   numberOfJobsInPlace: {}
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
+        hasMore: true,
         searchTerm: action.term,
         location: action.location,
         selectedJob: {}
@@ -88,6 +90,13 @@ export default (state = initialState, action) => {
         numberOfJobsInPlace,
         topCompetences,
         topTraits
+      }
+    }
+
+    case JOBS_NO_MORE: {
+      return {
+        ...state,
+        hasMore: false
       }
     }
 

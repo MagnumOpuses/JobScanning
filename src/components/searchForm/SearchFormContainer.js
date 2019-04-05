@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
   setSearchTerm,
   setLocation,
-  searchJobs
+  fetchJobs
 } from '../../redux/actions/index'
 import { withRouter } from 'react-router-dom'
 import { countiesAndMunicipalities } from '../../utils/searchOptions'
@@ -21,10 +21,10 @@ class SearchFormContainer extends React.Component {
   }
 
   handleSubmit = event => {
-    const { searchTerm, location, searchJobs, history } = this.props
+    const { searchTerm, location, fetchJobs, history } = this.props
 
     event.preventDefault()
-    searchJobs(searchTerm, location)
+    fetchJobs(searchTerm, location)
     history.push('/jobs')
   }
 
@@ -57,6 +57,6 @@ function mapStateToProps({ ads }) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { setSearchTerm, setLocation, searchJobs }
+    { setSearchTerm, setLocation, fetchJobs }
   )(SearchFormContainer)
 )

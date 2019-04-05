@@ -5,7 +5,7 @@ import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
 import { Ellipse, JobMap, ResultStats } from '../../../components'
 import PageHeaderAds from '../components/PageHeaderAds'
-import JobsList from '../../../components/jobList/JobsList'
+import JobAdsList from '../../../components/jobAdsList/JobAdsList'
 import theme from '../../../styles/theme'
 import DesktopJobDetails from './components/DesktopJobDetails'
 import DesktopOverview from './components/DesktopOverview'
@@ -19,9 +19,9 @@ class DesktopJobsPage extends Component {
 
   selectAd = selectedJob => {
     this.props.selectJob(selectedJob)
-    window.location.pathname = `/jobs/${selectedJob.location}/${
-      selectedJob.header
-    }/${selectedJob.offset}/${selectedJob.id}`
+    // window.location.pathname = `/jobs/${selectedJob.location}/${
+    //   selectedJob.header
+    // }/${selectedJob.offset}/${selectedJob.id}`
     // this.props.history.push(
     //   `/jobs/${selectedJob.location}/${selectedJob.header}/${
     //     selectedJob.offset
@@ -33,18 +33,11 @@ class DesktopJobsPage extends Component {
     const { activeComponent } = this.state
     const { selectedJob } = this.props
 
-    // if (Object.keys(this.props.hits).length === 0) {
-    //   return
-    // }
-
     if (activeComponent === 'list' && Object.keys(selectedJob).length > 0) {
       return <DesktopJobDetails selectedJob={selectedJob} />
     } else if (activeComponent === 'map') {
       return <JobMap />
-    } else if (
-      !Object.keys(this.props.hits).length === 0 &&
-      activeComponent === 'overview'
-    ) {
+    } else if (activeComponent === 'overview' && this.props.hits.length > 0) {
       return <DesktopOverview />
     }
   }
@@ -53,13 +46,7 @@ class DesktopJobsPage extends Component {
     const { activeComponent } = this.state
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center'
-        }}
-      >
+      <div>
         <PageHeaderAds />
 
         <GridContainer>
@@ -86,7 +73,7 @@ class DesktopJobsPage extends Component {
 
           <SideMenu>
             <ResultStats />
-            <JobsList selectAd={this.selectAd} />
+            <JobAdsList selectAd={this.selectAd} />
             {/* <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P> */}
           </SideMenu>
 
@@ -138,7 +125,12 @@ const GridContainer = styled.div`
   grid-template-columns: 480px 800px;
   grid-row-gap: 2rem;
   grid-column-gap: 5rem;
+  justify-content: center;
   margin-top: 5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 480px 100%;
+  }
 `
 
 const Menu = styled.ul`
@@ -190,6 +182,7 @@ const MenuItem = styled.li`
 const SideMenu = styled.div`
   grid-row: 2/3;
   grid-column: 1/2;
+  position: relative;
   height: 75vh;
   width: 480px;
   max-width: 480px;

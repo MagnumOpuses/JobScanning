@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import images from '../../images'
 import { buttonStyleCorners } from '../../styles/components'
-import breakpoints from '../../styles/breakpoints'
+import './DescriptionContainer.scss'
 
 const DescriptionContainer = ({ text, characters, sources }) => (
-  <DescriptionBox>
+  <div className="DescriptionContainer">
     <h3 style={{ fontSize: '2.4rem', marginBottom: '15px' }}>Annons</h3>
     {text && (
       <DescriptionText>
@@ -13,7 +13,7 @@ const DescriptionContainer = ({ text, characters, sources }) => (
       </DescriptionText>
     )}
     {sources.length > 1 ? (
-      <MultipleLinks>
+      <div className="DescriptionContainer__multiple-links-box">
         <p>Vi hittade annonsen på {sources.length} olika sajter</p>
         <p>Välj vilken du vill gå till!</p>
         <SourcesContainer>
@@ -32,7 +32,7 @@ const DescriptionContainer = ({ text, characters, sources }) => (
             </A>
           ))}
         </SourcesContainer>
-      </MultipleLinks>
+      </div>
     ) : (
       <StyledLink
         href={sources[0].url}
@@ -42,14 +42,10 @@ const DescriptionContainer = ({ text, characters, sources }) => (
         Gå till annonsen
       </StyledLink>
     )}
-  </DescriptionBox>
+  </div>
 )
 
 export default DescriptionContainer
-
-const DescriptionBox = styled.div`
-  position: relative;
-`
 
 const DescriptionText = styled.p`
   max-width: 740px;
@@ -63,26 +59,6 @@ const DescriptionText = styled.p`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
-`
-
-const MultipleLinks = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 75%);
-  width: 70%;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
-  padding: 2rem 0 1rem;
-  margin-bottom: 5rem;
-
-  @media screen and (max-width: ${breakpoints.tablet}) {
-    width: 100%;
-  }
 `
 
 const SourcesContainer = styled.div`

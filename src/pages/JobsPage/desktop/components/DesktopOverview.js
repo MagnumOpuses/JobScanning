@@ -23,7 +23,7 @@ class DesktopOverview extends Component {
             {location ? location : 'hela Sverige'}
           </span>
         </h3>
-        <div style={{ display: 'flex' }}>
+        <div>
           <SourceRanking />
           <EnrichmentRanking />
         </div>
