@@ -21,10 +21,10 @@ export const fetchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    let res
-    let data = mockData
-    res = { data: data }
-    // const res = await apiFetchJobs(term, location)
+    // let res
+    // let data = mockData
+    // res = { data: data }
+    const res = await apiFetchJobs(term, location)
     const processedList = processJobList({ list: res.data.hits, offset: 0 })
     res.data = { ...res.data, processedList }
 
