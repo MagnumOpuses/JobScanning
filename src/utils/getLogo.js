@@ -24,12 +24,10 @@ const BrandImage = styled.div`
   background-size: contain;
   height: 5rem;
   flex: 0 0 176px;
-  margin-right: 6rem;
 `
 
 const BrandText = styled.div`
   text-align: center;
   line-height: 2.3rem;
   flex: 0 0 176px;
-  margin-right: 6rem;
 `

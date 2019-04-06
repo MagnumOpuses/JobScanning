@@ -2,6 +2,7 @@
   "short_name": "Jobb Skanner",
   "name": "Jobb Skanner",
   "author": "Auranest",
+  "homepage": ".",
   "icons": [
     {
       "src": "favicon.ico",

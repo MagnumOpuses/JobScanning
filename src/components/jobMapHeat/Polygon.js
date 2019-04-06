@@ -32,8 +32,6 @@ export default class CustomPolygon extends Component {
     } = this.props
     const { hover } = this.state
 
-    console.log(this.props)
-
     return (
       <div>
         <Polygon
