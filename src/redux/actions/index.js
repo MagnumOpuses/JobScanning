@@ -1,6 +1,6 @@
 import apiFetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
-import mockData from '../../mocks/ekonomiassistentResponse.json'
+import { countiesAndMunicipalities } from '../../utils/searchOptions'
 
 export const JOBS_REQUEST = 'JOBS_REQUEST'
 export const JOBS_SUCCESS = 'JOBS_SUCCESS'
@@ -13,7 +13,6 @@ export const JOB_SELECT = 'JOB_SELECT'
 export const JOB_UNSELECT = 'JOB_UNSELECT'
 
 export const fetchJobs = (term, location) => async dispatch => {
-  // Dispatch that sets loading state to true
   dispatch({
     type: JOBS_REQUEST,
     term,
@@ -21,12 +20,7 @@ export const fetchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    // let res
-    // let data = mockData
-    // res = { data: data }
-    const res = await apiFetchJobs(term, location)
-    const processedList = processJobList({ list: res.data.hits, offset: 0 })
-    res.data = { ...res.data, processedList }
+    const res = await apiFetchJobs(term, location.value)
 
     if (!res.data.hits.length > 0) {
       dispatch({
@@ -34,9 +28,13 @@ export const fetchJobs = (term, location) => async dispatch => {
       })
     }
 
+    const processedList = processJobList({ list: res.data.hits, offset: 0 })
+    res.data = { ...res.data, processedList }
+
     dispatch({
       type: JOBS_SUCCESS,
-      payload: res.data
+      payload: res.data,
+      offset: 0
     })
   } catch (error) {
     dispatch({
@@ -47,19 +45,58 @@ export const fetchJobs = (term, location) => async dispatch => {
 
 export const fetchMoreJobs = (term, location, offset) => async dispatch => {
   try {
-    const res = await apiFetchJobs(term, location, offset)
-    const processedList = processJobList({ list: res.data.hits, offset })
-    res.data = { hits: res.data.hits, processedList }
+    const res = await apiFetchJobs(term, location.value, offset)
 
     if (!res.data.hits.length > 0) {
-      dispatch({
-        type: JOBS_NO_MORE
-      })
+      offset = 0
+      if (location.type === 'municipality') {
+        const locationObject = countiesAndMunicipalities.find(
+          place => place.value === location.county
+        )
+
+        dispatch({
+          type: SET_LOCATION,
+          locationObject
+        })
+
+        const res = await apiFetchJobs(term, location.county, offset)
+        const processedList = processJobList({ list: res.data.hits, offset })
+        Object.assign(processedList[0], { newLocation: true })
+        res.data = { ...res.data, processedList }
+
+        dispatch({
+          type: JOBS_ADD_MORE,
+          payload: res.data,
+          offset
+        })
+      } else if (location.type === 'county') {
+        dispatch({
+          type: SET_LOCATION,
+          locationObject: { key: 'everywhere', text: 'Hela Sverige', value: '' }
+        })
+
+        const res = await apiFetchJobs(term, '', offset)
+        const processedList = processJobList({ list: res.data.hits, offset })
+        res.data = { ...res.data, processedList }
+
+        dispatch({
+          type: JOBS_ADD_MORE,
+          payload: res.data,
+          offset
+        })
+      }
+      // dispatch({
+      //   type: JOBS_NO_MORE
+      // })
     }
+
+    const processedList = processJobList({ list: res.data.hits, offset })
+    res.data = { ...res.data, processedList }
 
     dispatch({
       type: JOBS_ADD_MORE,
-      payload: res.data
+      payload: res.data,
+      offset
     })
   } catch (error) {
     dispatch({
@@ -76,9 +113,13 @@ export const setSearchTerm = searchTerm => {
 }
 
 export const setLocation = location => {
+  const locationObject = countiesAndMunicipalities.find(
+    place => place.value === location
+  )
+
   return {
     type: SET_LOCATION,
-    location
+    locationObject
   }
 }
 

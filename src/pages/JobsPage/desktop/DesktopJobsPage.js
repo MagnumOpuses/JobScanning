@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { selectJob, unselectJob } from '../../../redux/actions'
 import styled from 'styled-components'
 import { Ellipse, JobMap, ResultStats } from '../../../components'
@@ -19,14 +18,6 @@ class DesktopJobsPage extends Component {
 
   selectAd = selectedJob => {
     this.props.selectJob(selectedJob)
-    // window.location.pathname = `/jobs/${selectedJob.location}/${
-    //   selectedJob.header
-    // }/${selectedJob.offset}/${selectedJob.id}`
-    // this.props.history.push(
-    //   `/jobs/${selectedJob.location}/${selectedJob.header}/${
-    //     selectedJob.offset
-    //   }/${selectedJob.id}`
-    // )
   }
 
   getContent = () => {
@@ -112,12 +103,10 @@ function mapStateToProps({ ads }) {
   }
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { selectJob, unselectJob }
-  )(DesktopJobsPage)
-)
+export default connect(
+  mapStateToProps,
+  { selectJob, unselectJob }
+)(DesktopJobsPage)
 
 const GridContainer = styled.div`
   display: grid;

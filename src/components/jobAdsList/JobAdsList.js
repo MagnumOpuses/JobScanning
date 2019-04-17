@@ -8,17 +8,6 @@ import TestListItem from './ListItem'
 import './JobAdsList.scss'
 
 class JobAdsList extends Component {
-  state = {
-    items: [],
-    offset: 0
-  }
-
-  componentDidUpdate() {
-    if (this.props.isFetching && this.state.offset !== 0) {
-      this.setState({ offset: 0 })
-    }
-  }
-
   calculateInfiniteScrollHeight = () => {
     const { processedList } = this.props
     const height = processedList.length * 20 - 5
@@ -26,14 +15,10 @@ class JobAdsList extends Component {
   }
 
   fetchMoreData = () => {
-    this.setState(prevState => ({
-      offset: prevState.offset + 20
-    }))
-
     this.props.fetchMoreJobs(
       this.props.searchTerm,
       this.props.location,
-      this.state.offset
+      this.props.offset + 20
     )
   }
 
@@ -85,14 +70,19 @@ class JobAdsList extends Component {
               </div>
             }
           >
-            {processedList.map((item, i) => (
-              <TestListItem
-                key={item.id}
-                item={item}
-                selectAd={this.props.selectAd}
-                selectedJob={selectedJob}
-              />
-            ))}
+            {processedList.map((item, i) => {
+              if (item.newLocation) {
+                return <p>Annonser i {this.props.location.text}</p>
+              }
+              return (
+                <TestListItem
+                  key={item.id}
+                  item={item}
+                  selectAd={this.props.selectAd}
+                  selectedJob={selectedJob}
+                />
+              )
+            })}
           </InfiniteScroll>
         </ul>
       )
@@ -109,7 +99,8 @@ function mapStateToProps({ ads }) {
     processedList,
     selectedJob,
     searchTerm,
-    location
+    location,
+    offset
   } = ads
 
   return {
@@ -120,7 +111,8 @@ function mapStateToProps({ ads }) {
     processedList,
     selectedJob,
     searchTerm,
-    location
+    location,
+    offset
   }
 }
 

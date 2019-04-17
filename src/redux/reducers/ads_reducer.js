@@ -22,7 +22,9 @@ const initialState = {
   hasMore: true,
   processedList: [],
   selectedJob: {},
-  numberOfJobsInPlace: {}
+  numberOfJobsInPlace: {},
+  offset: 0,
+  total: 0
 }
 
 export default (state = initialState, action) => {
@@ -39,6 +41,8 @@ export default (state = initialState, action) => {
     }
 
     case JOBS_SUCCESS: {
+      console.log(action)
+
       const scoreboard = createScoreboard(action.payload.hits)
       const numberOfJobsInPlace = getNumberOfJobsInPlace(action.payload.hits)
 
@@ -53,7 +57,9 @@ export default (state = initialState, action) => {
         scoreboard,
         numberOfJobsInPlace,
         topCompetences,
-        topTraits
+        topTraits,
+        offset: action.offset,
+        selectedJob: action.payload.processedList[0]
       }
     }
 
@@ -62,6 +68,8 @@ export default (state = initialState, action) => {
     }
 
     case JOBS_ADD_MORE: {
+      console.log(action)
+
       const hits = [...state.hits, ...action.payload.hits]
       let processedList = [
         ...state.processedList,
@@ -75,13 +83,6 @@ export default (state = initialState, action) => {
       const topCompetences = countAndSort(hits, 'skills')
       const topTraits = countAndSort(hits, 'traits')
 
-      const jobsInSelectedLocation = _.remove(
-        processedList,
-        job => job.location === state.location
-      )
-
-      processedList.unshift(...jobsInSelectedLocation)
-
       return {
         ...state,
         hits,
@@ -89,7 +90,9 @@ export default (state = initialState, action) => {
         scoreboard,
         numberOfJobsInPlace,
         topCompetences,
-        topTraits
+        topTraits,
+        total: action.payload.total,
+        offset: action.offset
       }
     }
 
@@ -117,7 +120,7 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        location: action.location
+        location: action.locationObject
       }
     }
 

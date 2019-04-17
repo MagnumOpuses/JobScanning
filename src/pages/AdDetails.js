@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { selectJob } from '../redux/actions'
 import styled from 'styled-components'
 import {
   LogoPlaceholder,
@@ -14,33 +13,13 @@ import format from 'date-fns/format'
 import sv from 'date-fns/locale/sv'
 import images from '../images/index'
 import theme from '../styles/theme'
-import fetchJobs from '../api/fetchJobs'
 
 class AdDetails extends Component {
   componentDidMount = async () => {
     window.scrollTo(0, 0)
-    console.log(this.props.match.params)
-    const { location, profession, offset, id } = this.props.match.params
-    if (Object.keys(this.props.selectedJob).length === 0) {
-      console.log('hej')
-
-      const { data } = await fetchJobs(profession, location, offset)
-      console.log(data)
-
-      const selectedJob = data.hits.filter(job => job.id === id)
-      console.log(selectedJob)
-
-      this.props.selectJob(selectedJob[0])
-      if (window.innerWidth > 375) {
-        this.props.history.push('/jobs')
-      }
-    }
   }
 
   render() {
-    if (Object.keys(this.props.selectedJob).length === 0) {
-      return null
-    }
     const { selectedJob } = this.props
 
     const {
@@ -52,7 +31,7 @@ class AdDetails extends Component {
       sources
     } = this.props.selectedJob
     if (!sources) {
-      // return <Redirect to="/" />
+      return <Redirect to="/" />
     }
     const siteName = sources.length > 1 ? 'Se nedan' : sources[0].name
     return (
@@ -154,10 +133,7 @@ function mapStateToProps({ ads }) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { selectJob }
-)(AdDetails)
+export default connect(mapStateToProps)(AdDetails)
 
 const StyledHeader = styled.div`
   display: flex;

@@ -6,7 +6,11 @@ import JobMap from './JobMap'
 class JobMapContainer extends React.Component {
   handleLocationChange = location => {
     this.props.setLocation(location)
-    this.props.fetchMoreJobs(this.props.searchTerm, this.props.location)
+    this.props.fetchMoreJobs(
+      this.props.searchTerm,
+      this.props.location,
+      this.props.offset + 20
+    )
   }
 
   render() {
@@ -15,7 +19,7 @@ class JobMapContainer extends React.Component {
     return (
       <JobMap
         searchTerm={searchTerm}
-        location={location}
+        location={location.value}
         numberOfJobsInPlace={numberOfJobsInPlace}
         handleLocationChange={this.handleLocationChange}
       />
@@ -24,11 +28,12 @@ class JobMapContainer extends React.Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { searchTerm, location, numberOfJobsInPlace } = ads
+  const { searchTerm, location, offset, numberOfJobsInPlace } = ads
 
   return {
     searchTerm,
     location,
+    offset,
     numberOfJobsInPlace
   }
 }

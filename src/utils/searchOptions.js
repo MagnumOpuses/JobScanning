@@ -2,2476 +2,2762 @@
 // // Counties and municipalities 2018
 
 export const countiesAndMunicipalities = [
-  {
-    key: 'everywhere',
-    text: 'Hela Sverige',
-    value: ''
-  },
-
+  { key: 'everywhere', text: 'Hela Sverige', value: '' },
   {
     key: 'stockholms_lan',
     text: 'Stockholms län',
+    value: 'Stockholms län',
     code: '01',
-    value: 'Stockholms län'
+    type: 'county'
   },
   {
     key: 'upplands_vasby',
     text: 'Upplands Väsby',
-    name: 'Upplands Väsby kommun',
-    county: 'Stockholms län',
+    value: 'Upplands Väsby',
     code: '0114',
-    value: 'Upplands Väsby'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Upplands Väsby kommun'
   },
   {
     key: 'vallentuna',
     text: 'Vallentuna',
-    name: 'Vallentuna kommun',
-    county: 'Stockholms län',
+    value: 'Vallentuna',
     code: '0115',
-    value: 'Vallentuna'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Vallentuna kommun'
   },
   {
     key: 'osteraker',
     text: 'Österåker',
-    name: 'Österåkers kommun',
-    county: 'Stockholms län',
+    value: 'Österåker',
     code: '0117',
-    value: 'Österåker'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Österåkers kommun'
   },
   {
     key: 'varmdo',
     text: 'Värmdö',
-    name: 'Värmdö kommun',
-    county: 'Stockholms län',
+    value: 'Värmdö',
     code: '0120',
-    value: 'Värmdö'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Värmdö kommun'
   },
   {
     key: 'jarfalla',
     text: 'Järfälla',
-    name: 'Järfälla kommun',
-    county: 'Stockholms län',
+    value: 'Järfälla',
     code: '0123',
-    value: 'Järfälla'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Järfälla kommun'
   },
   {
     key: 'ekero',
     text: 'Ekerö',
-    name: 'Ekerö kommun',
-    county: 'Stockholms län',
+    value: 'Ekerö',
     code: '0125',
-    value: 'Ekerö'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Ekerö kommun'
   },
   {
     key: 'huddinge',
     text: 'Huddinge',
-    name: 'Huddinge kommun',
-    county: 'Stockholms län',
+    value: 'Huddinge',
     code: '0126',
-    value: 'Huddinge'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Huddinge kommun'
   },
   {
     key: 'botkyrka',
     text: 'Botkyrka',
-    name: 'Botkyrka kommun',
-    county: 'Stockholms län',
+    value: 'Botkyrka',
     code: '0127',
-    value: 'Botkyrka'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Botkyrka kommun'
   },
   {
     key: 'salem',
     text: 'Salem',
-    name: 'Salems kommun',
-    county: 'Stockholms län',
+    value: 'Salem',
     code: '0128',
-    value: 'Salem'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Salems kommun'
   },
   {
     key: 'haninge',
     text: 'Haninge',
-    name: 'Haninge kommun',
-    county: 'Stockholms län',
+    value: 'Haninge',
     code: '0136',
-    value: 'Haninge'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Haninge kommun'
   },
   {
     key: 'tyreso',
     text: 'Tyresö',
-    name: 'Tyresö kommun',
-    county: 'Stockholms län',
+    value: 'Tyresö',
     code: '0138',
-    value: 'Tyresö'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Tyresö kommun'
   },
   {
     key: 'upplands-bro',
     text: 'Upplands-Bro',
-    name: 'Upplands-Bro kommun',
-    county: 'Stockholms län',
+    value: 'Upplands-Bro',
     code: '0139',
-    value: 'Upplands-Bro'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Upplands-Bro kommun'
   },
   {
     key: 'nykvarn',
     text: 'Nykvarn',
-    name: 'Nykvarns kommun',
-    county: 'Stockholms län',
+    value: 'Nykvarn',
     code: '0140',
-    value: 'Nykvarn'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Nykvarns kommun'
   },
   {
     key: 'taby',
     text: 'Täby',
-    name: 'Täby kommun',
-    county: 'Stockholms län',
+    value: 'Täby',
     code: '0160',
-    value: 'Täby'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Täby kommun'
   },
   {
     key: 'danderyd',
     text: 'Danderyd',
-    name: 'Danderyds kommun',
-    county: 'Stockholms län',
+    value: 'Danderyd',
     code: '0162',
-    value: 'Danderyd'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Danderyds kommun'
   },
   {
     key: 'sollentuna',
     text: 'Sollentuna',
-    name: 'Sollentuna kommun',
-    county: 'Stockholms län',
+    value: 'Sollentuna',
     code: '0163',
-    value: 'Sollentuna'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Sollentuna kommun'
   },
   {
     key: 'stockholm',
     text: 'Stockholm',
-    name: 'Stockholms kommun',
-    county: 'Stockholms län',
+    value: 'Stockholm',
     code: '0180',
-    value: 'Stockholm'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Stockholms kommun'
   },
   {
     key: 'sodertalje',
     text: 'Södertälje',
-    name: 'Södertälje kommun',
-    county: 'Stockholms län',
+    value: 'Södertälje',
     code: '0181',
-    value: 'Södertälje'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Södertälje kommun'
   },
   {
     key: 'nacka',
     text: 'Nacka',
-    name: 'Nacka kommun',
-    county: 'Stockholms län',
+    value: 'Nacka',
     code: '0182',
-    value: 'Nacka'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Nacka kommun'
   },
   {
     key: 'sundbyberg',
     text: 'Sundbyberg',
-    name: 'Sundbybergs kommun',
-    county: 'Stockholms län',
+    value: 'Sundbyberg',
     code: '0183',
-    value: 'Sundbyberg'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Sundbybergs kommun'
   },
   {
     key: 'solna',
     text: 'Solna',
-    name: 'Solna kommun',
-    county: 'Stockholms län',
+    value: 'Solna',
     code: '0184',
-    value: 'Solna'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Solna kommun'
   },
   {
     key: 'lidingo',
     text: 'Lidingö',
-    name: 'Lidingö kommun',
-    county: 'Stockholms län',
+    value: 'Lidingö',
     code: '0186',
-    value: 'Lidingö'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Lidingö kommun'
   },
   {
     key: 'vaxholm',
     text: 'Vaxholm',
-    name: 'Vaxholms kommun',
-    county: 'Stockholms län',
+    value: 'Vaxholm',
     code: '0187',
-    value: 'Vaxholm'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Vaxholms kommun'
   },
   {
     key: 'norrtalje',
     text: 'Norrtälje',
-    name: 'Norrtälje kommun',
-    county: 'Stockholms län',
+    value: 'Norrtälje',
     code: '0188',
-    value: 'Norrtälje'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Norrtälje kommun'
   },
   {
     key: 'sigtuna',
     text: 'Sigtuna',
-    name: 'Sigtuna kommun',
-    county: 'Stockholms län',
+    value: 'Sigtuna',
     code: '0191',
-    value: 'Sigtuna'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Sigtuna kommun'
   },
   {
     key: 'nynashamn',
     text: 'Nynäshamn',
-    name: 'Nynäshamns kommun',
-    county: 'Stockholms län',
+    value: 'Nynäshamn',
     code: '0192',
-    value: 'Nynäshamn'
+    type: 'municipality',
+    county: 'Stockholms län',
+    name: 'Nynäshamns kommun'
   },
-
   {
     key: 'uppsala_lan',
     text: 'Uppsala län',
+    value: 'Uppsala län',
     code: '03',
-    value: 'Uppsala län'
+    type: 'county'
   },
   {
     key: 'haobo',
     text: 'Håbo',
-    name: 'Håbo kommun',
-    county: 'Uppsala län',
+    value: 'Håbo',
     code: '0305',
-    value: 'Håbo'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Håbo kommun'
   },
   {
     key: 'alvkarleby',
     text: 'Älvkarleby',
-    name: 'Älvkarlebys kommun',
-    county: 'Uppsala län',
+    value: 'Älvkarleby',
     code: '0319',
-    value: 'Älvkarleby'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Älvkarlebys kommun'
   },
   {
     key: 'knivsta',
     text: 'Knivsta',
-    name: 'Knivsta kommun',
-    county: 'Uppsala län',
+    value: 'Knivsta',
     code: '0330',
-    value: 'Knivsta'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Knivsta kommun'
   },
   {
     key: 'heby',
     text: 'Heby',
-    name: 'Heby kommun',
-    county: 'Uppsala län',
+    value: 'Heby',
     code: '0331',
-    value: 'Heby'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Heby kommun'
   },
   {
     key: 'tierp',
     text: 'Tierp',
-    name: 'Tierps kommun',
-    county: 'Uppsala län',
+    value: 'Tierp',
     code: '0360',
-    value: 'Tierp'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Tierps kommun'
   },
   {
     key: 'uppsala',
     text: 'Uppsala',
-    name: 'Uppsala kommun',
-    county: 'Uppsala län',
+    value: 'Uppsala',
     code: '0380',
-    value: 'Uppsala'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Uppsala kommun'
   },
   {
     key: 'enkoping',
     text: 'Enköping',
-    name: 'Enköpings kommun',
-    county: 'Uppsala län',
+    value: 'Enköping',
     code: '0381',
-    value: 'Enköping'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Enköpings kommun'
   },
   {
     key: 'osthammar',
     text: 'Östhammar',
-    name: 'Östhammars kommun',
-    county: 'Uppsala län',
+    value: 'Östhammar',
     code: '0382',
-    value: 'Östhammar'
+    type: 'municipality',
+    county: 'Uppsala län',
+    name: 'Östhammars kommun'
   },
-
   {
     key: 'sodermanlands_lan',
     text: 'Södermanlands län',
+    value: 'Södermanlands län',
     code: '04',
-    value: 'Södermanlands län'
+    type: 'county'
   },
   {
     key: 'vingaker',
     text: 'Vingåker',
-    name: 'Vingåkers kommun',
-    county: 'Södermanlands län',
+    value: 'Vingåker',
     code: '0428',
-    value: 'Vingåker'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Vingåkers kommun'
   },
   {
     key: 'gnesta',
     text: 'Gnesta',
-    name: 'Gnesta kommun',
-    county: 'Södermanlands län',
+    value: 'Gnesta',
     code: '0461',
-    value: 'Gnesta'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Gnesta kommun'
   },
   {
     key: 'nykoping',
     text: 'Nyköping',
-    name: 'Nyköpings kommun',
-    county: 'Södermanlands län',
+    value: 'Nyköping',
     code: '0480',
-    value: 'Nyköping'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Nyköpings kommun'
   },
   {
     key: 'oxelosund',
     text: 'Oxelösund',
-    name: 'Oxelösunds kommun',
-    county: 'Södermanlands län',
+    value: 'Oxelösund',
     code: '0481',
-    value: 'Oxelösund'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Oxelösunds kommun'
   },
   {
     key: 'flen',
     text: 'Flen',
-    name: 'Flens kommun',
-    county: 'Södermanlands län',
+    value: 'Flen',
     code: '0482',
-    value: 'Flen'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Flens kommun'
   },
   {
     key: 'katrineholm',
     text: 'Katrineholm',
-    name: 'Katrineholms kommun',
-    county: 'Södermanlands län',
+    value: 'Katrineholm',
     code: '0483',
-    value: 'Katrineholm'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Katrineholms kommun'
   },
   {
     key: 'eskilstuna',
     text: 'Eskilstuna',
-    name: 'Eskilstuna kommun',
-    county: 'Södermanlands län',
+    value: 'Eskilstuna',
     code: '0484',
-    value: 'Eskilstuna'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Eskilstuna kommun'
   },
   {
     key: 'strangnas',
     text: 'Strängnäs',
-    name: 'Strängnäs kommun',
-    county: 'Södermanlands län',
+    value: 'Strängnäs',
     code: '0486',
-    value: 'Strängnäs'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Strängnäs kommun'
   },
   {
     key: 'trosa',
     text: 'Trosa',
-    name: 'Trosa kommun',
-    county: 'Södermanlands län',
+    value: 'Trosa',
     code: '0488',
-    value: 'Trosa'
+    type: 'municipality',
+    county: 'Södermanlands län',
+    name: 'Trosa kommun'
   },
-
   {
     key: 'ostergotlands_lan',
     text: 'Östergötlands län',
+    value: 'Östergötlands län',
     code: '05',
-    value: 'Östergötlands län'
+    type: 'county'
   },
   {
     key: 'odeshog',
     text: 'Ödeshög',
-    name: 'Ödeshögs kommun',
-    county: 'Östergötlands län',
+    value: 'Ödeshög',
     code: '0509',
-    value: 'Ödeshög'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Ödeshögs kommun'
   },
   {
     key: 'ydre',
     text: 'Ydre',
-    name: 'Ydre kommun',
-    county: 'Östergötlands län',
+    value: 'Ydre',
     code: '0512',
-    value: 'Ydre'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Ydre kommun'
   },
   {
     key: 'kinda',
     text: 'Kinda',
-    name: 'Kinda kommun',
-    county: 'Östergötlands län',
+    value: 'Kinda',
     code: '0513',
-    value: 'Kinda'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Kinda kommun'
   },
   {
     key: 'boxholm',
     text: 'Boxholm',
-    name: 'Boxholms kommun',
-    county: 'Östergötlands län',
+    value: 'Boxholm',
     code: '0560',
-    value: 'Boxholm'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Boxholms kommun'
   },
   {
     key: 'atvidaberg',
     text: 'Åtvidaberg',
-    name: 'Åtvidabergs kommun',
-    county: 'Östergötlands län',
+    value: 'Åtvidaberg',
     code: '0561',
-    value: 'Åtvidaberg'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Åtvidabergs kommun'
   },
   {
     key: 'finspang',
     text: 'Finspång',
-    name: 'Finspångs kommun',
-    county: 'Östergötlands län',
+    value: 'Finspång',
     code: '0562',
-    value: 'Finspång'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Finspångs kommun'
   },
   {
     key: 'valdemarsvik',
     text: 'Valdemarsvik',
-    name: 'Valdemarsviks kommun',
-    county: 'Östergötlands län',
+    value: 'Valdemarsvik',
     code: '0563',
-    value: 'Valdemarsvik'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Valdemarsviks kommun'
   },
   {
     key: 'linkoping',
     text: 'Linköping',
-    name: 'Linköpings kommun',
-    county: 'Östergötlands län',
+    value: 'Linköping',
     code: '0580',
-    value: 'Linköping'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Linköpings kommun'
   },
   {
     key: 'norrkoping',
     text: 'Norrköping',
-    name: 'Norrköpings kommun',
-    county: 'Östergötlands län',
+    value: 'Norrköping',
     code: '0581',
-    value: 'Norrköping'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Norrköpings kommun'
   },
   {
     key: 'soderkoping',
     text: 'Söderköping',
-    name: 'Söderköpings kommun',
-    county: 'Östergötlands län',
+    value: 'Söderköping',
     code: '0582',
-    value: 'Söderköping'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Söderköpings kommun'
   },
   {
     key: 'motala',
     text: 'Motala',
-    name: 'Motala kommun',
-    county: 'Östergötlands län',
+    value: 'Motala',
     code: '0583',
-    value: 'Motala'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Motala kommun'
   },
   {
     key: 'vadstena',
     text: 'Vadstena',
-    name: 'Vadstena kommun',
-    county: 'Östergötlands län',
+    value: 'Vadstena',
     code: '0584',
-    value: 'Vadstena'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Vadstena kommun'
   },
   {
     key: 'mjolby',
     text: 'Mjölby',
-    name: 'Mjölby kommun',
-    county: 'Östergötlands län',
+    value: 'Mjölby',
     code: '0586',
-    value: 'Mjölby'
+    type: 'municipality',
+    county: 'Östergötlands län',
+    name: 'Mjölby kommun'
   },
-
   {
     key: 'jonkopings_lan',
     text: 'Jönköpings län',
+    value: 'Jönköpings län',
     code: '06',
-    value: 'Jönköpings län'
+    type: 'county'
   },
   {
     key: 'aneby',
     text: 'Aneby',
-    name: 'Aneby kommun',
-    county: 'Jönköpings län',
+    value: 'Aneby',
     code: '0604',
-    value: 'Aneby'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Aneby kommun'
   },
   {
     key: 'gnosjo',
     text: 'Gnosjö',
-    name: 'Gnosjö kommun',
-    county: 'Jönköpings län',
+    value: 'Gnosjö',
     code: '0617',
-    value: 'Gnosjö'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Gnosjö kommun'
   },
   {
     key: 'mullsjo',
     text: 'Mullsjö',
-    name: 'Mullsjö kommun',
-    county: 'Jönköpings län',
+    value: 'Mullsjö',
     code: '0642',
-    value: 'Mullsjö'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Mullsjö kommun'
   },
   {
     key: 'habo',
     text: 'Habo',
-    name: 'Habo kommun',
-    county: 'Jönköpings län',
+    value: 'Habo',
     code: '0643',
-    value: 'Habo'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Habo kommun'
   },
   {
     key: 'gislaved',
     text: 'Gislaved',
-    name: 'Gislaveds kommun',
-    county: 'Jönköpings län',
+    value: 'Gislaved',
     code: '0662',
-    value: 'Gislaved'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Gislaveds kommun'
   },
   {
     key: 'vaggeryd',
     text: 'Vaggeryd',
-    name: 'Vaggeryds kommun',
-    county: 'Jönköpings län',
+    value: 'Vaggeryd',
     code: '0665',
-    value: 'Vaggeryd'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Vaggeryds kommun'
   },
   {
     key: 'jonkoping',
     text: 'Jönköping',
-    name: 'Jönköpings kommun',
-    county: 'Jönköpings län',
+    value: 'Jönköping',
     code: '0680',
-    value: 'Jönköping'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Jönköpings kommun'
   },
   {
     key: 'nassjo',
     text: 'Nässjö',
-    name: 'Nässjö kommun',
-    county: 'Jönköpings län',
+    value: 'Nässjö',
     code: '0682',
-    value: 'Nässjö'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Nässjö kommun'
   },
   {
     key: 'varnamo',
     text: 'Värnamo',
-    name: 'Värnamo kommun',
-    county: 'Jönköpings län',
+    value: 'Värnamo',
     code: '0683',
-    value: 'Värnamo'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Värnamo kommun'
   },
   {
     key: 'savsjo',
     text: 'Sävsjö',
-    name: 'Sävsjö kommun',
-    county: 'Jönköpings län',
+    value: 'Sävsjö',
     code: '0684',
-    value: 'Sävsjö'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Sävsjö kommun'
   },
   {
     key: 'vetlanda',
     text: 'Vetlanda',
-    name: 'Vetlanda kommun',
-    county: 'Jönköpings län',
+    value: 'Vetlanda',
     code: '0685',
-    value: 'Vetlanda'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Vetlanda kommun'
   },
   {
     key: 'eksjo',
     text: 'Eksjö',
-    name: 'Eksjö kommun',
-    county: 'Jönköpings län',
+    value: 'Eksjö',
     code: '0686',
-    value: 'Eksjö'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Eksjö kommun'
   },
   {
     key: 'tranas',
     text: 'Tranås',
-    name: 'Tranås kommun',
-    county: 'Jönköpings län',
+    value: 'Tranås',
     code: '0687',
-    value: 'Tranås'
+    type: 'municipality',
+    county: 'Jönköpings län',
+    name: 'Tranås kommun'
   },
-
   {
     key: 'kronobergs_lan',
     text: 'Kronobergs län',
+    value: 'Kronobergs län',
     code: '07',
-    value: 'Kronobergs län'
+    type: 'county'
   },
   {
     key: 'uppvidinge',
     text: 'Uppvidinge',
-    name: 'Uppvidinge kommun',
-    county: 'Kronobergs län',
+    value: 'Uppvidinge',
     code: '0760',
-    value: 'Uppvidinge'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Uppvidinge kommun'
   },
   {
     key: 'lessebo',
     text: 'Lessebo',
-    name: 'Lessebo kommun',
-    county: 'Kronobergs län',
+    value: 'Lessebo',
     code: '0761',
-    value: 'Lessebo'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Lessebo kommun'
   },
   {
     key: 'tingsryd',
     text: 'Tingsryd',
-    name: 'Tingsryds kommun',
-    county: 'Kronobergs län',
+    value: 'Tingsryd',
     code: '0763',
-    value: 'Tingsryd'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Tingsryds kommun'
   },
   {
     key: 'alvesta',
     text: 'Alvesta',
-    name: 'Alvesta kommun',
-    county: 'Kronobergs län',
+    value: 'Alvesta',
     code: '0764',
-    value: 'Alvesta'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Alvesta kommun'
   },
   {
     key: 'almhult',
     text: 'Älmhult',
-    name: 'Älmhults kommun',
-    county: 'Kronobergs län',
+    value: 'Älmhult',
     code: '0765',
-    value: 'Älmhult'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Älmhults kommun'
   },
   {
     key: 'markaryd',
     text: 'Markaryd',
-    name: 'Markaryds kommun',
-    county: 'Kronobergs län',
+    value: 'Markaryd',
     code: '0767',
-    value: 'Markaryd'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Markaryds kommun'
   },
   {
     key: 'vaxjo',
     text: 'Växjö',
-    name: 'Växjö kommun',
-    county: 'Kronobergs län',
+    value: 'Växjö',
     code: '0780',
-    value: 'Växjö'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Växjö kommun'
   },
   {
     key: 'ljungby',
     text: 'Ljungby',
-    name: 'Ljungby kommun',
-    county: 'Kronobergs län',
+    value: 'Ljungby',
     code: '0781',
-    value: 'Ljungby'
+    type: 'municipality',
+    county: 'Kronobergs län',
+    name: 'Ljungby kommun'
   },
-
   {
     key: 'kalmar_lan',
     text: 'Kalmar län',
+    value: 'Kalmar län',
     code: '08',
-    value: 'Kalmar län'
+    type: 'county'
   },
   {
     key: 'hogsby',
     text: 'Högsby',
-    name: 'Högsbys kommun',
-    county: 'Kalmar län',
+    value: 'Högsby',
     code: '0821',
-    value: 'Högsby'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Högsbys kommun'
   },
   {
     key: 'torsas',
     text: 'Torsås',
-    name: 'Torsås kommun',
-    county: 'Kalmar län',
+    value: 'Torsås',
     code: '0834',
-    value: 'Torsås'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Torsås kommun'
   },
   {
     key: 'morbylanga',
     text: 'Mörbylånga',
-    name: 'Mörbylånga kommun',
-    county: 'Kalmar län',
+    value: 'Mörbylånga',
     code: '0840',
-    value: 'Mörbylånga'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Mörbylånga kommun'
   },
   {
     key: 'hultsfred',
     text: 'Hultsfred',
-    name: 'Hultsfreds kommun',
-    county: 'Kalmar län',
+    value: 'Hultsfred',
     code: '0860',
-    value: 'Hultsfred'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Hultsfreds kommun'
   },
   {
     key: 'monsteras',
     text: 'Mönsterås',
-    name: 'Mönsterås kommun',
-    county: 'Kalmar län',
+    value: 'Mönsterås',
     code: '0861',
-    value: 'Mönsterås'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Mönsterås kommun'
   },
   {
     key: 'emmaboda',
     text: 'Emmaboda',
-    name: 'Emmaboda kommun',
-    county: 'Kalmar län',
+    value: 'Emmaboda',
     code: '0862',
-    value: 'Emmaboda'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Emmaboda kommun'
   },
   {
     key: 'kalmar',
     text: 'Kalmar',
-    name: 'Kalmar kommun',
-    county: 'Kalmar län',
+    value: 'Kalmar',
     code: '0880',
-    value: 'Kalmar'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Kalmar kommun'
   },
   {
     key: 'nybro',
     text: 'Nybro',
-    name: 'Nybro kommun',
-    county: 'Kalmar län',
+    value: 'Nybro',
     code: '0881',
-    value: 'Nybro'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Nybro kommun'
   },
   {
     key: 'oskarshamn',
     text: 'Oskarshamn',
-    name: 'Oskarshamns kommun',
-    county: 'Kalmar län',
+    value: 'Oskarshamn',
     code: '0882',
-    value: 'Oskarshamn'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Oskarshamns kommun'
   },
   {
     key: 'vastervik',
     text: 'Västervik',
-    name: 'Västerviks kommun',
-    county: 'Kalmar län',
+    value: 'Västervik',
     code: '0883',
-    value: 'Västervik'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Västerviks kommun'
   },
   {
     key: 'vimmerby',
     text: 'Vimmerby',
-    name: 'Vimmerby kommun',
-    county: 'Kalmar län',
+    value: 'Vimmerby',
     code: '0884',
-    value: 'Vimmerby'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Vimmerby kommun'
   },
   {
     key: 'borgholm',
     text: 'Borgholm',
-    name: 'Borgholms kommun',
-    county: 'Kalmar län',
+    value: 'Borgholm',
     code: '0885',
-    value: 'Borgholm'
+    type: 'municipality',
+    county: 'Kalmar län',
+    name: 'Borgholms kommun'
   },
-
   {
     key: 'gotlands_lan',
     text: 'Gotlands län',
+    value: 'Gotlands län',
     code: '09',
-    value: 'Gotlands län'
+    type: 'county'
   },
   {
     key: 'gotland',
     text: 'Gotland',
-    name: 'Gotlands kommun',
-    county: 'Gotlands län',
+    value: 'Gotland',
     code: '0980',
-    value: 'Gotland'
+    type: 'municipality',
+    county: 'Gotlands län',
+    name: 'Gotlands kommun'
   },
-
   {
     key: 'blekinge_lan',
     text: 'Blekinge län',
+    value: 'Blekinge län',
     code: '10',
-    value: 'Blekinge län'
+    type: 'county'
   },
   {
     key: 'olofstrom',
     text: 'Olofström',
-    name: 'Olofströms kommun',
-    county: 'Blekinge län',
+    value: 'Olofström',
     code: '1060',
-    value: 'Olofström'
+    type: 'municipality',
+    county: 'Blekinge län',
+    name: 'Olofströms kommun'
   },
   {
     key: 'karlskrona',
     text: 'Karlskrona',
-    name: 'Karlskronas kommun',
-    county: 'Blekinge län',
+    value: 'Karlskrona',
     code: '1080',
-    value: 'Karlskrona'
+    type: 'municipality',
+    county: 'Blekinge län',
+    name: 'Karlskronas kommun'
   },
   {
     key: 'ronneby',
     text: 'Ronneby',
-    name: 'Ronneby kommun',
-    county: 'Blekinge län',
+    value: 'Ronneby',
     code: '1081',
-    value: 'Ronneby'
+    type: 'municipality',
+    county: 'Blekinge län',
+    name: 'Ronneby kommun'
   },
   {
     key: 'karlshamn',
     text: 'Karlshamn',
-    name: 'Karlshamns kommun',
-    county: 'Blekinge län',
+    value: 'Karlshamn',
     code: '1082',
-    value: 'Karlshamn'
+    type: 'municipality',
+    county: 'Blekinge län',
+    name: 'Karlshamns kommun'
   },
   {
     key: 'solvesborg',
     text: 'Sölvesborg',
-    name: 'Sölvesborgs kommun',
-    county: 'Blekinge län',
+    value: 'Sölvesborg',
     code: '1083',
-    value: 'Sölvesborg'
+    type: 'municipality',
+    county: 'Blekinge län',
+    name: 'Sölvesborgs kommun'
   },
-
   {
     key: 'skane_lan',
     text: 'Skåne län',
+    value: 'Skåne län',
     code: '12',
-    value: 'Skåne län'
+    type: 'county'
   },
   {
     key: 'svalov',
     text: 'Svalöv',
-    name: 'Svalövs kommun',
-    county: 'Skåne län',
+    value: 'Svalöv',
     code: '1214',
-    value: 'Svalöv'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Svalövs kommun'
   },
   {
     key: 'staffanstorp',
     text: 'Staffanstorp',
-    name: 'Staffanstorps kommun',
-    county: 'Skåne län',
+    value: 'Staffanstorp',
     code: '1230',
-    value: 'Staffanstorp'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Staffanstorps kommun'
   },
   {
     key: 'burlov',
     text: 'Burlöv',
-    name: 'Burlövs kommun',
-    county: 'Skåne län',
+    value: 'Burlöv',
     code: '1231',
-    value: 'Burlöv'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Burlövs kommun'
   },
   {
     key: 'vellinge',
     text: 'Vellinge',
-    name: 'Vellinge kommun',
-    county: 'Skåne län',
+    value: 'Vellinge',
     code: '1233',
-    value: 'Vellinge'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Vellinge kommun'
   },
   {
     key: 'ostra_goinge',
     text: 'Östra Göinge',
-    name: 'Östra Göinge kommun',
-    county: 'Skåne län',
+    value: 'Östra Göinge',
     code: '1256',
-    value: 'Östra Göinge'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Östra Göinge kommun'
   },
   {
     key: 'orkelljunga',
     text: 'Örkelljunga',
-    name: 'Örkelljunga kommun',
-    county: 'Skåne län',
+    value: 'Örkelljunga',
     code: '1257',
-    value: 'Örkelljunga'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Örkelljunga kommun'
   },
   {
     key: 'bjuv',
     text: 'Bjuv',
-    name: 'Bjuvs kommun',
-    county: 'Skåne län',
+    value: 'Bjuv',
     code: '1260',
-    value: 'Bjuv'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Bjuvs kommun'
   },
   {
     key: 'kavlinge',
     text: 'Kävlinge',
-    name: 'Kävlinge kommun',
-    county: 'Skåne län',
+    value: 'Kävlinge',
     code: '1261',
-    value: 'Kävlinge'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Kävlinge kommun'
   },
   {
     key: 'lomma',
     text: 'Lomma',
-    name: 'Lomma kommun',
-    county: 'Skåne län',
+    value: 'Lomma',
     code: '1262',
-    value: 'Lomma'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Lomma kommun'
   },
   {
     key: 'svedala',
     text: 'Svedala',
-    name: 'Svedala kommun',
-    county: 'Skåne län',
+    value: 'Svedala',
     code: '1263',
-    value: 'Svedala'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Svedala kommun'
   },
   {
     key: 'skurup',
     text: 'Skurup',
-    name: 'Skurups kommun',
-    county: 'Skåne län',
+    value: 'Skurup',
     code: '1264',
-    value: 'Skurup'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Skurups kommun'
   },
   {
     key: 'sjobo',
     text: 'Sjöbo',
-    name: 'Sjöbo kommun',
-    county: 'Skåne län',
+    value: 'Sjöbo',
     code: '1265',
-    value: 'Sjöbo'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Sjöbo kommun'
   },
   {
     key: 'horby',
     text: 'Hörby',
-    name: 'Hörby kommun',
-    county: 'Skåne län',
+    value: 'Hörby',
     code: '1266',
-    value: 'Hörby'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Hörby kommun'
   },
   {
     key: 'hoor',
     text: 'Höör',
-    name: 'Höörs kommun',
-    county: 'Skåne län',
+    value: 'Höör',
     code: '1267',
-    value: 'Höör'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Höörs kommun'
   },
   {
     key: 'tomelilla',
     text: 'Tomelilla',
-    name: 'Tomelilla kommun',
-    county: 'Skåne län',
+    value: 'Tomelilla',
     code: '1270',
-    value: 'Tomelilla'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Tomelilla kommun'
   },
   {
     key: 'bromolla',
     text: 'Bromölla',
-    name: 'Bromölla kommun',
-    county: 'Skåne län',
+    value: 'Bromölla',
     code: '1272',
-    value: 'Bromölla'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Bromölla kommun'
   },
   {
     key: 'osby',
     text: 'Osby',
-    name: 'Osby kommun',
-    county: 'Skåne län',
+    value: 'Osby',
     code: '1273',
-    value: 'Osby'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Osby kommun'
   },
   {
     key: 'perstorp',
     text: 'Perstorp',
-    name: 'Perstorps kommun',
-    county: 'Skåne län',
+    value: 'Perstorp',
     code: '1275',
-    value: 'Perstorp'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Perstorps kommun'
   },
   {
     key: 'klippan',
     text: 'Klippan',
-    name: 'Klippans kommun',
-    county: 'Skåne län',
+    value: 'Klippan',
     code: '1276',
-    value: 'Klippan'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Klippans kommun'
   },
   {
     key: 'astorp',
     text: 'Åstorp',
-    name: 'Åstorps kommun',
-    county: 'Skåne län',
+    value: 'Åstorp',
     code: '1277',
-    value: 'Åstorp'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Åstorps kommun'
   },
   {
     key: 'bastad',
     text: 'Båstad',
-    name: 'Båstads kommun',
-    county: 'Skåne län',
+    value: 'Båstad',
     code: '1278',
-    value: 'Båstad'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Båstads kommun'
   },
   {
     key: 'Malmö',
     text: 'Malmö',
-    name: 'Malmö kommun',
-    county: 'Skåne län',
+    value: 'Malmö',
     code: '1280',
-    value: 'Malmö'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Malmö kommun'
   },
   {
     key: 'lund',
     text: 'Lund',
-    name: 'Lunds kommun',
-    county: 'Skåne län',
+    value: 'Lund',
     code: '1281',
-    value: 'Lund'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Lunds kommun'
   },
   {
     key: 'landskrona',
     text: 'Landskrona',
-    name: 'Landskrona kommun',
-    county: 'Skåne län',
+    value: 'Landskrona',
     code: '1282',
-    value: 'Landskrona'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Landskrona kommun'
   },
   {
     key: 'helsingborg',
     text: 'Helsingborg',
-    name: 'Helsingborgs kommun',
-    county: 'Skåne län',
+    value: 'Helsingborg',
     code: '1283',
-    value: 'Helsingborg'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Helsingborgs kommun'
   },
   {
     key: 'hoganas',
     text: 'Höganäs',
-    name: 'Höganäs kommun',
-    county: 'Skåne län',
+    value: 'Höganäs',
     code: '1284',
-    value: 'Höganäs'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Höganäs kommun'
   },
   {
     key: 'eslov',
     text: 'Eslöv',
-    name: 'Eslövs kommun',
-    county: 'Skåne län',
+    value: 'Eslöv',
     code: '1285',
-    value: 'Eslöv'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Eslövs kommun'
   },
   {
     key: 'ystad',
     text: 'Ystad',
-    name: 'Ystads kommun',
-    county: 'Skåne län',
+    value: 'Ystad',
     code: '1286',
-    value: 'Ystad'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Ystads kommun'
   },
   {
     key: 'trelleborg',
     text: 'Trelleborg',
-    name: 'Trelleborgs kommun',
-    county: 'Skåne län',
+    value: 'Trelleborg',
     code: '1287',
-    value: 'Trelleborg'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Trelleborgs kommun'
   },
   {
     key: 'kristianstad',
     text: 'Kristianstad',
-    name: 'Kristianstads kommun',
-    county: 'Skåne län',
+    value: 'Kristianstad',
     code: '1290',
-    value: 'Kristianstad'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Kristianstads kommun'
   },
   {
     key: 'simrishamn',
     text: 'Simrishamn',
-    name: 'Simrishamns kommun',
-    county: 'Skåne län',
+    value: 'Simrishamn',
     code: '1291',
-    value: 'Simrishamn'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Simrishamns kommun'
   },
   {
     key: 'angelholm',
     text: 'Ängelholm',
-    name: 'Ängelholms kommun',
-    county: 'Skåne län',
+    value: 'Ängelholm',
     code: '1292',
-    value: 'Ängelholm'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Ängelholms kommun'
   },
   {
     key: 'hassleholm',
     text: 'Hässleholm',
-    name: 'Hässleholms kommun',
-    county: 'Skåne län',
+    value: 'Hässleholm',
     code: '1293',
-    value: 'Hässleholm'
+    type: 'municipality',
+    county: 'Skåne län',
+    name: 'Hässleholms kommun'
   },
-
   {
     key: 'hallands_lan',
     text: 'Hallands län',
+    value: 'Hallands län',
     code: '13',
-    value: 'Hallands län'
+    type: 'county'
   },
   {
     key: 'hylte',
     text: 'Hylte',
-    name: 'Hylte kommun',
-    county: 'Hallands län',
+    value: 'Hylte',
     code: '1315',
-    value: 'Hylte'
+    type: 'municipality',
+    county: 'Hallands län',
+    name: 'Hylte kommun'
   },
   {
     key: 'halmstad',
     text: 'Halmstad',
-    name: 'Halmstads kommun',
-    county: 'Hallands län',
+    value: 'Halmstad',
     code: '1380',
-    value: 'Halmstad'
+    type: 'municipality',
+    county: 'Hallands län',
+    name: 'Halmstads kommun'
   },
   {
     key: 'laholm',
     text: 'Laholm',
-    name: 'Laholms kommun',
-    county: 'Hallands län',
+    value: 'Laholm',
     code: '1381',
-    value: 'Laholm'
+    type: 'municipality',
+    county: 'Hallands län',
+    name: 'Laholms kommun'
   },
   {
     key: 'falkenberg',
     text: 'Falkenberg',
-    name: 'Falkenbergs kommun',
-    county: 'Hallands län',
+    value: 'Falkenberg',
     code: '1382',
-    value: 'Falkenberg'
+    type: 'municipality',
+    county: 'Hallands län',
+    name: 'Falkenbergs kommun'
   },
   {
     key: 'varberg',
     text: 'Varberg',
-    name: 'Varbergs kommun',
-    county: 'Hallands län',
+    value: 'Varberg',
     code: '1383',
-    value: 'Varberg'
+    type: 'municipality',
+    county: 'Hallands län',
+    name: 'Varbergs kommun'
   },
   {
     key: 'kungsbacka',
     text: 'Kungsbacka',
-    name: 'Kungsbacka kommun',
-    county: 'Hallands län',
+    value: 'Kungsbacka',
     code: '1384',
-    value: 'Kungsbacka'
+    type: 'municipality',
+    county: 'Hallands län',
+    name: 'Kungsbacka kommun'
   },
-
   {
     key: 'vastra_gotalands_lan',
     text: 'Västra Götalands län',
+    value: 'Västra Götalands län',
     code: '14',
-    value: 'Västra Götalands län'
+    type: 'county'
   },
   {
     key: 'harryda',
     text: 'Härryda',
-    name: 'Härryda kommun',
-    county: 'Västra Götalands län',
+    value: 'Härryda',
     code: '1401',
-    value: 'Härryda'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Härryda kommun'
   },
   {
     key: 'partille',
     text: 'Partille',
-    name: 'Partille kommun',
-    county: 'Västra Götalands län',
+    value: 'Partille',
     code: '1402',
-    value: 'Partille'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Partille kommun'
   },
   {
     key: 'ockero',
     text: 'Öckerö',
-    name: 'Öckerö kommun',
-    county: 'Västra Götalands län',
+    value: 'Öckerö',
     code: '1407',
-    value: 'Öckerö'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Öckerö kommun'
   },
   {
     key: 'stenungsund',
     text: 'Stenungsund',
-    name: 'Stenungsunds kommun',
-    county: 'Västra Götalands län',
+    value: 'Stenungsund',
     code: '1415',
-    value: 'Stenungsund'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Stenungsunds kommun'
   },
   {
     key: 'tjorn',
     text: 'Tjörn',
-    name: 'Tjörns kommun',
-    county: 'Västra Götalands län',
+    value: 'Tjörn',
     code: '1419',
-    value: 'Tjörn'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Tjörns kommun'
   },
   {
     key: 'orust',
     text: 'Orust',
-    name: 'Orust kommun',
-    county: 'Västra Götalands län',
+    value: 'Orust',
     code: '1421',
-    value: 'Orust'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Orust kommun'
   },
   {
     key: 'sotenas',
     text: 'Sotenäs',
-    name: 'Sotenäs kommun',
-    county: 'Västra Götalands län',
+    value: 'Sotenäs',
     code: '1427',
-    value: 'Sotenäs'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Sotenäs kommun'
   },
   {
     key: 'munkedal',
     text: 'Munkedal',
-    name: 'Munkedals kommun',
-    county: 'Västra Götalands län',
+    value: 'Munkedal',
     code: '1430',
-    value: 'Munkedal'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Munkedals kommun'
   },
   {
     key: 'tanum',
     text: 'Tanum',
-    name: 'Tanums kommun',
-    county: 'Västra Götalands län',
+    value: 'Tanum',
     code: '1435',
-    value: 'Tanum'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Tanums kommun'
   },
   {
     key: 'dals-ed',
     text: 'Dals-Ed',
-    name: 'Dals-Eds kommun',
-    county: 'Västra Götalands län',
+    value: 'Dals-Ed',
     code: '1438',
-    value: 'Dals-Ed'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Dals-Eds kommun'
   },
   {
     key: 'fargelanda',
     text: 'Färgelanda',
-    name: 'Färgelanda kommun',
-    county: 'Västra Götalands län',
+    value: 'Färgelanda',
     code: '1439',
-    value: 'Färgelanda'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Färgelanda kommun'
   },
   {
     key: 'ale',
     text: 'Ale',
-    name: 'Ale kommun',
-    county: 'Västra Götalands län',
+    value: 'Ale',
     code: '1440',
-    value: 'Ale'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Ale kommun'
   },
   {
     key: 'lerum',
     text: 'Lerum',
-    name: 'Lerums kommun',
-    county: 'Västra Götalands län',
+    value: 'Lerum',
     code: '1441',
-    value: 'Lerum'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Lerums kommun'
   },
   {
     key: 'vargarda',
     text: 'Vårgårda',
-    name: 'Vårgårda kommun',
-    county: 'Västra Götalands län',
+    value: 'Vårgårda',
     code: '1442',
-    value: 'Vårgårda'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Vårgårda kommun'
   },
   {
     key: 'bollebygd',
     text: 'Bollebygd',
-    name: 'Bollebygds kommun',
-    county: 'Västra Götalands län',
+    value: 'Bollebygd',
     code: '1443',
-    value: 'Bollebygd'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Bollebygds kommun'
   },
   {
     key: 'grastorp',
     text: 'Grästorp',
-    name: 'Grästorps kommun',
-    county: 'Västra Götalands län',
+    value: 'Grästorp',
     code: '1444',
-    value: 'Grästorp'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Grästorps kommun'
   },
   {
     key: 'essunga',
     text: 'Essunga',
-    name: 'Essunga kommun',
-    county: 'Västra Götalands län',
+    value: 'Essunga',
     code: '1445',
-    value: 'Essunga'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Essunga kommun'
   },
   {
     key: 'karlsborg',
     text: 'Karlsborg',
-    name: 'Karlsborgs kommun',
-    county: 'Västra Götalands län',
+    value: 'Karlsborg',
     code: '1446',
-    value: 'Karlsborg'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Karlsborgs kommun'
   },
   {
     key: 'gullspång',
     text: 'Gullspång',
-    name: 'Gullspångs kommun',
-    county: 'Västra Götalands län',
+    value: 'Gullspång',
     code: '1447',
-    value: 'Gullspång'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Gullspångs kommun'
   },
   {
     key: 'tranemo',
     text: 'Tranemo',
-    name: 'Tranemo kommun',
-    county: 'Västra Götalands län',
+    value: 'Tranemo',
     code: '1452',
-    value: 'Tranemo'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Tranemo kommun'
   },
   {
     key: 'bengtsfors',
     text: 'Bengtsfors',
-    name: 'Bengtsfors kommun',
-    county: 'Västra Götalands län',
+    value: 'Bengtsfors',
     code: '1460',
-    value: 'Bengtsfors'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Bengtsfors kommun'
   },
   {
     key: 'mellerud',
     text: 'Mellerud',
-    name: 'Melleruds kommun',
-    county: 'Västra Götalands län',
+    value: 'Mellerud',
     code: '1461',
-    value: 'Mellerud'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Melleruds kommun'
   },
   {
     key: 'lilla_edet',
     text: 'Lilla Edet',
-    name: 'Lilla Edets kommun',
-    county: 'Västra Götalands län',
+    value: 'Lilla Edet',
     code: '1462',
-    value: 'Lilla Edet'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Lilla Edets kommun'
   },
   {
     key: 'mark',
     text: 'Mark',
-    name: 'Marks kommun',
-    county: 'Västra Götalands län',
+    value: 'Mark',
     code: '1463',
-    value: 'Mark'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Marks kommun'
   },
   {
     key: 'svenljunga',
     text: 'Svenljunga',
-    name: 'Svenljunga kommun',
-    county: 'Västra Götalands län',
+    value: 'Svenljunga',
     code: '1465',
-    value: 'Svenljunga'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Svenljunga kommun'
   },
   {
     key: 'herrljunga',
     text: 'Herrljunga',
-    name: 'Herrljunga kommun',
-    county: 'Västra Götalands län',
+    value: 'Herrljunga',
     code: '1466',
-    value: 'Herrljunga'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Herrljunga kommun'
   },
   {
     key: 'vara',
     text: 'Vara',
-    name: 'Vara kommun',
-    county: 'Västra Götalands län',
+    value: 'Vara',
     code: '1470',
-    value: 'Vara'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Vara kommun'
   },
   {
     key: 'gotene',
     text: 'Götene',
-    name: 'Götene kommun',
-    county: 'Västra Götalands län',
+    value: 'Götene',
     code: '1471',
-    value: 'Götene'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Götene kommun'
   },
   {
     key: 'tibro',
     text: 'Tibro',
-    name: 'Tibro kommun',
-    county: 'Västra Götalands län',
+    value: 'Tibro',
     code: '1472',
-    value: 'Tibro'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Tibro kommun'
   },
   {
     key: 'toreboda',
     text: 'Töreboda',
-    name: 'Töreboda kommun',
-    county: 'Västra Götalands län',
+    value: 'Töreboda',
     code: '1473',
-    value: 'Töreboda'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Töreboda kommun'
   },
   {
     key: 'goteborg',
     text: 'Göteborg',
-    name: 'Göteborgs kommun',
-    county: 'Västra Götalands län',
+    value: 'Göteborg',
     code: '1480',
-    value: 'Göteborg'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Göteborgs kommun'
   },
   {
     key: 'molndal',
     text: 'Mölndal',
-    name: 'Mölndals kommun',
-    county: 'Västra Götalands län',
+    value: 'Mölndal',
     code: '1481',
-    value: 'Mölndal'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Mölndals kommun'
   },
   {
     key: 'kungalv',
     text: 'Kungälv',
-    name: 'Kungälvs kommun',
-    county: 'Västra Götalands län',
+    value: 'Kungälv',
     code: '1482',
-    value: 'Kungälv'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Kungälvs kommun'
   },
   {
     key: 'lysekil',
     text: 'Lysekil',
-    name: 'Lysekils kommun',
-    county: 'Västra Götalands län',
+    value: 'Lysekil',
     code: '1484',
-    value: 'Lysekil'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Lysekils kommun'
   },
   {
     key: 'uddevalla',
     text: 'Uddevalla',
-    name: 'Uddevalla kommun',
-    county: 'Västra Götalands län',
+    value: 'Uddevalla',
     code: '1485',
-    value: 'Uddevalla'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Uddevalla kommun'
   },
   {
     key: 'stromstad',
     text: 'Strömstad',
-    name: 'Strömstads kommun',
-    county: 'Västra Götalands län',
+    value: 'Strömstad',
     code: '1486',
-    value: 'Strömstad'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Strömstads kommun'
   },
   {
     key: 'vanersborg',
     text: 'Vänersborg',
-    name: 'Vänersborgs kommun',
-    county: 'Västra Götalands län',
+    value: 'Vänersborg',
     code: '1487',
-    value: 'Vänersborg'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Vänersborgs kommun'
   },
   {
     key: 'trollhattan',
     text: 'Trollhättan',
-    name: 'Trollhättans kommun',
-    county: 'Västra Götalands län',
+    value: 'Trollhättan',
     code: '1488',
-    value: 'Trollhättan'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Trollhättans kommun'
   },
   {
     key: 'alingsas',
     text: 'Alingsås',
-    name: 'Alingsås kommun',
-    county: 'Västra Götalands län',
+    value: 'Alingsås',
     code: '1489',
-    value: 'Alingsås'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Alingsås kommun'
   },
   {
     key: 'boras',
     text: 'Borås',
-    name: 'Borås kommun',
-    county: 'Västra Götalands län',
+    value: 'Borås',
     code: '1490',
-    value: 'Borås'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Borås kommun'
   },
   {
     key: 'ulricehamn',
     text: 'Ulricehamn',
-    name: 'Ulricehamns kommun',
-    county: 'Västra Götalands län',
+    value: 'Ulricehamn',
     code: '1491',
-    value: 'Ulricehamn'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Ulricehamns kommun'
   },
   {
     key: 'amal',
     text: 'Åmål',
-    name: 'Åmåls kommun',
-    county: 'Västra Götalands län',
+    value: 'Åmål',
     code: '1492',
-    value: 'Åmål'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Åmåls kommun'
   },
   {
     key: 'mariestad',
     text: 'Mariestad',
-    name: 'Mariestads kommun',
-    county: 'Västra Götalands län',
+    value: 'Mariestad',
     code: '1493',
-    value: 'Mariestad'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Mariestads kommun'
   },
   {
     key: 'lidkoping',
     text: 'Lidköping',
-    name: 'Lidköpings kommun',
-    county: 'Västra Götalands län',
+    value: 'Lidköping',
     code: '1494',
-    value: 'Lidköping'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Lidköpings kommun'
   },
   {
     key: 'skara',
     text: 'Skara',
-    name: 'Skara kommun',
-    county: 'Västra Götalands län',
+    value: 'Skara',
     code: '1495',
-    value: 'Skara'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Skara kommun'
   },
   {
     key: 'skovde',
     text: 'Skövde',
-    name: 'Skövde kommun',
-    county: 'Västra Götalands län',
+    value: 'Skövde',
     code: '1496',
-    value: 'Skövde'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Skövde kommun'
   },
   {
     key: 'hjo',
     text: 'Hjo',
-    name: 'Hjo kommun',
-    county: 'Västra Götalands län',
+    value: 'Hjo',
     code: '1497',
-    value: 'Hjo'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Hjo kommun'
   },
   {
     key: 'tidaholm',
     text: 'Tidaholm',
-    name: 'Tidaholms kommun',
-    county: 'Västra Götalands län',
+    value: 'Tidaholm',
     code: '1498',
-    value: 'Tidaholm'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Tidaholms kommun'
   },
   {
     key: 'falkoping',
     text: 'Falköping',
-    name: 'Falköpings kommun',
-    county: 'Västra Götalands län',
+    value: 'Falköping',
     code: '1499',
-    value: 'Falköping'
+    type: 'municipality',
+    county: 'Västra Götalands län',
+    name: 'Falköpings kommun'
   },
-
   {
     key: 'varmlands_lan',
     text: 'Värmlands län',
+    value: 'Värmlands län',
     code: '17',
-    value: 'Värmlands län'
+    type: 'county'
   },
   {
     key: 'kil',
     text: 'Kil',
-    name: 'Kils kommun',
-    county: 'Värmlands län',
+    value: 'Kil',
     code: '1715',
-    value: 'Kil'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Kils kommun'
   },
   {
     key: 'eda',
     text: 'Eda',
-    name: 'Eda kommun',
-    county: 'Värmlands län',
+    value: 'Eda',
     code: '1730',
-    value: 'Eda'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Eda kommun'
   },
   {
     key: 'torsby',
     text: 'Torsby',
-    name: 'Torsby kommun',
-    county: 'Värmlands län',
+    value: 'Torsby',
     code: '1737',
-    value: 'Torsby'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Torsby kommun'
   },
   {
     key: 'storfors',
     text: 'Storfors',
-    name: 'Storfors kommun',
-    county: 'Värmlands län',
+    value: 'Storfors',
     code: '1760',
-    value: 'Storfors'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Storfors kommun'
   },
   {
     key: 'hammaro',
     text: 'Hammarö',
-    name: 'Hammarö kommun',
-    county: 'Värmlands län',
+    value: 'Hammarö',
     code: '1761',
-    value: 'Hammarö'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Hammarö kommun'
   },
   {
     key: 'munkfors',
     text: 'Munkfors',
-    name: 'Munkfors kommun',
-    county: 'Värmlands län',
+    value: 'Munkfors',
     code: '1762',
-    value: 'Munkfors'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Munkfors kommun'
   },
   {
     key: 'forshaga',
     text: 'Forshaga',
-    name: 'Forshaga kommun',
-    county: 'Värmlands län',
+    value: 'Forshaga',
     code: '1763',
-    value: 'Forshaga'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Forshaga kommun'
   },
   {
     key: 'grums',
     text: 'Grums',
-    name: 'Grums kommun',
-    county: 'Värmlands län',
+    value: 'Grums',
     code: '1764',
-    value: 'Grums'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Grums kommun'
   },
   {
     key: 'arjang',
     text: 'Årjäng',
-    name: 'Årjängs kommun',
-    county: 'Värmlands län',
+    value: 'Årjäng',
     code: '1765',
-    value: 'Årjäng'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Årjängs kommun'
   },
   {
     key: 'sunne',
     text: 'Sunne',
-    name: 'Sunne kommun',
-    county: 'Värmlands län',
+    value: 'Sunne',
     code: '1766',
-    value: 'Sunne'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Sunne kommun'
   },
   {
     key: 'karlstad',
     text: 'Karlstad',
-    name: 'Karlstads kommun',
-    county: 'Värmlands län',
+    value: 'Karlstad',
     code: '1780',
-    value: 'Karlstad'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Karlstads kommun'
   },
   {
     key: 'kristinehamn',
     text: 'Kristinehamn',
-    name: 'Kristinehamns kommun',
-    county: 'Värmlands län',
+    value: 'Kristinehamn',
     code: '1781',
-    value: 'Kristinehamn'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Kristinehamns kommun'
   },
   {
     key: 'filipstad',
     text: 'Filipstad',
-    name: 'Filipstads kommun',
-    county: 'Värmlands län',
+    value: 'Filipstad',
     code: '1782',
-    value: 'Filipstad'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Filipstads kommun'
   },
   {
     key: 'hagfors',
     text: 'Hagfors',
-    name: 'Hagfors kommun',
-    county: 'Värmlands län',
+    value: 'Hagfors',
     code: '1783',
-    value: 'Hagfors'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Hagfors kommun'
   },
   {
     key: 'arvika',
     text: 'Arvika',
-    name: 'Arvika kommun',
-    county: 'Värmlands län',
+    value: 'Arvika',
     code: '1784',
-    value: 'Arvika'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Arvika kommun'
   },
   {
     key: 'saffle',
     text: 'Säffle',
-    name: 'Säffle kommun',
-    county: 'Värmlands län',
+    value: 'Säffle',
     code: '1785',
-    value: 'Säffle'
+    type: 'municipality',
+    county: 'Värmlands län',
+    name: 'Säffle kommun'
   },
-
   {
     key: 'orebro_lan',
     text: 'Örebro län',
+    value: 'Örebro län',
     code: '18',
-    value: 'Örebro län'
+    type: 'county'
   },
   {
     key: 'lekeberg',
     text: 'Lekeberg',
-    name: 'Lekebergs kommun',
-    county: 'Örebro län',
+    value: 'Lekeberg',
     code: '1814',
-    value: 'Lekeberg'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Lekebergs kommun'
   },
   {
     key: 'laxa',
     text: 'Laxå',
-    name: 'Laxås kommun',
-    county: 'Örebro län',
+    value: 'Laxå',
     code: '1860',
-    value: 'Laxå'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Laxås kommun'
   },
   {
     key: 'hallsberg',
     text: 'Hallsberg',
-    name: 'Hallsbergs kommun',
-    county: 'Örebro län',
+    value: 'Hallsberg',
     code: '1861',
-    value: 'Hallsberg'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Hallsbergs kommun'
   },
   {
     key: 'degerfors',
     text: 'Degerfors',
-    name: 'Degerfors kommun',
-    county: 'Örebro län',
+    value: 'Degerfors',
     code: '1862',
-    value: 'Degerfors'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Degerfors kommun'
   },
   {
     key: 'hallefors',
     text: 'Hällefors',
-    name: 'Hällefors kommun',
-    county: 'Örebro län',
+    value: 'Hällefors',
     code: '1863',
-    value: 'Hällefors'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Hällefors kommun'
   },
   {
     key: 'ljusnarsberg',
     text: 'Ljusnarsberg',
-    name: 'Ljusnarsbergs kommun',
-    county: 'Örebro län',
+    value: 'Ljusnarsberg',
     code: '1864',
-    value: 'Ljusnarsberg'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Ljusnarsbergs kommun'
   },
   {
     key: 'orebro',
     text: 'Örebro',
-    name: 'Örebro kommun',
-    county: 'Örebro län',
+    value: 'Örebro',
     code: '1880',
-    value: 'Örebro'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Örebro kommun'
   },
   {
     key: 'kumla',
     text: 'Kumla',
-    name: 'Kumla kommun',
-    county: 'Örebro län',
+    value: 'Kumla',
     code: '1881',
-    value: 'Kumla'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Kumla kommun'
   },
   {
     key: 'askersund',
     text: 'Askersund',
-    name: 'Askersunds kommun',
-    county: 'Örebro län',
+    value: 'Askersund',
     code: '1882',
-    value: 'Askersund'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Askersunds kommun'
   },
   {
     key: 'karlskoga',
     text: 'Karlskoga',
-    name: 'Karlskoga kommun',
-    county: 'Örebro län',
+    value: 'Karlskoga',
     code: '1883',
-    value: 'Karlskoga'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Karlskoga kommun'
   },
   {
     key: 'nora',
     text: 'Nora',
-    name: 'Nora kommun',
-    county: 'Örebro län',
+    value: 'Nora',
     code: '1884',
-    value: 'Nora'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Nora kommun'
   },
   {
     key: 'lindesberg',
     text: 'Lindesberg',
-    name: 'Lindesbergs kommun',
-    county: 'Örebro län',
+    value: 'Lindesberg',
     code: '1885',
-    value: 'Lindesberg'
+    type: 'municipality',
+    county: 'Örebro län',
+    name: 'Lindesbergs kommun'
   },
-
   {
     key: 'vastmanlands_lan',
     text: 'Västmanlands län',
+    value: 'Västmanlands län',
     code: '19',
-    value: 'Västmanlands län'
+    type: 'county'
   },
   {
     key: 'skinnskatteberg',
     text: 'Skinnskatteberg',
-    name: 'Skinnskattebergs kommun',
-    county: 'Västmanlands län',
+    value: 'Skinnskatteberg',
     code: '1904',
-    value: 'Skinnskatteberg'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Skinnskattebergs kommun'
   },
   {
     key: 'surahammar',
     text: 'Surahammar',
-    name: 'Surahammars kommun',
-    county: 'Västmanlands län',
+    value: 'Surahammar',
     code: '1907',
-    value: 'Surahammar'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Surahammars kommun'
   },
   {
     key: 'kungsor',
     text: 'Kungsör',
-    name: 'Kungsörs kommun',
-    county: 'Västmanlands län',
+    value: 'Kungsör',
     code: '1960',
-    value: 'Kungsör'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Kungsörs kommun'
   },
   {
     key: 'hallstahammar',
     text: 'Hallstahammar',
-    name: 'Hallstahammars kommun',
-    county: 'Västmanlands län',
+    value: 'Hallstahammar',
     code: '1961',
-    value: 'Hallstahammar'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Hallstahammars kommun'
   },
   {
     key: 'norberg',
     text: 'Norberg',
-    name: 'Norbergs kommun',
-    county: 'Västmanlands län',
+    value: 'Norberg',
     code: '1962',
-    value: 'Norberg'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Norbergs kommun'
   },
   {
     key: 'vasteras',
     text: 'Västerås',
-    name: 'Västerås kommun',
-    county: 'Västmanlands län',
+    value: 'Västerås',
     code: '1980',
-    value: 'Västerås'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Västerås kommun'
   },
   {
     key: 'sala',
     text: 'Sala',
-    name: 'Sala kommun',
-    county: 'Västmanlands län',
+    value: 'Sala',
     code: '1981',
-    value: 'Sala'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Sala kommun'
   },
   {
     key: 'fagersta',
     text: 'Fagersta',
-    name: 'Fagersta kommun',
-    county: 'Västmanlands län',
+    value: 'Fagersta',
     code: '1982',
-    value: 'Fagersta'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Fagersta kommun'
   },
   {
     key: 'koping',
     text: 'Köping',
-    name: 'Köpings kommun',
-    county: 'Västmanlands län',
+    value: 'Köping',
     code: '1983',
-    value: 'Köping'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Köpings kommun'
   },
   {
     key: 'arboga',
     text: 'Arboga',
-    name: 'Arboga kommun',
-    county: 'Västmanlands län',
+    value: 'Arboga',
     code: '1984',
-    value: 'Arboga'
+    type: 'municipality',
+    county: 'Västmanlands län',
+    name: 'Arboga kommun'
   },
-
   {
     key: 'dalarnas_lan',
     text: 'Dalarnas län',
+    value: 'Dalarnas län',
     code: '20',
-    value: 'Dalarnas län'
+    type: 'county'
   },
   {
     key: 'vansbro',
     text: 'Vansbro',
-    name: 'Vansbro kommun',
-    county: 'Dalarnas län',
+    value: 'Vansbro',
     code: '2021',
-    value: 'Vansbro'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Vansbro kommun'
   },
   {
     key: 'malung-salen',
     text: 'Malung-Sälen',
-    name: 'Malung-Sälens kommun',
-    county: 'Dalarnas län',
+    value: 'Malung-Sälen',
     code: '2023',
-    value: 'Malung-Sälen'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Malung-Sälens kommun'
   },
   {
     key: 'gagnef',
     text: 'Gagnef',
-    name: 'Gagnefs kommun',
-    county: 'Dalarnas län',
+    value: 'Gagnef',
     code: '2026',
-    value: 'Gagnef'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Gagnefs kommun'
   },
   {
     key: 'leksand',
     text: 'Leksand',
-    name: 'Leksands kommun',
-    county: 'Dalarnas län',
+    value: 'Leksand',
     code: '2029',
-    value: 'Leksand'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Leksands kommun'
   },
   {
     key: 'rattvik',
     text: 'Rättvik',
-    name: 'Rättviks kommun',
-    county: 'Dalarnas län',
+    value: 'Rättvik',
     code: '2031',
-    value: 'Rättvik'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Rättviks kommun'
   },
   {
     key: 'orsa',
     text: 'Orsa',
-    name: 'Orsa kommun',
-    county: 'Dalarnas län',
+    value: 'Orsa',
     code: '2034',
-    value: 'Orsa'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Orsa kommun'
   },
   {
     key: 'alvdalen',
     text: 'Älvdalen',
-    name: 'Älvdalens kommun',
-    county: 'Dalarnas län',
+    value: 'Älvdalen',
     code: '2039',
-    value: 'Älvdalen'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Älvdalens kommun'
   },
   {
     key: 'smedjebacken',
     text: 'Smedjebacken',
-    name: 'Smedjebackens kommun',
-    county: 'Dalarnas län',
+    value: 'Smedjebacken',
     code: '2061',
-    value: 'Smedjebacken'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Smedjebackens kommun'
   },
   {
     key: 'mora',
     text: 'Mora',
-    name: 'Mora kommun',
-    county: 'Dalarnas län',
+    value: 'Mora',
     code: '2062',
-    value: 'Mora'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Mora kommun'
   },
   {
     key: 'falun',
     text: 'Falun',
-    name: 'Falu kommun',
-    county: 'Dalarnas län',
+    value: 'Falun',
     code: '2080',
-    value: 'Falun'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Falu kommun'
   },
   {
     key: 'borlange',
     text: 'Borlänge',
-    name: 'Borlänge kommun',
-    county: 'Dalarnas län',
+    value: 'Borlänge',
     code: '2081',
-    value: 'Borlänge'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Borlänge kommun'
   },
   {
     key: 'sater',
     text: 'Säter',
-    name: 'Säters kommun',
-    county: 'Dalarnas län',
+    value: 'Säter',
     code: '2082',
-    value: 'Säter'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Säters kommun'
   },
   {
     key: 'hedemora',
     text: 'Hedemora',
-    name: 'Hedemora kommun',
-    county: 'Dalarnas län',
+    value: 'Hedemora',
     code: '2083',
-    value: 'Hedemora'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Hedemora kommun'
   },
   {
     key: 'avesta',
     text: 'Avesta',
-    name: 'Avesta kommun',
-    county: 'Dalarnas län',
+    value: 'Avesta',
     code: '2084',
-    value: 'Avesta'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Avesta kommun'
   },
   {
     key: 'ludvika',
     text: 'Ludvika',
-    name: 'Ludvika kommun',
-    county: 'Dalarnas län',
+    value: 'Ludvika',
     code: '2085',
-    value: 'Ludvika'
+    type: 'municipality',
+    county: 'Dalarnas län',
+    name: 'Ludvika kommun'
   },
-
   {
     key: 'gavleborgs_lan',
     text: 'Gävleborgs län',
+    value: 'Gävleborgs län',
     code: '21',
-    value: 'Gävleborgs län'
+    type: 'county'
   },
   {
     key: 'ockelbo',
     text: 'Ockelbo',
-    name: 'Ockelbo kommun',
-    county: 'Gävleborgs län',
+    value: 'Ockelbo',
     code: '2101',
-    value: 'Ockelbo'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Ockelbo kommun'
   },
   {
     key: 'hofors',
     text: 'Hofors',
-    name: 'Hofors kommun',
-    county: 'Gävleborgs län',
+    value: 'Hofors',
     code: '2104',
-    value: 'Hofors'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Hofors kommun'
   },
   {
     key: 'ovanaker',
     text: 'Ovanåker',
-    name: 'Ovanåkers kommun',
-    county: 'Gävleborgs län',
+    value: 'Ovanåker',
     code: '2121',
-    value: 'Ovanåker'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Ovanåkers kommun'
   },
   {
     key: 'nordanstig',
     text: 'Nordanstig',
-    name: 'Nordanstigs kommun',
-    county: 'Gävleborgs län',
+    value: 'Nordanstig',
     code: '2132',
-    value: 'Nordanstig'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Nordanstigs kommun'
   },
   {
     key: 'ljusdal',
     text: 'Ljusdal',
-    name: 'Ljusdals kommun',
-    county: 'Gävleborgs län',
+    value: 'Ljusdal',
     code: '2161',
-    value: 'Ljusdal'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Ljusdals kommun'
   },
   {
     key: 'gavle',
     text: 'Gävle',
-    name: 'Gävle kommun',
-    county: 'Gävleborgs län',
+    value: 'Gävle',
     code: '2180',
-    value: 'Gävle'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Gävle kommun'
   },
   {
     key: 'sandviken',
     text: 'Sandviken',
-    name: 'Sandvikens kommun',
-    county: 'Gävleborgs län',
+    value: 'Sandviken',
     code: '2181',
-    value: 'Sandviken'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Sandvikens kommun'
   },
   {
     key: 'soderhamn',
     text: 'Söderhamn',
-    name: 'Söderhamns kommun',
-    county: 'Gävleborgs län',
+    value: 'Söderhamn',
     code: '2182',
-    value: 'Söderhamn'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Söderhamns kommun'
   },
   {
     key: 'bollnas',
     text: 'Bollnäs',
-    name: 'Bollnäs kommun',
-    county: 'Gävleborgs län',
+    value: 'Bollnäs',
     code: '2183',
-    value: 'Bollnäs'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Bollnäs kommun'
   },
   {
     key: 'hudiksvall',
     text: 'Hudiksvall',
-    name: 'Hudiksvalls kommun',
-    county: 'Gävleborgs län',
+    value: 'Hudiksvall',
     code: '2184',
-    value: 'Hudiksvall'
+    type: 'municipality',
+    county: 'Gävleborgs län',
+    name: 'Hudiksvalls kommun'
   },
-
   {
     key: 'vasternorrlands_lan',
     text: 'Västernorrlands län',
+    value: 'Västernorrlands län',
     code: '22',
-    value: 'Västernorrlands län'
+    type: 'county'
   },
   {
     key: 'ange',
     text: 'Ånge',
-    name: 'Ånge kommun',
-    county: 'Västernorrlands län',
+    value: 'Ånge',
     code: '2260',
-    value: 'Ånge'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Ånge kommun'
   },
   {
     key: 'timra',
     text: 'Timrå',
-    name: 'Timrå kommun',
-    county: 'Västernorrlands län',
+    value: 'Timrå',
     code: '2262',
-    value: 'Timrå'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Timrå kommun'
   },
   {
     key: 'harnosand',
     text: 'Härnösand',
-    name: 'Härnösands kommun',
-    county: 'Västernorrlands län',
+    value: 'Härnösand',
     code: '2280',
-    value: 'Härnösand'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Härnösands kommun'
   },
   {
     key: 'sundsvall',
     text: 'Sundsvall',
-    name: 'Sundsvalls kommun',
-    county: 'Västernorrlands län',
+    value: 'Sundsvall',
     code: '2281',
-    value: 'Sundsvall'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Sundsvalls kommun'
   },
   {
     key: 'kramfors',
     text: 'Kramfors',
-    name: 'Kramfors kommun',
-    county: 'Västernorrlands län',
+    value: 'Kramfors',
     code: '2282',
-    value: 'Kramfors'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Kramfors kommun'
   },
   {
     key: 'solleftea',
     text: 'Sollefteå',
-    name: 'Sollefteå kommun',
-    county: 'Västernorrlands län',
+    value: 'Sollefteå',
     code: '2283',
-    value: 'Sollefteå'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Sollefteå kommun'
   },
   {
     key: 'ornskoldsvik',
     text: 'Örnsköldsvik',
-    name: 'Örnsköldsviks kommun',
-    county: 'Västernorrlands län',
+    value: 'Örnsköldsvik',
     code: '2284',
-    value: 'Örnsköldsvik'
+    type: 'municipality',
+    county: 'Västernorrlands län',
+    name: 'Örnsköldsviks kommun'
   },
-
   {
     key: 'jamtlands_lan',
     text: 'Jämtlands län',
+    value: 'Jämtlands län',
     code: '23',
-    value: 'Jämtlands län'
+    type: 'county'
   },
   {
     key: 'ragunda',
     text: 'Ragunda',
-    name: 'Ragunda kommun',
-    county: 'Jämtlands län',
+    value: 'Ragunda',
     code: '2303',
-    value: 'Ragunda'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Ragunda kommun'
   },
   {
     key: 'bracke',
     text: 'Bräcke',
-    name: 'Bräcke kommun',
-    county: 'Jämtlands län',
+    value: 'Bräcke',
     code: '2305',
-    value: 'Bräcke'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Bräcke kommun'
   },
   {
     key: 'krokom',
     text: 'Krokom',
-    name: 'Krokoms kommun',
-    county: 'Jämtlands län',
+    value: 'Krokom',
     code: '2309',
-    value: 'Krokom'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Krokoms kommun'
   },
   {
     key: 'stromsund',
     text: 'Strömsund',
-    name: 'Strömsunds kommun',
-    county: 'Jämtlands län',
+    value: 'Strömsund',
     code: '2313',
-    value: 'Strömsund'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Strömsunds kommun'
   },
   {
     key: 'are',
     text: 'Åre',
-    name: 'Åre kommun',
-    county: 'Jämtlands län',
+    value: 'Åre',
     code: '2321',
-    value: 'Åre'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Åre kommun'
   },
   {
     key: 'berg',
     text: 'Berg',
-    name: 'Bergs kommun',
-    county: 'Jämtlands län',
+    value: 'Berg',
     code: '2326',
-    value: 'Berg'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Bergs kommun'
   },
   {
     key: 'harjedalen',
     text: 'Härjedalen',
-    name: 'Härjedalens kommun',
-    county: 'Jämtlands län',
+    value: 'Härjedalen',
     code: '2361',
-    value: 'Härjedalen'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Härjedalens kommun'
   },
   {
     key: 'ostersund',
     text: 'Östersund',
-    name: 'Östersunds kommun',
-    county: 'Jämtlands län',
+    value: 'Östersund',
     code: '2380',
-    value: 'Östersund'
+    type: 'municipality',
+    county: 'Jämtlands län',
+    name: 'Östersunds kommun'
   },
-
   {
     key: 'vasterbottens_lan',
     text: 'Västerbottens län',
+    value: 'Västerbottens län',
     code: '24',
-    value: 'Västerbottens län'
+    type: 'county'
   },
   {
     key: 'nordmaling',
     text: 'Nordmaling',
-    name: 'Nordmalings kommun',
-    county: 'Västerbottens län',
+    value: 'Nordmaling',
     code: '2401',
-    value: 'Nordmaling'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Nordmalings kommun'
   },
   {
     key: 'bjurholm',
     text: 'Bjurholm',
-    name: 'Bjurholms kommun',
-    county: 'Västerbottens län',
+    value: 'Bjurholm',
     code: '2403',
-    value: 'Bjurholm'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Bjurholms kommun'
   },
   {
     key: 'vindeln',
     text: 'Vindeln',
-    name: 'Vindelns kommun',
-    county: 'Västerbottens län',
+    value: 'Vindeln',
     code: '2404',
-    value: 'Vindeln'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Vindelns kommun'
   },
   {
     key: 'robertsfors',
     text: 'Robertsfors',
-    name: 'Robertsfors kommun',
-    county: 'Västerbottens län',
+    value: 'Robertsfors',
     code: '2409',
-    value: 'Robertsfors'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Robertsfors kommun'
   },
   {
     key: 'norsjo',
     text: 'Norsjö',
-    name: 'Norsjö kommun',
-    county: 'Västerbottens län',
+    value: 'Norsjö',
     code: '2417',
-    value: 'Norsjö'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Norsjö kommun'
   },
   {
     key: 'mala',
     text: 'Malå',
-    name: 'Malå kommun',
-    county: 'Västerbottens län',
+    value: 'Malå',
     code: '2418',
-    value: 'Malå'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Malå kommun'
   },
   {
     key: 'storuman',
     text: 'Storuman',
-    name: 'Storumans kommun',
-    county: 'Västerbottens län',
+    value: 'Storuman',
     code: '2421',
-    value: 'Storuman'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Storumans kommun'
   },
   {
     key: 'sorsele',
     text: 'Sorsele',
-    name: 'Sorsele kommun',
-    county: 'Västerbottens län',
+    value: 'Sorsele',
     code: '2422',
-    value: 'Sorsele'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Sorsele kommun'
   },
   {
     key: 'dorotea',
     text: 'Dorotea',
-    name: 'Dorotea kommun',
-    county: 'Västerbottens län',
+    value: 'Dorotea',
     code: '2425',
-    value: 'Dorotea'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Dorotea kommun'
   },
   {
     key: 'vannas',
     text: 'Vännäs',
-    name: 'Vännäs kommun',
-    county: 'Västerbottens län',
+    value: 'Vännäs',
     code: '2460',
-    value: 'Vännäs'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Vännäs kommun'
   },
   {
     key: 'vilhelmina',
     text: 'Vilhelmina',
-    name: 'Vilhelmina kommun',
-    county: 'Västerbottens län',
+    value: 'Vilhelmina',
     code: '2462',
-    value: 'Vilhelmina'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Vilhelmina kommun'
   },
   {
     key: 'asele',
     text: 'Åsele',
-    name: 'Åsele kommun',
-    county: 'Västerbottens län',
+    value: 'Åsele',
     code: '2463',
-    value: 'Åsele'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Åsele kommun'
   },
   {
     key: 'umea',
     text: 'Umeå',
-    name: 'Umeå kommun',
-    county: 'Västerbottens län',
+    value: 'Umeå',
     code: '2480',
-    value: 'Umeå'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Umeå kommun'
   },
   {
     key: 'lycksele',
     text: 'Lycksele',
-    name: 'Lycksele kommun',
-    county: 'Västerbottens län',
+    value: 'Lycksele',
     code: '2481',
-    value: 'Lycksele'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Lycksele kommun'
   },
   {
     key: 'skelleftea',
     text: 'Skellefteå',
-    name: 'Skellefteå kommun',
-    county: 'Västerbottens län',
+    value: 'Skellefteå',
     code: '2482',
-    value: 'Skellefteå'
+    type: 'municipality',
+    county: 'Västerbottens län',
+    name: 'Skellefteå kommun'
   },
-
   {
     key: 'norrbottens_lan',
     text: 'Norrbottens län',
+    value: 'Norrbottens län',
     code: '25',
-    value: 'Norrbottens län'
+    type: 'county'
   },
   {
     key: 'arvidsjaur',
     text: 'Arvidsjaur',
-    name: 'Arvidsjaurs kommun',
-    county: 'Norrbottens län',
+    value: 'Arvidsjaur',
     code: '2505',
-    value: 'Arvidsjaur'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Arvidsjaurs kommun'
   },
   {
     key: 'arjeplog',
     text: 'Arjeplog',
-    name: 'Arjeplogs kommun',
-    county: 'Norrbottens län',
+    value: 'Arjeplog',
     code: '2506',
-    value: 'Arjeplog'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Arjeplogs kommun'
   },
   {
     key: 'jokkmokk',
     text: 'Jokkmokk',
-    name: 'Jokkmokks kommun',
-    county: 'Norrbottens län',
+    value: 'Jokkmokk',
     code: '2510',
-    value: 'Jokkmokk'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Jokkmokks kommun'
   },
   {
     key: 'overkalix',
     text: 'Överkalix',
-    name: 'Överkalix kommun',
-    county: 'Norrbottens län',
+    value: 'Överkalix',
     code: '2513',
-    value: 'Överkalix'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Överkalix kommun'
   },
   {
     key: 'kalix',
     text: 'Kalix',
-    name: 'Kalix kommun',
-    county: 'Norrbottens län',
+    value: 'Kalix',
     code: '2514',
-    value: 'Kalix'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Kalix kommun'
   },
   {
     key: 'overtornea',
     text: 'Övertorneå',
-    name: 'Övertorneås kommun',
-    county: 'Norrbottens län',
+    value: 'Övertorneå',
     code: '2518',
-    value: 'Övertorneå'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Övertorneås kommun'
   },
   {
     key: 'pajala',
     text: 'Pajala',
-    name: 'Pajala kommun',
-    county: 'Norrbottens län',
+    value: 'Pajala',
     code: '2521',
-    value: 'Pajala'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Pajala kommun'
   },
   {
     key: 'gallivare',
     text: 'Gällivare',
-    name: 'Gällivare kommun',
-    county: 'Norrbottens län',
+    value: 'Gällivare',
     code: '2523',
-    value: 'Gällivare'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Gällivare kommun'
   },
   {
     key: 'alvsbyn',
     text: 'Älvsbyn',
-    name: 'Älvsbyns kommun',
-    county: 'Norrbottens län',
+    value: 'Älvsbyn',
     code: '2560',
-    value: 'Älvsbyn'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Älvsbyns kommun'
   },
   {
     key: 'lulea',
     text: 'Luleå',
-    name: 'Luleå kommun',
-    county: 'Norrbottens län',
+    value: 'Luleå',
     code: '2580',
-    value: 'Luleå'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Luleå kommun'
   },
   {
     key: 'pitea',
     text: 'Piteå',
-    name: 'Piteå kommun',
-    county: 'Norrbottens län',
+    value: 'Piteå',
     code: '2581',
-    value: 'Piteå'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Piteå kommun'
   },
   {
     key: 'boden',
     text: 'Boden',
-    name: 'Bodens kommun',
-    county: 'Norrbottens län',
+    value: 'Boden',
     code: '2582',
-    value: 'Boden'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Bodens kommun'
   },
   {
     key: 'haparanda',
     text: 'Haparanda',
-    name: 'Haparandas kommun',
-    county: 'Norrbottens län',
+    value: 'Haparanda',
     code: '2583',
-    value: 'Haparanda'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Haparandas kommun'
   },
   {
     key: 'kiruna',
     text: 'Kiruna',
-    name: 'Kiruna kommun',
-    county: 'Norrbottens län',
+    value: 'Kiruna',
     code: '2584',
-    value: 'Kiruna'
+    type: 'municipality',
+    county: 'Norrbottens län',
+    name: 'Kiruna kommun'
   }
 ]

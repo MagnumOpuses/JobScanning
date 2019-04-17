@@ -34,7 +34,7 @@ class SearchFormContainer extends React.Component {
     return (
       <SearchForm
         searchTerm={searchTerm}
-        location={location}
+        location={location.value}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         countiesAndMunicipalities={countiesAndMunicipalities}
