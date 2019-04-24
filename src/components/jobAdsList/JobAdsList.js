@@ -71,8 +71,13 @@ class JobAdsList extends Component {
             }
           >
             {processedList.map((item, i) => {
-              if (item.newLocation) {
-                return <p key={i}>Annonser i {this.props.location.text}</p>
+              if (item.changedLocation) {
+                return (
+                  <p key={i}>
+                    Slut på annonser i {item.oldLocation}. Visar annonser i{' '}
+                    {item.newLocation}
+                  </p>
+                )
               }
               return (
                 <TestListItem

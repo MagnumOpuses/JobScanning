@@ -70,7 +70,11 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
           })
         }
         const processedList = processJobList({ list: res.data.hits, offset })
-        processedList.unshift({ newLocation: true })
+        processedList.unshift({
+          changedLocation: true,
+          oldLocation: location.value,
+          newLocation: location.county
+        })
         res.data = { ...res.data, processedList }
 
         dispatch({
@@ -92,7 +96,11 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
           })
         }
         const processedList = processJobList({ list: res.data.hits, offset })
-        processedList.unshift({ newLocation: true })
+        processedList.unshift({
+          changedLocation: true,
+          oldLocation: location.county,
+          newLocation: 'hela Sverige'
+        })
         res.data = { ...res.data, processedList }
 
         dispatch({
