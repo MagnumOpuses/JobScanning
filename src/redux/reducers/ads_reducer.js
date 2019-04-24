@@ -68,8 +68,6 @@ export default (state = initialState, action) => {
     }
 
     case JOBS_ADD_MORE: {
-      console.log(action)
-
       const hits = [...state.hits, ...action.payload.hits]
       let processedList = [
         ...state.processedList,
@@ -111,12 +109,12 @@ export default (state = initialState, action) => {
     }
 
     case SET_LOCATION: {
-      const jobsInSelectedLocation = _.remove(
-        state.processedList,
-        job => job.location === action.location
-      )
+      // const jobsInSelectedLocation = _.remove(
+      //   state.processedList,
+      //   job => job.location === action.location
+      // )
 
-      state.processedList.unshift(...jobsInSelectedLocation)
+      // state.processedList.unshift(...jobsInSelectedLocation)
 
       return {
         ...state,

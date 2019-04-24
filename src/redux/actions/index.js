@@ -28,7 +28,7 @@ export const fetchJobs = (term, location) => async dispatch => {
       })
     }
 
-    const processedList = processJobList({ list: res.data.hits, offset: 0 })
+    const processedList = processJobList({ list: res.data.hits })
     res.data = { ...res.data, processedList }
 
     dispatch({
@@ -47,7 +47,10 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
   try {
     const res = await apiFetchJobs(term, location.value, offset)
 
-    if (!res.data.hits.length > 0) {
+    if (
+      (!res.data.hits.length > 0 && location.type === 'municipality') ||
+      location.type === 'county'
+    ) {
       offset = 0
       if (location.type === 'municipality') {
         const locationObject = countiesAndMunicipalities.find(
@@ -60,8 +63,14 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
         })
 
         const res = await apiFetchJobs(term, location.county, offset)
+
+        if (!res.data.hits.length > 0) {
+          dispatch({
+            type: JOBS_NO_MORE
+          })
+        }
         const processedList = processJobList({ list: res.data.hits, offset })
-        Object.assign(processedList[0], { newLocation: true })
+        processedList.unshift({ newLocation: true })
         res.data = { ...res.data, processedList }
 
         dispatch({
@@ -76,7 +85,14 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
         })
 
         const res = await apiFetchJobs(term, '', offset)
+
+        if (!res.data.hits.length > 0) {
+          dispatch({
+            type: JOBS_NO_MORE
+          })
+        }
         const processedList = processJobList({ list: res.data.hits, offset })
+        processedList.unshift({ newLocation: true })
         res.data = { ...res.data, processedList }
 
         dispatch({
@@ -85,9 +101,10 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
           offset
         })
       }
-      // dispatch({
-      //   type: JOBS_NO_MORE
-      // })
+    } else if (!res.data.hits.length > 0) {
+      dispatch({
+        type: JOBS_NO_MORE
+      })
     }
 
     const processedList = processJobList({ list: res.data.hits, offset })
@@ -99,9 +116,11 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
       offset
     })
   } catch (error) {
-    dispatch({
-      type: JOBS_FAILURE
-    })
+    console.log(error)
+
+    // dispatch({
+    //   type: JOBS_FAILURE
+    // })
   }
 }
 

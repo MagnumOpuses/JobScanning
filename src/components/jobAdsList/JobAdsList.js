@@ -72,7 +72,7 @@ class JobAdsList extends Component {
           >
             {processedList.map((item, i) => {
               if (item.newLocation) {
-                return <p>Annonser i {this.props.location.text}</p>
+                return <p key={i}>Annonser i {this.props.location.text}</p>
               }
               return (
                 <TestListItem

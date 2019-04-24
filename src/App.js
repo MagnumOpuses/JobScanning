@@ -98,11 +98,7 @@ class App extends Component {
           <GlobalStyle />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            {/* <Route path="/jobs/:id" component={AdDetails} /> */}
-            <Route
-              path="/jobs/:location/:profession/:offset/:id"
-              component={AdDetails}
-            />
+            <Route path="/jobs/:id" component={AdDetails} />
             <Route path="/jobs" component={AdsPage} />
             <Route path="/search" component={SearchPage} />
           </Switch>

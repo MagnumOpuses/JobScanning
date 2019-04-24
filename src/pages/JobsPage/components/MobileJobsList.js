@@ -9,11 +9,6 @@ import { CustomLoader, LogoPlaceholder } from '../../../components'
 class MobileJobsList extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      items: [],
-      offset: 0
-    }
     this.listRef = React.createRef()
   }
 
@@ -23,12 +18,6 @@ class MobileJobsList extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-  }
-
-  componentDidUpdate() {
-    if (this.props.isFetching && this.state.offset !== 0) {
-      this.setState({ offset: 0 })
-    }
   }
 
   calculateInfiniteScrollHeight = () => {
@@ -43,21 +32,14 @@ class MobileJobsList extends Component {
 
   redirectToAdPage = job => {
     this.props.selectJob(job)
-    // this.props.history.push(`/jobs/${job.id}`)
-    this.props.history.push(
-      `/jobs/${job.location}/${this.props.searchTerm}/${job.offset}/${job.id}`
-    )
+    this.props.history.push(`/jobs/${job.id}`)
   }
 
   fetchMoreData = () => {
-    this.setState(prevState => ({
-      offset: prevState.offset + 20
-    }))
-
     this.props.fetchMoreJobs(
       this.props.searchTerm,
       this.props.location,
-      this.state.offset
+      this.props.offset + 20
     )
   }
 
@@ -92,23 +74,28 @@ class MobileJobsList extends Component {
             </div>
           }
         >
-          {processedList.map((item, i) => (
-            <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
-              <LogoPlaceholder employer={item.employer} />
-              <div style={{ flex: '1  ', fontSize: '18px' }}>
-                <ItemTitle>{item.header}</ItemTitle>
-                <P>
-                  {item.employer.name ? item.employer.name : ''}
-                  {item.employer.name && item.location ? (
-                    <span> &bull; </span>
-                  ) : (
-                    ' '
-                  )}
-                  {item.location ? item.location : ''}
-                </P>
-              </div>
-            </ListItem>
-          ))}
+          {processedList.map((item, i) => {
+            if (item.newLocation) {
+              return <p key={i}>Annonser i {this.props.location.text}</p>
+            }
+            return (
+              <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
+                <LogoPlaceholder employer={item.employer} />
+                <div style={{ flex: '1  ', fontSize: '18px' }}>
+                  <ItemTitle>{item.header}</ItemTitle>
+                  <P>
+                    {item.employer.name ? item.employer.name : ''}
+                    {item.employer.name && item.location ? (
+                      <span> &bull; </span>
+                    ) : (
+                      ' '
+                    )}
+                    {item.location ? item.location : ''}
+                  </P>
+                </div>
+              </ListItem>
+            )
+          })}
         </InfiniteScroll>
       </List>
     )
@@ -116,14 +103,15 @@ class MobileJobsList extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { isFetching, hits, processedList, searchTerm, location } = ads
+  const { isFetching, hits, processedList, searchTerm, location, offset } = ads
 
   return {
     isFetching,
     hits,
     processedList,
     searchTerm,
-    location
+    location,
+    offset
   }
 }
 

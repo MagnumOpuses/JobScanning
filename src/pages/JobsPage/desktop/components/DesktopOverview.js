@@ -20,7 +20,7 @@ class DesktopOverview extends Component {
           Du har sökt på{'\n'}
           <span style={{ fontWeight: '700' }}>{searchTerm}</span> i{' '}
           <span style={{ fontWeight: '700' }}>
-            {location ? location : 'hela Sverige'}
+            {location.text ? location.text : 'hela Sverige'}
           </span>
         </h3>
         <div>
