@@ -76,7 +76,12 @@ class MobileJobsList extends Component {
         >
           {processedList.map((item, i) => {
             if (item.newLocation) {
-              return <p key={i}>Annonser i {this.props.location.text}</p>
+              return (
+                <p key={i}>
+                  Slut på annonser i {item.oldLocation}. Visar annonser i{' '}
+                  {item.newLocation}
+                </p>
+              )
             }
             return (
               <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
