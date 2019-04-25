@@ -49,7 +49,7 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
 
     if (
       (!res.data.hits.length > 0 && location.type === 'municipality') ||
-      location.type === 'county'
+      (!res.data.hits.length > 0 && location.type === 'county')
     ) {
       offset = 0
       if (location.type === 'municipality') {
