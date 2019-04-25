@@ -1,26 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
-const LogoPlaceholder = ({ employer, padding }) => {
-  if (employer.logoUrl) {
-    return (
-      <StyledImg src={employer.logoUrl} alt={employer.name} padding={padding} />
-    )
-  } else if (employer.name) {
-    return (
-      <StyledH3>
-        {employer.name
-          .match(/\b\w/g)
-          .slice(0, 3)
-          .join('')}
-      </StyledH3>
-    )
-  } else {
-    return null
+export default class LogoPlaceholder extends Component {
+  state = { exists: true }
+
+  onError = () => {
+    this.setState({ exists: false })
+  }
+
+  render() {
+    if (this.props.employer.logoUrl) {
+      return this.state.exists ? (
+        <StyledImg
+          onError={this.onError}
+          src={this.props.employer.logoUrl}
+          alt={this.props.employer.name}
+          padding={this.props.padding}
+        />
+      ) : (
+        <StyledH3>
+          {this.props.employer.name
+            .match(/\b\w/g)
+            .slice(0, 3)
+            .join('')}
+        </StyledH3>
+      )
+    } else if (this.props.employer.name) {
+      return (
+        <StyledH3>
+          {this.props.employer.name
+            .match(/\b\w/g)
+            .slice(0, 3)
+            .join('')}
+        </StyledH3>
+      )
+    } else {
+      return null
+    }
   }
 }
-
-export default LogoPlaceholder
 
 const StyledImg = styled.img`
   width: 100px;
