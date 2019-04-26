@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import CountUp from 'react-countup'
 import { Link } from 'react-router-dom'
 import jt_logowhite from '../images/logo/2x/jt_logowhite@2x.png'
-import homePageBackground from '../images/background.png'
+import homePageBackground from '../images/background.webp'
 import { diagonalSlide } from '../styles/animations/diagonalSlide'
 
 export default () => {
