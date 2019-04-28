@@ -1,9 +1,10 @@
 import React from 'react'
-import './EnrichmentRanking.scss'
+import styled from 'styled-components'
+import breakpoints from '../../styles/breakpoints'
 
 const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
   return (
-    <div className="EnrichmentRanking">
+    <EnrichmentRankingContainer>
       <div className="card-box-shadow competences">
         <h2>
           Topp <span className="bold">{topCompetences.length}</span> mest
@@ -37,10 +38,63 @@ const EnrichmentRanking = ({ hits, searchTerm, topCompetences, topTraits }) => {
           ))}
         </ol>
       </div>
-    </div>
+    </EnrichmentRankingContainer>
   )
 }
-// ({Math.ceil((competence.score / hits.length) * 100)}%)
-// ({Math.ceil((trait.score / hits.length) * 100)}%)
 
 export default EnrichmentRanking
+
+const EnrichmentRankingContainer = styled.div`
+  display: flex;
+  margin: 50px 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .competences {
+    margin: 0 10px 0 0;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      margin: 0 0 20px 0;
+    }
+  }
+
+  .traits {
+    margin: 0 0 0 10px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      margin: 0 0 0 0;
+    }
+  }
+
+  ol {
+    list-style: none;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2rem;
+
+      &:not(:last-child) {
+        margin: 0 0 20px 0;
+      }
+
+      .keyword {
+        text-transform: capitalize;
+
+        &:before {
+          content: '•';
+          display: inline-block;
+          width: 1em; /* Also needed for space (tweak if needed) */
+          font-weight: bold;
+          color: #02decc;
+        }
+      }
+    }
+  }
+`

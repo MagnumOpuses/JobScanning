@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { fetchMoreJobs } from '../../redux/actions'
 import { withRouter } from 'react-router-dom'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CustomLoader, NoResultsBox } from '..'
-import TestListItem from './ListItem'
-import './JobAdsList.scss'
+import ListItem from './ListItem'
 
 class JobAdsList extends Component {
   calculateInfiniteScrollHeight = () => {
@@ -38,7 +38,7 @@ class JobAdsList extends Component {
       return <NoResultsBox />
     } else {
       return (
-        <ul
+        <List
           id="scrollableDiv"
           style={{ height: this.calculateInfiniteScrollHeight() }}
         >
@@ -80,7 +80,7 @@ class JobAdsList extends Component {
                 )
               }
               return (
-                <TestListItem
+                <ListItem
                   key={item.id}
                   item={item}
                   selectAd={this.props.selectAd}
@@ -89,7 +89,7 @@ class JobAdsList extends Component {
               )
             })}
           </InfiniteScroll>
-        </ul>
+        </List>
       )
     }
   }
@@ -127,3 +127,19 @@ export default withRouter(
     { fetchMoreJobs }
   )(JobAdsList)
 )
+
+const List = styled.ul`
+  width: 100%;
+  overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: none !important;
+    border-radius: 10px !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #02decc !important;
+    border-radius: 10px !important;
+  }
+`

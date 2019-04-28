@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import images from '../../images'
 import { buttonStyleCorners } from '../../styles/components'
-import './DescriptionContainer.scss'
+import breakpoints from '../../styles/breakpoints'
 
 const DescriptionContainer = ({ text, characters, sources }) => (
-  <div className="DescriptionContainer">
+  <DescriptionBox>
     <h3 style={{ fontSize: '2.4rem', marginBottom: '15px' }}>Annons</h3>
     {text && (
       <DescriptionText>
@@ -13,7 +13,7 @@ const DescriptionContainer = ({ text, characters, sources }) => (
       </DescriptionText>
     )}
     {sources.length > 1 ? (
-      <div className="DescriptionContainer__multiple-links-box">
+      <MultipleLinks>
         <p>Vi hittade annonsen på {sources.length} olika sajter</p>
         <p>Välj vilken du vill gå till!</p>
         <SourcesContainer>
@@ -32,7 +32,7 @@ const DescriptionContainer = ({ text, characters, sources }) => (
             </A>
           ))}
         </SourcesContainer>
-      </div>
+      </MultipleLinks>
     ) : (
       <StyledLink
         href={sources[0].url}
@@ -42,10 +42,14 @@ const DescriptionContainer = ({ text, characters, sources }) => (
         Gå till annonsen
       </StyledLink>
     )}
-  </div>
+  </DescriptionBox>
 )
 
 export default DescriptionContainer
+
+const DescriptionBox = styled.div`
+  position: relative;
+`
 
 const DescriptionText = styled.p`
   max-width: 740px;
@@ -66,6 +70,22 @@ const SourcesContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+`
+
+const MultipleLinks = styled.div`
+  width: 70%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem 0 1rem;
+  margin: 0 auto 50px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 const A = styled.a`
