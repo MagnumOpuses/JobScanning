@@ -5,6 +5,7 @@
 The project is under development and should not be seen as production ready.
 Features may be added, removed or modified.
 Design is not finialized and will most likely be changed/improved.
+Test
 
 ## Get started!
 
