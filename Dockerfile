@@ -6,7 +6,7 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
 COPY ./vhosts/ /usr/src/app/vhosts/
 RUN npm install --silent && npm install react-scripts@3.0.0 -g
-COPY ./ /usr/src/app/
+COPY . /usr/src/app/
 RUN npm run build
 
 
