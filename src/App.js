@@ -7,6 +7,7 @@ import SearchPage from './pages/SearchPage'
 import AdDetails from './pages/AdDetails'
 import AdsPage from './pages/JobsPage/AdsPage'
 import breakpoints from './styles/breakpoints'
+import backgroundImg from './images/Pixel.jpg'
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -26,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
     font-size: 1.6rem !important;
     height: 100vh;
+    background: #fff url(${backgroundImg}) center/cover no-repeat fixed;
   }
 
   h1 {
@@ -87,6 +89,10 @@ const GlobalStyle = createGlobalStyle`
     background: #fff;
     box-shadow: 0 10px 20px rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,0.10);
     border-radius: 10px;
+  }
+
+  .box-shadow {
+    box-shadow: 0 10px 20px rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,0.10);
   }
 `
 

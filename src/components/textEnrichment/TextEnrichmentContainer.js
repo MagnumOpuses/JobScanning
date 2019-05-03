@@ -12,18 +12,18 @@ class TextEnrichmentContainer extends Component {
 
     return (
       <>
-        {traits.length > 0 && (
-          <TextEnrichment
-            header="Eftertraktade förmågor"
-            list={traits.slice(0, 10)}
-            icon="user"
-          />
-        )}
         {skills.length > 0 && (
           <TextEnrichment
             header="Eftertraktade kompetenser"
             list={skills.slice(0, 10)}
             icon="briefcase"
+          />
+        )}
+        {traits.length > 0 && (
+          <TextEnrichment
+            header="Eftertraktade förmågor"
+            list={traits.slice(0, 10)}
+            icon="user"
           />
         )}
       </>

@@ -83,7 +83,7 @@ class JobAdsList extends Component {
                 <ListItem
                   key={item.id}
                   item={item}
-                  selectAd={this.props.selectAd}
+                  selectOrUnselectJob={this.props.selectOrUnselectJob}
                   selectedJob={selectedJob}
                 />
               )
@@ -131,6 +131,8 @@ export default withRouter(
 const List = styled.ul`
   width: 100%;
   overflow: auto;
+  direction: rtl;
+  list-style: none;
 
   &::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);

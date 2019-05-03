@@ -1,6 +1,7 @@
 import apiFetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
 import { countiesAndMunicipalities } from '../../utils/searchOptions'
+import mock from './response_1556797352192.json'
 
 export const JOBS_REQUEST = 'JOBS_REQUEST'
 export const JOBS_SUCCESS = 'JOBS_SUCCESS'
@@ -20,16 +21,21 @@ export const fetchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    const res = await apiFetchJobs(term, location.value)
+    // const res = await apiFetchJobs(term, location.value)
 
-    if (!res.data.hits.length > 0) {
-      dispatch({
-        type: JOBS_FAILURE
-      })
-    }
+    // if (!res.data.hits.length > 0) {
+    //   dispatch({
+    //     type: JOBS_FAILURE
+    //   })
+    // }
 
-    const processedList = processJobList({ list: res.data.hits })
-    res.data = { ...res.data, processedList }
+    // const processedList = processJobList({ list: res.data.hits })
+    // res.data = { ...res.data, processedList }
+
+    let res = {}
+    const processedList = processJobList({ list: mock.hits })
+    res.data = { ...mock, processedList }
+    console.log(res.data)
 
     dispatch({
       type: JOBS_SUCCESS,

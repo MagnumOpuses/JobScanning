@@ -21,7 +21,7 @@ export default class ListItemComponent extends Component {
     return (
       <ListItem
         onClick={() => {
-          this.props.selectAd(this.props.item)
+          this.props.selectOrUnselectJob(this.props.item)
         }}
         selected={this.props.item.id === this.props.selectedJob.id}
         new={this.state.new}
@@ -49,15 +49,17 @@ export default class ListItemComponent extends Component {
 }
 
 const ListItem = styled.li`
+  direction: ltr;
+  text-align: left;
   position: relative;
-  padding: 2rem 0 2rem 1rem;
+  padding: 2rem 1rem;
   transition: all 0.2s;
   border-bottom: 2px solid hsl(120, 23%, 95%);
   background: ${props =>
     props.new
       ? '#a6f3ed'
       : props.selected
-      ? 'linear-gradient(165deg, rgba(0, 0, 0, 0) 70%, #50e8db 100%)'
+      ? '#fff linear-gradient(165deg, rgba(0, 0, 0, 0) 70%, #50e8db 100%)'
       : '#fff'};
 
   &:hover {

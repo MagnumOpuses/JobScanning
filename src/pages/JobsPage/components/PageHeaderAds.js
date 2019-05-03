@@ -24,7 +24,6 @@ class PageHeaderAds extends Component {
 export default PageHeaderAds
 
 const Header = styled.header`
-  height: 100%;
   width: 100%;
   display: flex;
   z-index: 1;
