@@ -21,21 +21,21 @@ export const fetchJobs = (term, location) => async dispatch => {
   })
 
   try {
-    // const res = await apiFetchJobs(term, location.value)
+    const res = await apiFetchJobs(term, location.value)
 
-    // if (!res.data.hits.length > 0) {
-    //   dispatch({
-    //     type: JOBS_FAILURE
-    //   })
-    // }
+    if (!res.data.hits.length > 0) {
+      dispatch({
+        type: JOBS_FAILURE
+      })
+    }
 
-    // const processedList = processJobList({ list: res.data.hits })
-    // res.data = { ...res.data, processedList }
+    const processedList = processJobList({ list: res.data.hits })
+    res.data = { ...res.data, processedList }
 
-    let res = {}
-    const processedList = processJobList({ list: mock.hits })
-    res.data = { ...mock, processedList }
-    console.log(res.data)
+    // let res = {}
+    // const processedList = processJobList({ list: mock.hits })
+    // res.data = { ...mock, processedList }
+    // console.log(res.data)
 
     dispatch({
       type: JOBS_SUCCESS,
@@ -104,7 +104,7 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
         const processedList = processJobList({ list: res.data.hits })
         processedList.unshift({
           changedLocation: true,
-          oldLocation: location.county,
+          oldLocation: location.value,
           newLocation: 'hela Sverige'
         })
         res.data = { ...res.data, processedList }

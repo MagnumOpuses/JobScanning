@@ -58,6 +58,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   /* text-align: center; */
 
   .header {

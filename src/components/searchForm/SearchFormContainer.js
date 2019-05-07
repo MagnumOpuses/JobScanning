@@ -1,39 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  setSearchTerm,
-  setLocation,
-  fetchJobs
-} from '../../redux/actions/index'
+import { setLocation, fetchJobs } from '../../redux/actions/index'
 import { withRouter } from 'react-router-dom'
 import { countiesAndMunicipalities } from '../../utils/searchOptions'
 import SearchForm from './SearchForm'
 
 class SearchFormContainer extends React.Component {
+  state = {
+    term: ''
+  }
+
   handleChange = (event, data) => {
-    const { setSearchTerm, setLocation } = this.props
+    const { setLocation } = this.props
+
+    console.log(data)
 
     if (data.name === 'searchTerm') {
-      setSearchTerm(data.value)
+      this.setState({ term: data.value })
     } else if (data.name === 'location') {
       setLocation(data.value)
     }
   }
 
   handleSubmit = event => {
-    const { searchTerm, location, fetchJobs, history } = this.props
+    const { location, fetchJobs, history } = this.props
 
     event.preventDefault()
-    fetchJobs(searchTerm, location)
+    fetchJobs(this.state.term, location)
     history.push('/jobs')
   }
 
   render() {
-    const { searchTerm, location, upward, isDesktop } = this.props
+    const { location, upward, isDesktop } = this.props
 
     return (
       <SearchForm
-        searchTerm={searchTerm}
+        searchTerm={this.state.term}
         location={location.value}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
@@ -46,10 +48,9 @@ class SearchFormContainer extends React.Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { searchTerm, location } = ads
+  const { location } = ads
 
   return {
-    searchTerm,
     location
   }
 }
@@ -57,6 +58,6 @@ function mapStateToProps({ ads }) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { setSearchTerm, setLocation, fetchJobs }
+    { setLocation, fetchJobs }
   )(SearchFormContainer)
 )

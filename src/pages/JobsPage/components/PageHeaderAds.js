@@ -26,7 +26,7 @@ export default PageHeaderAds
 const Header = styled.header`
   width: 100%;
   display: flex;
-  z-index: 1;
+  background: #fff;
   border-bottom: 5px solid ${theme.green4};
 `
 

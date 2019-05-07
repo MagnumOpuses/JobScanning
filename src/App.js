@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import SearchPage from './pages/SearchPage'
 import AdDetails from './pages/AdDetails'
 import AdsPage from './pages/JobsPage/AdsPage'
+import Overview from './pages/Overview'
 import breakpoints from './styles/breakpoints'
 import backgroundImg from './images/Pixel.jpg'
 
@@ -107,6 +108,7 @@ class App extends Component {
             <Route path="/jobs/:id" component={AdDetails} />
             <Route path="/jobs" component={AdsPage} />
             <Route path="/search" component={SearchPage} />
+            <Route path="/overview" component={Overview} />
           </Switch>
         </AppContainer>
       </ThemeProvider>

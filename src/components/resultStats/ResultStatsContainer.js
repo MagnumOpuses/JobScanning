@@ -8,35 +8,44 @@ class ResultStatsContainer extends React.Component {
 
     const allSources = []
 
-    hits.forEach(obj => {
-      obj.sources.forEach(source => {
-        allSources.push(source.name)
-      })
+    console.log(hits)
+
+    hits.forEach(job => {
+      if (job.sources) {
+        job.sources.forEach(source => {
+          allSources.push(source.name)
+        })
+      }
     })
 
     return [...new Set(allSources)].length
   }
 
   render() {
-    const { total, processedList } = this.props
+    const { total, processedList, searchTerm, location, desktop } = this.props
 
     return (
       <ResultStats
         total={total}
         processedList={processedList}
         sources={this.getNumberOfSources()}
+        searchTerm={searchTerm}
+        location={location}
+        desktop={desktop}
       />
     )
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, total, processedList } = ads
+  const { hits, total, processedList, searchTerm, location } = ads
 
   return {
     hits,
     total,
-    processedList
+    processedList,
+    searchTerm,
+    location
   }
 }
 

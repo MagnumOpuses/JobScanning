@@ -8,7 +8,7 @@ export default class ListItemComponent extends Component {
   componentDidMount() {
     this.timeoutId = setTimeout(() => {
       this.setState({ new: false })
-    }, 5000)
+    }, 2000)
   }
 
   componentWillUnmount() {
@@ -49,8 +49,6 @@ export default class ListItemComponent extends Component {
 }
 
 const ListItem = styled.li`
-  direction: ltr;
-  text-align: left;
   position: relative;
   padding: 2rem 1rem;
   transition: all 0.2s;

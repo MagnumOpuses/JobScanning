@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Dropdown, Form, Input } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react'
 import breakpoint from '../../styles/breakpoints'
 
 const SearchForm = ({
@@ -14,7 +15,7 @@ const SearchForm = ({
 }) => {
   return (
     <CustomForm onSubmit={handleSubmit} className={isDesktop && 'isDesktop'}>
-      <Form.Field required={true}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Input
           name="searchTerm"
           value={searchTerm}
@@ -25,7 +26,11 @@ const SearchForm = ({
           placeholder="Skriv sökord"
           required
         />
-      </Form.Field>
+        <Link to="/overview" style={{ color: '#49efe1' }}>
+          <Icon name="line graph" size="large" />
+          Se yrkesöversikt
+        </Link>
+      </div>
 
       <div style={{ overflow: 'visible' }}>
         <Form.Field>

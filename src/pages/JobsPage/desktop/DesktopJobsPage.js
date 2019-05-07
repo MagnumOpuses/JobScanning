@@ -31,7 +31,7 @@ class DesktopJobsPage extends Component {
   // }
 
   render() {
-    const { selectedJob } = this.props
+    const { hits, selectedJob } = this.props
 
     return (
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -39,13 +39,9 @@ class DesktopJobsPage extends Component {
 
         <FlexContainer>
           <LeftContainer>
-            {this.props.searchTerm &&
-              `${this.props.searchTerm} i ${this.props.location.text}`}
-            <ResultStats />
-            <a className="to-overview">
-              <h2>Se yrkesöversikt</h2>
-              <p>Lorem ipsum dolor sit amet</p>
-            </a>
+            <div className="search-metadata">
+              {hits.length > 0 && <ResultStats desktop />}
+            </div>
             <JobAdsList selectOrUnselectJob={this.selectOrUnselectJob} />
             {/* <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P> */}
           </LeftContainer>
@@ -89,11 +85,15 @@ const FlexContainer = styled.div`
 
 const LeftContainer = styled.div`
   position: relative;
-  height: 75vh;
   width: 480px;
   max-width: 480px;
   display: flex;
   flex-direction: column;
+
+  .search-metadata {
+    height: 80px;
+    margin: 20px 0;
+  }
 
   .to-overview {
     display: flex;
