@@ -1,7 +1,6 @@
 import apiFetchJobs from '../../api/fetchJobs'
 import processJobList from '../../utils/processJobList'
 import { countiesAndMunicipalities } from '../../utils/searchOptions'
-import mock from './response_1556797352192.json'
 
 export const JOBS_REQUEST = 'JOBS_REQUEST'
 export const JOBS_SUCCESS = 'JOBS_SUCCESS'
@@ -30,12 +29,12 @@ export const fetchJobs = (term, location) => async dispatch => {
     }
 
     const processedList = processJobList({ list: res.data.hits })
-    res.data = { ...res.data, processedList }
-
-    // let res = {}
-    // const processedList = processJobList({ list: mock.hits })
-    // res.data = { ...mock, processedList }
-    // console.log(res.data)
+    res.data = {
+      ...res.data,
+      processedList,
+      usedSearchTerm: term,
+      usedLocation: location
+    }
 
     dispatch({
       type: JOBS_SUCCESS,

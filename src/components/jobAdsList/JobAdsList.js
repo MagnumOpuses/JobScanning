@@ -139,6 +139,7 @@ const List = styled.ul`
   width: 100%;
   overflow: auto;
   list-style: none;
+  background: #fff;
 
   &::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);

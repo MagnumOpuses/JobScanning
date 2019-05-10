@@ -20,8 +20,7 @@ const TextEnrichment = ({ header, icon, list }) => {
   )
 }
 
-{
-  /* <Container>
+/* <Container>
 <p style={{ textAlign: 'center' }}>{header}</p>
 <div
   style={{
@@ -49,7 +48,6 @@ const TextEnrichment = ({ header, icon, list }) => {
   </List>
 </div>
 </Container> */
-}
 
 export default TextEnrichment
 

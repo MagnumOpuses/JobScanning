@@ -7,7 +7,6 @@ import PageHeaderAds from '../components/PageHeaderAds'
 import JobAdsList from '../../../components/jobAdsList/JobAdsList'
 import theme from '../../../styles/theme'
 import DesktopJobDetails from './components/DesktopJobDetails'
-import DesktopOverview from './components/DesktopOverview'
 
 class DesktopJobsPage extends Component {
   selectOrUnselectJob = job => {
@@ -17,18 +16,6 @@ class DesktopJobsPage extends Component {
       this.props.selectJob(job)
     }
   }
-
-  // getContent = () => {
-  //   const { selectedJob } = this.props
-
-  //   if (activeComponent === 'list' && Object.keys(selectedJob).length > 0) {
-  //     return <DesktopJobDetails selectedJob={selectedJob} />
-  //   } else if (activeComponent === 'map') {
-  //     return <JobMap />
-  //   } else if (activeComponent === 'overview' && this.props.hits.length > 0) {
-  //     return <DesktopOverview />
-  //   }
-  // }
 
   render() {
     const { hits, selectedJob } = this.props

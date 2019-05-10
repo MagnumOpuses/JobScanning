@@ -72,7 +72,7 @@ const CustomForm = styled(Form)`
     display: flex;
     flex-direction: column;
     width: 88%;
-    margin: auto;
+    margin: 0 auto;
     padding: 3rem 2rem;
     background: ${props => props.theme.green0};
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);

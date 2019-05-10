@@ -1,42 +1,19 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Ellipse, PageHeader, SearchForm } from '../components'
-import theme from '../styles/theme'
+import { SearchForm } from '../components'
 import breakpoints from '../styles/breakpoints'
 
 class SearchPage extends Component {
   render() {
     return (
       <FlexContainer>
-        <PageHeader>
-          <h1>Alla jobb på ett ställe</h1>
-        </PageHeader>
-
-        <P>
+        <h1>Alla jobb på ett ställe</h1>
+        <p>
           <span className="bold">294 293</span> jobb från{' '}
           <span className="bold">1009</span> jobbsajter
-        </P>
+        </p>
 
         <SearchForm upward={true} />
-        {/* </FlexContainer> */}
-        <EllipseContainer>
-          <Ellipse
-            height="220px"
-            width="170px"
-            bottom="-60px"
-            right="-20px"
-            bgcolor={`linear-gradient(#fff, ${theme.green4})`}
-            zIndex={-2}
-          />
-          <Ellipse
-            height="180px"
-            width="140px"
-            bottom="-60px"
-            right="82px"
-            bgcolor={`linear-gradient(#fff, ${theme.green1})`}
-            zIndex={-1}
-          />
-        </EllipseContainer>
       </FlexContainer>
     )
   }
@@ -44,32 +21,35 @@ class SearchPage extends Component {
 
 export default SearchPage
 
-const P = styled.p`
-  font-size: 24px;
-  text-align: center;
-  margin: 1.5rem 0 10rem 0;
-
-  @media screen and (max-width: ${breakpoints.tablet}) {
-    margin: 1.5rem 0 4rem 0;
-    font-size: 24px;
-  }
-
-  @media screen and (max-width: ${breakpoints.mobileLandscape}) {
-    font-size: 20px;
-  }
-`
-
 const FlexContainer = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
-`
 
-const EllipseContainer = styled.div`
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  height: 220px;
-  width: 250px;
-  overflow: hidden;
-  z-index: -1;
+  h1,
+  p {
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 100px;
+
+    @media screen and (max-width: ${breakpoints.tablet}) {
+      margin-top: 50px;
+    }
+  }
+
+  p {
+    font-size: 24px;
+    margin: 1.5rem 0 70px;
+
+    @media screen and (max-width: ${breakpoints.tablet}) {
+      margin: 1.5rem 0 4rem 0;
+      font-size: 24px;
+    }
+
+    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+      font-size: 20px;
+    }
+  }
 `

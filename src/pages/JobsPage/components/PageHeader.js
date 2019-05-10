@@ -22,26 +22,30 @@ class PageHeader extends Component {
             : {}
         }
       >
-        <Ellipse
-          height="195px"
-          width="165px"
-          bottom="5px"
-          left="-50px"
-          bgcolor={theme.green4}
-          boxshadow
-          zIndex="1"
-        />
+        {this.props.mobile && (
+          <>
+            <Ellipse
+              height="195px"
+              width="165px"
+              bottom="5px"
+              left="-50px"
+              bgcolor={theme.green4}
+              boxshadow
+              zIndex="1"
+            />
 
-        <Ellipse
-          height="110px"
-          width="85px"
-          bottom="35px"
-          left="71px"
-          bgcolor={theme.green0}
-        />
-        <Link to="/">
-          <Logo alt="JobTech" src={jt_logowhite} />
-        </Link>
+            <Ellipse
+              height="110px"
+              width="85px"
+              bottom="35px"
+              left="71px"
+              bgcolor={theme.green0}
+            />
+            <Link to="/">
+              <Logo alt="JobTech" src={jt_logowhite} />
+            </Link>
+          </>
+        )}
 
         <Children
           style={

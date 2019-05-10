@@ -138,7 +138,7 @@ class MobileJobsPage extends Component {
           ref={this.headerRef}
           pose={headerVisible ? 'visible' : 'hidden'}
         >
-          <PageHeader ads />
+          <PageHeader mobile ads />
 
           <ResultStats />
 

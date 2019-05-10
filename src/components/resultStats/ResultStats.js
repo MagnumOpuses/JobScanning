@@ -8,8 +8,8 @@ const ResultStats = ({
   total,
   processedList,
   sources,
-  searchTerm,
-  location,
+  usedSearchTerm,
+  usedLocation,
   desktop
 }) => {
   if (desktop) {
@@ -19,14 +19,14 @@ const ResultStats = ({
           {processedList ? processedList.length : 0} jobbannonser från {sources}{' '}
           webbplatser för {'\n'}
           <span className="bold" style={{ textTransform: 'capitalize' }}>
-            {searchTerm}
+            {usedSearchTerm}
           </span>{' '}
           i{' '}
           <span className="bold">
-            {location ? location.text : 'hela Sverige'}
+            {usedLocation ? usedLocation.text : 'hela Sverige'}
           </span>
         </p>
-        {searchTerm && (
+        {usedSearchTerm && (
           <Link to="/overview" style={{ color: '#49efe1' }}>
             <Icon name="line graph" size="large" />
             Se yrkesöversikt

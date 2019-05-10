@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import EnrichmentRanking from './EnrichmentRanking'
 
-class EnrichmentRankingContainer extends Component {
+class TraitsRankingContainer extends Component {
   render() {
-    const { hits, searchTerm, topCompetences, topTraits } = this.props
+    const { hits, searchTerm, topTraits } = this.props
 
     if (!hits.length > 0) {
       return null
@@ -14,20 +14,19 @@ class EnrichmentRankingContainer extends Component {
       <EnrichmentRanking
         hits={hits}
         searchTerm={searchTerm}
-        topCompetences={topCompetences}
-        topTraits={topTraits}
+        target={topTraits}
       />
     )
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, searchTerm, topCompetences, topTraits } = ads
+  const { hits, searchTerm, topTraits } = ads
 
-  return { hits, searchTerm, topCompetences, topTraits }
+  return { hits, searchTerm, topTraits }
 }
 
 export default connect(
   mapStateToProps,
   null
-)(EnrichmentRankingContainer)
+)(TraitsRankingContainer)

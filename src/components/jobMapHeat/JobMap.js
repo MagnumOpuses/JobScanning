@@ -159,7 +159,7 @@ class JobMap extends React.Component {
           filteredMunicipalities={this.state.filteredMunicipalities}
           handleClickedMunicipality={this.props.handleLocationChange}
         />
-        <MapSideMenu>
+        {/* <MapSideMenu>
           <Menu>
             <MenuItem
               selected={activeComponent === 'now'}
@@ -217,7 +217,7 @@ class JobMap extends React.Component {
               }
             />
           </ZoomMenu>
-        </MapSideMenu>
+        </MapSideMenu> */}
       </MapContainer>
     )
   }
