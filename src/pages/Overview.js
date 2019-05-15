@@ -52,7 +52,7 @@ const Overview = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <JobMapContainer />
+          <div>{/* <JobMapContainer /> */}</div>
         </div>
         <div className="chart box">
           <p>
@@ -73,7 +73,7 @@ const Overview = () => {
 export default Overview
 
 const GridContainer = styled.div`
-  min-height: 100%;
+  /* min-height: 100%; */
   /* flex: 1; */
   margin: 50px;
   display: grid;

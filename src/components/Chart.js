@@ -2,7 +2,6 @@ import React from 'react'
 import {
   ResponsiveContainer,
   AreaChart,
-  linearGradient,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -63,10 +62,8 @@ const data = [
 
 const Chart = () => {
   return (
-    <ResponsiveContainer width="100%" aspect={2}>
+    <ResponsiveContainer width="99%" aspect={2}>
       <AreaChart
-        width={730}
-        height={250}
         data={data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >
