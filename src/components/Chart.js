@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   ResponsiveContainer,
   AreaChart,
@@ -7,9 +7,17 @@ import {
   CartesianGrid,
   Tooltip,
   Area
-} from 'recharts'
+} from 'recharts';
 
 const data = [
+  {
+    month: 'Jan',
+    uv: 98
+  },
+  {
+    month: 'Feb',
+    uv: 145
+  },
   {
     month: 'Mars',
     uv: 145
@@ -57,8 +65,96 @@ const data = [
   {
     month: 'Feb',
     uv: 301
+  },
+  {
+    month: 'Mars',
+    uv: 145
+  },
+  {
+    month: 'April',
+    uv: 205
+  },
+  {
+    month: 'Maj',
+    uv: 175
+  },
+  {
+    month: 'Juni',
+    uv: 204
+  },
+  {
+    month: 'Juli',
+    uv: 0
+  },
+  {
+    month: 'Aug',
+    uv: 219
+  },
+  {
+    month: 'Sep',
+    uv: 135
+  },
+  {
+    month: 'Okt',
+    uv: 185
+  },
+  {
+    month: 'Nov',
+    uv: 170
+  },
+  {
+    month: 'Dec',
+    uv: 205
+  },
+  {
+    month: 'Jan',
+    uv: 195
+  },
+  {
+    month: 'Feb',
+    uv: 301
+  },
+  {
+    month: 'Mars',
+    uv: 145
+  },
+  {
+    month: 'April',
+    uv: 205
+  },
+  {
+    month: 'Maj',
+    uv: 175
+  },
+  {
+    month: 'Juni',
+    uv: 204
+  },
+  {
+    month: 'Juli',
+    uv: 0
+  },
+  {
+    month: 'Aug',
+    uv: 219
+  },
+  {
+    month: 'Sep',
+    uv: 135
+  },
+  {
+    month: 'Okt',
+    uv: 185
+  },
+  {
+    month: 'Nov',
+    uv: 170
+  },
+  {
+    month: 'Dec',
+    uv: 205
   }
-]
+];
 
 const Chart = () => {
   return (
@@ -73,8 +169,17 @@ const Chart = () => {
             <stop offset="95%" stopColor="#49efe1" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="month" />
-        <YAxis />
+        <XAxis
+          dataKey="month"
+          label={{ value: 'Månad', position: 'insideBottom', offset: 0 }}
+        />
+        <YAxis
+          label={{
+            value: 'Antal annonser',
+            angle: -90,
+            position: 'insideLeft'
+          }}
+        />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip
           itemStyle={{ color: '#000' }}
@@ -90,7 +195,7 @@ const Chart = () => {
         />
       </AreaChart>
     </ResponsiveContainer>
-  )
-}
+  );
+};
 
-export default Chart
+export default Chart;

@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import PageHeaderAds from './JobsPage/components/PageHeaderAds'
-import Chart from '../components/Chart'
-import JobMapContainer from '../components/jobMapHeat/JobMapContainer'
-import breakpoints from '../styles/breakpoints'
-import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer'
-import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import PageHeaderAds from './JobsPage/components/PageHeaderAds';
+import Chart from '../components/Chart';
+import breakpoints from '../styles/breakpoints';
+import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
+import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
+import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
 
 const Overview = () => {
   return (
@@ -40,7 +40,9 @@ const Overview = () => {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
-        <div className="sources box">Källor</div>
+        <div className="sources box">
+          <SourceRankingContainer />
+        </div>
         <div className="skills box">
           <SkillsRankingContainer />
         </div>
@@ -52,7 +54,6 @@ const Overview = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <div>{/* <JobMapContainer /> */}</div>
         </div>
         <div className="chart box">
           <p>
@@ -67,10 +68,10 @@ const Overview = () => {
         </div>
       </GridContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Overview
+export default Overview;
 
 const GridContainer = styled.div`
   /* min-height: 100%; */
@@ -85,7 +86,7 @@ const GridContainer = styled.div`
     'map chart chart';
   grid-gap: 40px;
 
-  @media (max-width: 1023px) {
+  @media (max-width: ${breakpoints.tabletLandscape}) {
     height: auto;
     grid-template-rows: auto auto 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -110,9 +111,11 @@ const GridContainer = styled.div`
   }
 
   .box {
-    padding: 20px;
+    padding: 40px;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 2);
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 2); */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12); */
   }
 
   .header {
@@ -140,7 +143,7 @@ const GridContainer = styled.div`
   .chart {
     grid-area: chart;
   }
-`
+`;
 const SVGBackArrow = styled.svg`
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
 
@@ -151,4 +154,4 @@ const SVGBackArrow = styled.svg`
   text {
     font-size: 20px;
   }
-`
+`;

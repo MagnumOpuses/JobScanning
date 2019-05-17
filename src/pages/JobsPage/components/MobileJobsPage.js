@@ -1,21 +1,18 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import posed from 'react-pose'
-import { Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import posed from 'react-pose';
+import { Menu } from 'semantic-ui-react';
 import {
   MobileJobsList,
   CustomLoader,
-  SourceRanking,
   GridContainer,
   NoResultsBox,
   PageHeader,
-  JobMap,
-  ResultStats,
-  EnrichmentRanking
-} from '../../../components'
-import theme from '../../../styles/theme'
-import numberOfUniqueSources from '../../../utils/numberOfUniqueSources'
+  ResultStats
+} from '../../../components';
+import theme from '../../../styles/theme';
+import numberOfUniqueSources from '../../../utils/numberOfUniqueSources';
 
 const SlideUpAndDown = posed.div({
   hidden: {
@@ -30,81 +27,81 @@ const SlideUpAndDown = posed.div({
       default: { ease: 'linear', duration: 300 }
     }
   }
-})
+});
 
 class MobileJobsPage extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       activeComponent: 'list',
       headerHeight: '',
       headerVisible: true,
       lastScrollTop: 0
-    }
-    this.headerRef = React.createRef()
+    };
+    this.headerRef = React.createRef();
   }
 
   componentDidMount() {
-    this.setState({ headerHeight: `${this.headerRef.current.clientHeight}px` })
+    this.setState({ headerHeight: `${this.headerRef.current.clientHeight}px` });
   }
 
   componentDidUpdate() {
     if (this.headerRef.current.clientHeight !== this.state.headerHeight) {
       this.setState({
         headerHeight: this.headerRef.current.clientHeight
-      })
+      });
     }
   }
 
   changeComponent = componentName => {
-    this.setState({ activeComponent: componentName })
-  }
+    this.setState({ activeComponent: componentName });
+  };
 
   getNumberOfSources = () => {
-    let { hits } = this.props
+    let { hits } = this.props;
 
-    const number = numberOfUniqueSources(hits)
+    const number = numberOfUniqueSources(hits);
 
-    return number
-  }
+    return number;
+  };
 
   handleScroll = ref => {
-    const { headerHeight } = this.state
+    const { headerHeight } = this.state;
 
-    const refScrollTop = ref.current.scrollTop
+    const refScrollTop = ref.current.scrollTop;
     // const headerHeight = this.headerRef.current.offsetHeight
     // console.log(headerHeight)
 
-    const { lastScrollTop } = this.state
+    const { lastScrollTop } = this.state;
 
     if (Math.abs(this.state.lastScrollTop - refScrollTop) <= 5) {
-      return
+      return;
     }
 
     if (refScrollTop > lastScrollTop && refScrollTop > headerHeight) {
       this.setState({
         headerVisible: false,
         lastScrollTop: refScrollTop
-      })
+      });
     } else {
       this.setState({
         headerVisible: true,
         lastScrollTop: refScrollTop
-      })
+      });
     }
-  }
+  };
 
   getContent = () => {
-    const { activeComponent, headerHeight } = this.state
-    const { hits, isFetching, error } = this.props
+    const { activeComponent, headerHeight } = this.state;
+    const { hits, isFetching, error } = this.props;
 
     if (isFetching) {
-      return <CustomLoader size="massive" content="Laddar" />
+      return <CustomLoader size="massive" content="Laddar" />;
     } else if (error) {
-      return <NoResultsBox />
+      return <NoResultsBox />;
     } else if (Object.keys(hits).length === 0) {
-      return <NoResultsBox />
+      return <NoResultsBox />;
     } else {
       return (
         <>
@@ -117,20 +114,15 @@ class MobileJobsPage extends Component {
           >
             <MobileJobsList handleScroll={this.handleScroll} />
           </div>
-          {activeComponent === 'map' && <JobMap />}
-          {activeComponent === 'overview' && (
-            <div style={{ padding: '1.5rem' }}>
-              <SourceRanking />
-              <EnrichmentRanking />
-            </div>
-          )}
+          {activeComponent === 'map' && <div>KARTA</div>}
         </>
-      )
+      );
     }
-  }
+  };
 
   render() {
-    const { activeComponent, headerHeight, headerVisible } = this.state
+    const { hits } = this.props;
+    const { activeComponent, headerHeight, headerVisible } = this.state;
 
     return (
       <GridContainer rows={`${headerHeight}px calc(100vh - ${headerHeight}px)`}>
@@ -140,7 +132,7 @@ class MobileJobsPage extends Component {
         >
           <PageHeader mobile ads />
 
-          <ResultStats />
+          {hits.length > 0 && <ResultStats />}
 
           <CustomMenu borderless fluid widths={2}>
             <CustomMenuItem
@@ -150,18 +142,11 @@ class MobileJobsPage extends Component {
               onClick={() => this.setState({ activeComponent: 'list' })}
             />
 
-            {/* <CustomMenuItem
+            <CustomMenuItem
               name="map"
               active={activeComponent === 'map'}
               content="Karta"
               onClick={() => this.setState({ activeComponent: 'map' })}
-            /> */}
-
-            <CustomMenuItem
-              name="overview"
-              active={activeComponent === 'overview'}
-              content="Översikt"
-              onClick={() => this.setState({ activeComponent: 'overview' })}
             />
           </CustomMenu>
         </Header>
@@ -169,24 +154,24 @@ class MobileJobsPage extends Component {
           {this.getContent()}
         </div>
       </GridContainer>
-    )
+    );
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, error, isFetching } = ads
+  const { hits, error, isFetching } = ads;
 
   return {
     hits,
     error,
     isFetching
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   null
-)(MobileJobsPage)
+)(MobileJobsPage);
 
 const CustomMenu = styled(Menu)`
   &&& {
@@ -214,7 +199,7 @@ const CustomMenu = styled(Menu)`
       border-radius: 0;
     }
   }
-`
+`;
 
 const CustomMenuItem = styled(Menu.Item)`
   &&& {
@@ -236,7 +221,7 @@ const CustomMenuItem = styled(Menu.Item)`
       background: none;
     }
   }
-`
+`;
 
 const Header = styled(SlideUpAndDown)`
   grid-row: 1/2;
@@ -246,4 +231,4 @@ const Header = styled(SlideUpAndDown)`
   z-index: 1000;
   background: #fff;
   transition: all 0.2s;
-`
+`;
