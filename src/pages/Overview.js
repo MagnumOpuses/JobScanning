@@ -74,9 +74,6 @@ const Overview = () => {
 export default Overview;
 
 const GridContainer = styled.div`
-  /* min-height: 100%; */
-  /* flex: 1; */
-  margin: 50px;
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr 1fr 1fr;
@@ -85,6 +82,9 @@ const GridContainer = styled.div`
     'sources skills traits'
     'map chart chart';
   grid-gap: 40px;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0;
 
   @media (max-width: ${breakpoints.tabletLandscape}) {
     height: auto;

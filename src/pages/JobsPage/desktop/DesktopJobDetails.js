@@ -137,7 +137,7 @@ const Container = styled.div`
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: ${breakpoints.tabletLandscape}) {
+  @media (max-width: 1366px) {
     left: 5%;
   }
 `;

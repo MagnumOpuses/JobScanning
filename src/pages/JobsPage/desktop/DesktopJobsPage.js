@@ -31,11 +31,11 @@ class DesktopJobsPage extends Component {
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <PageHeaderAds />
 
-        <FlexContainer>
-          <LeftContainer visible={this.state.sidemenuVisible}>
+        <FlexContainer visible={this.state.sidemenuVisible}>
+          <div className="left-container">
             {hits.length > 0 && <ResultStats />}
             <JobAdsList selectOrUnselectJob={this.selectOrUnselectJob} />
-          </LeftContainer>
+          </div>
 
           {Object.keys(selectedJob).length > 0 && (
             <DesktopJobDetails
@@ -45,7 +45,7 @@ class DesktopJobsPage extends Component {
             />
           )}
 
-          <RightContainer>
+          <div className="right-container">
             <Button
               onClick={() =>
                 this.setState(prevState => ({
@@ -71,7 +71,7 @@ class DesktopJobsPage extends Component {
                 background: `#444 url(${map_picture}) center/cover no-repeat`
               }}
             />
-          </RightContainer>
+          </div>
         </FlexContainer>
       </div>
     );
@@ -94,6 +94,53 @@ export default connect(
   { selectJob, unselectJob }
 )(DesktopJobsPage);
 
+const FlexContainer = styled.main`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 0 50px;
+  position: relative;
+
+  @media only screen and (min-width: ${breakpoints.tablet}) {
+    padding: 0;
+  }
+
+  @media only screen and (min-width: 1366px) {
+    width: 1366px;
+    margin: 0 auto;
+  }
+
+  .left-container {
+    position: relative;
+    width: ${({ visible }) => (visible ? '480px' : '0px')};
+    max-width: 480px;
+    margin-right: ${({ visible }) => (visible ? '15px' : '0px')};
+    opacity: ${({ visible }) => (visible ? '1' : '0')};
+    flex-direction: column;
+    transition: width 0.5s;
+    overflow: hidden;
+    background: #fff;
+
+    @media (max-width: ${breakpoints.tabletLandscape}) {
+      width: ${({ visible }) => (visible ? '50%' : '0px')};
+      max-width: 50%;
+    }
+  }
+
+  .right-container {
+    position: relative;
+    flex: 1;
+
+    h2 {
+      font-weight: normal !important;
+    }
+
+    p {
+      font-size: 20px !important;
+    }
+  }
+`;
+
 const Button = styled.div`
   display: flex;
   justify-content: center;
@@ -111,73 +158,4 @@ const Button = styled.div`
   top: 25px;
   left: -25px;
   z-index: 2;
-`;
-
-const FlexContainer = styled.div`
-  height: 100%;
-  display: flex;
-  padding: 0 50px;
-  position: relative;
-
-  @media (max-width: ${breakpoints.tabletLandscape}) {
-    padding: 0;
-  }
-`;
-
-const LeftContainer = styled.div`
-  position: relative;
-  width: ${({ visible }) => (visible ? '480px' : '0px')};
-  max-width: 480px;
-  margin-right: ${({ visible }) => (visible ? '15px' : '0px')};
-  opacity: ${({ visible }) => (visible ? '1' : '0')};
-  flex-direction: column;
-  transition: width 0.5s;
-  overflow: hidden;
-
-  @media (max-width: ${breakpoints.tabletLandscape}) {
-    width: ${({ visible }) => (visible ? '50%' : '0px')};
-    max-width: 50%;
-  }
-
-  .to-overview {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100px;
-    width: 90%;
-    margin: 10px auto;
-    padding: 5px;
-    text-align: center;
-    color: #000;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-      border: 1px solid #a6f3ed;
-    }
-
-    h2 {
-      font-size: 20px;
-      font-weight: normal;
-    }
-
-    p {
-      font-size: 18px;
-    }
-  }
-`;
-
-const RightContainer = styled.div`
-  position: relative;
-  flex: 1;
-
-  h2 {
-    font-weight: normal !important;
-  }
-
-  p {
-    font-size: 20px !important;
-  }
 `;
