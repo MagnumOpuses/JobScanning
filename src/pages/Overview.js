@@ -44,7 +44,7 @@ const Overview = () => {
             as="h2"
             icon="world"
             content="Källor"
-            style={{ fontSize: '32px' }}
+            style={{ fontSize: '24px' }}
           />
           <SourceRankingContainer />
         </div>
@@ -53,7 +53,7 @@ const Overview = () => {
             as="h2"
             icon="briefcase"
             content="Kompetenser"
-            style={{ fontSize: '32px' }}
+            style={{ fontSize: '24px' }}
           />
           <SkillsRankingContainer />
         </div>
@@ -62,7 +62,7 @@ const Overview = () => {
             as="h2"
             icon="user"
             content="Förmågor"
-            style={{ fontSize: '32px' }}
+            style={{ fontSize: '24px' }}
           />
           <TraitsRankingContainer />
         </div>
@@ -71,7 +71,7 @@ const Overview = () => {
             as="h2"
             icon="map"
             content="Karta"
-            style={{ fontSize: '32px' }}
+            style={{ fontSize: '24px' }}
           />
         </div>
         <div className="chart box">
@@ -79,7 +79,7 @@ const Overview = () => {
             as="h2"
             icon="line graph"
             content="Historik"
-            style={{ fontSize: '32px' }}
+            style={{ fontSize: '24px' }}
           />
           <Chart />
         </div>
@@ -103,18 +103,12 @@ const GridContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
 
-  @media (max-width: ${breakpoints.tabletLandscape}) {
+  @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     height: auto;
-    grid-template-rows: auto auto 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'header header'
-      'skills traits'
-      'sources map'
-      'chart chart';
+    padding: 20px 5px;
   }
 
-  @media (max-width: ${breakpoints.tablet}) {
+  @media screen and (max-width: ${breakpoints.tablet}) {
     height: auto;
     grid-template-rows: auto auto auto auto auto auto;
     grid-template-columns: 1fr;
@@ -127,12 +121,27 @@ const GridContainer = styled.div`
       'chart';
   }
 
+  @media screen and (max-width: ${breakpoints.tabletLandscape}) {
+    height: auto;
+    grid-template-rows: auto auto 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'header header'
+      'skills traits'
+      'sources map'
+      'chart chart';
+  }
+
   .box {
     padding: 40px;
     background: #fff;
     /* box-shadow: 0 1px 3px rgba(0, 0, 0, 2); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
     /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12); */
+
+    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+      padding: 20px 5px;
+    }
   }
 
   .header {

@@ -24,8 +24,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%; /* 1 rem = 10px; 10px/16px = 62.5% */
   }
 
+  html, body, h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
   body {
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+    font-family: 'Open Sans', sans-serif !important;
     font-size: 1.6rem !important;
     height: 100vh;
     background: #fff url(${backgroundImg}) center/cover no-repeat fixed;

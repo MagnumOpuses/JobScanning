@@ -42,7 +42,7 @@ const TextEnrichment = ({ header, icon, list, margin }) => {
 export default TextEnrichment;
 
 const Container = styled.div`
-  flex: 1;
+  flex: 0 1 50%;
   display: flex;
   flex-direction: column;
   align-items: center;

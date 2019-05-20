@@ -28,7 +28,8 @@ export default EnrichmentRanking;
 
 const EnrichmentRankingContainer = styled.div`
   h2 {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   .competences {

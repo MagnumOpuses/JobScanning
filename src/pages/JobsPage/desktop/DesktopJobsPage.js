@@ -20,6 +20,7 @@ class DesktopJobsPage extends Component {
     if (job.id === this.props.selectedJob.id) {
       this.props.unselectJob();
     } else {
+      // this.props.location.search
       this.props.selectJob(job);
     }
   };
