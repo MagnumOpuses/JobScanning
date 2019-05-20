@@ -52,6 +52,7 @@ class DesktopJobsPage extends Component {
                   sidemenuVisible: !prevState.sidemenuVisible
                 }))
               }
+              style={{ margin: 0 }}
             >
               <Icon
                 name="angle double left"

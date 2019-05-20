@@ -7,7 +7,7 @@ import SearchPage from './pages/SearchPage';
 import AdDetails from './pages/AdDetails';
 import AdsPage from './pages/JobsPage/AdsPage';
 import Overview from './pages/Overview';
-import breakpoints from './styles/breakpoints';
+import breakpoint from './styles/breakpoints';
 import backgroundImg from './images/Pixel.jpg';
 
 const GlobalStyle = createGlobalStyle`
@@ -29,17 +29,21 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem !important;
     height: 100vh;
     background: #fff url(${backgroundImg}) center/cover no-repeat fixed;
+    
+    @media screen and (max-width: ${breakpoint.tablet}) {
+      background: #fff;
+    }
   }
 
   h1 {
     font-size: ${theme.fonts.h1.fontSizeDesktop};
     font-weight: ${theme.fonts.h1.fontWeightDesktop};
 
-    @media screen and (max-width: ${breakpoints.tablet}) {
+    @media screen and (max-width: ${breakpoint.tablet}) {
       font-size: ${theme.fonts.h1.fontSizeTabletLarge};
     }
 
-    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+    @media screen and (max-width: ${breakpoint.mobileLandscape}) {
       font-size: ${theme.fonts.h1.fontSizeMobile};
     }
   }
@@ -49,11 +53,11 @@ const GlobalStyle = createGlobalStyle`
     font-weight: ${theme.fonts.h2.fontWeightDesktop};
     margin: ${theme.fonts.h2.margin} !important;
 
-    @media screen and (max-width: ${breakpoints.tablet}) {
+    @media screen and (max-width: ${breakpoint.tablet}) {
       font-size: ${theme.fonts.h2.fontSizeTabletLarge};
     }
 
-    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+    @media screen and (max-width: ${breakpoint.mobileLandscape}) {
       font-size: ${theme.fonts.h2.fontSizeMobile};
     }
   }
@@ -62,11 +66,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${theme.fonts.h3.fontSizeDesktop};
     font-weight: ${theme.fonts.h3.fontWeightDesktop};
 
-    @media screen and (max-width: ${breakpoints.tablet}) {
+    @media screen and (max-width: ${breakpoint.tablet}) {
       font-size: ${theme.fonts.h3.fontSizeTabletLarge};
     }
 
-    @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+    @media screen and (max-width: ${breakpoint.mobileLandscape}) {
       font-size: ${theme.fonts.h3.fontSizeMobile};
     }
   }
@@ -100,7 +104,7 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={{ ...theme, breakpoints }}>
+      <ThemeProvider theme={{ ...theme, breakpoint }}>
         <AppContainer>
           <GlobalStyle />
           <Switch>

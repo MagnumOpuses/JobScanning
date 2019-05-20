@@ -28,7 +28,7 @@ class MobileJobsPage extends Component {
   }
 
   componentDidMount() {
-    this.setState({ headerHeight: `${this.headerRef.current.clientHeight}px` });
+    this.setState({ headerHeight: this.headerRef.current.clientHeight });
   }
 
   componentDidUpdate() {
@@ -38,18 +38,6 @@ class MobileJobsPage extends Component {
       });
     }
   }
-
-  changeComponent = componentName => {
-    this.setState({ activeComponent: componentName });
-  };
-
-  getNumberOfSources = () => {
-    let { hits } = this.props;
-
-    const number = numberOfUniqueSources(hits);
-
-    return number;
-  };
 
   handleScroll = ref => {
     const { headerHeight } = this.state;
