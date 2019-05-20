@@ -2,13 +2,15 @@ export default function countAndSort(jobs, target) {
   const scoreboard = {}
 
   jobs.forEach(job => {
-    job.detected_keywords[target].forEach(word => {
-      if (word in scoreboard) {
-        scoreboard[word]++
-      } else {
-        scoreboard[word] = 1
-      }
-    })
+    if (job.detected_keywords) {
+      job.detected_keywords[target].forEach(word => {
+        if (word in scoreboard) {
+          scoreboard[word]++
+        } else {
+          scoreboard[word] = 1
+        }
+      })
+    }
   })
 
   let ordered = Object.keys(scoreboard).sort(

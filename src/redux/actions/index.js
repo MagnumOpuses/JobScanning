@@ -29,7 +29,12 @@ export const fetchJobs = (term, location) => async dispatch => {
     }
 
     const processedList = processJobList({ list: res.data.hits })
-    res.data = { ...res.data, processedList }
+    res.data = {
+      ...res.data,
+      processedList,
+      usedSearchTerm: term,
+      usedLocation: location
+    }
 
     dispatch({
       type: JOBS_SUCCESS,
@@ -69,7 +74,7 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
             type: JOBS_NO_MORE
           })
         }
-        const processedList = processJobList({ list: res.data.hits, offset })
+        const processedList = processJobList({ list: res.data.hits })
         processedList.unshift({
           changedLocation: true,
           oldLocation: location.value,
@@ -95,10 +100,10 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
             type: JOBS_NO_MORE
           })
         }
-        const processedList = processJobList({ list: res.data.hits, offset })
+        const processedList = processJobList({ list: res.data.hits })
         processedList.unshift({
           changedLocation: true,
-          oldLocation: location.county,
+          oldLocation: location.value,
           newLocation: 'hela Sverige'
         })
         res.data = { ...res.data, processedList }
@@ -115,7 +120,7 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
       })
     }
 
-    const processedList = processJobList({ list: res.data.hits, offset })
+    const processedList = processJobList({ list: res.data.hits })
     res.data = { ...res.data, processedList }
 
     dispatch({

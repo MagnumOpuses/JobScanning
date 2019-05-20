@@ -2,13 +2,15 @@ const createScoreboard = jobs => {
   const scoreboard = {}
 
   jobs.forEach(job => {
-    job.sources.forEach(source => {
-      if (source.name in scoreboard) {
-        scoreboard[source.name]++
-      } else {
-        scoreboard[source.name] = 1
-      }
-    })
+    if (job.sources) {
+      job.sources.forEach(source => {
+        if (source.name in scoreboard) {
+          scoreboard[source.name]++
+        } else {
+          scoreboard[source.name] = 1
+        }
+      })
+    }
   })
 
   let ordered = Object.keys(scoreboard).sort(

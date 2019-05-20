@@ -73,17 +73,24 @@ class JobAdsList extends Component {
             {processedList.map((item, i) => {
               if (item.changedLocation) {
                 return (
-                  <p key={i}>
-                    Slut på annonser i {item.oldLocation}. Visar annonser i{' '}
-                    {item.newLocation}
-                  </p>
+                  <li
+                    key={i}
+                    style={{
+                      padding: '20px 10px',
+                      textAlign: 'center',
+                      background: '#fff'
+                    }}
+                  >
+                    <p>Slut på annonser i {item.oldLocation}.</p>
+                    <p>Visar annonser i {item.newLocation}</p>
+                  </li>
                 )
               }
               return (
                 <ListItem
                   key={item.id}
                   item={item}
-                  selectAd={this.props.selectAd}
+                  selectOrUnselectJob={this.props.selectOrUnselectJob}
                   selectedJob={selectedJob}
                 />
               )
@@ -131,6 +138,8 @@ export default withRouter(
 const List = styled.ul`
   width: 100%;
   overflow: auto;
+  list-style: none;
+  background: #fff;
 
   &::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);

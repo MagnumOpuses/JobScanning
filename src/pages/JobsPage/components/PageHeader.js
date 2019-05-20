@@ -1,47 +1,38 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import theme from '../../../styles/theme'
-import { Icon } from 'semantic-ui-react'
-import { Ellipse } from '../../../components'
-import jt_logowhite from '../../../images/logo/1x/jt_logowhite.png'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import theme from '../../../styles/theme';
+import { Icon } from 'semantic-ui-react';
+import { Ellipse } from '../../../components';
+import jt_logowhite from '../../../images/logo/1x/jt_logowhite.png';
 
 class PageHeader extends Component {
   render() {
     return (
-      <Header
-        ads={this.props.ads}
-        style={
-          !this.props.ads
-            ? {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'flex-end'
-              }
-            : {}
-        }
-      >
-        <Ellipse
-          height="195px"
-          width="165px"
-          bottom="5px"
-          left="-50px"
-          bgcolor={theme.green4}
-          boxshadow
-          zIndex="1"
-        />
+      <Header ads={this.props.ads}>
+        <>
+          <Ellipse
+            height="195px"
+            width="165px"
+            bottom="5px"
+            left="-50px"
+            bgcolor={theme.green4}
+            boxshadow
+            zIndex="1"
+          />
 
-        <Ellipse
-          height="110px"
-          width="85px"
-          bottom="35px"
-          left="71px"
-          bgcolor={theme.green0}
-        />
-        <Link to="/">
-          <Logo alt="JobTech" src={jt_logowhite} />
-        </Link>
+          <Ellipse
+            height="110px"
+            width="85px"
+            bottom="35px"
+            left="71px"
+            bgcolor={theme.green0}
+          />
+          <Link to="/">
+            <Logo alt="JobTech" src={jt_logowhite} />
+          </Link>
+        </>
 
         <Children
           style={
@@ -70,21 +61,21 @@ class PageHeader extends Component {
           )}
         </Children>
       </Header>
-    )
+    );
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { searchTerm } = ads
+  const { searchTerm } = ads;
   return {
     searchTerm
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   null
-)(PageHeader)
+)(PageHeader);
 
 const Header = styled.header`
   height: 8.5rem;
@@ -93,7 +84,7 @@ const Header = styled.header`
     ads ? '0 0.3rem 0.5rem rgba(0, 0, 0, 0.3)' : 'none'};
   position: relative;
   z-index: 1;
-`
+`;
 
 const Logo = styled.img`
   width: 50px;
@@ -101,11 +92,11 @@ const Logo = styled.img`
   top: 10px;
   left: 10px;
   z-index: 1000;
-`
+`;
 
 const Children = styled.div`
   z-index: 1000;
-`
+`;
 
 const CustomLink = styled(Link)`
   height: 100%;
@@ -116,7 +107,7 @@ const CustomLink = styled(Link)`
   &:active {
     color: ${theme.black};
   }
-`
+`;
 
 const SearchTerm = styled.div`
   padding: 0.5rem;
@@ -126,7 +117,7 @@ const SearchTerm = styled.div`
   background: ${theme.green1};
   border-radius: 1.5rem;
   box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4);
-`
+`;
 
 const CustomIcon = styled(Icon)`
   &&& {
@@ -140,4 +131,4 @@ const CustomIcon = styled(Icon)`
     border-radius: 1.5rem;
     box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4);
   }
-`
+`;

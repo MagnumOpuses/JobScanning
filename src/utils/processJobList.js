@@ -1,12 +1,14 @@
-export default ({ list, offset }) => {
-  const jobsWithOffset = addOffset(list, offset)
+import _ from 'lodash'
+
+export default ({ list }) => {
   // const removedPassedDeadlines = removePassedDeadlines(list)
 
-  return jobsWithOffset
+  return list
 }
 
-const addOffset = (list, offset) => {
-  return list.map(job => {
-    return { ...job, offset: offset }
+const removePassedDeadlines = list => {
+  const dateNow = Date.now()
+  return _.filter(list, item => {
+    return Date.parse(item.application.deadline) > dateNow
   })
 }

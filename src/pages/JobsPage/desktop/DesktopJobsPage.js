@@ -1,203 +1,167 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { selectJob, unselectJob } from '../../../redux/actions'
-import styled from 'styled-components'
-import { Ellipse, JobMap, ResultStats } from '../../../components'
-import PageHeaderAds from '../components/PageHeaderAds'
-import JobAdsList from '../../../components/jobAdsList/JobAdsList'
-import theme from '../../../styles/theme'
-import DesktopJobDetails from './components/DesktopJobDetails'
-import DesktopOverview from './components/DesktopOverview'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectJob, unselectJob } from '../../../redux/actions';
+import styled from 'styled-components';
+import { ResultStats } from '../../../components';
+import { Icon } from 'semantic-ui-react';
+import PageHeaderAds from '../components/PageHeaderAds';
+import JobAdsList from '../../../components/jobAdsList/JobAdsList';
+import theme from '../../../styles/theme';
+import DesktopJobDetails from './DesktopJobDetails';
+import breakpoints from '../../../styles/breakpoints';
+import map_picture from '../../../images/map_picture.png';
 
 class DesktopJobsPage extends Component {
-  state = { activeComponent: 'list' }
+  state = {
+    sidemenuVisible: true
+  };
 
-  changeComponent = componentName => {
-    this.setState({ activeComponent: componentName })
-  }
-
-  selectAd = selectedJob => {
-    this.props.selectJob(selectedJob)
-  }
-
-  getContent = () => {
-    const { activeComponent } = this.state
-    const { selectedJob } = this.props
-
-    if (activeComponent === 'list' && Object.keys(selectedJob).length > 0) {
-      return <DesktopJobDetails selectedJob={selectedJob} />
-    } else if (activeComponent === 'map') {
-      return <JobMap />
-    } else if (activeComponent === 'overview' && this.props.hits.length > 0) {
-      return <DesktopOverview />
+  selectOrUnselectJob = job => {
+    if (job.id === this.props.selectedJob.id) {
+      this.props.unselectJob();
+    } else {
+      this.props.selectJob(job);
     }
-  }
+  };
 
   render() {
-    const { activeComponent } = this.state
+    const { hits, selectedJob } = this.props;
 
     return (
-      <div>
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <PageHeaderAds />
 
-        <GridContainer>
-          <Menu>
-            <MenuItem
-              selected={activeComponent === 'list'}
-              onClick={() => this.setState({ activeComponent: 'list' })}
-            >
-              <p>ANNONSER</p>
-            </MenuItem>
-            <MenuItem
-              selected={activeComponent === 'map'}
-              onClick={() => this.setState({ activeComponent: 'map' })}
-            >
-              <p>KARTA</p>
-            </MenuItem>
-            <MenuItem
-              selected={activeComponent === 'overview'}
-              onClick={() => this.setState({ activeComponent: 'overview' })}
-            >
-              <p>ÖVERSIKT</p>
-            </MenuItem>
-          </Menu>
+        <FlexContainer visible={this.state.sidemenuVisible}>
+          <div className="left-container">
+            {hits.length > 0 && <ResultStats />}
+            <JobAdsList selectOrUnselectJob={this.selectOrUnselectJob} />
+          </div>
 
-          <SideMenu>
-            <ResultStats />
-            <JobAdsList selectAd={this.selectAd} />
-            {/* <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P> */}
-          </SideMenu>
+          {Object.keys(selectedJob).length > 0 && (
+            <DesktopJobDetails
+              key={selectedJob.id}
+              selectedJob={selectedJob}
+              unselectJob={this.props.unselectJob}
+            />
+          )}
 
-          <Content>{this.getContent()}</Content>
-        </GridContainer>
+          <div className="right-container">
+            <Button
+              onClick={() =>
+                this.setState(prevState => ({
+                  sidemenuVisible: !prevState.sidemenuVisible
+                }))
+              }
+              style={{ margin: 0 }}
+            >
+              <Icon
+                name="angle double left"
+                size="large"
+                style={{
+                  transform: this.state.sidemenuVisible
+                    ? 'rotate(0deg)'
+                    : 'rotate(180deg)'
+                }}
+              />
+            </Button>
 
-        <EllipseContainer>
-          <Ellipse
-            height="220px"
-            width="170px"
-            bottom="-60px"
-            right="-20px"
-            bgcolor={`linear-gradient(#fff, ${theme.green4})`}
-            zIndex={-2}
-          />
-          <Ellipse
-            height="180px"
-            width="140px"
-            bottom="-60px"
-            right="82px"
-            bgcolor={`linear-gradient(#fff, ${theme.green1})`}
-            zIndex={-1}
-          />
-        </EllipseContainer>
+            <div
+              style={{
+                height: '100%',
+                width: '100%',
+                background: `#444 url(${map_picture}) center/cover no-repeat`
+              }}
+            />
+          </div>
+        </FlexContainer>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, selectedJob } = ads
+  const { hits, selectedJob, searchTerm, location } = ads;
 
   return {
     hits,
-    selectedJob
-  }
+    selectedJob,
+    searchTerm,
+    location
+  };
 }
 
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob }
-)(DesktopJobsPage)
+)(DesktopJobsPage);
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-columns: 480px 800px;
-  grid-row-gap: 2rem;
-  grid-column-gap: 5rem;
-  justify-content: center;
-  margin-top: 5rem;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 480px 100%;
-  }
-`
-
-const Menu = styled.ul`
-  grid-row: 1/2;
-  grid-column: 1/2;
-  min-height: 50px;
+const FlexContainer = styled.main`
+  height: 100%;
+  width: 100%;
   display: flex;
-  align-items: center;
-  list-style: none;
-`
+  /* padding: 0 50px; */
+  position: relative;
 
-const MenuItem = styled.li`
-  flex: 1;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 1rem;
-  color: ${props => (props.selected ? theme.green4 : '#000')};
-  transition: all 0.2s;
-  cursor: pointer;
-
-  & p {
-    display: inline-block;
-    position: relative;
+  @media only screen and (min-width: ${breakpoints.tablet}) {
+    padding: 0;
   }
 
-  &:hover {
-    color: ${theme.green4};
-    & p:before {
-      visibility: visible;
-      transform: scaleX(1);
+  @media only screen and (min-width: 1366px) {
+    width: 1366px;
+    margin: 0 auto;
+  }
+
+  .left-container {
+    position: relative;
+    width: ${({ visible }) => (visible ? '480px' : '0px')};
+    max-width: 480px;
+    opacity: ${({ visible }) => (visible ? '1' : '0')};
+    flex-direction: column;
+    transition: width 0.5s;
+    overflow: hidden;
+    background: #fff;
+
+    @media (max-width: ${breakpoints.tabletLandscape}) {
+      width: ${({ visible }) => (visible ? '50%' : '0px')};
+      max-width: 50%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: ${({ visible }) => (visible ? '100%' : '0px')};
+      max-width: 100%;
+      overflow: hidden;
     }
   }
 
-  & p:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: ${theme.green4};
-    visibility: ${props => (props.selected ? 'visible' : 'hidden')};
-    transform: ${props => (props.selected ? 'scaleX(1)' : 'scaleX(0)')};
-    transition: all 0.2s ease-in-out 0s;
-  }
-`
+  .right-container {
+    position: relative;
+    flex: 1;
 
-const SideMenu = styled.div`
-  grid-row: 2/3;
-  grid-column: 1/2;
-  position: relative;
-  height: 75vh;
-  width: 480px;
-  max-width: 480px;
+    h2 {
+      font-weight: normal !important;
+    }
+
+    p {
+      font-size: 20px !important;
+    }
+  }
+`;
+
+const Button = styled.div`
   display: flex;
-  flex-direction: column;
-`
-
-const Content = styled.div`
-  grid-row: 2/3;
-  grid-column: 2/3;
-
-  h2 {
-    font-weight: normal !important;
-  }
-
-  p {
-    font-size: 20px !important;
-  }
-`
-
-const EllipseContainer = styled.div`
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  height: 220px;
-  width: 250px;
-  overflow: hidden;
-  z-index: -1;
-`
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  min-width: 50px;
+  height: 50px;
+  width: 50px;
+  color: #4aefe2;
+  border: 1px solid #4aefe2;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px #000;
+  background: #fff;
+  position: absolute;
+  top: 25px;
+  left: -25px;
+  z-index: 2;
+`;

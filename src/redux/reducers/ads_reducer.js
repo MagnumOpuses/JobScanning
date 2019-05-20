@@ -59,7 +59,9 @@ export default (state = initialState, action) => {
         topCompetences,
         topTraits,
         offset: action.offset,
-        selectedJob: action.payload.processedList[0]
+        selectedJob: action.payload.processedList[0].changedLocation
+          ? {}
+          : action.payload.processedList[0]
       }
     }
 

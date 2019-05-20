@@ -6,10 +6,6 @@ class EnrichmentRankingContainer extends Component {
   render() {
     const { hits, searchTerm, topCompetences, topTraits } = this.props
 
-    if (!hits.length > 0) {
-      return null
-    }
-
     return (
       <EnrichmentRanking
         hits={hits}
