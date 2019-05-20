@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
-import theme from './styles/theme'
-import HomePage from './pages/HomePage'
-import SearchPage from './pages/SearchPage'
-import AdDetails from './pages/AdDetails'
-import AdsPage from './pages/JobsPage/AdsPage'
-import Overview from './pages/Overview'
-import breakpoints from './styles/breakpoints'
-import backgroundImg from './images/Pixel.jpg'
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
+import AdDetails from './pages/AdDetails';
+import AdsPage from './pages/JobsPage/AdsPage';
+import Overview from './pages/Overview';
+import breakpoints from './styles/breakpoints';
+import backgroundImg from './images/Pixel.jpg';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   .box-shadow {
     box-shadow: 0 10px 20px rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,0.10);
   }
-`
+`;
 
 class App extends Component {
   render() {
@@ -112,13 +112,13 @@ class App extends Component {
           </Switch>
         </AppContainer>
       </ThemeProvider>
-    )
+    );
   }
 }
 
-export default App
+export default App;
 
 const AppContainer = styled.div`
   height: 100vh;
   position: relative;
-`
+`;

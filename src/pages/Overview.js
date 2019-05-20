@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Header } from 'semantic-ui-react';
 import PageHeaderAds from './JobsPage/components/PageHeaderAds';
 import Chart from '../components/Chart';
 import breakpoints from '../styles/breakpoints';
@@ -10,9 +11,7 @@ import SourceRankingContainer from '../components/sourceRanking/SourceRankingCon
 
 const Overview = () => {
   return (
-    <div
-      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column' }}
-    >
+    <>
       <PageHeaderAds />
 
       <GridContainer>
@@ -41,33 +40,51 @@ const Overview = () => {
           </p>
         </div>
         <div className="sources box">
+          <Header
+            as="h2"
+            icon="world"
+            content="Källor"
+            style={{ fontSize: '32px' }}
+          />
           <SourceRankingContainer />
         </div>
         <div className="skills box">
+          <Header
+            as="h2"
+            icon="briefcase"
+            content="Kompetenser"
+            style={{ fontSize: '32px' }}
+          />
           <SkillsRankingContainer />
         </div>
         <div className="traits box">
+          <Header
+            as="h2"
+            icon="user"
+            content="Förmågor"
+            style={{ fontSize: '32px' }}
+          />
           <TraitsRankingContainer />
         </div>
         <div className="map box">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <Header
+            as="h2"
+            icon="map"
+            content="Karta"
+            style={{ fontSize: '32px' }}
+          />
         </div>
         <div className="chart box">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </p>
+          <Header
+            as="h2"
+            icon="line graph"
+            content="Historik"
+            style={{ fontSize: '32px' }}
+          />
           <Chart />
         </div>
       </GridContainer>
-    </div>
+    </>
   );
 };
 
@@ -81,10 +98,10 @@ const GridContainer = styled.div`
     'header header header'
     'sources skills traits'
     'map chart chart';
-  grid-gap: 40px;
+  grid-gap: 20px;
   max-width: 1366px;
   margin: 0 auto;
-  padding: 0;
+  padding: 20px;
 
   @media (max-width: ${breakpoints.tabletLandscape}) {
     height: auto;

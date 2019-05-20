@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import posed from 'react-pose';
 import { Menu } from 'semantic-ui-react';
 import {
   MobileJobsList,
@@ -13,21 +12,7 @@ import {
 } from '../../../components';
 import theme from '../../../styles/theme';
 import numberOfUniqueSources from '../../../utils/numberOfUniqueSources';
-
-const SlideUpAndDown = posed.div({
-  hidden: {
-    transform: 'translateY(-269px)',
-    transition: {
-      default: { ease: 'linear', duration: 300 }
-    }
-  },
-  visible: {
-    transform: 'translateY(0px)',
-    transition: {
-      default: { ease: 'linear', duration: 300 }
-    }
-  }
-});
+import PageHeaderAds from './PageHeaderAds';
 
 class MobileJobsPage extends Component {
   constructor(props) {
@@ -128,7 +113,7 @@ class MobileJobsPage extends Component {
       <GridContainer rows={`${headerHeight}px calc(100vh - ${headerHeight}px)`}>
         <Header
           ref={this.headerRef}
-          pose={headerVisible ? 'visible' : 'hidden'}
+          className={headerVisible ? 'visible' : 'hidden'}
         >
           <PageHeader mobile ads />
 
@@ -223,12 +208,20 @@ const CustomMenuItem = styled(Menu.Item)`
   }
 `;
 
-const Header = styled(SlideUpAndDown)`
+const Header = styled.header`
   grid-row: 1/2;
   position: fixed;
   left: 0;
   right: 0;
   z-index: 1000;
   background: #fff;
-  transition: all 0.2s;
+  transition: all 0.3s;
+
+  &.visible {
+    transform: translateY(0px);
+  }
+
+  &.hidden {
+    transform: translateY(-269px);
+  }
 `;

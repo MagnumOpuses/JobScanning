@@ -5,7 +5,6 @@ import { Icon } from 'semantic-ui-react';
 import breakpoints from '../../styles/breakpoints';
 
 const ResultStats = ({
-  total,
   processedList,
   sources,
   usedSearchTerm,
@@ -37,7 +36,6 @@ const ResultStats = ({
 export default ResultStats;
 
 const DesktopSearchMetadata = styled.div`
-  height: 80px;
   margin: 20px;
 
   @media (max-width: ${breakpoints.tabletLandscape}) {

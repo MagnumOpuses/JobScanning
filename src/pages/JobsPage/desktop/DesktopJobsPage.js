@@ -98,7 +98,7 @@ const FlexContainer = styled.main`
   height: 100%;
   width: 100%;
   display: flex;
-  padding: 0 50px;
+  /* padding: 0 50px; */
   position: relative;
 
   @media only screen and (min-width: ${breakpoints.tablet}) {
@@ -114,7 +114,6 @@ const FlexContainer = styled.main`
     position: relative;
     width: ${({ visible }) => (visible ? '480px' : '0px')};
     max-width: 480px;
-    margin-right: ${({ visible }) => (visible ? '15px' : '0px')};
     opacity: ${({ visible }) => (visible ? '1' : '0')};
     flex-direction: column;
     transition: width 0.5s;
@@ -124,6 +123,12 @@ const FlexContainer = styled.main`
     @media (max-width: ${breakpoints.tabletLandscape}) {
       width: ${({ visible }) => (visible ? '50%' : '0px')};
       max-width: 50%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: ${({ visible }) => (visible ? '100%' : '0px')};
+      max-width: 100%;
+      overflow: hidden;
     }
   }
 
