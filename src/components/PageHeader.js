@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../../styles/theme';
+import theme from '../styles/theme';
 import { Icon } from 'semantic-ui-react';
-import { Ellipse } from '../../../components';
-import jt_logowhite from '../../../images/logo/1x/jt_logowhite.png';
+import { Ellipse } from './index';
+import jt_logowhite from '../images/logo/1x/jt_logowhite.png';
 
 class PageHeader extends Component {
   render() {

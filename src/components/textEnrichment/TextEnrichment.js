@@ -58,7 +58,7 @@ const Container = styled.div`
   .list {
     transition: max-height 0.3s ease;
     max-height: ${({ isExpanded, listHeight }) =>
-      isExpanded ? Math.ceil(listHeight / 2) * 32 + 'px' : '64px'};
+      isExpanded ? '192px' : '64px'};
     height: 100%;
     overflow: hidden;
     margin: 0;

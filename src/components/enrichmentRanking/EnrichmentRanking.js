@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
 import breakpoints from '../../styles/breakpoints';
 
 const EnrichmentRanking = ({ hits, searchTerm, target }) => {

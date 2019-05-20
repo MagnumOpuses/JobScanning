@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob } from '../../../redux/actions';
+import { selectJob, unselectJob } from '../redux/actions';
 import styled from 'styled-components';
-import { ResultStats } from '../../../components';
+import { ResultStats } from '.';
 import { Icon } from 'semantic-ui-react';
-import PageHeaderAds from '../components/PageHeaderAds';
-import JobAdsList from '../../../components/jobAdsList/JobAdsList';
-import theme from '../../../styles/theme';
+import PageHeaderAds from './PageHeaderAds';
+import JobAdsList from './jobAdsList/JobAdsList';
 import DesktopJobDetails from './DesktopJobDetails';
-import breakpoints from '../../../styles/breakpoints';
-import map_picture from '../../../images/map_picture.png';
+import breakpoints from '../styles/breakpoints';
+import map_picture from '../images/map_picture.png';
 
 class DesktopJobsPage extends Component {
   state = {
@@ -100,7 +99,6 @@ const FlexContainer = styled.main`
   height: 100%;
   width: 100%;
   display: flex;
-  /* padding: 0 50px; */
   position: relative;
 
   @media only screen and (min-width: ${breakpoints.tablet}) {

@@ -5,9 +5,9 @@ import GridContainer from './reusables/GridContainer';
 import CustomLoader from './reusables/CustomLoader';
 import LogoPlaceholder from './reusables/LogoPlaceholder';
 import NoResultsBox from './reusables/NoResultsBox';
-import PageHeader from '../pages/JobsPage/components/PageHeader';
+import PageHeader from './PageHeader';
 
-import MobileJobsList from '../pages/JobsPage/components/MobileJobsList';
+import MobileJobsList from './MobileJobsList';
 
 import DescriptionContainer from './reusables/DescriptionContainer';
 

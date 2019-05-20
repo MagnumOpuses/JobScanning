@@ -14,7 +14,7 @@ import sv from 'date-fns/locale/sv';
 import images from '../images/index';
 import theme from '../styles/theme';
 import Responsive from 'react-responsive';
-import DesktopJobsPage from './JobsPage/desktop/DesktopJobsPage';
+import DesktopJobsPage from '../components/DesktopJobsPage';
 
 class AdDetails extends Component {
   componentDidMount = async () => {
@@ -33,11 +33,7 @@ class AdDetails extends Component {
       sources
     } = this.props.selectedJob;
     if (!sources) {
-      return (
-        <div>
-          <PageHeader ads />
-        </div>
-      );
+      return <Redirect to="/" />;
     }
 
     const siteName = sources.length > 1 ? 'Se nedan' : sources[0].name;

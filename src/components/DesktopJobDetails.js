@@ -2,14 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
 import sv from 'date-fns/locale/sv';
-import {
-  DescriptionContainer,
-  LogoPlaceholder,
-  TextEnrichment
-} from '../../../components/index';
-import images from '../../../images';
-import { buttonStyleCorners } from '../../../styles/components';
-import breakpoints from '../../../styles/breakpoints';
+import { DescriptionContainer, LogoPlaceholder, TextEnrichment } from './index';
+import images from '../images';
+import { buttonStyleCorners } from '../styles/components';
+import breakpoints from '../styles/breakpoints';
 
 const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
   return (
@@ -138,7 +134,18 @@ const Container = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 1366px) {
-    left: 5%;
+    left: 490px;
+    right: 10px;
+  }
+
+  @media (max-width: 1024px) {
+    left: 20px;
+    right: 20px;
+  }
+
+  @media (max-width: 767px) {
+    left: 10px;
+    right: 10px;
   }
 `;
 

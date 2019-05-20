@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../../styles/theme';
-import breakpoint from '../../../styles/breakpoints';
-import jt_logoblack from '../../../images/logo/1x/jt_logoblack.png';
-import { SearchForm } from '../../../components';
+import theme from '../styles/theme';
+import jt_logoblack from '../images/logo/1x/jt_logoblack.png';
+import { SearchForm } from './index';
 
 class PageHeaderAds extends Component {
   render() {

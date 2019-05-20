@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
-import PageHeaderAds from './JobsPage/components/PageHeaderAds';
+import PageHeaderAds from '../components/PageHeaderAds';
 import Chart from '../components/Chart';
 import breakpoints from '../styles/breakpoints';
 import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
@@ -103,9 +103,15 @@ const GridContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
 
-  @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+  @media screen and (max-width: ${breakpoints.tabletLandscape}) {
     height: auto;
-    padding: 20px 5px;
+    grid-template-rows: auto auto 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'header header'
+      'skills traits'
+      'sources map'
+      'chart chart';
   }
 
   @media screen and (max-width: ${breakpoints.tablet}) {
@@ -121,15 +127,9 @@ const GridContainer = styled.div`
       'chart';
   }
 
-  @media screen and (max-width: ${breakpoints.tabletLandscape}) {
+  @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     height: auto;
-    grid-template-rows: auto auto 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'header header'
-      'skills traits'
-      'sources map'
-      'chart chart';
+    padding: 20px 5px;
   }
 
   .box {
@@ -181,3 +181,45 @@ const SVGBackArrow = styled.svg`
     font-size: 20px;
   }
 `;
+
+// const GridContainer = styled.div`
+// display: grid;
+// grid-template-rows: auto auto auto;
+// grid-template-columns: 1fr 1fr 1fr;
+// grid-template-areas:
+//   'header header header'
+//   'sources skills traits'
+//   'map chart chart';
+// grid-gap: 20px;
+// max-width: 1366px;
+// margin: 0 auto;
+// padding: 20px;
+
+// @media screen and (max-width: ${breakpoints.mobileLandscape}) {
+//   height: auto;
+//   padding: 20px 5px;
+// }
+
+// @media screen and (max-width: ${breakpoints.tablet}) {
+//   height: auto;
+//   grid-template-rows: auto auto auto auto auto auto;
+//   grid-template-columns: 1fr;
+//   grid-template-areas:
+//     'header'
+//     'sources'
+//     'skills'
+//     'traits'
+//     'map'
+//     'chart';
+// }
+
+// @media screen and (max-width: ${breakpoints.tabletLandscape}) {
+//   height: auto;
+//   grid-template-rows: auto auto 1fr 1fr;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-areas:
+//     'header header'
+//     'skills traits'
+//     'sources map'
+//     'chart chart';
+// }

@@ -5,7 +5,7 @@ import theme from './styles/theme';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import AdDetails from './pages/AdDetails';
-import AdsPage from './pages/JobsPage/AdsPage';
+import AdsPage from './pages/AdsPage';
 import Overview from './pages/Overview';
 import breakpoint from './styles/breakpoints';
 import backgroundImg from './images/Pixel.jpg';
