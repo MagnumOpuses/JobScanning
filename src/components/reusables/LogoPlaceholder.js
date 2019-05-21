@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 export default class LogoPlaceholder extends Component {
-  state = { exists: true }
+  state = { exists: true };
 
   onError = () => {
-    this.setState({ exists: false })
-  }
+    this.setState({ exists: false });
+  };
 
   render() {
     if (this.props.employer.logoUrl) {
@@ -24,7 +24,7 @@ export default class LogoPlaceholder extends Component {
             .slice(0, 3)
             .join('')}
         </StyledH3>
-      )
+      );
     } else if (this.props.employer.name) {
       return (
         <StyledH3>
@@ -33,9 +33,11 @@ export default class LogoPlaceholder extends Component {
             .slice(0, 3)
             .join('')}
         </StyledH3>
-      )
+      );
     } else {
-      return null
+      console.log(this.props.employer);
+
+      return <></>;
     }
   }
 }
@@ -43,7 +45,7 @@ export default class LogoPlaceholder extends Component {
 const StyledImg = styled.img`
   width: 100px;
   margin-right: 1.5rem;
-`
+`;
 
 const StyledH3 = styled.p`
   display: flex;
@@ -62,4 +64,4 @@ const StyledH3 = styled.p`
   hyphens: auto;
   color: #fff;
   background: ${props => props.theme.green3};
-`
+`;

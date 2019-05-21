@@ -194,8 +194,6 @@ class MapComponent extends Component
       heatmap.setVisible(false);
     }
 
-    console.log(heatmap);
-
     this.populate();	
   }
 

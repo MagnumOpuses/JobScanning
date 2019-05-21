@@ -1,132 +1,166 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { selectJob, unselectJob } from '../../../redux/actions'
-import styled from 'styled-components'
-import { JobMap, ResultStats } from '../../../components'
-import PageHeaderAds from '../components/PageHeaderAds'
-import JobAdsList from '../../../components/jobAdsList/JobAdsList'
-import theme from '../../../styles/theme'
-import DesktopJobDetails from './components/DesktopJobDetails'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectJob, unselectJob } from '../../../redux/actions';
+import styled from 'styled-components';
+import { ResultStats } from '../../../components';
+import { Icon } from 'semantic-ui-react';
+import PageHeaderAds from '../components/PageHeaderAds';
+import JobAdsList from '../../../components/jobAdsList/JobAdsList';
+import theme from '../../../styles/theme';
+import DesktopJobDetails from './DesktopJobDetails';
+import breakpoints from '../../../styles/breakpoints';
+import map_picture from '../../../images/map_picture.png';
 import MapComponent from '../../../components/map/map'
 
 class DesktopJobsPage extends Component {
+  state = {
+    sidemenuVisible: true
+  };
+
   selectOrUnselectJob = job => {
     if (job.id === this.props.selectedJob.id) {
-      this.props.unselectJob(job)
+      this.props.unselectJob();
     } else {
-      this.props.selectJob(job)
+      this.props.selectJob(job);
     }
-  }
+  };
 
   render() {
-    const { hits, selectedJob } = this.props
+    const { hits, selectedJob } = this.props;
 
     return (
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <PageHeaderAds />
 
-        <FlexContainer>
-          <LeftContainer>
-            <div className="search-metadata">
-              {hits.length > 0 && <ResultStats desktop />}
-            </div>
+        <FlexContainer visible={this.state.sidemenuVisible}>
+          <div className="left-container">
+            {hits.length > 0 && <ResultStats />}
             <JobAdsList selectOrUnselectJob={this.selectOrUnselectJob} />
-            {/* <P style={{ padding: '.5rem 0 1rem' }}>Scrolla ner för att se fler.</P> */}
-          </LeftContainer>
+          </div>
 
-          <RightContainer>
-            {Object.keys(selectedJob).length > 0 && (
-              <DesktopJobDetails
-                selectedJob={selectedJob}
-                unselectJob={this.props.unselectJob}
+          {Object.keys(selectedJob).length > 0 && (
+            <DesktopJobDetails
+              key={selectedJob.id}
+              selectedJob={selectedJob}
+              unselectJob={this.props.unselectJob}
+            />
+          )}
+
+          <div className="right-container">
+            <Button
+              onClick={() =>
+                this.setState(prevState => ({
+                  sidemenuVisible: !prevState.sidemenuVisible
+                }))
+              }
+              style={{ margin: 0 }}
+            >
+              <Icon
+                name="angle double left"
+                size="large"
+                style={{
+                  transform: this.state.sidemenuVisible
+                    ? 'rotate(0deg)'
+                    : 'rotate(180deg)'
+                }}
               />
-            )}
+            </Button>
+
             <MapComponent 
-              height={'800px'}
+              height={'100%'}
               location={this.props.location}
               q={this.props.searchTerm}
             />
-          </RightContainer>
+          </div>
         </FlexContainer>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, selectedJob, searchTerm, location } = ads
+  const { hits, selectedJob, searchTerm, location } = ads;
 
   return {
     hits,
     selectedJob,
     searchTerm,
     location
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob }
-)(DesktopJobsPage)
+)(DesktopJobsPage);
 
-const FlexContainer = styled.div`
+const FlexContainer = styled.main`
   height: 100%;
+  width: 100%;
   display: flex;
-  padding: 0 50px;
-`
-
-const LeftContainer = styled.div`
+  /* padding: 0 50px; */
   position: relative;
-  width: 480px;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
 
-  .search-metadata {
-    height: 80px;
-    margin: 20px 0;
+  @media only screen and (min-width: ${breakpoints.tablet}) {
+    padding: 0;
   }
 
-  .to-overview {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100px;
-    width: 90%;
-    margin: 10px auto;
-    padding: 5px;
-    text-align: center;
-    color: #000;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+  @media only screen and (min-width: 1366px) {
+    width: 1366px;
+    margin: 0 auto;
+  }
 
-    &:hover {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-      border: 1px solid #a6f3ed;
+  .left-container {
+    position: relative;
+    width: ${({ visible }) => (visible ? '480px' : '0px')};
+    max-width: 480px;
+    opacity: ${({ visible }) => (visible ? '1' : '0')};
+    flex-direction: column;
+    transition: width 0.5s;
+    overflow: hidden;
+    background: #fff;
+
+    @media (max-width: ${breakpoints.tabletLandscape}) {
+      width: ${({ visible }) => (visible ? '50%' : '0px')};
+      max-width: 50%;
     }
 
+    @media (max-width: ${breakpoints.tablet}) {
+      width: ${({ visible }) => (visible ? '100%' : '0px')};
+      max-width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  .right-container {
+    position: relative;
+    flex: 1;
+
     h2 {
-      font-size: 20px;
-      font-weight: normal;
+      font-weight: normal !important;
     }
 
     p {
-      font-size: 18px;
+      font-size: 20px !important;
     }
   }
-`
+`;
 
-const RightContainer = styled.div`
-  position: relative;
-  flex: 1;
-  margin-left: 15px;
-
-  h2 {
-    font-weight: normal !important;
-  }
-
-  p {
-    font-size: 20px !important;
-  }
-`
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  min-width: 50px;
+  height: 50px;
+  width: 50px;
+  color: #4aefe2;
+  border: 1px solid #4aefe2;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px #000;
+  background: #fff;
+  position: absolute;
+  top: 25px;
+  left: -25px;
+  z-index: 2;
+`;

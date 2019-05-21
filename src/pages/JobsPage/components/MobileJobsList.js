@@ -1,50 +1,50 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchMoreJobs, selectJob } from '../../../redux/actions'
-import { withRouter } from 'react-router-dom'
-import styled from 'styled-components'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { CustomLoader, LogoPlaceholder } from '../../../components'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchMoreJobs, selectJob } from '../../../redux/actions';
+import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { CustomLoader, LogoPlaceholder } from '../../../components';
 
 class MobileJobsList extends Component {
   constructor(props) {
-    super(props)
-    this.listRef = React.createRef()
+    super(props);
+    this.listRef = React.createRef();
   }
 
   handleScroll = () => {
-    this.props.handleScroll(this.listRef)
-  }
+    this.props.handleScroll(this.listRef);
+  };
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   calculateInfiniteScrollHeight = () => {
-    const { processedList } = this.props
+    const { processedList } = this.props;
     if (processedList.length <= 2) {
-      return '50vh'
+      return '50vh';
     }
 
-    const height = (processedList.length - 1) * 30
-    return height > 90 ? '100vh' : `${height}vh`
-  }
+    const height = (processedList.length - 1) * 30;
+    return height > 90 ? '100vh' : `${height}vh`;
+  };
 
   redirectToAdPage = job => {
-    this.props.selectJob(job)
-    this.props.history.push(`/jobs/${job.id}`)
-  }
+    this.props.selectJob(job);
+    this.props.history.push(`/jobs/${job.id}`);
+  };
 
   fetchMoreData = () => {
     this.props.fetchMoreJobs(
       this.props.searchTerm,
       this.props.location,
       this.props.offset + 20
-    )
-  }
+    );
+  };
 
   render() {
-    const { processedList } = this.props
+    const { processedList } = this.props;
 
     return (
       <List
@@ -81,7 +81,7 @@ class MobileJobsList extends Component {
                   Slut på annonser i {item.oldLocation}. Visar annonser i{' '}
                   {item.newLocation}
                 </p>
-              )
+              );
             }
             return (
               <ListItem key={i} onClick={() => this.redirectToAdPage(item)}>
@@ -99,16 +99,16 @@ class MobileJobsList extends Component {
                   </P>
                 </div>
               </ListItem>
-            )
+            );
           })}
         </InfiniteScroll>
       </List>
-    )
+    );
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { isFetching, hits, processedList, searchTerm, location, offset } = ads
+  const { isFetching, hits, processedList, searchTerm, location, offset } = ads;
 
   return {
     isFetching,
@@ -117,7 +117,7 @@ function mapStateToProps({ ads }) {
     searchTerm,
     location,
     offset
-  }
+  };
 }
 
 export default withRouter(
@@ -125,27 +125,27 @@ export default withRouter(
     mapStateToProps,
     { fetchMoreJobs, selectJob }
   )(MobileJobsList)
-)
+);
 
 const List = styled.ul`
   height: 100%;
   width: 100%;
+  list-style: none;
   overflow: auto;
   display: grid;
-`
+`;
 
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  list-style: none;
-  border-bottom: 2px solid ${props => props.theme.green4};
+  border-bottom: 2px solid hsl(120, 23%, 95%);
   padding: 1.5rem 1rem;
-`
+`;
 
 const ItemTitle = styled.h2`
   font-size: 18px;
-`
+`;
 
 const P = styled.p`
   font-size: 18px;
-`
+`;

@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import breakpoints from '../../styles/breakpoints'
-import getLogo from '../../utils/getLogo'
+import React from 'react';
+import styled from 'styled-components';
+import breakpoints from '../../styles/breakpoints';
+import getLogo from '../../utils/getLogo';
 
 const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
   return (
-    <div className="SourceRanking card-box-shadow">
+    <div className="SourceRanking">
       <p>
         Topp{' '}
         <span className="bold">{numberOfSources ? numberOfSources : 0}</span>{' '}
@@ -23,10 +23,10 @@ const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
         ))}
       </OrderedList>
     </div>
-  )
-}
+  );
+};
 
-export default SourceRanking
+export default SourceRanking;
 
 const OrderedList = styled.ol`
   list-style: none;
@@ -67,4 +67,4 @@ const OrderedList = styled.ol`
       background: #a6f3ed;
     }
   }
-`
+`;

@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react'
-import breakpoint from '../../styles/breakpoints'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react';
+import breakpoint from '../../styles/breakpoints';
 
 const SearchForm = ({
   handleSubmit,
@@ -11,61 +11,89 @@ const SearchForm = ({
   searchTerm,
   location,
   handleChange,
-  upward
+  upward,
+  togglable
 }) => {
+  const [showForm, setShowForm] = useState(false);
+  console.log(togglable);
+
   return (
-    <CustomForm onSubmit={handleSubmit} className={isDesktop && 'isDesktop'}>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Input
-          name="searchTerm"
-          value={searchTerm}
-          onChange={handleChange}
-          size="big"
+    <>
+      {togglable && (
+        <SearchIcon
           icon="search"
-          iconPosition="left"
-          placeholder="Skriv sökord"
-          required
+          basic
+          onClick={() => setShowForm(!showForm)}
         />
-        <Link to="/overview" style={{ color: '#49efe1' }}>
-          <Icon name="line graph" size="large" />
-          Se yrkesöversikt
-        </Link>
-      </div>
-
-      <div style={{ overflow: 'visible' }}>
-        <Form.Field>
-          <StyledDropdown
-            name="location"
-            value={location}
+      )}
+      <CustomForm
+        onSubmit={handleSubmit}
+        className={`${isDesktop ? 'isDesktop' : ''} ${
+          togglable ? (showForm ? 'show' : 'hide') : ''
+        }`}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Input
+            name="searchTerm"
+            value={searchTerm}
             onChange={handleChange}
-            placeholder="Ange plats"
-            search
-            selection
-            options={countiesAndMunicipalities}
-            upward={upward}
+            size="big"
+            icon="search"
+            iconPosition="left"
+            placeholder="Skriv sökord"
+            required
           />
-        </Form.Field>
-      </div>
+          <Link to="/overview" style={{ color: '#49efe1' }}>
+            <Icon name="line graph" size="large" />
+            Se yrkesöversikt
+          </Link>
+        </div>
 
-      <div style={{ textAlign: 'center' }}>
-        <CustomButton
-          type="submit"
-          disabled={searchTerm.length > 0 ? false : true}
-        >
-          Sök
-        </CustomButton>
-      </div>
-    </CustomForm>
-  )
-}
+        <div style={{ overflow: 'visible' }}>
+          <Form.Field>
+            <StyledDropdown
+              name="location"
+              value={location}
+              onChange={handleChange}
+              placeholder="Ange plats"
+              search
+              selection
+              options={countiesAndMunicipalities}
+              upward={upward}
+            />
+          </Form.Field>
+        </div>
 
-export default SearchForm
+        <div style={{ textAlign: 'center' }}>
+          <CustomButton
+            type="submit"
+            disabled={searchTerm.length > 0 ? false : true}
+          >
+            Sök
+          </CustomButton>
+        </div>
+      </CustomForm>
+    </>
+  );
+};
+
+export default SearchForm;
+
+const SearchIcon = styled(Button)`
+  &&& {
+    font-size: 24px !important;
+
+    @media (min-width: ${breakpoint.tablet}) {
+      display: none;
+    }
+  }
+`;
 
 const StyledDropdown = styled(Dropdown)`
   & .visible {
     min-height: 30vh;
   }
-`
+`;
 
 const CustomForm = styled(Form)`
   &&& {
@@ -79,6 +107,7 @@ const CustomForm = styled(Form)`
     border-radius: 5px;
     z-index: 1000;
     overflow: visible;
+    height: min-content;
 
     &&& * {
       font-size: 16px;
@@ -86,6 +115,19 @@ const CustomForm = styled(Form)`
 
     &&& > div {
       margin-top: 1rem;
+    }
+
+    &.show {
+      @media (max-width: ${breakpoint.tablet}) {
+        height: min-content;
+      }
+    }
+
+    &.hide {
+      @media (max-width: ${breakpoint.tablet}) {
+        overflow: hidden;
+        max-height: 0;
+      }
     }
 
     @media (min-width: ${breakpoint.tablet}) {
@@ -99,7 +141,7 @@ const CustomForm = styled(Form)`
       }
     }
   }
-`
+`;
 
 const CustomButton = styled(Button)`
   &&& {
@@ -126,4 +168,4 @@ const CustomButton = styled(Button)`
       margin-top: 0;
     }
   }
-`
+`;

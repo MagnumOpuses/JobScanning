@@ -1,6 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import breakpoints from '../../styles/breakpoints'
+import React from 'react';
+import styled from 'styled-components';
+import { Icon } from 'semantic-ui-react';
+import breakpoints from '../../styles/breakpoints';
 
 const EnrichmentRanking = ({ hits, searchTerm, target }) => {
   return (
@@ -20,10 +21,10 @@ const EnrichmentRanking = ({ hits, searchTerm, target }) => {
         ))}
       </ol>
     </EnrichmentRankingContainer>
-  )
-}
+  );
+};
 
-export default EnrichmentRanking
+export default EnrichmentRanking;
 
 const EnrichmentRankingContainer = styled.div`
   h2 {
@@ -63,4 +64,4 @@ const EnrichmentRankingContainer = styled.div`
       }
     }
   }
-`
+`;

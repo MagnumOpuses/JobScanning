@@ -1,17 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import format from 'date-fns/format'
-import sv from 'date-fns/locale/sv'
+import React from 'react';
+import styled from 'styled-components';
+import format from 'date-fns/format';
+import sv from 'date-fns/locale/sv';
 import {
   DescriptionContainer,
   LogoPlaceholder,
   TextEnrichment
-} from '../../../../components/index'
-import theme from '../../../../styles/theme'
-import images from '../../../../images'
-import { buttonStyleCorners } from '../../../../styles/components'
+} from '../../../components/index';
+import images from '../../../images';
+import { buttonStyleCorners } from '../../../styles/components';
+import breakpoints from '../../../styles/breakpoints';
 
-const DesktopJobDetails = ({ selectedJob }) => {
+const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
   return (
     <Container>
       <Header>
@@ -51,6 +51,7 @@ const DesktopJobDetails = ({ selectedJob }) => {
             </a>
           ))}
         </div>
+        <span onClick={() => unselectJob()} className="close-icon" />
       </Header>
 
       {selectedJob.detected_keywords.skills.length > 0 && (
@@ -64,6 +65,7 @@ const DesktopJobDetails = ({ selectedJob }) => {
           <div
             style={{
               display: 'flex',
+              alignItems: 'flex-start',
               margin: '2rem 0 4rem'
             }}
           >
@@ -119,20 +121,26 @@ const DesktopJobDetails = ({ selectedJob }) => {
         sources={selectedJob.sources}
       /> */}
     </Container>
-  )
-}
+  );
+};
 
-export default DesktopJobDetails
+export default DesktopJobDetails;
 
 const Container = styled.div`
   position: absolute;
-  top: 5%;
-  left: 0;
+  top: 100px;
+  left: 545px;
   right: 5%;
   z-index: 1;
   padding: 60px;
+  margin-bottom: 50px;
   background: #fff;
-`
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1366px) {
+    left: 5%;
+  }
+`;
 
 const Header = styled.header`
   display: flex;
@@ -157,7 +165,44 @@ const Header = styled.header`
   .publisher {
     flex: 0 0 auto;
   }
-`
+
+  .close-icon {
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 30px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      height: 2px;
+      width: 30px;
+      position: absolute;
+      top: 30px;
+      left: 15px;
+      background: #aaa;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover::before {
+      background: #000;
+    }
+
+    &:hover::after {
+      background: #000;
+    }
+  }
+`;
 
 const SourceLogo = styled.div`
   height: 50px;
@@ -166,7 +211,7 @@ const SourceLogo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-`
+`;
 
 const DescriptionText = styled.p`
   max-width: 740px;
@@ -180,14 +225,14 @@ const DescriptionText = styled.p`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
-`
+`;
 
 const SourcesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-`
+`;
 
 const MultipleLinks = styled.div`
   width: 70%;
@@ -199,7 +244,7 @@ const MultipleLinks = styled.div`
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
   padding: 2rem 0 1rem;
   margin: 0 auto 50px;
-`
+`;
 
 const A = styled.a`
   flex: 1 1 45%;
@@ -213,12 +258,15 @@ const A = styled.a`
   &:hover {
     background: #eee;
   }
-`
+`;
 
 const StyledLink = styled.a`
   ${buttonStyleCorners}
   &:link,
   &:visited {
+    display: block;
+    width: 270px;
+    margin: 0 auto;
     padding: 1.5rem 60px;
   }
-`
+`;
