@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import PageHeaderAds from './JobsPage/components/PageHeaderAds'
 import Chart from '../components/Chart'
-import JobMapContainer from '../components/jobMapHeat/JobMapContainer'
+import MapComponent from '../components/map/map'
 import breakpoints from '../styles/breakpoints'
 import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer'
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer'
@@ -52,7 +52,9 @@ const Overview = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <div>{/* <JobMapContainer /> */}</div>
+          <div style={{ "flex-grow": "1" }}>
+            <MapComponent mode="heatmap"/>
+          </div>
         </div>
         <div className="chart box">
           <p>

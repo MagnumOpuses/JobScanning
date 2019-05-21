@@ -7,6 +7,7 @@ import PageHeaderAds from '../components/PageHeaderAds'
 import JobAdsList from '../../../components/jobAdsList/JobAdsList'
 import theme from '../../../styles/theme'
 import DesktopJobDetails from './components/DesktopJobDetails'
+import MapComponent from '../../../components/map/map'
 
 class DesktopJobsPage extends Component {
   selectOrUnselectJob = job => {
@@ -40,7 +41,11 @@ class DesktopJobsPage extends Component {
                 unselectJob={this.props.unselectJob}
               />
             )}
-            <JobMap />
+            <MapComponent 
+              height={'800px'}
+              location={this.props.location}
+              q={this.props.searchTerm}
+            />
           </RightContainer>
         </FlexContainer>
       </div>
