@@ -21,46 +21,7 @@ const initialState = {
   hits: [],
   hasMore: true,
   processedList: [],
-  selectedJob: {
-    id: '0729d6a7-9a3a-47ea-ae67-f5939a9a812d',
-    header: 'Ekonomiassistent',
-    content:
-      'Platsbeskrivning Proforma Clinic är en privat plastikkirurgisk klinik som ingår i MFAF Gruppen som även har verksamheter för utveckling och tillverkning av hudvårdsprodukterna Cicamed. På kliniken utförs alla typer av plastikkirurgiska ingrepp samt synfelskorrektioner med laser och linsbyten, allt av specialistutbildade läkare. Andra behandlingar erbjuds också såsom fillers, botox, hudvård m.m. Vi söker en ekonomiassistent med placering på Mariatorget på Södermalm. Dina huvudsakliga arbetsuppgifter är: . Att sköta den löpande bokföringen. . Handha lev- och kundreskontran samt kundkontakter avseende betalningar. . Göra avstämningar och vissa ekonomiska kontroller. . Vara behjälplig vid månads- och årsbokslut samt sköta viss rapportering. . Övrigt ...',
-    markup:
-      '<document><paragraph>Platsbeskrivning</paragraph><paragraph>Proforma Clinic är en privat plastikkirurgisk klinik som ingår i MFAF Gruppen som även har verksamheter för utveckling och tillverkning av hudvårdsprodukterna Cicamed. På kliniken utförs alla typer av plastikkirurgiska ingrepp samt synfelskorrektioner med laser och linsbyten, allt av specialistutbildade läkare. Andra behandlingar erbjuds också såsom fillers, botox, hudvård m.m.</paragraph><paragraph>Vi söker en ekonomiassistent med placering på Mariatorget på Södermalm.</paragraph><header>Dina huvudsakliga arbetsuppgifter är:</header><paragraph>. Att sköta den löpande bokföringen.</paragraph><paragraph>. Handha lev- och kundreskontran samt kundkontakter avseende betalningar.</paragraph><paragraph>. Göra avstämningar och vissa ekonomiska kontroller.</paragraph><paragraph>. Vara behjälplig vid månads- och årsbokslut samt sköta viss rapportering.</paragraph><paragraph>. Övrigt förekommande uppgifter på en ekonomiavdelning.</paragraph><paragraph>Eftersom vi är ett ...</paragraph>',
-    employer: {
-      name: 'Proforma Clinic AB'
-    },
-    location: 'Stockholm',
-    geolocation: {
-      lng: '59.7413909096437',
-      lat: '18.6528054731035'
-    },
-    application: {
-      site: {
-        url: null,
-        name: null
-      }
-    },
-    detected_keywords: {
-      occupations: ['ekonomiassistent'],
-      skills: [
-        'årsbokslut',
-        'månadsbokslut',
-        'rapportering',
-        'bokföring',
-        'avstämningar'
-      ],
-      traits: ['positiv', 'gillar utmaningar', 'serviceminded']
-    },
-    sources: [
-      {
-        id: '0729d6a7-9a3a-47ea-ae67-f5939a9a812d',
-        name: 'Indeed',
-        url: 'https://se.indeed.com/visajobb?jk=b650ebfa96225ce4'
-      }
-    ]
-  },
+  selectedJob: {},
   numberOfJobsInPlace: {},
   offset: 0,
   total: 0
