@@ -47,6 +47,7 @@ class DesktopJobsPage extends Component {
 
           <div className="right-container">
             <Button
+              visible={this.state.sidemenuVisible}
               onClick={() =>
                 this.setState(prevState => ({
                   sidemenuVisible: !prevState.sidemenuVisible
@@ -117,7 +118,6 @@ const FlexContainer = styled.main`
     opacity: ${({ visible }) => (visible ? '1' : '0')};
     flex-direction: column;
     transition: width 0.5s;
-    overflow: hidden;
     background: #fff;
 
     @media (max-width: ${breakpoints.tabletLandscape}) {
@@ -128,7 +128,6 @@ const FlexContainer = styled.main`
     @media (max-width: ${breakpoints.tablet}) {
       width: ${({ visible }) => (visible ? '100%' : '0px')};
       max-width: 100%;
-      overflow: hidden;
     }
   }
 
@@ -163,4 +162,8 @@ const Button = styled.div`
   top: 25px;
   left: -25px;
   z-index: 2;
+
+  @media only screen and (max-width: ${breakpoints.tablet}) {
+    left: ${({ visible }) => (visible ? '-75px' : '25px')};
+  }
 `;

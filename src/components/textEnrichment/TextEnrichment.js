@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import breakpoint from '../../styles/breakpoints';
+import breakpoints from '../../styles/breakpoints';
 
 const TextEnrichment = ({ header, icon, list, margin }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -51,6 +51,10 @@ const Container = styled.div`
   margin: ${({ margin }) => margin};
   /* text-align: center; */
 
+  @media (max-width: ${breakpoints.mobileLandscape}) {
+    margin: 0;
+  }
+
   .header {
     font-weight: bold;
   }
@@ -67,7 +71,7 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
 
-    @media screen and (max-width: ${breakpoint.tablet}) {
+    @media (max-width: ${breakpoints.tablet}) {
       max-height: ${({ isExpanded, listHeight }) =>
         isExpanded ? listHeight * 32 + 'px' : '64px'};
     }
@@ -80,7 +84,7 @@ const Container = styled.div`
     text-align: left;
     padding: 5px 0;
 
-    @media screen and (max-width: ${breakpoint.tablet}) {
+    @media (max-width: ${breakpoints.tablet}) {
       flex: 1 0 100%;
     }
   }
