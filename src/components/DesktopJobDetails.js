@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
 import sv from 'date-fns/locale/sv';
-import { DescriptionContainer, LogoPlaceholder, TextEnrichment } from './index';
+import { LogoPlaceholder, TextEnrichment } from './index';
 import images from '../images';
 import { buttonStyleCorners } from '../styles/components';
 import breakpoints from '../styles/breakpoints';
@@ -17,7 +17,7 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, []);
+  });
 
   const handleClick = e => {
     console.log(adRef);
@@ -138,12 +138,6 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
           Gå till annonsen
         </StyledLink>
       )}
-
-      {/* <DescriptionContainer
-        text={selectedJob.content}
-        characters={1200}
-        sources={selectedJob.sources}
-      /> */}
     </Container>
   );
 };

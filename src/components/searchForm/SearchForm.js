@@ -11,17 +11,13 @@ const SearchForm = ({
   searchTerm,
   location,
   handleChange,
-  upward,
-  togglable,
-  showForm
+  upward
 }) => {
   return (
     <>
       <CustomForm
         onSubmit={handleSubmit}
-        className={`${isDesktop ? 'isDesktop' : ''} ${
-          togglable ? (showForm ? 'show' : 'hide') : ''
-        }`}
+        className={isDesktop ? 'isDesktop' : ''}
       >
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Input
@@ -96,19 +92,6 @@ const CustomForm = styled(Form)`
 
     &&& > div {
       margin-top: 1rem;
-    }
-
-    &.show {
-      @media (max-width: ${breakpoint.tablet}) {
-        height: auto;
-      }
-    }
-
-    &.hide {
-      @media (max-width: ${breakpoint.tablet}) {
-        overflow: hidden;
-        max-height: 0;
-      }
     }
 
     @media (min-width: ${breakpoint.tablet}) {

@@ -4,15 +4,61 @@ import { selectJob, unselectJob } from '../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
-import PageHeaderAds from '../components/PageHeaderAds';
+import PageHeader from '../components/PageHeader';
 import JobAdsList from '../components/jobAdsList/JobAdsList';
 import DesktopJobDetails from '../components/DesktopJobDetails';
 import breakpoints from '../styles/breakpoints';
 import map_picture from '../images/map_picture.png';
 
 class AdsPage extends Component {
-  state = {
-    sidemenuVisible: true
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sidemenuVisible: true,
+      headerHeight: '',
+      headerVisible: true,
+      lastScrollTop: 0
+    };
+    this.headerRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({ headerHeight: this.headerRef.current.clientHeight });
+  }
+
+  componentDidUpdate() {
+    if (this.headerRef.current.clientHeight !== this.state.headerHeight) {
+      this.setState({
+        headerHeight: this.headerRef.current.clientHeight
+      });
+    }
+  }
+
+  handleScroll = ref => {
+    const { headerHeight } = this.state;
+
+    const refScrollTop = ref.current.scrollTop;
+    // const headerHeight = this.headerRef.current.offsetHeight
+    // console.log(headerHeight)
+
+    const { lastScrollTop } = this.state;
+
+    if (Math.abs(this.state.lastScrollTop - refScrollTop) <= 5) {
+      return;
+    }
+
+    if (refScrollTop > lastScrollTop && refScrollTop > headerHeight) {
+      this.setState({
+        headerVisible: false,
+        lastScrollTop: refScrollTop
+      });
+    } else {
+      this.setState({
+        headerVisible: true,
+        lastScrollTop: refScrollTop
+      });
+    }
   };
 
   selectOrUnselectJob = job => {
@@ -26,15 +72,27 @@ class AdsPage extends Component {
 
   render() {
     const { hits, selectedJob } = this.props;
+    const { headerHeight, headerVisible } = this.state;
 
     return (
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <PageHeaderAds />
+        <Header
+          ref={this.headerRef}
+          // className={headerVisible ? 'visible' : 'hidden'}
+        >
+          <PageHeader />
+        </Header>
 
-        <FlexContainer visible={this.state.sidemenuVisible}>
+        <FlexContainer
+          visible={this.state.sidemenuVisible}
+          style={{ marginTop: `${headerHeight}px` }}
+        >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
-            <JobAdsList selectOrUnselectJob={this.selectOrUnselectJob} />
+            <JobAdsList
+              selectOrUnselectJob={this.selectOrUnselectJob}
+              handleScroll={this.handleScroll}
+            />
           </div>
 
           {Object.keys(selectedJob).length > 0 && (
@@ -95,6 +153,27 @@ export default connect(
   mapStateToProps,
   { selectJob, unselectJob }
 )(AdsPage);
+
+const Header = styled.header`
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  transition: all 0.3s;
+
+  &.visible {
+    @media only screen and (max-width: ${breakpoints.tablet}) {
+      transform: translateY(0px);
+    }
+  }
+
+  &.hidden {
+    @media only screen and (max-width: ${breakpoints.tablet}) {
+      transform: translateY(-269px);
+    }
+  }
+`;
 
 const FlexContainer = styled.main`
   height: 100%;

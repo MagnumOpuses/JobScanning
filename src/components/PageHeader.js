@@ -1,134 +1,122 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Button } from 'semantic-ui-react';
+import { SearchForm } from './index';
 import theme from '../styles/theme';
-import { Icon } from 'semantic-ui-react';
-import { Ellipse } from './index';
-import jt_logowhite from '../images/logo/1x/jt_logowhite.png';
+import breakpoints from '../styles/breakpoints';
+import jt_logoblack from '../images/logo/1x/jt_logoblack.png';
 
-class PageHeader extends Component {
-  render() {
-    return (
-      <Header ads={this.props.ads}>
-        <>
-          <Ellipse
-            height="195px"
-            width="165px"
-            bottom="5px"
-            left="-50px"
-            bgcolor={theme.green4}
-            boxshadow
-            zIndex="1"
-          />
+const PageHeader = () => {
+  const [showForm, setShowForm] = useState(null);
+  const refContainer = useRef(null);
 
-          <Ellipse
-            height="110px"
-            width="85px"
-            bottom="35px"
-            left="71px"
-            bgcolor={theme.green0}
-          />
-          <Link to="/">
-            <Logo alt="JobTech" src={jt_logowhite} />
-          </Link>
-        </>
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
 
-        <Children
-          style={
-            this.props.ads && {
-              height: '3rem',
-              display: 'flex',
-              position: 'absolute',
-              right: '1.5rem',
-              bottom: '1.5rem'
-            }
-          }
-        >
-          {this.props.ads ? (
-            <>
-              <SearchTerm>
-                {this.props.searchTerm
-                  ? `#${this.props.searchTerm}`
-                  : 'Inga sökord'}
-              </SearchTerm>
-              <CustomLink to="/search">
-                <CustomIcon name="search" size="large" />
-              </CustomLink>
-            </>
-          ) : (
-            this.props.children
-          )}
-        </Children>
-      </Header>
-    );
-  }
-}
+  const handleClick = e => {
+    if (refContainer.current.contains(e.target)) {
+      return;
+    }
 
-function mapStateToProps({ ads }) {
-  const { searchTerm } = ads;
-  return {
-    searchTerm
+    setShowForm(false);
   };
-}
 
-export default connect(
-  mapStateToProps,
-  null
-)(PageHeader);
+  return (
+    <Header ref={refContainer}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <StyledLink to="/">
+          <Logo alt="JobTech" src={jt_logoblack} />
+          <H1>JobScanner</H1>
+        </StyledLink>
+
+        <ToggleSearch
+          icon="search"
+          basic
+          onClick={() => {
+            setShowForm(!showForm);
+          }}
+        />
+      </div>
+
+      <FormContainer ref={refContainer} className={showForm ? 'show' : 'hide'}>
+        <SearchForm isDesktop upward={false} />
+      </FormContainer>
+    </Header>
+  );
+};
+
+export default PageHeader;
 
 const Header = styled.header`
-  height: 8.5rem;
-  width: 100%;
-  box-shadow: ${({ ads }) =>
-    ads ? '0 0.3rem 0.5rem rgba(0, 0, 0, 0.3)' : 'none'};
-  position: relative;
-  z-index: 1;
+  background: #fff;
+  border-bottom: 5px solid ${theme.green4};
+  @media (min-width: ${breakpoints.tablet}) {
+    display: flex;
+    flex-direction: row;
+  }
+`;
+
+const ToggleSearch = styled(Button)`
+  &&& {
+    font-size: 24px !important;
+
+    @media (min-width: ${breakpoints.tablet}) {
+      display: none;
+    }
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: baseline;
+  height: 50px;
+  margin: 0.5rem;
+  z-index: 2000;
 `;
 
 const Logo = styled.img`
-  width: 50px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  height: 50px;
   z-index: 1000;
 `;
 
-const Children = styled.div`
+const H1 = styled.h1`
+  display: inline-block;
+  font-size: 32px;
+  color: ${theme.black};
   z-index: 1000;
-`;
 
-const CustomLink = styled(Link)`
-  height: 100%;
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: ${theme.black};
+  @media (max-width: 1366px) {
+    display: none;
   }
 `;
 
-const SearchTerm = styled.div`
-  padding: 0.5rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  background: ${theme.green1};
-  border-radius: 1.5rem;
-  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4);
-`;
+const FormContainer = styled.div`
+  flex: 1;
+  overflow: visible;
+  height: auto;
+  transition: max-height 0.5s, opacity 0.2s;
 
-const CustomIcon = styled(Icon)`
-  &&& {
-    color: #fff;
-    padding: 1.5rem 2.3rem;
-    margin-left: 2rem;
-    background: ${theme.green4};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.5rem;
-    box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4);
+  &.show {
+    @media (max-width: ${breakpoints.tablet}) {
+      max-height: 500px;
+      opacity: 1;
+    }
+  }
+
+  &.hide {
+    @media (max-width: ${breakpoints.tablet}) {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    /* padding: 20px 0; */
   }
 `;

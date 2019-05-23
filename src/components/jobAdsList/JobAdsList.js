@@ -1,26 +1,35 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { fetchMoreJobs } from '../../redux/actions'
-import { withRouter } from 'react-router-dom'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { CustomLoader, NoResultsBox } from '..'
-import ListItem from './ListItem'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { fetchMoreJobs } from '../../redux/actions';
+import { withRouter } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { CustomLoader, NoResultsBox } from '..';
+import ListItem from './ListItem';
 
 class JobAdsList extends Component {
-  calculateInfiniteScrollHeight = () => {
-    const { processedList } = this.props
-    const height = processedList.length * 20 - 5
-    return height > 100 ? '100%' : `${height}%`
+  constructor(props) {
+    super(props);
+    this.listRef = React.createRef();
   }
+
+  calculateInfiniteScrollHeight = () => {
+    const { processedList } = this.props;
+    const height = processedList.length * 20 - 5;
+    return height > 100 ? '100%' : `${height}%`;
+  };
 
   fetchMoreData = () => {
     this.props.fetchMoreJobs(
       this.props.searchTerm,
       this.props.location,
       this.props.offset + 20
-    )
-  }
+    );
+  };
+
+  handleScroll = () => {
+    this.props.handleScroll(this.listRef);
+  };
 
   render() {
     const {
@@ -30,16 +39,18 @@ class JobAdsList extends Component {
       hasMore,
       processedList,
       selectedJob
-    } = this.props
+    } = this.props;
 
     if (isFetching) {
-      return <CustomLoader size="massive" content="Laddar" />
+      return <CustomLoader size="massive" content="Laddar" />;
     } else if (error || Object.keys(hits).length === 0) {
-      return <NoResultsBox />
+      return <NoResultsBox />;
     } else {
       return (
         <List
           id="scrollableDiv"
+          ref={this.listRef}
+          onScroll={this.handleScroll}
           style={{ height: this.calculateInfiniteScrollHeight() }}
         >
           <InfiniteScroll
@@ -84,7 +95,7 @@ class JobAdsList extends Component {
                     <p>Slut på annonser i {item.oldLocation}.</p>
                     <p>Visar annonser i {item.newLocation}</p>
                   </li>
-                )
+                );
               }
               return (
                 <ListItem
@@ -93,11 +104,11 @@ class JobAdsList extends Component {
                   selectOrUnselectJob={this.props.selectOrUnselectJob}
                   selectedJob={selectedJob}
                 />
-              )
+              );
             })}
           </InfiniteScroll>
         </List>
-      )
+      );
     }
   }
 }
@@ -113,7 +124,7 @@ function mapStateToProps({ ads }) {
     searchTerm,
     location,
     offset
-  } = ads
+  } = ads;
 
   return {
     isFetching,
@@ -125,7 +136,7 @@ function mapStateToProps({ ads }) {
     searchTerm,
     location,
     offset
-  }
+  };
 }
 
 export default withRouter(
@@ -133,7 +144,7 @@ export default withRouter(
     mapStateToProps,
     { fetchMoreJobs }
   )(JobAdsList)
-)
+);
 
 const List = styled.ul`
   width: 100%;
@@ -151,4 +162,4 @@ const List = styled.ul`
     background: #02decc !important;
     border-radius: 10px !important;
   }
-`
+`;
