@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import theme from '../styles/theme';
 import jt_logoblack from '../images/logo/1x/jt_logoblack.png';
 import { SearchForm } from './index';
+import breakpoints from '../styles/breakpoints';
 
 class PageHeaderAds extends Component {
   render() {
@@ -26,9 +27,13 @@ const Header = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background: #fff;
   border-bottom: 5px solid ${theme.green4};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-wrap: wrap;
+  }
 `;
 
 const StyledLink = styled(Link)`

@@ -15,7 +15,7 @@ class SkillsRankingContainer extends Component {
         hits={hits}
         searchTerm={searchTerm}
         target={topCompetences}
-        targetName={'KOMPETENSER'}
+        targetName={'kompetenser'}
       />
     );
   }

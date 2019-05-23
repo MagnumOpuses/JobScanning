@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
 import sv from 'date-fns/locale/sv';
@@ -8,8 +8,30 @@ import { buttonStyleCorners } from '../styles/components';
 import breakpoints from '../styles/breakpoints';
 
 const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
+  const adRef = useRef(null);
+
+  useEffect(() => {
+    // add when mounted
+    document.addEventListener('mousedown', handleClick);
+    // return function to be called when unmounted
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, []);
+
+  const handleClick = e => {
+    console.log(adRef);
+    console.log(e);
+
+    if (adRef.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    unselectJob();
+  };
+
   return (
-    <Container>
+    <Container ref={adRef}>
       <Header>
         <div className="employer">
           <LogoPlaceholder employer={selectedJob.employer} />
@@ -157,7 +179,7 @@ const Container = styled.div`
 
   .TextEnrichment--container {
     display: flex;
-    align-items: flex-start;
+
     margin: 2rem 0 4rem;
 
     @media (max-width: ${breakpoints.mobileLandscape}) {

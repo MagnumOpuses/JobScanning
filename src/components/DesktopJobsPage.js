@@ -56,13 +56,13 @@ class DesktopJobsPage extends Component {
               style={{ margin: 0 }}
             >
               <Icon
-                name="angle double left"
+                className="menu-icon"
+                name={
+                  this.state.sidemenuVisible
+                    ? 'angle double left'
+                    : 'angle double right'
+                }
                 size="large"
-                style={{
-                  transform: this.state.sidemenuVisible
-                    ? 'rotate(0deg)'
-                    : 'rotate(180deg)'
-                }}
               />
             </Button>
 
@@ -165,5 +165,9 @@ const Button = styled.div`
 
   @media only screen and (max-width: ${breakpoints.tablet}) {
     left: ${({ visible }) => (visible ? '-75px' : '25px')};
+
+    .menu-icon::before {
+      content: ${({ visible }) => (visible ? '"\f279"' : '"\f0ca"')} !important;
+    }
   }
 `;

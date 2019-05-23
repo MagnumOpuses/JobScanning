@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react';
@@ -15,7 +15,29 @@ const SearchForm = ({
   togglable
 }) => {
   const [showForm, setShowForm] = useState(false);
-  console.log(togglable);
+  const refContainer = useRef(null);
+
+  useEffect(() => {
+    // add when mounted
+    document.addEventListener('mousedown', handleClick);
+    // return function to be called when unmounted
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, []);
+
+  const handleClick = e => {
+    console.log(refContainer);
+    console.log(e);
+
+    if (refContainer.current.contains(e.target)) {
+      console.log('inside');
+
+      return;
+    }
+
+    setShowForm(false);
+  };
 
   return (
     <>
@@ -26,53 +48,55 @@ const SearchForm = ({
           onClick={() => setShowForm(!showForm)}
         />
       )}
-      <CustomForm
-        onSubmit={handleSubmit}
-        className={`${isDesktop ? 'isDesktop' : ''} ${
-          togglable ? (showForm ? 'show' : 'hide') : ''
-        }`}
-      >
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Input
-            name="searchTerm"
-            value={searchTerm}
-            onChange={handleChange}
-            size="big"
-            icon="search"
-            iconPosition="left"
-            placeholder="Skriv sökord"
-            required
-          />
-          <Link to="/overview" style={{ color: '#49efe1' }}>
-            <Icon name="line graph" size="large" />
-            Se yrkesöversikt
-          </Link>
-        </div>
-
-        <div style={{ overflow: 'visible' }}>
-          <Form.Field>
-            <StyledDropdown
-              name="location"
-              value={location}
+      <div ref={refContainer} style={{ flex: '1 0 100%' }}>
+        <CustomForm
+          onSubmit={handleSubmit}
+          className={`${isDesktop ? 'isDesktop' : ''} ${
+            togglable ? (showForm ? 'show' : 'hide') : ''
+          }`}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Input
+              name="searchTerm"
+              value={searchTerm}
               onChange={handleChange}
-              placeholder="Ange plats"
-              search
-              selection
-              options={countiesAndMunicipalities}
-              upward={upward}
+              size="big"
+              icon="search"
+              iconPosition="left"
+              placeholder="Skriv sökord"
+              required
             />
-          </Form.Field>
-        </div>
+            <Link to="/overview" style={{ color: '#49efe1' }}>
+              <Icon name="line graph" size="large" />
+              Se yrkesöversikt
+            </Link>
+          </div>
 
-        <div style={{ textAlign: 'center' }}>
-          <CustomButton
-            type="submit"
-            disabled={searchTerm.length > 0 ? false : true}
-          >
-            Sök
-          </CustomButton>
-        </div>
-      </CustomForm>
+          <div style={{ overflow: 'visible' }}>
+            <Form.Field>
+              <StyledDropdown
+                name="location"
+                value={location}
+                onChange={handleChange}
+                placeholder="Ange plats"
+                search
+                selection
+                options={countiesAndMunicipalities}
+                upward={upward}
+              />
+            </Form.Field>
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <CustomButton
+              type="submit"
+              disabled={searchTerm.length > 0 ? false : true}
+            >
+              Sök
+            </CustomButton>
+          </div>
+        </CustomForm>
+      </div>
     </>
   );
 };
@@ -107,7 +131,7 @@ const CustomForm = styled(Form)`
     border-radius: 5px;
     z-index: 1000;
     overflow: visible;
-    height: min-content;
+    height: auto;
 
     &&& * {
       font-size: 16px;
@@ -119,7 +143,7 @@ const CustomForm = styled(Form)`
 
     &.show {
       @media (max-width: ${breakpoint.tablet}) {
-        height: min-content;
+        height: auto;
       }
     }
 

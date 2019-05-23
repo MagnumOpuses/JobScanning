@@ -29,14 +29,14 @@ const Overview = () => {
               </text>
             </SVGBackArrow>
           </Link>
+          <h2 style={{ fontSize: '28px', textAlign: 'center' }}>
+            YRKESÖVERSIKT 'YRKE'
+          </h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Här finns information om alla annonser vi hittar för 'yrke' i hela
+            Sverige. Se vilka rekryteringssajter som har flest annonser för just
+            det yrket just nu, och vilka kompetenser och förmågor som vår
+            textanalys hittat och klassat som mest efterfrågade
           </p>
         </div>
         <div className="sources box">
@@ -70,17 +70,26 @@ const Overview = () => {
           <Header
             as="h2"
             icon="map"
-            content="Karta"
+            content="PROGNOSKARTA"
             style={{ fontSize: '24px' }}
           />
+          <p>
+            Arbetsförmedlingen bedömer att 'yrke' har 'mycket goda' möjligheter
+            till arbete det närmaste året. På fem års sikt bedöms möjligheterna
+            till arbete vara 'goda'.
+          </p>
         </div>
         <div className="chart box">
           <Header
             as="h2"
             icon="line graph"
-            content="Historik"
+            content="ANNONSHISTORIK"
             style={{ fontSize: '24px' }}
           />
+          <p>
+            Medelvärde över hur jobbannonser publicerade på Platsbanken för{' '}
+            'yrke' fördelats över året historiskt sett
+          </p>
           <Chart />
         </div>
       </GridContainer>
@@ -101,7 +110,7 @@ const GridContainer = styled.div`
   grid-gap: 20px;
   max-width: 1366px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px 20px;
 
   @media screen and (max-width: ${breakpoints.tabletLandscape}) {
     height: auto;
@@ -171,6 +180,7 @@ const GridContainer = styled.div`
   }
 `;
 const SVGBackArrow = styled.svg`
+  margin: 20px 0;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
 
   &:hover {
