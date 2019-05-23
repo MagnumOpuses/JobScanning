@@ -1,38 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Button } from 'semantic-ui-react';
 import theme from '../styles/theme';
 import jt_logoblack from '../images/logo/1x/jt_logoblack.png';
 import { SearchForm } from './index';
 import breakpoints from '../styles/breakpoints';
 
-class PageHeaderAds extends Component {
-  render() {
-    return (
-      <Header>
+const PageHeaderAds = () => {
+  const [showForm, setShowForm] = useState(null);
+  const refContainer = useRef(null);
+
+  useEffect(() => {
+    // add when mounted
+    document.addEventListener('click', handleClick);
+    // return function to be called when unmounted
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
+
+  const handleClick = e => {
+    if (refContainer.current.contains(e.target)) {
+      return;
+    }
+
+    setShowForm(false);
+  };
+  return (
+    <Header ref={refContainer}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <StyledLink to="/">
           <Logo alt="JobTech" src={jt_logoblack} />
           <H1>JobScanner</H1>
         </StyledLink>
 
-        <SearchForm isDesktop upward={false} togglable />
-      </Header>
-    );
-  }
-}
+        <SearchIcon
+          icon="search"
+          basic
+          onClick={() => {
+            setShowForm(!showForm);
+          }}
+        />
+      </div>
+
+      <FormContainer ref={refContainer}>
+        <SearchForm isDesktop upward={false} togglable showForm={showForm} />
+      </FormContainer>
+    </Header>
+  );
+};
 
 export default PageHeaderAds;
 
 const Header = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
   background: #fff;
   border-bottom: 5px solid ${theme.green4};
+  @media (min-width: ${breakpoints.tablet}) {
+    display: flex;
+    flex-direction: row;
+  }
+`;
 
-  @media (max-width: ${breakpoints.tablet}) {
-    flex-wrap: wrap;
+const SearchIcon = styled(Button)`
+  &&& {
+    font-size: 24px !important;
+
+    @media (min-width: ${breakpoints.tablet}) {
+      display: none;
+    }
   }
 `;
 
@@ -58,4 +94,8 @@ const H1 = styled.h1`
   @media (max-width: 1366px) {
     display: none;
   }
+`;
+
+const FormContainer = styled.div`
+  flex: 1;
 `;

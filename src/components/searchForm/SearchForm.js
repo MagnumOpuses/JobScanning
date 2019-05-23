@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react';
@@ -12,106 +12,63 @@ const SearchForm = ({
   location,
   handleChange,
   upward,
-  togglable
+  togglable,
+  showForm
 }) => {
-  const [showForm, setShowForm] = useState(false);
-  const refContainer = useRef(null);
-
-  useEffect(() => {
-    // add when mounted
-    document.addEventListener('mousedown', handleClick);
-    // return function to be called when unmounted
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, []);
-
-  const handleClick = e => {
-    console.log(refContainer);
-    console.log(e);
-
-    if (refContainer.current.contains(e.target)) {
-      console.log('inside');
-
-      return;
-    }
-
-    setShowForm(false);
-  };
-
   return (
     <>
-      {togglable && (
-        <SearchIcon
-          icon="search"
-          basic
-          onClick={() => setShowForm(!showForm)}
-        />
-      )}
-      <div ref={refContainer} style={{ flex: '1 0 100%' }}>
-        <CustomForm
-          onSubmit={handleSubmit}
-          className={`${isDesktop ? 'isDesktop' : ''} ${
-            togglable ? (showForm ? 'show' : 'hide') : ''
-          }`}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Input
-              name="searchTerm"
-              value={searchTerm}
+      <CustomForm
+        onSubmit={handleSubmit}
+        className={`${isDesktop ? 'isDesktop' : ''} ${
+          togglable ? (showForm ? 'show' : 'hide') : ''
+        }`}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Input
+            name="searchTerm"
+            value={searchTerm}
+            onChange={handleChange}
+            size="big"
+            icon="search"
+            iconPosition="left"
+            placeholder="Skriv sökord"
+            required
+          />
+          <Link to="/overview" style={{ color: '#49efe1' }}>
+            <Icon name="line graph" size="large" />
+            Se yrkesöversikt
+          </Link>
+        </div>
+
+        <div style={{ overflow: 'visible' }}>
+          <Form.Field>
+            <StyledDropdown
+              name="location"
+              value={location}
               onChange={handleChange}
-              size="big"
-              icon="search"
-              iconPosition="left"
-              placeholder="Skriv sökord"
-              required
+              placeholder="Ange plats"
+              search
+              selection
+              options={countiesAndMunicipalities}
+              upward={upward}
             />
-            <Link to="/overview" style={{ color: '#49efe1' }}>
-              <Icon name="line graph" size="large" />
-              Se yrkesöversikt
-            </Link>
-          </div>
+          </Form.Field>
+        </div>
 
-          <div style={{ overflow: 'visible' }}>
-            <Form.Field>
-              <StyledDropdown
-                name="location"
-                value={location}
-                onChange={handleChange}
-                placeholder="Ange plats"
-                search
-                selection
-                options={countiesAndMunicipalities}
-                upward={upward}
-              />
-            </Form.Field>
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
-            <CustomButton
-              type="submit"
-              disabled={searchTerm.length > 0 ? false : true}
-            >
-              Sök
-            </CustomButton>
-          </div>
-        </CustomForm>
-      </div>
+        <div style={{ textAlign: 'center' }}>
+          <CustomButton
+            type="submit"
+            disabled={searchTerm.length > 0 ? false : true}
+          >
+            Sök
+          </CustomButton>
+        </div>
+      </CustomForm>
     </>
   );
 };
 
 export default SearchForm;
-
-const SearchIcon = styled(Button)`
-  &&& {
-    font-size: 24px !important;
-
-    @media (min-width: ${breakpoint.tablet}) {
-      display: none;
-    }
-  }
-`;
 
 const StyledDropdown = styled(Dropdown)`
   & .visible {

@@ -12,7 +12,6 @@ import {
 } from './index';
 import theme from '../styles/theme';
 import numberOfUniqueSources from '../utils/numberOfUniqueSources';
-import PageHeaderAds from './PageHeaderAds';
 
 class MobileJobsPage extends Component {
   constructor(props) {

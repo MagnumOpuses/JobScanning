@@ -16,7 +16,7 @@ import countAndSort from '../../utils/countAndSort';
 
 const initialState = {
   searchTerm: '',
-  location: '',
+  location: {},
   isFetching: false,
   hits: [],
   hasMore: true,

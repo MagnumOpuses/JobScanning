@@ -56,7 +56,7 @@ const ListItem = styled.li`
     props.new
       ? '#a6f3ed'
       : props.selected
-      ? '#fff linear-gradient(165deg, rgba(0, 0, 0, 0) 70%, #50e8db 100%)'
+      ? '#fff linear-gradient(165deg, rgba(255, 255, 255, 0) 70%, #50e8db 100%)'
       : '#fff'};
 
   &:hover {

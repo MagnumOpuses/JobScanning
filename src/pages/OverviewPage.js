@@ -9,7 +9,7 @@ import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankin
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
 import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
 
-const Overview = () => {
+const OverviewPage = () => {
   return (
     <>
       <PageHeaderAds />
@@ -97,7 +97,7 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default OverviewPage;
 
 const GridContainer = styled.div`
   display: grid;

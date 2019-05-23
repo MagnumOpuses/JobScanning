@@ -31,7 +31,14 @@ class SearchFormContainer extends React.Component {
   };
 
   render() {
-    const { searchTerm, location, upward, isDesktop, togglable } = this.props;
+    const {
+      searchTerm,
+      location,
+      upward,
+      isDesktop,
+      togglable,
+      showForm
+    } = this.props;
 
     return (
       <SearchForm
@@ -43,6 +50,7 @@ class SearchFormContainer extends React.Component {
         upward={upward}
         isDesktop={isDesktop}
         togglable={togglable}
+        showForm={showForm}
       />
     );
   }

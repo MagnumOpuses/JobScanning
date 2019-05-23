@@ -69,6 +69,7 @@ const Container = styled.div`
     padding: 0;
     list-style: none;
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
 
     @media (max-width: ${breakpoints.tablet}) {

@@ -14,7 +14,6 @@ import sv from 'date-fns/locale/sv';
 import images from '../images/index';
 import theme from '../styles/theme';
 import Responsive from 'react-responsive';
-import DesktopJobsPage from '../components/DesktopJobsPage';
 
 class AdDetails extends Component {
   componentDidMount = async () => {
@@ -39,9 +38,6 @@ class AdDetails extends Component {
     const siteName = sources.length > 1 ? 'Se nedan' : sources[0].name;
     return (
       <div>
-        <Responsive minWidth={768}>
-          <DesktopJobsPage />
-        </Responsive>
         <Responsive maxWidth={767}>
           <PageHeader ads />
           {!Object.keys(this.props.selectedJob).length > 0 ? (
