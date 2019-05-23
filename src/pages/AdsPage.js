@@ -85,7 +85,7 @@ class AdsPage extends Component {
 
         <FlexContainer
           visible={this.state.sidemenuVisible}
-          style={{ marginTop: `${headerHeight}px` }}
+          // style={{ marginTop: `${headerHeight}px` }}
         >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
@@ -155,9 +155,9 @@ export default connect(
 )(AdsPage);
 
 const Header = styled.header`
-  position: fixed;
+  /* position: fixed;
   left: 0;
-  right: 0;
+  right: 0; */
   z-index: 1000;
   background: #fff;
   transition: all 0.3s;

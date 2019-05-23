@@ -50,7 +50,7 @@ class JobAdsList extends Component {
         <List
           id="scrollableDiv"
           ref={this.listRef}
-          onScroll={this.handleScroll}
+          // onScroll={this.handleScroll}
           style={{ height: this.calculateInfiniteScrollHeight() }}
         >
           <InfiniteScroll
