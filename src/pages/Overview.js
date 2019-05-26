@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
 import PageHeader from '../components/PageHeader';
 import Chart from '../components/Chart';
+import theme from '../styles/theme';
 import breakpoints from '../styles/breakpoints';
 import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
 import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
 
-const OverviewPage = props => {
+const Overview = props => {
   const [occupationData, setOccupationData] = useState({});
 
   useEffect(() => {
@@ -113,7 +114,7 @@ const OverviewPage = props => {
   );
 };
 
-export default OverviewPage;
+export default Overview;
 
 const GridContainer = styled.div`
   display: grid;
@@ -162,7 +163,6 @@ const GridContainer = styled.div`
     background: #fff;
     /* box-shadow: 0 1px 3px rgba(0, 0, 0, 2); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
-    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12); */
 
     @media screen and (max-width: ${breakpoints.mobileLandscape}) {
       padding: 20px;
@@ -196,9 +196,11 @@ const GridContainer = styled.div`
   }
 
   .occupation-name {
+    font-size: 22px;
     font-weight: 700;
     font-style: italic;
-    color: red;
+    text-transform: lowercase;
+    /* color: ${theme.green4}; */
   }
 `;
 

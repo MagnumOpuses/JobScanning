@@ -13,8 +13,11 @@ const ResultStats = ({
   return (
     <DesktopSearchMetadata>
       <p>
-        {processedList ? processedList.length : 0} jobbannonser från {sources}{' '}
+        {processedList ? processedList.length : 0} jobbannonser från {sources}
+        {'\n'}
         webbplatser för {'\n'}
+      </p>
+      <p>
         <span className="bold" style={{ textTransform: 'capitalize' }}>
           {usedSearchTerm}
         </span>{' '}
@@ -23,12 +26,12 @@ const ResultStats = ({
           {usedLocation.text ? usedLocation.text : 'hela Sverige'}
         </span>
       </p>
-      {usedSearchTerm && (
+      {/* {usedSearchTerm && (
         <Link to="/overview" style={{ color: '#49efe1' }}>
           <Icon name="line graph" size="large" />
           Se yrkesöversikt
         </Link>
-      )}
+      )} */}
     </DesktopSearchMetadata>
   );
 };
@@ -44,6 +47,9 @@ const DesktopSearchMetadata = styled.div`
 
   p {
     margin: 0;
-    white-space: pre-line;
+
+    @media (max-width: ${breakpoints.mobileLandscape}) {
+      white-space: pre-line;
+    }
   }
 `;

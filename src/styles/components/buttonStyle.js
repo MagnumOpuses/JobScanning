@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const buttonStyle = css`
   color: ${props => props.theme.white};
@@ -24,13 +24,13 @@ export const buttonStyle = css`
   }
 
   &:disabled {
-    color: ${props => props.theme.lightGrey};
+    color: ${props => props.theme.grey};
     /* background: ${props => props.theme.green0}; */
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2) !important;
     border: 1px solid ${props => props.theme.green0};
     opacity: 1 !important;
   }
-`
+`;
 
 export const buttonStyleCorners = css`
   color: ${props => props.theme.green4};
@@ -56,10 +56,10 @@ export const buttonStyleCorners = css`
   }
 
   &:disabled {
-    color: ${props => props.theme.lightGrey};
+    color: ${props => props.theme.grey};
     background: ${props => props.theme.green0};
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2) !important;
     border: 1px solid ${props => props.theme.green0};
     opacity: 1 !important;
   }
-`
+`;

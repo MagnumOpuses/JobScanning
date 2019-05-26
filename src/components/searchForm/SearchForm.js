@@ -30,13 +30,23 @@ const SearchForm = ({
           required
         />
         <Link to={`/overview/${searchTerm}`} style={{ color: '#49efe1' }}>
-          {/* <Icon name="line graph" size="large" />
-          Se yrkesöversikt */}
-          <Button
+          {/* <Button
             content="Yrkesöversikt"
             basic
+            color="teal"
             disabled={searchTerm.length > 0 ? false : true}
-          />
+          /> */}
+          <SVGBackArrow height="40" width="255">
+            <polygon
+              points="0,0 255,0 255,40 0,40"
+              fill="#fff"
+              stroke="#49efe1"
+              strokeWidth="3"
+            />
+            <text x="25" y="28">
+              Yrkesöversikt
+            </text>
+          </SVGBackArrow>
         </Link>
       </div>
 
@@ -68,6 +78,19 @@ const SearchForm = ({
 };
 
 export default SearchForm;
+
+const SVGBackArrow = styled.svg`
+  margin: 20px 0;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+
+  &:hover {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  }
+
+  text {
+    font-size: 20px;
+  }
+`;
 
 const StyledDropdown = styled(Dropdown)`
   & .visible {

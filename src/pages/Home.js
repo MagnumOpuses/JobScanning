@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import CountUp from 'react-countup'
-import { Link } from 'react-router-dom'
-import jt_logowhite from '../images/logo/2x/jt_logowhite@2x.png'
-import homePageBackground from '../images/background.webp'
-import { diagonalSlide } from '../styles/animations/diagonalSlide'
+import React from 'react';
+import styled from 'styled-components';
+import CountUp from 'react-countup';
+import { Link } from 'react-router-dom';
+import jt_logowhite from '../images/logo/2x/jt_logowhite@2x.png';
+import homePageBackground from '../images/background.webp';
+import { diagonalSlide } from '../styles/animations/diagonalSlide';
 
 export default () => {
   return (
@@ -14,7 +14,7 @@ export default () => {
         <h1>Alla jobb på ett ställe</h1>
         <Logo alt="JT" src={jt_logowhite} />
         <FlexContainer>
-          <H2>
+          <h2 style={{ fontWeight: 'normal' }}>
             <CountUp
               start={15000}
               end={294293}
@@ -23,8 +23,8 @@ export default () => {
               style={{ fontWeight: 'bold' }}
             />{' '}
             jobbannonser från
-          </H2>
-          <H2>
+          </h2>
+          <h2 style={{ fontWeight: 'normal' }}>
             <CountUp
               start={0}
               end={1009}
@@ -33,23 +33,23 @@ export default () => {
               style={{ fontWeight: 'bold' }}
             />{' '}
             webbplatser
-          </H2>
+          </h2>
         </FlexContainer>
         <StyledLink to="/search">Gå vidare</StyledLink>
       </Header>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
-`
+`;
 
 const Background = styled.div`
-  height: 3000px;
-  width: 3000px;
+  height: calc(100vw * 3);
+  width: calc(100vw * 3);
   background: url('${homePageBackground}') repeat;
   background-position: right bottom;
   animation: ${diagonalSlide} 20s linear infinite;
@@ -57,7 +57,7 @@ const Background = styled.div`
   bottom: 0;
   left: 0;
   z-index: -1;
-`
+`;
 
 const Header = styled.header`
   display: flex;
@@ -76,19 +76,19 @@ const Header = styled.header`
   top: 0;
   left: 0;
   right: 0;
-`
+`;
 
 const Logo = styled.img`
   height: 20vh;
   width: auto;
   margin: 1rem 0 3rem 0;
-`
+`;
 
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const StyledLink = styled(Link)`
   margin: 2rem 0 1rem 0;
@@ -101,8 +101,4 @@ const StyledLink = styled(Link)`
   background: ${props => props.theme.primary};
   box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
   border-radius: 10rem;
-`
-
-const H2 = styled.h2`
-  font-weight: normal;
-`
+`;

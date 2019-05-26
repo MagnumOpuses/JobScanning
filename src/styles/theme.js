@@ -1,7 +1,8 @@
 export default {
   primary: '#FFEB9E',
   white: '#fff',
-  lightGrey: '#9B9B9B',
+  lightGrey: '#ecf1f0',
+  grey: '#9B9B9B',
   darkGrey: '#4A4A4A',
   black: '#000',
   green5: '#02b1a2',
@@ -41,4 +42,4 @@ export default {
     bodyCopy: { fontSizeDesktop: '20px', fontWeightDesktop: 350 },
     smallText: { fontSizeDesktop: '16px', fontWeightDesktop: 350 }
   }
-}
+};

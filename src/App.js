@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
-import HomePage from './pages/HomePage';
-import SearchPage from './pages/SearchPage';
+import Home from './pages/Home';
+import Search from './pages/Search';
 import Jobs from './pages/Jobs';
-import OverviewPage from './pages/OverviewPage';
+import Overview from './pages/Overview';
 import breakpoint from './styles/breakpoints';
 import backgroundImg from './images/Pixel.jpg';
 
@@ -112,12 +112,12 @@ class App extends Component {
         <AppContainer>
           <GlobalStyle />
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" component={Home} />
             <Route path="/jobs" component={Jobs} />
             <Route path="/jobs/:id" component={Jobs} />
-            <Route path="/search" component={SearchPage} />
-            <Route path="/overview/:occupation" component={OverviewPage} />
-            <Route component={HomePage} />
+            <Route path="/search" component={Search} />
+            <Route path="/overview/:occupation" component={Overview} />
+            <Route component={Home} />
           </Switch>
         </AppContainer>
       </ThemeProvider>
