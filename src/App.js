@@ -4,7 +4,7 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
-import AdsPage from './pages/AdsPage';
+import Jobs from './pages/Jobs';
 import OverviewPage from './pages/OverviewPage';
 import breakpoint from './styles/breakpoints';
 import backgroundImg from './images/Pixel.jpg';
@@ -113,10 +113,11 @@ class App extends Component {
           <GlobalStyle />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/jobs" component={AdsPage} />
-            <Route path="/jobs/:id" component={AdsPage} />
+            <Route path="/jobs" component={Jobs} />
+            <Route path="/jobs/:id" component={Jobs} />
             <Route path="/search" component={SearchPage} />
-            <Route path="/overview" component={OverviewPage} />
+            <Route path="/overview/:occupation" component={OverviewPage} />
+            <Route component={HomePage} />
           </Switch>
         </AppContainer>
       </ThemeProvider>

@@ -14,53 +14,56 @@ const SearchForm = ({
   upward
 }) => {
   return (
-    <>
-      <CustomForm
-        onSubmit={handleSubmit}
-        className={isDesktop ? 'isDesktop' : ''}
-      >
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Input
-            name="searchTerm"
-            value={searchTerm}
-            onChange={handleChange}
-            size="big"
-            icon="search"
-            iconPosition="left"
-            placeholder="Skriv sökord"
-            required
-          />
-          <Link to="/overview" style={{ color: '#49efe1' }}>
-            <Icon name="line graph" size="large" />
-            Se yrkesöversikt
-          </Link>
-        </div>
-
-        <div style={{ overflow: 'visible' }}>
-          <Form.Field>
-            <StyledDropdown
-              name="location"
-              value={location}
-              onChange={handleChange}
-              placeholder="Ange plats"
-              search
-              selection
-              options={countiesAndMunicipalities}
-              upward={upward}
-            />
-          </Form.Field>
-        </div>
-
-        <div style={{ textAlign: 'center' }}>
-          <CustomButton
-            type="submit"
+    <CustomForm
+      onSubmit={handleSubmit}
+      className={isDesktop ? 'isDesktop' : ''}
+    >
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Input
+          name="searchTerm"
+          value={searchTerm}
+          onChange={handleChange}
+          size="big"
+          icon="search"
+          iconPosition="left"
+          placeholder="Skriv sökord"
+          required
+        />
+        <Link to={`/overview/${searchTerm}`} style={{ color: '#49efe1' }}>
+          {/* <Icon name="line graph" size="large" />
+          Se yrkesöversikt */}
+          <Button
+            content="Yrkesöversikt"
+            basic
             disabled={searchTerm.length > 0 ? false : true}
-          >
-            Sök
-          </CustomButton>
-        </div>
-      </CustomForm>
-    </>
+          />
+        </Link>
+      </div>
+
+      <div style={{ overflow: 'visible' }}>
+        <Form.Field>
+          <StyledDropdown
+            name="location"
+            value={location}
+            onChange={handleChange}
+            placeholder="Ange plats"
+            search
+            selection
+            options={countiesAndMunicipalities}
+            upward={upward}
+          />
+        </Form.Field>
+      </div>
+
+      <div style={{ textAlign: 'center' }}>
+        <CustomButton
+          type="submit"
+          disabled={searchTerm.length > 0 ? false : true}
+        >
+          Sök
+        </CustomButton>
+      </div>
+    </CustomForm>
   );
 };
 
@@ -77,7 +80,7 @@ const CustomForm = styled(Form)`
     display: flex;
     flex-direction: column;
     width: 88%;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 3rem 2rem;
     background: ${props => props.theme.green0};
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
@@ -87,7 +90,7 @@ const CustomForm = styled(Form)`
     height: auto;
 
     &&& * {
-      font-size: 16px;
+      font-size: 20px;
     }
 
     &&& > div {
@@ -99,6 +102,11 @@ const CustomForm = styled(Form)`
       justify-content: center;
       height: min-content;
       width: auto;
+      margin: 0 auto;
+
+      &&& * {
+        font-size: 16px;
+      }
 
       & > div {
         margin-right: 1rem;
@@ -109,6 +117,9 @@ const CustomForm = styled(Form)`
 
 const CustomButton = styled(Button)`
   &&& {
+    align-self: center;
+    margin-top: 4rem;
+    padding: 1.4rem 9rem;
     color: rgba(0, 0, 0, 7);
     background: ${props => props.theme.green4};
 
@@ -123,10 +134,6 @@ const CustomButton = styled(Button)`
     &:hover {
       background: ${props => props.theme.green5};
     }
-
-    align-self: center;
-    margin-top: 4rem;
-    padding: 1.4rem 9rem;
 
     @media (min-width: ${breakpoint.tablet}) {
       margin-top: 0;

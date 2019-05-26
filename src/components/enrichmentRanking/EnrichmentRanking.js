@@ -15,7 +15,7 @@ const EnrichmentRanking = ({ hits, searchTerm, target, targetName }) => {
         {target.map(competence => (
           <li key={competence.keyword}>
             <span className="keyword">{competence.keyword}</span>{' '}
-            {competence.score} gånger
+            {competence.score} ggr
           </li>
         ))}
       </ol>

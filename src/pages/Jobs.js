@@ -10,7 +10,7 @@ import DesktopJobDetails from '../components/DesktopJobDetails';
 import breakpoints from '../styles/breakpoints';
 import map_picture from '../images/map_picture.png';
 
-class AdsPage extends Component {
+class Jobs extends Component {
   constructor(props) {
     super(props);
 
@@ -152,7 +152,7 @@ function mapStateToProps({ ads }) {
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob }
-)(AdsPage);
+)(Jobs);
 
 const Header = styled.header`
   background: #fff;

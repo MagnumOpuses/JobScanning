@@ -86,13 +86,16 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
             padding: '1rem 0'
           }}
         >
-          <p>Vi hittade följande i annonsen som vi tror är relevant för dig</p>
+          <p>
+            Vi hittade följande information i annonsen som vi tror är relevant
+            för dig.
+          </p>
           <div className="TextEnrichment--container">
             <TextEnrichment />
           </div>
-          <p style={{ fontSize: '18px !important', fontStyle: 'italic' }}>
+          <p className="disclaimer">
             OBS: Informationen plockas ut av vår textanalys och kan vara
-            missvisande
+            missvisande.
           </p>
         </div>
       )}
@@ -163,13 +166,16 @@ const Container = styled.div`
   @media (max-width: 767px) {
     left: 10px;
     right: 10px;
-    padding: 20px;
+    padding: 40px;
+  }
+
+  @media (max-width: ${breakpoints.mobileLandscape}) {
+    padding: 40px 20px;
   }
 
   .TextEnrichment--container {
     display: flex;
-
-    margin: 2rem 0 4rem;
+    margin: 20px 0 10px;
 
     @media (max-width: ${breakpoints.tablet}) {
       flex-direction: column;
@@ -185,6 +191,11 @@ const Container = styled.div`
       align-items: flex-start;
     }
   }
+
+  .disclaimer {
+    font-size: 14px !important;
+    font-style: italic;
+  }
 `;
 
 const Header = styled.header`
@@ -192,7 +203,8 @@ const Header = styled.header`
   margin-bottom: 40px;
 
   .employer {
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoints.mobileLandscape}) {
+      display: none;
     }
   }
 
@@ -210,6 +222,7 @@ const Header = styled.header`
 
   .publisher {
     flex: 0 0 auto;
+    align-self: flex-end;
   }
 
   .close-icon {

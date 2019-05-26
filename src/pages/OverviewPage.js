@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
@@ -9,7 +9,14 @@ import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankin
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
 import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
 
-const OverviewPage = () => {
+const OverviewPage = props => {
+  const [occupationData, setOccupationData] = useState({});
+
+  useEffect(() => {
+    const { occupation } = props.match.params;
+    setOccupationData({ occupation: occupation });
+  });
+
   return (
     <>
       <PageHeader />
@@ -17,9 +24,9 @@ const OverviewPage = () => {
       <GridContainer>
         <div className="header">
           <Link to="/jobs" style={{ color: '#000' }}>
-            <SVGBackArrow height="40" width="250">
+            <SVGBackArrow height="40" width="255">
               <polygon
-                points="0,20 20,0 250,0 250,40 20,40"
+                points="0,20 20,0 255,0 255,40 20,40"
                 fill="#fff"
                 stroke="#49efe1"
                 strokeWidth="3"
@@ -29,14 +36,21 @@ const OverviewPage = () => {
               </text>
             </SVGBackArrow>
           </Link>
-          <h2 style={{ fontSize: '28px', textAlign: 'center' }}>
-            YRKESÖVERSIKT 'YRKE'
+          <h2
+            style={{
+              fontSize: '28px',
+              textAlign: 'center',
+              textTransform: 'uppercase'
+            }}
+          >
+            YRKESÖVERSIKT {occupationData.occupation}
           </h2>
           <p>
-            Här finns information om alla annonser vi hittar för 'yrke' i hela
-            Sverige. Se vilka rekryteringssajter som har flest annonser för just
-            det yrket just nu, och vilka kompetenser och förmågor som vår
-            textanalys hittat och klassat som mest efterfrågade
+            Här finns information om alla annonser vi hittar för{' '}
+            <span className="occupation-name">{occupationData.occupation}</span>{' '}
+            i hela Sverige. Se vilka rekryteringssajter som har flest annonser
+            för just det yrket just nu, och vilka kompetenser och förmågor som
+            vår textanalys hittat och klassat som mest efterfrågade
           </p>
         </div>
         <div className="sources box">
@@ -74,9 +88,10 @@ const OverviewPage = () => {
             style={{ fontSize: '24px' }}
           />
           <p>
-            Arbetsförmedlingen bedömer att 'yrke' har 'mycket goda' möjligheter
-            till arbete det närmaste året. På fem års sikt bedöms möjligheterna
-            till arbete vara 'goda'.
+            Arbetsförmedlingen bedömer att{' '}
+            <span className="occupation-name">{occupationData.occupation}</span>{' '}
+            har 'mycket goda' möjligheter till arbete det närmaste året. På fem
+            års sikt bedöms möjligheterna till arbete vara 'goda'.
           </p>
         </div>
         <div className="chart box">
@@ -88,7 +103,8 @@ const OverviewPage = () => {
           />
           <p>
             Medelvärde över hur jobbannonser publicerade på Platsbanken för{' '}
-            'yrke' fördelats över året historiskt sett
+            <span className="occupation-name">{occupationData.occupation}</span>{' '}
+            fördelats över året historiskt sett
           </p>
           <Chart />
         </div>
@@ -138,7 +154,7 @@ const GridContainer = styled.div`
 
   @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     height: auto;
-    padding: 20px 5px;
+    padding: 20px 15px;
   }
 
   .box {
@@ -149,7 +165,7 @@ const GridContainer = styled.div`
     /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12); */
 
     @media screen and (max-width: ${breakpoints.mobileLandscape}) {
-      padding: 20px 5px;
+      padding: 20px;
     }
   }
 
@@ -178,7 +194,14 @@ const GridContainer = styled.div`
   .chart {
     grid-area: chart;
   }
+
+  .occupation-name {
+    font-weight: 700;
+    font-style: italic;
+    color: red;
+  }
 `;
+
 const SVGBackArrow = styled.svg`
   margin: 20px 0;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
