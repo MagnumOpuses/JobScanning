@@ -44,7 +44,7 @@ const PageHeader = () => {
       </div>
 
       <FormContainer ref={refContainer} className={showForm ? 'show' : 'hide'}>
-        <SearchForm isDesktop upward={false} />
+        <SearchForm isDesktop upward={false} setShowForm={setShowForm} />
       </FormContainer>
     </Header>
   );

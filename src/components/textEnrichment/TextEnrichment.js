@@ -49,9 +49,8 @@ const Container = styled.div`
   padding: 20px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   margin: ${({ margin }) => margin};
-  /* text-align: center; */
 
-  @media (max-width: ${breakpoints.mobileLandscape}) {
+  @media (max-width: ${breakpoints.tablet}) {
     margin: 0;
   }
 
@@ -64,6 +63,7 @@ const Container = styled.div`
     max-height: ${({ isExpanded, listHeight }) =>
       isExpanded ? '192px' : '64px'};
     height: 100%;
+    width: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;

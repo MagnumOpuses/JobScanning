@@ -11,18 +11,13 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    // add when mounted
     document.addEventListener('mousedown', handleClick);
-    // return function to be called when unmounted
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
   });
 
   const handleClick = e => {
-    console.log(adRef);
-    console.log(e);
-
     if (adRef.current.contains(e.target)) {
       // inside click
       return;
@@ -40,7 +35,7 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
         <div className="information">
           <h2>{selectedJob.header}</h2>
           <h3>{selectedJob.employer.name}</h3>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className="info-and-publisher">
             <div>
               {selectedJob.location && <p>{selectedJob.location}</p>}
 
@@ -176,9 +171,18 @@ const Container = styled.div`
 
     margin: 2rem 0 4rem;
 
+    @media (max-width: ${breakpoints.tablet}) {
+      flex-direction: column;
+    }
+  }
+
+  .info-and-publisher {
+    display: flex;
+    justify-content: space-between;
+
     @media (max-width: ${breakpoints.mobileLandscape}) {
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
     }
   }
 `;

@@ -41,8 +41,6 @@ export default (state = initialState, action) => {
     }
 
     case JOBS_SUCCESS: {
-      console.log(action);
-
       const scoreboard = createScoreboard(action.payload.hits);
       const numberOfJobsInPlace = getNumberOfJobsInPlace(action.payload.hits);
 

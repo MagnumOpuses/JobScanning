@@ -23,22 +23,24 @@ class SearchFormContainer extends React.Component {
   };
 
   handleSubmit = event => {
-    const { searchTerm, location, fetchJobs, history } = this.props;
+    const {
+      searchTerm,
+      location,
+      fetchJobs,
+      history,
+      setShowForm
+    } = this.props;
 
     event.preventDefault();
+    if (setShowForm) {
+      setShowForm(false);
+    }
     fetchJobs(searchTerm, location);
     history.push('/jobs');
   };
 
   render() {
-    const {
-      searchTerm,
-      location,
-      upward,
-      isDesktop,
-      togglable,
-      showForm
-    } = this.props;
+    const { searchTerm, location, upward, isDesktop } = this.props;
 
     return (
       <SearchForm
@@ -49,8 +51,6 @@ class SearchFormContainer extends React.Component {
         countiesAndMunicipalities={countiesAndMunicipalities}
         upward={upward}
         isDesktop={isDesktop}
-        togglable={togglable}
-        showForm={showForm}
       />
     );
   }

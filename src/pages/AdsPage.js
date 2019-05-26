@@ -155,10 +155,6 @@ export default connect(
 )(AdsPage);
 
 const Header = styled.header`
-  /* position: fixed;
-  left: 0;
-  right: 0; */
-  z-index: 1000;
   background: #fff;
   transition: all 0.3s;
 
