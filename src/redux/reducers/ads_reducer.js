@@ -8,15 +8,15 @@ import {
   SET_LOCATION,
   JOB_SELECT,
   JOB_UNSELECT
-} from '../actions'
-import _ from 'lodash'
-import createScoreboard from '../../utils/createScoreboard'
-import getNumberOfJobsInPlace from '../../utils/getNumberOfJobsInPlace'
-import countAndSort from '../../utils/countAndSort'
+} from '../actions';
+import _ from 'lodash';
+import createScoreboard from '../../utils/createScoreboard';
+import getNumberOfJobsInPlace from '../../utils/getNumberOfJobsInPlace';
+import countAndSort from '../../utils/countAndSort';
 
 const initialState = {
   searchTerm: '',
-  location: '',
+  location: {},
   isFetching: false,
   hits: [],
   hasMore: true,
@@ -25,7 +25,7 @@ const initialState = {
   numberOfJobsInPlace: {},
   offset: 0,
   total: 0
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -37,17 +37,15 @@ export default (state = initialState, action) => {
         searchTerm: action.term,
         location: action.location,
         selectedJob: {}
-      }
+      };
     }
 
     case JOBS_SUCCESS: {
-      console.log(action)
+      const scoreboard = createScoreboard(action.payload.hits);
+      const numberOfJobsInPlace = getNumberOfJobsInPlace(action.payload.hits);
 
-      const scoreboard = createScoreboard(action.payload.hits)
-      const numberOfJobsInPlace = getNumberOfJobsInPlace(action.payload.hits)
-
-      const topCompetences = countAndSort(action.payload.hits, 'skills')
-      const topTraits = countAndSort(action.payload.hits, 'traits')
+      const topCompetences = countAndSort(action.payload.hits, 'skills');
+      const topTraits = countAndSort(action.payload.hits, 'traits');
 
       return {
         ...state,
@@ -62,26 +60,26 @@ export default (state = initialState, action) => {
         selectedJob: action.payload.processedList[0].changedLocation
           ? {}
           : action.payload.processedList[0]
-      }
+      };
     }
 
     case JOBS_FAILURE: {
-      return { ...state, isFetching: false, error: true }
+      return { ...state, isFetching: false, error: true };
     }
 
     case JOBS_ADD_MORE: {
-      const hits = [...state.hits, ...action.payload.hits]
+      const hits = [...state.hits, ...action.payload.hits];
       let processedList = [
         ...state.processedList,
         ...action.payload.processedList
-      ]
+      ];
 
-      processedList = _.uniqBy(processedList, 'id')
-      const scoreboard = createScoreboard(hits)
-      const numberOfJobsInPlace = getNumberOfJobsInPlace(processedList)
+      processedList = _.uniqBy(processedList, 'id');
+      const scoreboard = createScoreboard(hits);
+      const numberOfJobsInPlace = getNumberOfJobsInPlace(processedList);
 
-      const topCompetences = countAndSort(hits, 'skills')
-      const topTraits = countAndSort(hits, 'traits')
+      const topCompetences = countAndSort(hits, 'skills');
+      const topTraits = countAndSort(hits, 'traits');
 
       return {
         ...state,
@@ -93,21 +91,21 @@ export default (state = initialState, action) => {
         topTraits,
         total: action.payload.total,
         offset: action.offset
-      }
+      };
     }
 
     case JOBS_NO_MORE: {
       return {
         ...state,
         hasMore: false
-      }
+      };
     }
 
     case SET_SEARCH_TERM: {
       return {
         ...state,
         searchTerm: action.searchTerm
-      }
+      };
     }
 
     case SET_LOCATION: {
@@ -121,24 +119,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         location: action.locationObject
-      }
+      };
     }
 
     case JOB_SELECT: {
       return {
         ...state,
         selectedJob: action.job
-      }
+      };
     }
 
     case JOB_UNSELECT: {
       return {
         ...state,
         selectedJob: {}
-      }
+      };
     }
 
     default:
-      return state
+      return state;
   }
-}
+};

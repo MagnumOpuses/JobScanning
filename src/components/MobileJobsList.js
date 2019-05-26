@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMoreJobs, selectJob } from '../../../redux/actions';
+import { fetchMoreJobs, selectJob } from '../redux/actions';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { CustomLoader, LogoPlaceholder } from '../../../components';
+import { CustomLoader, LogoPlaceholder } from './index';
 
 class MobileJobsList extends Component {
   constructor(props) {

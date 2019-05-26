@@ -15,7 +15,7 @@ class TraitsRankingContainer extends Component {
         hits={hits}
         searchTerm={searchTerm}
         target={topTraits}
-        targetName={'FÖRMÅGOR'}
+        targetName={'förmågor'}
       />
     );
   }

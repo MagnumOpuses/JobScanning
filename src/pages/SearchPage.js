@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { SearchForm } from '../components'
-import breakpoints from '../styles/breakpoints'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { SearchForm } from '../components';
+import breakpoints from '../styles/breakpoints';
 
 class SearchPage extends Component {
   render() {
@@ -15,11 +15,11 @@ class SearchPage extends Component {
 
         <SearchForm upward={true} />
       </FlexContainer>
-    )
+    );
   }
 }
 
-export default SearchPage
+export default SearchPage;
 
 const FlexContainer = styled.div`
   height: 100%;
@@ -52,4 +52,4 @@ const FlexContainer = styled.div`
       font-size: 20px;
     }
   }
-`
+`;

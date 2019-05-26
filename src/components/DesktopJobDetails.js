@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
 import sv from 'date-fns/locale/sv';
-import {
-  DescriptionContainer,
-  LogoPlaceholder,
-  TextEnrichment
-} from '../../../components/index';
-import images from '../../../images';
-import { buttonStyleCorners } from '../../../styles/components';
-import breakpoints from '../../../styles/breakpoints';
+import { LogoPlaceholder, TextEnrichment } from './index';
+import images from '../images';
+import { buttonStyleCorners } from '../styles/components';
+import breakpoints from '../styles/breakpoints';
 
 const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
+  const adRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClick);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  });
+
+  const handleClick = e => {
+    if (adRef.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    unselectJob();
+  };
+
   return (
-    <Container>
+    <Container ref={adRef}>
       <Header>
         <div className="employer">
           <LogoPlaceholder employer={selectedJob.employer} />
@@ -22,35 +35,47 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
         <div className="information">
           <h2>{selectedJob.header}</h2>
           <h3>{selectedJob.employer.name}</h3>
-          {selectedJob.location && <p>{selectedJob.location}</p>}
+          <div className="info-and-publisher">
+            <div>
+              {selectedJob.location && <p>{selectedJob.location}</p>}
 
-          {selectedJob.application.deadline && (
-            <p>
-              Sök senast:{' '}
-              {format(new Date(selectedJob.application.deadline), 'D MMMM', {
-                locale: sv
-              })}
-            </p>
-          )}
-        </div>
-
-        <div className="publisher">
-          Publicerad hos
-          {selectedJob.sources.map((source, i) => (
-            <a
-              key={i}
-              href={source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {[source.name] in images ? (
-                <SourceLogo sourceLogo={images[source.name]} />
-              ) : (
-                <p>{source.name}</p>
+              {selectedJob.application.deadline && (
+                <p>
+                  Sök senast:{' '}
+                  {format(
+                    new Date(selectedJob.application.deadline),
+                    'D MMMM',
+                    {
+                      locale: sv
+                    }
+                  )}
+                </p>
               )}
-            </a>
-          ))}
+            </div>
+            <div className="publisher">
+              Publicerad hos
+              {selectedJob.sources.length > 1 ? (
+                <p>{`${selectedJob.sources.length} källor`}</p>
+              ) : (
+                <a
+                  key={selectedJob.sources[0].url}
+                  href={selectedJob.sources[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {[selectedJob.sources[0].name] in images ? (
+                    <SourceLogo
+                      sourceLogo={images[selectedJob.sources[0].name]}
+                    />
+                  ) : (
+                    <p>{selectedJob.sources[0].name}</p>
+                  )}
+                </a>
+              )}
+            </div>
+          </div>
         </div>
+
         <span onClick={() => unselectJob()} className="close-icon" />
       </Header>
 
@@ -62,13 +87,7 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
           }}
         >
           <p>Vi hittade följande i annonsen som vi tror är relevant för dig</p>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              margin: '2rem 0 4rem'
-            }}
-          >
+          <div className="TextEnrichment--container">
             <TextEnrichment />
           </div>
           <p style={{ fontSize: '18px !important', fontStyle: 'italic' }}>
@@ -114,12 +133,6 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
           Gå till annonsen
         </StyledLink>
       )}
-
-      {/* <DescriptionContainer
-        text={selectedJob.content}
-        characters={1200}
-        sources={selectedJob.sources}
-      /> */}
     </Container>
   );
 };
@@ -128,17 +141,49 @@ export default DesktopJobDetails;
 
 const Container = styled.div`
   position: absolute;
-  top: 100px;
+  top: 50px;
   left: 545px;
   right: 5%;
-  z-index: 1;
+  z-index: 10;
   padding: 60px;
   margin-bottom: 50px;
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 1366px) {
-    left: 5%;
+    left: 490px;
+    right: 10px;
+  }
+
+  @media (max-width: 1024px) {
+    left: 20px;
+    right: 20px;
+  }
+
+  @media (max-width: 767px) {
+    left: 10px;
+    right: 10px;
+    padding: 20px;
+  }
+
+  .TextEnrichment--container {
+    display: flex;
+
+    margin: 2rem 0 4rem;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      flex-direction: column;
+    }
+  }
+
+  .info-and-publisher {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: ${breakpoints.mobileLandscape}) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 `;
 
@@ -147,7 +192,8 @@ const Header = styled.header`
   margin-bottom: 40px;
 
   .employer {
-    margin-right: 20px;
+    @media (max-width: 767px) {
+    }
   }
 
   .information {

@@ -1,40 +1,98 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob } from '../../../redux/actions';
+import { selectJob, unselectJob } from '../redux/actions';
 import styled from 'styled-components';
-import { ResultStats } from '../../../components';
+import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
-import PageHeaderAds from '../components/PageHeaderAds';
-import JobAdsList from '../../../components/jobAdsList/JobAdsList';
-import theme from '../../../styles/theme';
-import DesktopJobDetails from './DesktopJobDetails';
-import breakpoints from '../../../styles/breakpoints';
-import map_picture from '../../../images/map_picture.png';
+import PageHeader from '../components/PageHeader';
+import JobAdsList from '../components/jobAdsList/JobAdsList';
+import DesktopJobDetails from '../components/DesktopJobDetails';
+import breakpoints from '../styles/breakpoints';
+import map_picture from '../images/map_picture.png';
 
-class DesktopJobsPage extends Component {
-  state = {
-    sidemenuVisible: true
+class AdsPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sidemenuVisible: true,
+      headerHeight: '',
+      headerVisible: true,
+      lastScrollTop: 0
+    };
+    this.headerRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({ headerHeight: this.headerRef.current.clientHeight });
+  }
+
+  componentDidUpdate() {
+    if (this.headerRef.current.clientHeight !== this.state.headerHeight) {
+      this.setState({
+        headerHeight: this.headerRef.current.clientHeight
+      });
+    }
+  }
+
+  handleScroll = ref => {
+    const { headerHeight } = this.state;
+
+    const refScrollTop = ref.current.scrollTop;
+    // const headerHeight = this.headerRef.current.offsetHeight
+    // console.log(headerHeight)
+
+    const { lastScrollTop } = this.state;
+
+    if (Math.abs(this.state.lastScrollTop - refScrollTop) <= 5) {
+      return;
+    }
+
+    if (refScrollTop > lastScrollTop && refScrollTop > headerHeight) {
+      this.setState({
+        headerVisible: false,
+        lastScrollTop: refScrollTop
+      });
+    } else {
+      this.setState({
+        headerVisible: true,
+        lastScrollTop: refScrollTop
+      });
+    }
   };
 
   selectOrUnselectJob = job => {
     if (job.id === this.props.selectedJob.id) {
       this.props.unselectJob();
     } else {
+      // this.props.location.search
       this.props.selectJob(job);
     }
   };
 
   render() {
     const { hits, selectedJob } = this.props;
+    const { headerHeight, headerVisible } = this.state;
 
     return (
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <PageHeaderAds />
+        <Header
+          ref={this.headerRef}
+          // className={headerVisible ? 'visible' : 'hidden'}
+        >
+          <PageHeader />
+        </Header>
 
-        <FlexContainer visible={this.state.sidemenuVisible}>
+        <FlexContainer
+          visible={this.state.sidemenuVisible}
+          // style={{ marginTop: `${headerHeight}px` }}
+        >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
-            <JobAdsList selectOrUnselectJob={this.selectOrUnselectJob} />
+            <JobAdsList
+              selectOrUnselectJob={this.selectOrUnselectJob}
+              handleScroll={this.handleScroll}
+            />
           </div>
 
           {Object.keys(selectedJob).length > 0 && (
@@ -47,6 +105,7 @@ class DesktopJobsPage extends Component {
 
           <div className="right-container">
             <Button
+              visible={this.state.sidemenuVisible}
               onClick={() =>
                 this.setState(prevState => ({
                   sidemenuVisible: !prevState.sidemenuVisible
@@ -55,13 +114,13 @@ class DesktopJobsPage extends Component {
               style={{ margin: 0 }}
             >
               <Icon
-                name="angle double left"
+                className="menu-icon"
+                name={
+                  this.state.sidemenuVisible
+                    ? 'angle double left'
+                    : 'angle double right'
+                }
                 size="large"
-                style={{
-                  transform: this.state.sidemenuVisible
-                    ? 'rotate(0deg)'
-                    : 'rotate(180deg)'
-                }}
               />
             </Button>
 
@@ -93,13 +152,29 @@ function mapStateToProps({ ads }) {
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob }
-)(DesktopJobsPage);
+)(AdsPage);
+
+const Header = styled.header`
+  background: #fff;
+  transition: all 0.3s;
+
+  &.visible {
+    @media only screen and (max-width: ${breakpoints.tablet}) {
+      transform: translateY(0px);
+    }
+  }
+
+  &.hidden {
+    @media only screen and (max-width: ${breakpoints.tablet}) {
+      transform: translateY(-269px);
+    }
+  }
+`;
 
 const FlexContainer = styled.main`
   height: 100%;
   width: 100%;
   display: flex;
-  /* padding: 0 50px; */
   position: relative;
 
   @media only screen and (min-width: ${breakpoints.tablet}) {
@@ -118,7 +193,6 @@ const FlexContainer = styled.main`
     opacity: ${({ visible }) => (visible ? '1' : '0')};
     flex-direction: column;
     transition: width 0.5s;
-    overflow: hidden;
     background: #fff;
 
     @media (max-width: ${breakpoints.tabletLandscape}) {
@@ -129,7 +203,6 @@ const FlexContainer = styled.main`
     @media (max-width: ${breakpoints.tablet}) {
       width: ${({ visible }) => (visible ? '100%' : '0px')};
       max-width: 100%;
-      overflow: hidden;
     }
   }
 
@@ -164,4 +237,12 @@ const Button = styled.div`
   top: 25px;
   left: -25px;
   z-index: 2;
+
+  @media only screen and (max-width: ${breakpoints.tablet}) {
+    left: ${({ visible }) => (visible ? '-75px' : '25px')};
+
+    .menu-icon::before {
+      content: ${({ visible }) => (visible ? '"\f279"' : '"\f0ca"')} !important;
+    }
+  }
 `;

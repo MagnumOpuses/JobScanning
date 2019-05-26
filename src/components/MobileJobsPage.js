@@ -9,10 +9,9 @@ import {
   NoResultsBox,
   PageHeader,
   ResultStats
-} from '../../../components';
-import theme from '../../../styles/theme';
-import numberOfUniqueSources from '../../../utils/numberOfUniqueSources';
-import PageHeaderAds from './PageHeaderAds';
+} from './index';
+import theme from '../styles/theme';
+import numberOfUniqueSources from '../utils/numberOfUniqueSources';
 
 class MobileJobsPage extends Component {
   constructor(props) {
