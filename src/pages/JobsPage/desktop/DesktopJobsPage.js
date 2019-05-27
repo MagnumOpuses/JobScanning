@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob } from '../../../redux/actions';
+import { selectJob, unselectJob, setLocation } from '../../../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../../../components';
 import { Icon } from 'semantic-ui-react';
@@ -10,11 +10,31 @@ import theme from '../../../styles/theme';
 import DesktopJobDetails from './DesktopJobDetails';
 import breakpoints from '../../../styles/breakpoints';
 import map_picture from '../../../images/map_picture.png';
-import MapComponent from '../../../components/map/map'
+import MapComponent from '../../../components/map/map';
 
 class DesktopJobsPage extends Component {
   state = {
-    sidemenuVisible: true
+    sidemenuVisible: true,
+    mapData :
+    {
+      result: 
+      [
+        { 
+          "name": 'Stockholms län',
+          "value": 50
+        },
+        { 
+          "name": 'Nacka',
+          "value": 25
+        },
+        {
+          "name": "Botkyrka",
+          "value": 25
+        }
+      ],
+      total: 111
+    }
+
   };
 
   selectOrUnselectJob = job => {
@@ -65,11 +85,14 @@ class DesktopJobsPage extends Component {
                 }}
               />
             </Button>
-
-            <MapComponent 
+            <MapComponent
+              mode="county"
               height={'100%'}
-              location={this.props.location}
+              width={'auto'}
+              mapData={this.state.mapData}
+              location={this.props.location.value}
               q={this.props.searchTerm}
+              setLocation={this.props.setLocation}
             />
           </div>
         </FlexContainer>
@@ -91,7 +114,7 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob }
+  { selectJob, unselectJob, setLocation }
 )(DesktopJobsPage);
 
 const FlexContainer = styled.main`

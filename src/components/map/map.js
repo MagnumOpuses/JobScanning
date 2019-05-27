@@ -164,6 +164,8 @@ class MapComponent extends Component
     const kommunVald = this.findLayerByValue('name', 'municipalitySelected');
     const lanVald = this.findLayerByValue('name', 'countySelected');
     const heatmap = this.findLayerByValue('name', 'heatmap');
+    const hover = this.findLayerByValue('name', 'hover');
+    const selected = this.findLayerByValue('name', 'selected');
 
     if(level === 'municipality')
     {
@@ -173,6 +175,7 @@ class MapComponent extends Component
       lan.setStyle(styling.clean);
       lanVald.setVisible(false);
       heatmap.setVisible(false);
+      selected.setVisible(true);
     } 
     else if(level === 'heatmap')
     {
@@ -182,6 +185,8 @@ class MapComponent extends Component
       kommun.setStyle(styling.clean);
       kommunVald.setVisible(false);
       heatmap.setVisible(true);
+      hover.getSource().clear();
+      selected.setVisible(false);
     
     }
     else
@@ -192,6 +197,7 @@ class MapComponent extends Component
       lan.setStyle(styling.default);
       lanVald.setVisible(true);
       heatmap.setVisible(false);
+      selected.setVisible(true);
     }
 
     this.populate();	
@@ -215,7 +221,9 @@ class MapComponent extends Component
       layer.getSource().forEachFeature(function(feature)
       {
         if(found.feature) return;
-        if(feature.get('name') === featureName) 
+        if(
+          feature.get('name') === featureName || 
+          feature.get('short_name') == featureName) 
         {
           found = {
             feature: feature,
@@ -266,18 +274,19 @@ class MapComponent extends Component
     }
   }
 
-  handleChange(e) 
+  handleChange() 
   {
+    const jtv = this.jobTechVaribles;
     if(
-      this.jobTechVaribles.getAttribute('data-location') !== undefined &&
-      this.state.location !== this.jobTechVaribles.getAttribute('data-location')
+      jtv.getAttribute('data-location') !== undefined &&
+      this.state.location !== jtv.getAttribute('data-location')
       )
     {
-      this.setState({ location: this.jobTechVaribles.getAttribute('data-location') });
       let found = {};
-      found = this.findFeature(this.state.location);
+      found = this.findFeature(jtv.getAttribute('data-location'));
       if(found.feature)
       {
+        this.setState({ location: jtv.getAttribute('data-location') });
         if(this.state.level === 'county') this.toggleLevel('municipality');
         this.addSelect(found.feature, found.level);
       } 
@@ -287,21 +296,25 @@ class MapComponent extends Component
       }
     }
     if(
-      this.jobTechVaribles.getAttribute('data-q') !== undefined &&
-      this.state.q !== this.jobTechVaribles.getAttribute('data-q')
+      jtv.getAttribute('data-q') !== undefined &&
+      this.state.q !== jtv.getAttribute('data-q')
       )
     {
-      this.setState({ q: this.jobTechVaribles.getAttribute('data-q') });
+      this.setState({ q: jtv.getAttribute('data-q') });
       this.loadValues(this.state.level);
     }
     if(
-      this.jobTechVaribles.getAttribute('data-mode') !== undefined &&
-      this.jobTechVaribles.getAttribute('data-mode') === 'heatmap'   
-      )
+      jtv.getAttribute('data-mode') !== undefined &&
+      ( 
+        jtv.getAttribute('data-mode') === 'heatmap' ||
+        jtv.getAttribute('data-mode') === 'county' ||
+        jtv.getAttribute('data-mode') === 'municipality'
+      ))
     {
-      this.toggleLevel('heatmap');
+      this.toggleLevel(jtv.getAttribute('data-mode'));
     }
   }
+
   populate()
   {
     const parent = this;
@@ -337,21 +350,12 @@ class MapComponent extends Component
 
   componentDidMount() 
   {
+    this.isMapElementResized();
     this.globalJobTechVariables();
-    if(
-      this.jobTechVaribles.getAttribute('data-mode') === 'heatmap' ||
-      this.props.mode === 'heatmap'
-      ){
-        this.toggleLevel('heatmap');
-      } 
-    if(this.jobTechVaribles.getAttribute('data-location') !== undefined) 
-    {
-      this.setState({ location: this.jobTechVaribles.getAttribute('data-location') });
-    }
-    if(this.props.location) 
-    {
-      this.setState({ location: this.props.location });
-    }
+    this.handleChange();
+    if( this.props.mode !== undefined ) this.toggleLevel(this.props.mode);
+    if( this.props.location !== undefined ) this.setState({ location: this.props.location });
+
     const parent = this;
     const map = this.olmap;
     let hovered;
@@ -365,24 +369,32 @@ class MapComponent extends Component
       let zoom = map.getView().getZoom();
       this.setState({ center, zoom });
       // remove selected on zoom out
-        if(this.selected.county.zoom !== 0 && this.selected.county.zoom > this.state.zoom) {
+        if(
+          this.selected.county.zoom !== 0 && 
+          this.selected.county.zoom > this.state.zoom
+          ) 
+        {
           //console.log('unselect county');
           this.removeMark(this.selected.county.name, 'selected');
           this.selected.county = new areaSelected();
           parent.toggleLevel('county');
 
         }
-        if(this.selected.municipality.zoom !== 0 && this.selected.municipality.zoom > this.state.zoom) {
+        if(
+          this.selected.municipality.zoom !== 0 && 
+          this.selected.municipality.zoom > this.state.zoom
+        ) {
           //console.log('unselect municipality');
-
           this.removeMark(this.selected.municipality.name, 'selected');
           this.removeMark('', 'municipalitySelected');
           this.selected.municipality = new areaSelected();
           if(this.selected.county.name.length > 0)
           {
-            this.setState({ q: this.selected.county.name });
+            console.log(this.selected.county.name);
+            this.setState({ location: this.selected.county.name });
           }
           parent.toggleLevel('county');
+
 
         }
 
@@ -470,29 +482,96 @@ class MapComponent extends Component
 
   }
 
+  isMapElementResized()
+  {
+    const mapElement = document.getElementById("map");
+    if(!this.mapHeight)
+    {
+      this.mapHeight = mapElement.offsetHeight;
+      this.mapWidth = mapElement.offsetWidth; 
+    }
+    else 
+    {
+      if(
+        mapElement &&
+        (
+          this.mapHeight !== mapElement.offsetHeight ||
+          this.mapWidth !== mapElement.offsetWidth 
+        )
+        )
+      {
+        this.olmap.updateSize();
+        this.mapHeight = mapElement.offsetHeight;
+        this.mapWidth = mapElement.offsetWidth; 
+      }
+    }
+  }
+
   shouldComponentUpdate(nextProps, nextState) 
   {
+    const parent = this;
+    if(nextState.level != "heatmap"){
+      setTimeout(function(){parent.isMapElementResized()},300);
+    }
     if(nextProps.MapData)
     {
       this.setState({total: this.props.mapData.total });
       this.findFeatures(this.props.MapData.result);
     }
 
+    if(
+      nextProps.location !== undefined &&  
+      nextProps.location !== this.state.location
+      )
+    {
+      let found = this.findFeature(nextProps.location);
+      if(found.feature) 
+      {
+        this.addSelect(found.feature, found.level);
+      }
+    }
+
     if(this.jobTechVaribles)
     {
-      if(this.jobTechVaribles.getAttribute('data-location') !== this.state.location)
+      // If the jobTechVaribles is not the same as the map, update them
+      const jvt = this.jobTechVaribles;
+      if(jvt.getAttribute('data-location') !== this.state.location)
       {
-        this.jobTechVaribles.setAttribute('data-location', this.state.location);
+        jvt.setAttribute('data-location', this.state.location);
       }
-      if(this.jobTechVaribles.getAttribute('data-q') !== this.state.q)
+      if(jvt.getAttribute('data-q') !== this.state.q)
       {
-        this.jobTechVaribles.setAttribute('data-q', this.state.q);
+        jvt.setAttribute('data-q', this.state.q);
       }
+    }
+
+    if(
+      nextState.location !== undefined && 
+      nextState.location !== null  && 
+      nextState.location !== "null"  && 
+      nextState.location !== this.state.location)
+    {
+      console.log(nextState.location);
+      if(nextState.location.length > 1) this.props.setLocation(nextState.location);
     }
 
     let center = this.olmap.getView().getCenter();
     let zoom = this.olmap.getView().getZoom();
-    if(center === nextState.center && zoom === nextState.zoom) return false;
+
+    
+    // console.log({
+    //   'this.props': this.props, 
+    //   'nextProps': nextProps,
+    //   'nextState': nextState,
+    //   'state': this.state,
+    //   'center': center,
+    //   'zoom': zoom
+    // });
+   
+    if(
+      center === nextState.center && 
+      zoom === nextState.zoom  
+      ) return false;
     return true;
   }
   
@@ -512,7 +591,14 @@ class MapComponent extends Component
       // https://trello.com/c/CSnzPUAU/85-f%C3%A4rger-p%C3%A5-kartan
     }
     selectedLayer.getSource().addFeature(feature);
-    this.selected[type].name = feature.get('name');
+    if(type === 'county') 
+    {
+      this.selected[type].name = feature.get('name');
+    }
+    else 
+    {
+      this.selected[type].name = feature.get('short_name');
+    }
     if(selectIt) this.selected[type].zoom = this.state.zoom;
     if(this.selected['municipality'].zoom === undefined) 
     {
@@ -522,10 +608,11 @@ class MapComponent extends Component
     if(selectIt) 
     {
       this.toggleLayer(selectedLayer, true);
+      if(this.level !== type) this.toggleLevel(type);
       let extent = feature.getGeometry().getExtent();
       this.setState(
         { 
-          location: feature.get('name'),
+          location: this.selected[type].name,
           center: getCenter(extent), 
           extent: extent 
         }
@@ -621,7 +708,7 @@ class MapComponent extends Component
 
   render() 
   {
-    this.updateMap(); // Update map on render?
+    this.updateMap(); // Update map on render
     return (
         <div id="map" style={{ width: this.state.width, height: this.state.height }}>
         </div>

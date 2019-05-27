@@ -74,7 +74,7 @@ const Overview = () => {
             content="Karta"
             style={{ fontSize: '32px' }}
           />
-          <div style={{ "flex-grow": "1" }}>
+          <div style={{ "flexGrow": "1" }}>
             <MapComponent mode="heatmap"/>
           </div>
         </div>
