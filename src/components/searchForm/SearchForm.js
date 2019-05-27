@@ -68,7 +68,7 @@ const OverviewLink = styled(Link)`
     display: flex;
     align-items: center;
     margin: 10px 0;
-    padding: 8px 10px;
+    padding: 11px 10px;
     color: #000;
     background: #fff;
     border: 2px solid ${({ theme }) => theme.green4};

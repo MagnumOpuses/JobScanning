@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Header } from 'semantic-ui-react';
+import { Header, Icon } from 'semantic-ui-react';
 import PageHeader from '../components/PageHeader';
 import Chart from '../components/Chart';
 import theme from '../styles/theme';
@@ -37,6 +37,10 @@ const Overview = props => {
               </text>
             </SVGBackArrow>
           </Link> */}
+          <OverviewLink to="/jobs">
+            <Icon name="angle double left" />
+            Gå tillbaka till annonser
+          </OverviewLink>
           <h2
             style={{
               fontSize: '28px',
@@ -127,7 +131,7 @@ const GridContainer = styled.div`
     'map chart chart';
   grid-gap: 20px;
   max-width: 1366px;
-  margin: 40px auto;
+  margin: 60px auto;
   padding: 0 20px 20px;
 
   @media screen and (max-width: ${breakpoints.tabletLandscape}) {
@@ -205,15 +209,30 @@ const GridContainer = styled.div`
   }
 `;
 
-const SVGBackArrow = styled.svg`
-  margin: 20px 0;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
-
-  &:hover {
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+const OverviewLink = styled(Link)`
+  &:link,
+  &:visited {
+    display: inline-flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 11px 10px;
+    color: #000;
+    background: #fff;
+    border: 2px solid ${({ theme }) => theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   }
 
-  text {
-    font-size: 20px;
+  &:hover {
+    color: ${props => props.theme.white};
+    background: ${props => props.theme.green4};
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  i {
+    font-size: 20px !important;
+    margin-right: 10px;
   }
 `;

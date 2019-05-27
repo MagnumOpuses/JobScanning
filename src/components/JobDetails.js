@@ -152,13 +152,9 @@ const Container = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 1366px) {
-    left: 490px;
-    right: 10px;
-  }
-
-  @media (max-width: 1024px) {
-    left: 20px;
-    right: 20px;
+    top: 40px;
+    left: 40px;
+    right: 40px;
   }
 
   @media (max-width: 767px) {

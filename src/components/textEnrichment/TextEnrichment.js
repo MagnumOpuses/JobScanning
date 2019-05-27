@@ -52,7 +52,7 @@ const Container = styled.div`
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 0;
+    margin: 20px 0 0;
   }
 
   .header {
@@ -61,8 +61,7 @@ const Container = styled.div`
 
   .list {
     transition: max-height 0.3s ease;
-    max-height: ${({ isExpanded, listHeight }) =>
-      isExpanded ? '192px' : '64px'};
+    max-height: ${({ isExpanded }) => (isExpanded ? '192px' : '64px')};
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -86,7 +85,7 @@ const Container = styled.div`
     text-align: left;
     padding: 5px 0;
 
-    @media (max-width: ${breakpoints.tablet}) {
+    @media (max-width: ${breakpoints.tabletLandscape}) {
       flex: 1 0 100%;
       text-align: center;
     }
