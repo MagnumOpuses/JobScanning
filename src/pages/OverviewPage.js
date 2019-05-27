@@ -8,6 +8,7 @@ import breakpoints from '../styles/breakpoints';
 import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
 import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
+import MapComponent from '../components/map/map'
 
 const OverviewPage = () => {
   return (
@@ -78,6 +79,10 @@ const OverviewPage = () => {
             till arbete det närmaste året. På fem års sikt bedöms möjligheterna
             till arbete vara 'goda'.
           </p>
+          <div style={{ "flexGrow": "1" }}>
+            <MapComponent mode="heatmap"/>
+          </div>
+
         </div>
         <div className="chart box">
           <Header
