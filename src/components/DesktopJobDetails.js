@@ -4,7 +4,6 @@ import format from 'date-fns/format';
 import sv from 'date-fns/locale/sv';
 import { LogoPlaceholder, TextEnrichment } from './index';
 import images from '../images';
-import { buttonStyleCorners } from '../styles/components';
 import breakpoints from '../styles/breakpoints';
 
 const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
@@ -19,7 +18,6 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
 
   const handleClick = e => {
     if (adRef.current.contains(e.target)) {
-      // inside click
       return;
     }
     unselectJob();
@@ -128,13 +126,13 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
           </SourcesContainer>
         </MultipleLinks>
       ) : (
-        <StyledLink
+        <Link
           href={selectedJob.sources[0].url}
           target="_blank"
           rel="noopener noreferrer"
         >
           Gå till annonsen
-        </StyledLink>
+        </Link>
       )}
     </Container>
   );
@@ -164,8 +162,9 @@ const Container = styled.div`
   }
 
   @media (max-width: 767px) {
-    left: 10px;
-    right: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 40px;
   }
 
@@ -319,13 +318,24 @@ const A = styled.a`
   }
 `;
 
-const StyledLink = styled.a`
-  ${buttonStyleCorners}
+const Link = styled.a`
   &:link,
   &:visited {
     display: block;
-    width: 270px;
+    width: max-content;
     margin: 0 auto;
-    padding: 1.5rem 60px;
+    padding: 1.4rem 9rem;
+    color: rgba(0, 0, 0, 7);
+    background: ${props => props.theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    background: ${props => props.theme.green5};
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: none;
   }
 `;

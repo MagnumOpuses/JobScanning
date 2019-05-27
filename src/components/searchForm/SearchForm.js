@@ -29,25 +29,10 @@ const SearchForm = ({
           placeholder="Skriv sökord"
           required
         />
-        <Link to={`/overview/${searchTerm}`} style={{ color: '#49efe1' }}>
-          {/* <Button
-            content="Yrkesöversikt"
-            basic
-            color="teal"
-            disabled={searchTerm.length > 0 ? false : true}
-          /> */}
-          <SVGBackArrow height="40" width="255">
-            <polygon
-              points="0,0 255,0 255,40 0,40"
-              fill="#fff"
-              stroke="#49efe1"
-              strokeWidth="3"
-            />
-            <text x="25" y="28">
-              Yrkesöversikt
-            </text>
-          </SVGBackArrow>
-        </Link>
+        <OverviewLink to={`/overview/${searchTerm}`}>
+          <Icon name="line graph" />
+          Se översikt
+        </OverviewLink>
       </div>
 
       <div style={{ overflow: 'visible' }}>
@@ -79,16 +64,31 @@ const SearchForm = ({
 
 export default SearchForm;
 
-const SVGBackArrow = styled.svg`
-  margin: 20px 0;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
-
-  &:hover {
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+const OverviewLink = styled(Link)`
+  &:link,
+  &:visited {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px 10px;
+    color: #000;
+    background: #fff;
+    border: 2px solid ${({ theme }) => theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   }
 
-  text {
-    font-size: 20px;
+  &:hover {
+    color: ${props => props.theme.white};
+    background: ${props => props.theme.green4};
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  i {
+    font-size: 20px !important;
+    margin-right: 10px;
   }
 `;
 
@@ -143,8 +143,9 @@ const CustomButton = styled(Button)`
     align-self: center;
     margin-top: 4rem;
     padding: 1.4rem 9rem;
-    color: rgba(0, 0, 0, 7);
+    color: #000;
     background: ${props => props.theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
     &&&:disabled {
       color: rgba(0, 0, 0, 0.66);
