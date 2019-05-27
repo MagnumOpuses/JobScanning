@@ -213,8 +213,17 @@ class MapComponent extends Component
     return this.predefinedColor[x];
   }
 
+  capitalize(s)
+  {
+    if (typeof s !== 'string') return ''
+    s = s.toLowerCase();
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   findFeature(featureName, layers = ['county', 'municipality'])
   {
+    if(featureName === '') return false;
+    featureName = this.capitalize(featureName);
     let found = {};
     layers.forEach(layerName => {
       let layer = this.findLayerByValue('name', layerName);
@@ -222,8 +231,9 @@ class MapComponent extends Component
       {
         if(found.feature) return;
         if(
-          feature.get('name') === featureName || 
-          feature.get('short_name') == featureName) 
+            feature.get('name') === featureName || 
+            feature.get('short_name') === featureName
+          )  
         {
           found = {
             feature: feature,
@@ -238,11 +248,12 @@ class MapComponent extends Component
 
   findFeatures(array, area = this.state.level)
   {
+    console.log(array);
     const parent = this;
     let marks = [];
     let found = false;
     array.forEach(fetchedRow => {
-      found = this.findFeature(fetchedRow.name, [area] )
+      found = this.findFeature(fetchedRow.name, [area]);
       if(found.feature)
       {
         marks.push({
@@ -258,6 +269,7 @@ class MapComponent extends Component
         { 
           layerExtent: true, 
           layer: area + 'Selected',
+          clear: true
         }
       );
     }
@@ -318,17 +330,18 @@ class MapComponent extends Component
   populate()
   {
     const parent = this;
+    console.log(parent.props.mapData);
     setTimeout(function()
     {
-      if(parent.props.mapData)
+      if(parent.props.mapData.result && parent.props.mapData.result.length > 0)
       {
-        //console.log('populate data from props');
+        console.log('populate data from props');
         parent.setState({ total: parent.props.mapData.total });
         parent.findFeatures(parent.props.mapData.result);
       }
       else
       {
-        //console.log('populate data from api');
+        console.log('populate data from api');
         parent.loadValues(parent.state.level);		
       }
     }, 2000);
@@ -513,10 +526,13 @@ class MapComponent extends Component
     if(nextState.level != "heatmap"){
       setTimeout(function(){parent.isMapElementResized()},300);
     }
-    if(nextProps.MapData)
+    if(nextProps.mapData)
     {
-      this.setState({total: this.props.mapData.total });
-      this.findFeatures(this.props.MapData.result);
+      if(nextProps.mapData.total != this.state.total)
+      {
+        this.setState({total: nextProps.mapData.total });
+        this.findFeatures(nextProps.mapData.result); 
+      }
     }
 
     if(
@@ -551,7 +567,6 @@ class MapComponent extends Component
       nextState.location !== "null"  && 
       nextState.location !== this.state.location)
     {
-      console.log(nextState.location);
       if(nextState.location.length > 1) this.props.setLocation(nextState.location);
     }
 

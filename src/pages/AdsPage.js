@@ -9,6 +9,7 @@ import JobAdsList from '../components/jobAdsList/JobAdsList';
 import DesktopJobDetails from '../components/DesktopJobDetails';
 import breakpoints from '../styles/breakpoints';
 import MapComponent from '../components/map/map';
+import getNumberOfJobsInPlace from '../utils/getNumberOfJobsInPlace';
 
 class AdsPage extends Component {
   constructor(props) {
@@ -25,6 +26,19 @@ class AdsPage extends Component {
 
   componentDidMount() {
     this.setState({ headerHeight: this.headerRef.current.clientHeight });
+    this.mapData = {
+      total: 0,
+      result: []
+    };
+  }
+
+  updateMap(){
+
+    let adsByLocation = getNumberOfJobsInPlace(this.props.hits);
+    this.mapData.total = adsByLocation.sweden; 
+    this.mapData.result = Object.keys(adsByLocation).map(function(key) {
+      return { "name": key, "value": adsByLocation[key] };
+    });
   }
 
   componentDidUpdate() {
@@ -33,6 +47,7 @@ class AdsPage extends Component {
         headerHeight: this.headerRef.current.clientHeight
       });
     }
+    this.updateMap();
   }
 
   handleScroll = ref => {
@@ -128,7 +143,7 @@ class AdsPage extends Component {
               mode="county"
               height={'100%'}
               width={'auto'}
-              mapData={this.state.mapData}
+              mapData={this.mapData}
               location={this.props.location.value}
               q={this.props.searchTerm}
               setLocation={this.props.setLocation}
