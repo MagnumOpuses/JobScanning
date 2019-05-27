@@ -6,7 +6,7 @@ import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
 import PageHeader from '../components/PageHeader';
 import JobAdsList from '../components/jobAdsList/JobAdsList';
-import DesktopJobDetails from '../components/DesktopJobDetails';
+import JobDetails from '../components/JobDetails';
 import breakpoints from '../styles/breakpoints';
 import map_picture from '../images/map_picture.png';
 
@@ -96,7 +96,7 @@ class Jobs extends Component {
           </div>
 
           {Object.keys(selectedJob).length > 0 && (
-            <DesktopJobDetails
+            <JobDetails
               key={selectedJob.id}
               selectedJob={selectedJob}
               unselectJob={this.props.unselectJob}

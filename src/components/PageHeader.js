@@ -28,7 +28,7 @@ const PageHeader = () => {
 
   return (
     <Header ref={refContainer}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div className="wrapper">
         <StyledLink to="/">
           <Logo alt="JobTech" src={jt_logoblack} />
           <H1>JobScanner</H1>
@@ -60,6 +60,15 @@ const Header = styled.header`
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: ${breakpoints.tabletLandscape}) {
+      position: absolute;
+    }
   }
 `;
 

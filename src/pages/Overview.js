@@ -24,7 +24,7 @@ const Overview = props => {
 
       <GridContainer>
         <div className="header">
-          <Link to="/jobs" style={{ color: '#000' }}>
+          {/* <Link to="/jobs" style={{ color: '#000' }}>
             <SVGBackArrow height="40" width="255">
               <polygon
                 points="0,20 20,0 255,0 255,40 20,40"
@@ -36,12 +36,13 @@ const Overview = props => {
                 Gå tillbaka till annonser
               </text>
             </SVGBackArrow>
-          </Link>
+          </Link> */}
           <h2
             style={{
               fontSize: '28px',
               textAlign: 'center',
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
+              margin: '20px 0 !important'
             }}
           >
             YRKESÖVERSIKT {occupationData.occupation}
@@ -126,7 +127,7 @@ const GridContainer = styled.div`
     'map chart chart';
   grid-gap: 20px;
   max-width: 1366px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 0 20px 20px;
 
   @media screen and (max-width: ${breakpoints.tabletLandscape}) {

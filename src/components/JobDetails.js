@@ -6,7 +6,7 @@ import { LogoPlaceholder, TextEnrichment } from './index';
 import images from '../images';
 import breakpoints from '../styles/breakpoints';
 
-const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
+const JobDetails = ({ selectedJob, unselectJob }) => {
   const adRef = useRef(null);
 
   useEffect(() => {
@@ -138,13 +138,13 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
   );
 };
 
-export default DesktopJobDetails;
+export default JobDetails;
 
 const Container = styled.div`
   position: absolute;
   top: 50px;
-  left: 545px;
-  right: 5%;
+  left: 520px;
+  right: 45px;
   z-index: 10;
   padding: 60px;
   margin-bottom: 50px;
@@ -325,6 +325,7 @@ const Link = styled.a`
     width: max-content;
     margin: 0 auto;
     padding: 1.4rem 9rem;
+    font-weight: bold;
     color: rgba(0, 0, 0, 7);
     background: ${props => props.theme.green4};
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);

@@ -35,20 +35,18 @@ const SearchForm = ({
         </OverviewLink>
       </div>
 
-      <div style={{ overflow: 'visible' }}>
-        <Form.Field>
-          <StyledDropdown
-            name="location"
-            value={location}
-            onChange={handleChange}
-            placeholder="Ange plats"
-            search
-            selection
-            options={countiesAndMunicipalities}
-            upward={upward}
-          />
-        </Form.Field>
-      </div>
+      <Form.Field>
+        <StyledDropdown
+          name="location"
+          value={location}
+          onChange={handleChange}
+          placeholder="Ange plats"
+          search
+          selection
+          options={countiesAndMunicipalities}
+          upward={upward}
+        />
+      </Form.Field>
 
       <div style={{ textAlign: 'center' }}>
         <CustomButton
