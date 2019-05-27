@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob, setLocation } from '../../../redux/actions';
+import { selectJob, unselectJob, setLocation } from '../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
@@ -8,7 +8,7 @@ import PageHeader from '../components/PageHeader';
 import JobAdsList from '../components/jobAdsList/JobAdsList';
 import DesktopJobDetails from '../components/DesktopJobDetails';
 import breakpoints from '../styles/breakpoints';
-import map_picture from '../images/map_picture.png';
+import MapComponent from '../components/map/map';
 
 class AdsPage extends Component {
   constructor(props) {
@@ -123,6 +123,7 @@ class AdsPage extends Component {
                 size="large"
               />
             </Button>
+
             <MapComponent
               mode="county"
               height={'100%'}
@@ -153,7 +154,24 @@ function mapStateToProps({ ads }) {
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob, setLocation }
-)(DesktopJobsPage);
+)(AdsPage);
+
+const Header = styled.header`
+  background: #fff;
+  transition: all 0.3s;
+
+  &.visible {
+    @media only screen and (max-width: ${breakpoints.tablet}) {
+      transform: translateY(0px);
+    }
+  }
+
+  &.hidden {
+    @media only screen and (max-width: ${breakpoints.tablet}) {
+      transform: translateY(-269px);
+    }
+  }
+`;
 
 const FlexContainer = styled.main`
   height: 100%;
