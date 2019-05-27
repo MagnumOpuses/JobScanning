@@ -20,7 +20,7 @@ const ResultStats = ({
         </span>{' '}
         i{' '}
         <span className="bold">
-          {usedLocation ? usedLocation.text : 'hela Sverige'}
+          {usedLocation.text ? usedLocation.text : 'hela Sverige'}
         </span>
       </p>
       {usedSearchTerm && (

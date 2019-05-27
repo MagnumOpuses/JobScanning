@@ -4,9 +4,8 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
-import AdDetails from './pages/AdDetails';
-import AdsPage from './pages/JobsPage/AdsPage';
-import Overview from './pages/Overview';
+import AdsPage from './pages/AdsPage';
+import OverviewPage from './pages/OverviewPage';
 import breakpoint from './styles/breakpoints';
 import backgroundImg from './images/Pixel.jpg';
 
@@ -24,8 +23,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%; /* 1 rem = 10px; 10px/16px = 62.5% */
   }
 
+  html, body, h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
   body {
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+    font-family: 'Open Sans', sans-serif !important;
     font-size: 1.6rem !important;
     height: 100vh;
     background: #fff url(${backgroundImg}) center/cover no-repeat fixed;
@@ -109,10 +113,10 @@ class App extends Component {
           <GlobalStyle />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/jobs/:id" component={AdDetails} />
             <Route path="/jobs" component={AdsPage} />
+            <Route path="/jobs/:id" component={AdsPage} />
             <Route path="/search" component={SearchPage} />
-            <Route path="/overview" component={Overview} />
+            <Route path="/overview" component={OverviewPage} />
           </Switch>
         </AppContainer>
       </ThemeProvider>

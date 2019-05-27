@@ -1,15 +1,8 @@
 import Checkbox from './reusables/Checkbox';
-import DisplayNumber from './reusables/DisplayNumber';
-import Ellipse from './reusables/Ellipse';
-import GridContainer from './reusables/GridContainer';
 import CustomLoader from './reusables/CustomLoader';
 import LogoPlaceholder from './reusables/LogoPlaceholder';
 import NoResultsBox from './reusables/NoResultsBox';
-import PageHeader from '../pages/JobsPage/components/PageHeader';
-
-import MobileJobsList from '../pages/JobsPage/components/MobileJobsList';
-
-import DescriptionContainer from './reusables/DescriptionContainer';
+import MobileJobsList from './MobileJobsList';
 
 import { default as SourceRanking } from './sourceRanking/SourceRankingContainer';
 import { default as ResultStats } from './resultStats/ResultStatsContainer';
@@ -21,14 +14,9 @@ export {
   MobileJobsList,
   SourceRanking,
   Checkbox,
-  DisplayNumber,
-  Ellipse,
-  GridContainer,
   CustomLoader,
   LogoPlaceholder,
   NoResultsBox,
-  PageHeader,
-  DescriptionContainer,
   ResultStats,
   SearchForm,
   TextEnrichment,

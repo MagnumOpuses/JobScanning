@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
 import breakpoints from '../../styles/breakpoints';
 
-const EnrichmentRanking = ({ hits, searchTerm, target }) => {
+const EnrichmentRanking = ({ hits, searchTerm, target, targetName }) => {
   return (
     <EnrichmentRankingContainer>
       <h2>
-        Topp <span className="bold">{target.length}</span> mest eftersökta
-        kompetenser i annonser för <span className="bold">{searchTerm}</span>.
+        Topp <span className="bold">{target.length}</span> mest eftersökta{' '}
+        {targetName} i annonser för <span className="bold">{searchTerm}</span>.
       </h2>
       <p>I {hits.length} annonser efterfrågas</p>
 
@@ -28,7 +27,8 @@ export default EnrichmentRanking;
 
 const EnrichmentRankingContainer = styled.div`
   h2 {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   .competences {

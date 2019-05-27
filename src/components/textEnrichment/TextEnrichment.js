@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import breakpoint from '../../styles/breakpoints';
+import breakpoints from '../../styles/breakpoints';
 
 const TextEnrichment = ({ header, icon, list, margin }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -42,14 +42,17 @@ const TextEnrichment = ({ header, icon, list, margin }) => {
 export default TextEnrichment;
 
 const Container = styled.div`
-  flex: 1;
+  flex: 0 1 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   margin: ${({ margin }) => margin};
-  /* text-align: center; */
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0;
+  }
 
   .header {
     font-weight: bold;
@@ -58,16 +61,18 @@ const Container = styled.div`
   .list {
     transition: max-height 0.3s ease;
     max-height: ${({ isExpanded, listHeight }) =>
-      isExpanded ? Math.ceil(listHeight / 2) * 32 + 'px' : '64px'};
+      isExpanded ? '192px' : '64px'};
     height: 100%;
+    width: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
 
-    @media screen and (max-width: ${breakpoint.tablet}) {
+    @media (max-width: ${breakpoints.tablet}) {
       max-height: ${({ isExpanded, listHeight }) =>
         isExpanded ? listHeight * 32 + 'px' : '64px'};
     }
@@ -80,7 +85,7 @@ const Container = styled.div`
     text-align: left;
     padding: 5px 0;
 
-    @media screen and (max-width: ${breakpoint.tablet}) {
+    @media (max-width: ${breakpoints.tablet}) {
       flex: 1 0 100%;
     }
   }

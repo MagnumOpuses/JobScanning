@@ -9,42 +9,48 @@ export default class LogoPlaceholder extends Component {
   };
 
   render() {
-    if (this.props.employer.logoUrl) {
-      return this.state.exists ? (
-        <StyledImg
-          onError={this.onError}
-          src={this.props.employer.logoUrl}
-          alt={this.props.employer.name}
-          padding={this.props.padding}
-        />
-      ) : (
-        <StyledH3>
-          {this.props.employer.name
-            .match(/\b\w/g)
-            .slice(0, 3)
-            .join('')}
-        </StyledH3>
-      );
-    } else if (this.props.employer.name) {
-      return (
-        <StyledH3>
-          {this.props.employer.name
-            .match(/\b\w/g)
-            .slice(0, 3)
-            .join('')}
-        </StyledH3>
-      );
-    } else {
-      console.log(this.props.employer);
+    const { name, logoUrl } = this.props.employer;
 
-      return <></>;
+    if (!logoUrl && !name) {
+      return <StyledH3 />;
+    }
+
+    try {
+      if (logoUrl) {
+        return this.state.exists ? (
+          <StyledImg
+            onError={this.onError}
+            src={logoUrl}
+            alt={name}
+            padding={this.props.padding}
+          />
+        ) : (
+          <StyledH3>
+            {name
+              .match(/\b\w/g)
+              .slice(0, 3)
+              .join('')}
+          </StyledH3>
+        );
+      } else {
+        return (
+          <StyledH3>
+            {name
+              .match(/\b\w/g)
+              .slice(0, 3)
+              .join('')}
+          </StyledH3>
+        );
+      }
+    } catch (error) {
+      return <StyledH3 />;
     }
   }
 }
 
 const StyledImg = styled.img`
-  width: 100px;
-  margin-right: 1.5rem;
+  width: 80px;
+  margin-right: 15px;
 `;
 
 const StyledH3 = styled.p`
@@ -53,10 +59,9 @@ const StyledH3 = styled.p`
   align-items: center;
   height: 65px;
   width: 65px;
-  margin: 0 25px 0 15px !important;
+  margin: 0 25px 0 5px !important;
   border-radius: 50%;
   font-size: 25px;
-  font-weight: 700;
   overflow: hidden;
   text-align: center;
   text-transform: uppercase;

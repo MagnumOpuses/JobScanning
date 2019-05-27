@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react';
@@ -11,26 +11,13 @@ const SearchForm = ({
   searchTerm,
   location,
   handleChange,
-  upward,
-  togglable
+  upward
 }) => {
-  const [showForm, setShowForm] = useState(false);
-  console.log(togglable);
-
   return (
     <>
-      {togglable && (
-        <SearchIcon
-          icon="search"
-          basic
-          onClick={() => setShowForm(!showForm)}
-        />
-      )}
       <CustomForm
         onSubmit={handleSubmit}
-        className={`${isDesktop ? 'isDesktop' : ''} ${
-          togglable ? (showForm ? 'show' : 'hide') : ''
-        }`}
+        className={isDesktop ? 'isDesktop' : ''}
       >
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Input
@@ -79,16 +66,6 @@ const SearchForm = ({
 
 export default SearchForm;
 
-const SearchIcon = styled(Button)`
-  &&& {
-    font-size: 24px !important;
-
-    @media (min-width: ${breakpoint.tablet}) {
-      display: none;
-    }
-  }
-`;
-
 const StyledDropdown = styled(Dropdown)`
   & .visible {
     min-height: 30vh;
@@ -107,7 +84,7 @@ const CustomForm = styled(Form)`
     border-radius: 5px;
     z-index: 1000;
     overflow: visible;
-    height: min-content;
+    height: auto;
 
     &&& * {
       font-size: 16px;
@@ -115,19 +92,6 @@ const CustomForm = styled(Form)`
 
     &&& > div {
       margin-top: 1rem;
-    }
-
-    &.show {
-      @media (max-width: ${breakpoint.tablet}) {
-        height: min-content;
-      }
-    }
-
-    &.hide {
-      @media (max-width: ${breakpoint.tablet}) {
-        overflow: hidden;
-        max-height: 0;
-      }
     }
 
     @media (min-width: ${breakpoint.tablet}) {
