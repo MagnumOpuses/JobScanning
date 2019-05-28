@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob } from '../redux/actions';
+import { selectJob, unselectJob, setLocation } from '../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
@@ -8,7 +8,8 @@ import PageHeader from '../components/PageHeader';
 import JobAdsList from '../components/jobAdsList/JobAdsList';
 import JobDetails from '../components/JobDetails';
 import breakpoints from '../styles/breakpoints';
-import map_picture from '../images/map_picture.png';
+import MapComponent from '../components/map/map';
+import getNumberOfJobsInPlace from '../utils/getNumberOfJobsInPlace';
 
 class Jobs extends Component {
   constructor(props) {
@@ -25,6 +26,19 @@ class Jobs extends Component {
 
   componentDidMount() {
     this.setState({ headerHeight: this.headerRef.current.clientHeight });
+    this.mapData = {
+      total: 0,
+      result: []
+    };
+  }
+
+  updateMap(){
+
+    let adsByLocation = getNumberOfJobsInPlace(this.props.hits);
+    this.mapData.total = adsByLocation.sweden; 
+    this.mapData.result = Object.keys(adsByLocation).map(function(key) {
+      return { "name": key, "value": adsByLocation[key] };
+    });
   }
 
   componentDidUpdate() {
@@ -33,6 +47,7 @@ class Jobs extends Component {
         headerHeight: this.headerRef.current.clientHeight
       });
     }
+    this.updateMap();
   }
 
   handleScroll = ref => {
@@ -124,12 +139,14 @@ class Jobs extends Component {
               />
             </Button>
 
-            <div
-              style={{
-                height: '100%',
-                width: '100%',
-                background: `#444 url(${map_picture}) center/cover no-repeat`
-              }}
+            <MapComponent
+              mode="county"
+              height={'100%'}
+              width={'auto'}
+              mapData={this.mapData}
+              location={this.props.location.value}
+              q={this.props.searchTerm}
+              setLocation={this.props.setLocation}
             />
           </div>
         </FlexContainer>
@@ -151,8 +168,8 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob }
-)(Jobs);
+  { selectJob, unselectJob, setLocation }
+)(AdsPage);
 
 const Header = styled.header`
   background: #fff;
