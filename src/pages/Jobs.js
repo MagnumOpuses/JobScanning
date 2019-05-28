@@ -189,7 +189,7 @@ const Header = styled.header`
 `;
 
 const FlexContainer = styled.main`
-  height: 100%;
+  height: calc(100% - 140px);
   width: 100%;
   display: flex;
   position: relative;
