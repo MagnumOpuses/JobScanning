@@ -6,6 +6,7 @@ import OlLayerTile from "ol/layer/Tile";
 import OlSourceWMTS from "ol/source/WMTS";
 import {Fill, Style } from 'ol/style.js';
 import 'ol/ol.css';
+import './custom.css';
 
 import mapStyling from './styling';
 import mapLayers from './layers';
