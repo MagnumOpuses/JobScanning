@@ -32,12 +32,11 @@ class Jobs extends Component {
     };
   }
 
-  updateMap(){
-
+  updateMap() {
     let adsByLocation = getNumberOfJobsInPlace(this.props.hits);
-    this.mapData.total = adsByLocation.sweden; 
+    this.mapData.total = adsByLocation.sweden;
     this.mapData.result = Object.keys(adsByLocation).map(function(key) {
-      return { "name": key, "value": adsByLocation[key] };
+      return { name: key, value: adsByLocation[key] };
     });
   }
 
@@ -168,13 +167,8 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-<<<<<<< HEAD:src/pages/AdsPage.js
   { selectJob, unselectJob, setLocation }
-)(AdsPage);
-=======
-  { selectJob, unselectJob }
 )(Jobs);
->>>>>>> develop:src/pages/Jobs.js
 
 const Header = styled.header`
   background: #fff;
