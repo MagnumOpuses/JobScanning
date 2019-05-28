@@ -169,7 +169,7 @@ function mapStateToProps({ ads }) {
 export default connect(
   mapStateToProps,
   { selectJob, unselectJob, setLocation }
-)(AdsPage);
+)(Jobs);
 
 const Header = styled.header`
   background: #fff;
