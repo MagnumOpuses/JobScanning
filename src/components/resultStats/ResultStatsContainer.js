@@ -20,10 +20,11 @@ class ResultStatsContainer extends React.Component {
   };
 
   render() {
-    const { processedList } = this.props;
+    const { searchTerm, processedList } = this.props;
 
     return (
       <ResultStats
+        searchTerm={searchTerm}
         processedList={processedList}
         sources={this.getNumberOfSources()}
       />
@@ -32,10 +33,11 @@ class ResultStatsContainer extends React.Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, processedList } = ads;
+  const { hits, searchTerm, processedList } = ads;
 
   return {
     hits,
+    searchTerm,
     processedList
   };
 }
