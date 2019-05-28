@@ -51,7 +51,7 @@ class JobAdsList extends Component {
           id="scrollableDiv"
           ref={this.listRef}
           // onScroll={this.handleScroll}
-          style={{ height: 'calc(100% - 120px)' }}
+          style={{ height: 'calc(100% - 100px)' }}
         >
           <InfiniteScroll
             dataLength={processedList.length}
