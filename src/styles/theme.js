@@ -1,12 +1,12 @@
 export default {
   primary: '#FFEB9E',
   white: '#fff',
-  lightGrey: '#9B9B9B',
+  lightGrey: '#ecf1f0',
+  grey: '#9B9B9B',
   darkGrey: '#4A4A4A',
   black: '#000',
   green5: '#02b1a2',
   green4: '#02DECC',
-  // green3: '#50E8DB',
   green3: '#4aefe2',
   green2: '#A6F3ED',
   green1: '#D9FAF7',
@@ -41,4 +41,4 @@ export default {
     bodyCopy: { fontSizeDesktop: '20px', fontWeightDesktop: 350 },
     smallText: { fontSizeDesktop: '16px', fontWeightDesktop: 350 }
   }
-}
+};

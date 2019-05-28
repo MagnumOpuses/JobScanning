@@ -4,10 +4,9 @@ import format from 'date-fns/format';
 import sv from 'date-fns/locale/sv';
 import { LogoPlaceholder, TextEnrichment } from './index';
 import images from '../images';
-import { buttonStyleCorners } from '../styles/components';
 import breakpoints from '../styles/breakpoints';
 
-const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
+const JobDetails = ({ selectedJob, unselectJob }) => {
   const adRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +18,6 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
 
   const handleClick = e => {
     if (adRef.current.contains(e.target)) {
-      // inside click
       return;
     }
     unselectJob();
@@ -86,13 +84,16 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
             padding: '1rem 0'
           }}
         >
-          <p>Vi hittade följande i annonsen som vi tror är relevant för dig</p>
+          <p>
+            Vi hittade följande information i annonsen som vi tror är relevant
+            för dig.
+          </p>
           <div className="TextEnrichment--container">
             <TextEnrichment />
           </div>
-          <p style={{ fontSize: '18px !important', fontStyle: 'italic' }}>
+          <p className="disclaimer">
             OBS: Informationen plockas ut av vår textanalys och kan vara
-            missvisande
+            missvisande.
           </p>
         </div>
       )}
@@ -125,25 +126,25 @@ const DesktopJobDetails = ({ selectedJob, unselectJob }) => {
           </SourcesContainer>
         </MultipleLinks>
       ) : (
-        <StyledLink
+        <Link
           href={selectedJob.sources[0].url}
           target="_blank"
           rel="noopener noreferrer"
         >
           Gå till annonsen
-        </StyledLink>
+        </Link>
       )}
     </Container>
   );
 };
 
-export default DesktopJobDetails;
+export default JobDetails;
 
 const Container = styled.div`
   position: absolute;
   top: 50px;
-  left: 545px;
-  right: 5%;
+  left: 520px;
+  right: 45px;
   z-index: 10;
   padding: 60px;
   margin-bottom: 50px;
@@ -151,25 +152,25 @@ const Container = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 1366px) {
-    left: 490px;
-    right: 10px;
-  }
-
-  @media (max-width: 1024px) {
-    left: 20px;
-    right: 20px;
+    top: 40px;
+    left: 40px;
+    right: 40px;
   }
 
   @media (max-width: 767px) {
-    left: 10px;
-    right: 10px;
-    padding: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 40px;
+  }
+
+  @media (max-width: ${breakpoints.mobileLandscape}) {
+    padding: 40px 20px;
   }
 
   .TextEnrichment--container {
     display: flex;
-
-    margin: 2rem 0 4rem;
+    margin: 20px 0 10px;
 
     @media (max-width: ${breakpoints.tablet}) {
       flex-direction: column;
@@ -185,6 +186,11 @@ const Container = styled.div`
       align-items: flex-start;
     }
   }
+
+  .disclaimer {
+    font-size: 14px !important;
+    font-style: italic;
+  }
 `;
 
 const Header = styled.header`
@@ -192,7 +198,8 @@ const Header = styled.header`
   margin-bottom: 40px;
 
   .employer {
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoints.mobileLandscape}) {
+      display: none;
     }
   }
 
@@ -210,6 +217,7 @@ const Header = styled.header`
 
   .publisher {
     flex: 0 0 auto;
+    align-self: flex-end;
   }
 
   .close-icon {
@@ -306,13 +314,25 @@ const A = styled.a`
   }
 `;
 
-const StyledLink = styled.a`
-  ${buttonStyleCorners}
+const Link = styled.a`
   &:link,
   &:visited {
     display: block;
-    width: 270px;
+    width: max-content;
     margin: 0 auto;
-    padding: 1.5rem 60px;
+    padding: 1.4rem 9rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 7);
+    background: ${props => props.theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    background: ${props => props.theme.green5};
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: none;
   }
 `;

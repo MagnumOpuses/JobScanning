@@ -6,12 +6,12 @@ import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
 import PageHeader from '../components/PageHeader';
 import JobAdsList from '../components/jobAdsList/JobAdsList';
-import DesktopJobDetails from '../components/DesktopJobDetails';
+import JobDetails from '../components/JobDetails';
 import breakpoints from '../styles/breakpoints';
 import MapComponent from '../components/map/map';
 import getNumberOfJobsInPlace from '../utils/getNumberOfJobsInPlace';
 
-class AdsPage extends Component {
+class Jobs extends Component {
   constructor(props) {
     super(props);
 
@@ -111,7 +111,7 @@ class AdsPage extends Component {
           </div>
 
           {Object.keys(selectedJob).length > 0 && (
-            <DesktopJobDetails
+            <JobDetails
               key={selectedJob.id}
               selectedJob={selectedJob}
               unselectJob={this.props.unselectJob}
@@ -168,8 +168,13 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
+<<<<<<< HEAD:src/pages/AdsPage.js
   { selectJob, unselectJob, setLocation }
 )(AdsPage);
+=======
+  { selectJob, unselectJob }
+)(Jobs);
+>>>>>>> develop:src/pages/Jobs.js
 
 const Header = styled.header`
   background: #fff;

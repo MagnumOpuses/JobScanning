@@ -1,43 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Header } from 'semantic-ui-react';
+import { Header, Icon } from 'semantic-ui-react';
 import PageHeader from '../components/PageHeader';
 import Chart from '../components/Chart';
+import theme from '../styles/theme';
 import breakpoints from '../styles/breakpoints';
 import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
 import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
 import MapComponent from '../components/map/map'
 
-const OverviewPage = () => {
+const Overview = props => {
+  const [occupationData, setOccupationData] = useState({});
+
+  useEffect(() => {
+    const { occupation } = props.match.params;
+    setOccupationData({ occupation: occupation });
+  });
+
   return (
     <>
       <PageHeader />
 
       <GridContainer>
         <div className="header">
-          <Link to="/jobs" style={{ color: '#000' }}>
-            <SVGBackArrow height="40" width="250">
-              <polygon
-                points="0,20 20,0 250,0 250,40 20,40"
-                fill="#fff"
-                stroke="#49efe1"
-                strokeWidth="3"
-              />
-              <text x="25" y="28">
-                Gå tillbaka till annonser
-              </text>
-            </SVGBackArrow>
-          </Link>
-          <h2 style={{ fontSize: '28px', textAlign: 'center' }}>
-            YRKESÖVERSIKT 'YRKE'
+          <OverviewLink to="/jobs">
+            <Icon name="angle double left" />
+            Gå tillbaka till annonser
+          </OverviewLink>
+          <h2
+            style={{
+              fontSize: '28px',
+              textAlign: 'center',
+              textTransform: 'uppercase',
+              margin: '20px 0 !important'
+            }}
+          >
+            YRKESÖVERSIKT {occupationData.occupation}
           </h2>
           <p>
-            Här finns information om alla annonser vi hittar för 'yrke' i hela
-            Sverige. Se vilka rekryteringssajter som har flest annonser för just
-            det yrket just nu, och vilka kompetenser och förmågor som vår
-            textanalys hittat och klassat som mest efterfrågade
+            Här finns information om alla annonser vi hittar för{' '}
+            <span className="occupation-name">{occupationData.occupation}</span>{' '}
+            i hela Sverige. Se vilka rekryteringssajter som har flest annonser
+            för just det yrket just nu, och vilka kompetenser och förmågor som
+            vår textanalys hittat och klassat som mest efterfrågade.
           </p>
         </div>
         <div className="sources box">
@@ -75,9 +82,10 @@ const OverviewPage = () => {
             style={{ fontSize: '24px' }}
           />
           <p>
-            Arbetsförmedlingen bedömer att 'yrke' har 'mycket goda' möjligheter
-            till arbete det närmaste året. På fem års sikt bedöms möjligheterna
-            till arbete vara 'goda'.
+            Arbetsförmedlingen bedömer att{' '}
+            <span className="occupation-name">{occupationData.occupation}</span>{' '}
+            har 'mycket goda' möjligheter till arbete det närmaste året. På fem
+            års sikt bedöms möjligheterna till arbete vara 'goda'.
           </p>
           <div style={{ "flexGrow": "1" }}>
             <MapComponent mode="heatmap"/>
@@ -93,7 +101,8 @@ const OverviewPage = () => {
           />
           <p>
             Medelvärde över hur jobbannonser publicerade på Platsbanken för{' '}
-            'yrke' fördelats över året historiskt sett
+            <span className="occupation-name">{occupationData.occupation}</span>{' '}
+            fördelats över året historiskt sett.
           </p>
           <Chart />
         </div>
@@ -102,7 +111,7 @@ const OverviewPage = () => {
   );
 };
 
-export default OverviewPage;
+export default Overview;
 
 const GridContainer = styled.div`
   display: grid;
@@ -112,12 +121,12 @@ const GridContainer = styled.div`
     'header header header'
     'sources skills traits'
     'map chart chart';
-  grid-gap: 20px;
+  grid-gap: 40px;
   max-width: 1366px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 0 20px 20px;
 
-  @media screen and (max-width: ${breakpoints.tabletLandscape}) {
+  @media screen and (max-width: 1366px) {
     height: auto;
     grid-template-rows: auto auto 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -126,6 +135,8 @@ const GridContainer = styled.div`
       'skills traits'
       'sources map'
       'chart chart';
+    grid-gap: 20px;
+    margin: 20px auto;
   }
 
   @media screen and (max-width: ${breakpoints.tablet}) {
@@ -143,7 +154,7 @@ const GridContainer = styled.div`
 
   @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     height: auto;
-    padding: 20px 5px;
+    padding: 20px 15px;
   }
 
   .box {
@@ -151,10 +162,9 @@ const GridContainer = styled.div`
     background: #fff;
     /* box-shadow: 0 1px 3px rgba(0, 0, 0, 2); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
-    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12); */
 
     @media screen and (max-width: ${breakpoints.mobileLandscape}) {
-      padding: 20px 5px;
+      padding: 20px;
     }
   }
 
@@ -182,17 +192,45 @@ const GridContainer = styled.div`
 
   .chart {
     grid-area: chart;
+
+    svg:not(:root) {
+      overflow: visible;
+    }
+  }
+
+  .occupation-name {
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: lowercase;
+    /* color: ${theme.green4}; */
   }
 `;
-const SVGBackArrow = styled.svg`
-  margin: 20px 0;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
 
-  &:hover {
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+const OverviewLink = styled(Link)`
+  &:link,
+  &:visited {
+    display: inline-flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 11px 10px;
+    color: #000;
+    background: #fff;
+    border: 2px solid ${({ theme }) => theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   }
 
-  text {
-    font-size: 20px;
+  &:hover {
+    color: ${props => props.theme.white};
+    background: ${props => props.theme.green4};
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  i {
+    font-size: 20px !important;
+    margin-right: 10px;
   }
 `;

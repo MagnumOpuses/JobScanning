@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SearchForm } from '../components';
 import breakpoints from '../styles/breakpoints';
 
-class SearchPage extends Component {
+class Search extends Component {
   render() {
     return (
       <FlexContainer>
@@ -19,7 +19,7 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+export default Search;
 
 const FlexContainer = styled.div`
   height: 100%;

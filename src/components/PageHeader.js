@@ -28,7 +28,7 @@ const PageHeader = () => {
 
   return (
     <Header ref={refContainer}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div className="wrapper">
         <StyledLink to="/">
           <Logo alt="JobTech" src={jt_logoblack} />
           <H1>JobScanner</H1>
@@ -55,9 +55,20 @@ export default PageHeader;
 const Header = styled.header`
   background: #fff;
   border-bottom: 5px solid ${theme.green4};
+
   @media (min-width: ${breakpoints.tablet}) {
     display: flex;
     flex-direction: row;
+    align-items: center;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: ${breakpoints.tabletLandscape}) {
+      position: absolute;
+    }
   }
 `;
 
@@ -74,9 +85,12 @@ const ToggleSearch = styled(Button)`
 const StyledLink = styled(Link)`
   display: flex;
   align-items: baseline;
-  height: 50px;
-  margin: 0.5rem;
+  padding: 10px;
   z-index: 2000;
+
+  @media screen and (max-width: ${breakpoints.tablet}) {
+    padding: 5px;
+  }
 `;
 
 const Logo = styled.img`
