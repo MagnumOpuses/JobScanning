@@ -6,6 +6,7 @@ import { SearchForm } from './index';
 import theme from '../styles/theme';
 import breakpoints from '../styles/breakpoints';
 import jt_logoblack from '../images/logo/1x/jt_logoblack.png';
+import TermAndLocation from './TermAndLocation';
 
 const PageHeader = () => {
   const [showForm, setShowForm] = useState(null);
@@ -33,6 +34,8 @@ const PageHeader = () => {
           <Logo alt="JobTech" src={jt_logoblack} />
           <H1>JobScanner</H1>
         </StyledLink>
+
+        <TermAndLocation hide={showForm ? true : false} />
 
         <ToggleSearch
           icon="search"
@@ -65,6 +68,7 @@ const Header = styled.header`
   .wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     @media (min-width: ${breakpoints.tabletLandscape}) {
       position: absolute;

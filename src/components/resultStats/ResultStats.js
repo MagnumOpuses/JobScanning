@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
 import breakpoints from '../../styles/breakpoints';
 
-const ResultStats = ({
-  processedList,
-  sources,
-  usedSearchTerm,
-  usedLocation
-}) => {
+const ResultStats = ({ processedList, sources }) => {
   return (
     <DesktopSearchMetadata>
       <p>
@@ -17,21 +11,6 @@ const ResultStats = ({
         {'\n'}
         webbplatser för {'\n'}
       </p>
-      <p>
-        <span className="bold" style={{ textTransform: 'capitalize' }}>
-          {usedSearchTerm}
-        </span>{' '}
-        i{' '}
-        <span className="bold">
-          {usedLocation.text ? usedLocation.text : 'hela Sverige'}
-        </span>
-      </p>
-      {/* {usedSearchTerm && (
-        <Link to="/overview" style={{ color: '#49efe1' }}>
-          <Icon name="line graph" size="large" />
-          Se yrkesöversikt
-        </Link>
-      )} */}
     </DesktopSearchMetadata>
   );
 };
