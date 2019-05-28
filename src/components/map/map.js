@@ -206,11 +206,11 @@ class MapComponent extends Component
 
   colorCodeValue(value)
   {
-    const one4th = this.state.total / 4;
+    let one4th = 5 // this.state.total / 4;
     let x = 3;
-    if (value < (one4th * 3)) x = 2;
-    if (value < (one4th * 2)) x = 1;
-    if (value < one4th) x = 0;
+    if (value <= (one4th * 3)) x = 2;
+    if (value <= (one4th * 2)) x = 1;
+    if (value <= one4th) x = 0;
     return this.predefinedColor[x];
   }
 
