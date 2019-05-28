@@ -19,7 +19,7 @@ class mapStyling
   {
     image: new CircleStyle(
     {
-      radius: 12,
+      radius: 16,
       stroke: new Stroke(
       {
         color: 'rgba(0,0,0, 1)',

@@ -248,7 +248,6 @@ class MapComponent extends Component
 
   findFeatures(array, area = this.state.level)
   {
-    console.log(array);
     const parent = this;
     let marks = [];
     let found = false;
@@ -330,18 +329,17 @@ class MapComponent extends Component
   populate()
   {
     const parent = this;
-    console.log(parent.props.mapData);
     setTimeout(function()
     {
       if(parent.props.mapData.result && parent.props.mapData.result.length > 0)
       {
-        console.log('populate data from props');
+        //console.log('populate data from props');
         parent.setState({ total: parent.props.mapData.total });
         parent.findFeatures(parent.props.mapData.result);
       }
       else
       {
-        console.log('populate data from api');
+        //console.log('populate data from api');
         parent.loadValues(parent.state.level);		
       }
     }, 2000);
