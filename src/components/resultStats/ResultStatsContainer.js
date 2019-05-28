@@ -20,27 +20,23 @@ class ResultStatsContainer extends React.Component {
   };
 
   render() {
-    const { processedList, usedSearchTerm, usedLocation } = this.props;
+    const { processedList } = this.props;
 
     return (
       <ResultStats
         processedList={processedList}
         sources={this.getNumberOfSources()}
-        usedSearchTerm={usedSearchTerm}
-        usedLocation={usedLocation}
       />
     );
   }
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, processedList, usedSearchTerm, usedLocation } = ads;
+  const { hits, processedList } = ads;
 
   return {
     hits,
-    processedList,
-    usedSearchTerm,
-    usedLocation
+    processedList
   };
 }
 

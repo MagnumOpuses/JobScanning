@@ -6,6 +6,7 @@ import OlLayerTile from "ol/layer/Tile";
 import OlSourceWMTS from "ol/source/WMTS";
 import {Fill, Style } from 'ol/style.js';
 import 'ol/ol.css';
+import './custom.css';
 
 import mapStyling from './styling';
 import mapLayers from './layers';
@@ -205,11 +206,11 @@ class MapComponent extends Component
 
   colorCodeValue(value)
   {
-    const one4th = this.state.total / 4;
+    let one4th = 5 // this.state.total / 4;
     let x = 3;
-    if (value < (one4th * 3)) x = 2;
-    if (value < (one4th * 2)) x = 1;
-    if (value < one4th) x = 0;
+    if (value <= (one4th * 3)) x = 2;
+    if (value <= (one4th * 2)) x = 1;
+    if (value <= one4th) x = 0;
     return this.predefinedColor[x];
   }
 
@@ -248,7 +249,6 @@ class MapComponent extends Component
 
   findFeatures(array, area = this.state.level)
   {
-    console.log(array);
     const parent = this;
     let marks = [];
     let found = false;
@@ -330,18 +330,17 @@ class MapComponent extends Component
   populate()
   {
     const parent = this;
-    console.log(parent.props.mapData);
     setTimeout(function()
     {
       if(parent.props.mapData.result && parent.props.mapData.result.length > 0)
       {
-        console.log('populate data from props');
+        //console.log('populate data from props');
         parent.setState({ total: parent.props.mapData.total });
         parent.findFeatures(parent.props.mapData.result);
       }
       else
       {
-        console.log('populate data from api');
+        //console.log('populate data from api');
         parent.loadValues(parent.state.level);		
       }
     }, 2000);
@@ -612,6 +611,7 @@ class MapComponent extends Component
     }
     else 
     {
+      feature.setStyle([styling.highlight, styling.selected]);
       this.selected[type].name = feature.get('short_name');
     }
     if(selectIt) this.selected[type].zoom = this.state.zoom;

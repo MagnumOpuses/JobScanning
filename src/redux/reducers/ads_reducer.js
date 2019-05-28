@@ -35,8 +35,7 @@ export default (state = initialState, action) => {
         isFetching: true,
         hasMore: true,
         searchTerm: action.term,
-        location: action.location,
-        selectedJob: {}
+        location: action.location
       };
     }
 
@@ -56,10 +55,7 @@ export default (state = initialState, action) => {
         numberOfJobsInPlace,
         topCompetences,
         topTraits,
-        offset: action.offset,
-        selectedJob: action.payload.processedList[0].changedLocation
-          ? {}
-          : action.payload.processedList[0]
+        offset: action.offset
       };
     }
 

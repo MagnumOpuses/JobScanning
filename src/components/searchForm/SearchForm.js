@@ -29,7 +29,12 @@ const SearchForm = ({
           placeholder="Skriv sökord"
           required
         />
-        <OverviewLink to={`/overview/${searchTerm}`}>
+        <OverviewLink
+          to={`/overview/${searchTerm}`}
+          className={`desktop-overview-link ${
+            searchTerm.length > 0 ? '' : 'link-disabled'
+          }`}
+        >
           <Icon name="line graph" />
           Se översikt
         </OverviewLink>
@@ -55,6 +60,15 @@ const SearchForm = ({
         >
           Sök
         </CustomButton>
+        <OverviewLink
+          to={`/overview/${searchTerm}`}
+          className={`mobile-overview-link ${
+            searchTerm.length > 0 ? '' : 'link-disabled'
+          }`}
+        >
+          <Icon name="line graph" />
+          Se översikt
+        </OverviewLink>
       </div>
     </CustomForm>
   );
@@ -111,7 +125,7 @@ const StyledDropdown = styled(Dropdown)`
 const CustomButton = styled(Button)`
   &&& {
     align-self: center;
-    margin-top: 4rem;
+    margin: 0;
     padding: 1.4rem 9rem;
     color: #000;
     background: ${props => props.theme.green4};
@@ -141,11 +155,32 @@ const OverviewLink = styled(Link)`
     display: flex;
     align-items: center;
     margin: 10px 0;
-    padding: 11px 10px;
+    padding: 11px 30px;
     color: #000;
     background: #fff;
     border: 2px solid ${({ theme }) => theme.green4};
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+    &.link-disabled {
+      pointer-events: none;
+      color: ${({ theme }) => theme.lightGrey};
+      border: 2px solid ${({ theme }) => theme.lightGrey};
+    }
+
+    &.desktop-overview-link {
+      @media (max-width: ${breakpoint.tablet}) {
+        display: none;
+      }
+    }
+
+    &.mobile-overview-link {
+      width: 213px;
+      margin: 20px auto;
+
+      @media (min-width: ${breakpoint.tablet}) {
+        display: none;
+      }
+    }
   }
 
   &:hover {
