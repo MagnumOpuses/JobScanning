@@ -611,6 +611,7 @@ class MapComponent extends Component
     }
     else 
     {
+      feature.setStyle([styling.highlight, styling.selected]);
       this.selected[type].name = feature.get('short_name');
     }
     if(selectIt) this.selected[type].zoom = this.state.zoom;
