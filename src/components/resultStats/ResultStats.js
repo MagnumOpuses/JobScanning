@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import breakpoints from '../../styles/breakpoints';
 
-const ResultStats = ({ searchTerm, processedList, sources }) => {
+const ResultStats = ({ searchTerm, hits, sources }) => {
   return (
     <DesktopSearchMetadata>
       <OverviewLink
@@ -17,9 +17,9 @@ const ResultStats = ({ searchTerm, processedList, sources }) => {
         Se översikt
       </OverviewLink>
       <p>
-        {processedList ? processedList.length : 0} jobbannonser från {sources}
+        {hits ? hits.length : 0} jobbannonser från {sources}
         {'\n'}
-        webbplatser för {'\n'}
+        webbplatser
       </p>
     </DesktopSearchMetadata>
   );

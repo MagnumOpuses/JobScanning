@@ -9,7 +9,7 @@ import breakpoints from '../styles/breakpoints';
 import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
 import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
 import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
-import MapComponent from '../components/map/map'
+import MapComponent from '../components/map/map';
 
 const Overview = props => {
   const [occupationData, setOccupationData] = useState({});
@@ -87,10 +87,9 @@ const Overview = props => {
             har 'mycket goda' möjligheter till arbete det närmaste året. På fem
             års sikt bedöms möjligheterna till arbete vara 'goda'.
           </p>
-          <div style={{ "flexGrow": "1" }}>
-            <MapComponent mode="heatmap"/>
+          <div style={{ flexGrow: '1' }}>
+            <MapComponent mode="heatmap" />
           </div>
-
         </div>
         <div className="chart box">
           <Header

@@ -13,8 +13,6 @@ class SearchFormContainer extends React.Component {
   handleChange = (event, data) => {
     const { setSearchTerm, setLocation } = this.props;
 
-    console.log(data);
-
     if (data.name === 'searchTerm') {
       setSearchTerm(data.value);
     } else if (data.name === 'location') {
