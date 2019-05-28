@@ -62,40 +62,6 @@ const SearchForm = ({
 
 export default SearchForm;
 
-const OverviewLink = styled(Link)`
-  &:link,
-  &:visited {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    padding: 11px 10px;
-    color: #000;
-    background: #fff;
-    border: 2px solid ${({ theme }) => theme.green4};
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
-
-  &:hover {
-    color: ${props => props.theme.white};
-    background: ${props => props.theme.green4};
-  }
-
-  &:active {
-    box-shadow: none;
-  }
-
-  i {
-    font-size: 20px !important;
-    margin-right: 10px;
-  }
-`;
-
-const StyledDropdown = styled(Dropdown)`
-  & .visible {
-    min-height: 30vh;
-  }
-`;
-
 const CustomForm = styled(Form)`
   &&& {
     display: flex;
@@ -136,6 +102,12 @@ const CustomForm = styled(Form)`
   }
 `;
 
+const StyledDropdown = styled(Dropdown)`
+  & .visible {
+    min-height: 30vh;
+  }
+`;
+
 const CustomButton = styled(Button)`
   &&& {
     align-self: center;
@@ -160,5 +132,33 @@ const CustomButton = styled(Button)`
     @media (min-width: ${breakpoint.tablet}) {
       margin-top: 0;
     }
+  }
+`;
+
+const OverviewLink = styled(Link)`
+  &:link,
+  &:visited {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 11px 10px;
+    color: #000;
+    background: #fff;
+    border: 2px solid ${({ theme }) => theme.green4};
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    color: ${props => props.theme.white};
+    background: ${props => props.theme.green4};
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  i {
+    font-size: 20px !important;
+    margin-right: 10px;
   }
 `;

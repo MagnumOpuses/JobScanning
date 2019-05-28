@@ -10,7 +10,7 @@ class SourceRankingContainer extends Component {
   };
 
   render() {
-    const { searchTerm, scoreboard } = this.props;
+    const { usedSearchTerm, scoreboard } = this.props;
 
     return (
       <>
@@ -18,7 +18,7 @@ class SourceRankingContainer extends Component {
           <SourceRanking
             numberOfSources={this.getNumberOfSources()}
             scoreboard={scoreboard}
-            searchTerm={searchTerm}
+            usedSearchTerm={usedSearchTerm}
           />
         )}
       </>
@@ -27,11 +27,11 @@ class SourceRankingContainer extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, searchTerm, scoreboard } = ads;
+  const { hits, usedSearchTerm, scoreboard } = ads;
 
   return {
     hits,
-    searchTerm,
+    usedSearchTerm,
     scoreboard
   };
 }

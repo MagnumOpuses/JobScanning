@@ -24,19 +24,6 @@ const Overview = props => {
 
       <GridContainer>
         <div className="header">
-          {/* <Link to="/jobs" style={{ color: '#000' }}>
-            <SVGBackArrow height="40" width="255">
-              <polygon
-                points="0,20 20,0 255,0 255,40 20,40"
-                fill="#fff"
-                stroke="#49efe1"
-                strokeWidth="3"
-              />
-              <text x="25" y="28">
-                Gå tillbaka till annonser
-              </text>
-            </SVGBackArrow>
-          </Link> */}
           <OverviewLink to="/jobs">
             <Icon name="angle double left" />
             Gå tillbaka till annonser
@@ -56,7 +43,7 @@ const Overview = props => {
             <span className="occupation-name">{occupationData.occupation}</span>{' '}
             i hela Sverige. Se vilka rekryteringssajter som har flest annonser
             för just det yrket just nu, och vilka kompetenser och förmågor som
-            vår textanalys hittat och klassat som mest efterfrågade
+            vår textanalys hittat och klassat som mest efterfrågade.
           </p>
         </div>
         <div className="sources box">
@@ -110,7 +97,7 @@ const Overview = props => {
           <p>
             Medelvärde över hur jobbannonser publicerade på Platsbanken för{' '}
             <span className="occupation-name">{occupationData.occupation}</span>{' '}
-            fördelats över året historiskt sett
+            fördelats över året historiskt sett.
           </p>
           <Chart />
         </div>
@@ -129,12 +116,12 @@ const GridContainer = styled.div`
     'header header header'
     'sources skills traits'
     'map chart chart';
-  grid-gap: 20px;
+  grid-gap: 40px;
   max-width: 1366px;
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 0 20px 20px;
 
-  @media screen and (max-width: ${breakpoints.tabletLandscape}) {
+  @media screen and (max-width: 1366px) {
     height: auto;
     grid-template-rows: auto auto 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -143,6 +130,8 @@ const GridContainer = styled.div`
       'skills traits'
       'sources map'
       'chart chart';
+    grid-gap: 20px;
+    margin: 20px auto;
   }
 
   @media screen and (max-width: ${breakpoints.tablet}) {
@@ -198,6 +187,10 @@ const GridContainer = styled.div`
 
   .chart {
     grid-area: chart;
+
+    svg:not(:root) {
+      overflow: visible;
+    }
   }
 
   .occupation-name {

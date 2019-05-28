@@ -72,16 +72,16 @@ const Chart = () => {
           </linearGradient>
         </defs>
         <XAxis dataKey="month">
-          <Label value="Månad" dy={20} position="insideBottom" />
+          <Label value="Månad" offset={-20} position="insideBottom" />
         </XAxis>
-        <YAxis
-          label={{
-            value: 'Antal annonser',
-            angle: -90,
-            position: 'center',
-            offset: -15
-          }}
-        />
+        <YAxis>
+          <Label
+            angle={-90}
+            value="Antal annonser"
+            position="insideLeft"
+            style={{ textAnchor: 'middle' }}
+          />
+        </YAxis>
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip
           itemStyle={{ color: '#000' }}

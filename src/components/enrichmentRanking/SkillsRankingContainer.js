@@ -4,7 +4,7 @@ import EnrichmentRanking from './EnrichmentRanking';
 
 class SkillsRankingContainer extends Component {
   render() {
-    const { hits, searchTerm, topCompetences } = this.props;
+    const { hits, usedSearchTerm, topCompetences } = this.props;
 
     if (!hits.length > 0) {
       return null;
@@ -13,7 +13,7 @@ class SkillsRankingContainer extends Component {
     return (
       <EnrichmentRanking
         hits={hits}
-        searchTerm={searchTerm}
+        usedSearchTerm={usedSearchTerm}
         target={topCompetences}
         targetName={'kompetenser'}
       />
@@ -22,9 +22,9 @@ class SkillsRankingContainer extends Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { hits, searchTerm, topCompetences } = ads;
+  const { hits, usedSearchTerm, topCompetences } = ads;
 
-  return { hits, searchTerm, topCompetences };
+  return { hits, usedSearchTerm, topCompetences };
 }
 
 export default connect(
