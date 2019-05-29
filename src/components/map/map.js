@@ -294,14 +294,13 @@ class MapComponent extends Component
     {
       if(parent.props.mapData.result)
       {
-        console.log(parent.props);
-        console.log('populate data from props');
+        //console.log('populate data from props');
         parent.setState({ total: parent.props.mapData.total });
         parent.findFeatures(parent.props.mapData.result);
       }
       else
       {
-        console.log('populate data from api');
+        //console.log('populate data from api');
         parent.loadValues(parent.state.level);		
       }
     }, 2000);
@@ -321,9 +320,34 @@ class MapComponent extends Component
     document.body.addEventListener('change', this.handleChange);
   }
 
+  isElementResized(ElementId)
+  {
+    const e = document.getElementById(ElementId);
+    if(!this.mapHeight)
+    {
+      this.mapHeight = e.offsetHeight;
+      this.mapWidth = e.offsetWidth; 
+    }
+    else 
+    {
+      if(
+        e &&
+        (
+          this.mapHeight !== e.offsetHeight ||
+          this.mapWidth !== e.offsetWidth 
+        )
+        )
+      {
+        this.olmap.updateSize();
+        this.mapHeight = e.offsetHeight;
+        this.mapWidth = e.offsetWidth; 
+      }
+    }
+  }
+
   componentDidMount() 
   {
-    this.isMapElementResized();
+    this.isElementResized("map");
     this.globalJobTechVariables();
     this.handleChange();
 
@@ -450,44 +474,18 @@ class MapComponent extends Component
 
   }
 
-  isMapElementResized()
-  {
-    const mapElement = document.getElementById("map");
-    if(!this.mapHeight)
-    {
-      this.mapHeight = mapElement.offsetHeight;
-      this.mapWidth = mapElement.offsetWidth; 
-    }
-    else 
-    {
-      if(
-        mapElement &&
-        (
-          this.mapHeight !== mapElement.offsetHeight ||
-          this.mapWidth !== mapElement.offsetWidth 
-        )
-        )
-      {
-        this.olmap.updateSize();
-        this.mapHeight = mapElement.offsetHeight;
-        this.mapWidth = mapElement.offsetWidth; 
-      }
-    }
-  }
-
   shouldComponentUpdate(nextProps, nextState) 
   {
     const parent = this;
     if(nextState.level != "heatmap"){
-      setTimeout(function(){parent.isMapElementResized()},300);
+      setTimeout(function(){parent.isElementResized("map")},300);
     }
     if(nextProps.mapData)
     {
-      console.log([nextProps.mapData.total, this.state.total]);
       if(nextProps.mapData.total != this.state.total)
       {
-        console.log('updating mapresults');
-        this.setState({total: nextProps.mapData.total });
+        //console.log('updating mapresults');
+        nextState.total = nextProps.mapData.total ;
         this.findFeatures(nextProps.mapData.result); 
       }
     }
@@ -497,7 +495,28 @@ class MapComponent extends Component
       nextProps.location !== this.state.location
       )
     {
-      //console.log('finding location');
+      //console.log('finding location : ' + nextProps.location);
+      if(nextProps.location.length < 2)
+      {
+
+        this.olmap.getView().animate(
+          {
+            center: [
+              process.env.REACT_APP_MAP_START_LON , 
+              process.env.REACT_APP_MAP_START_LAT 
+            ],
+            zoom: process.env.REACT_APP_MAP_START_ZOOM,
+            duration: 1000
+          }
+        );
+  
+        this.selected = 
+        {
+          county: new areaSelected(),
+          municipality: new areaSelected()
+        };
+
+      }
       let found = this.findFeature(nextProps.location);
       if(found.feature) 
       {
@@ -586,8 +605,7 @@ class MapComponent extends Component
 
   addMarks(marks, opt) 
   {
-    console.trace();
-    console.log('adding marks');
+    //console.log('adding marks');
     const standardsOpt = {
       layerExtent: false,
       layer: '',
