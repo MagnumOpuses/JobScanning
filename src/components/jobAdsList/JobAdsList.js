@@ -13,12 +13,6 @@ class JobAdsList extends Component {
     this.listRef = React.createRef();
   }
 
-  calculateInfiniteScrollHeight = () => {
-    const { processedList } = this.props;
-    const height = processedList.length * 20 - 5;
-    return height > 100 ? '100%' : `${height}%`;
-  };
-
   fetchMoreData = () => {
     this.props.fetchMoreJobs(
       this.props.searchTerm,
@@ -32,14 +26,7 @@ class JobAdsList extends Component {
   };
 
   render() {
-    const {
-      isFetching,
-      error,
-      hits,
-      hasMore,
-      processedList,
-      selectedJob
-    } = this.props;
+    const { isFetching, error, hits, hasMore, selectedJob } = this.props;
 
     if (isFetching) {
       return <CustomLoader size="massive" content="Laddar" />;
@@ -51,10 +38,10 @@ class JobAdsList extends Component {
           id="scrollableDiv"
           ref={this.listRef}
           // onScroll={this.handleScroll}
-          style={{ height: this.calculateInfiniteScrollHeight() }}
+          style={{ height: 'calc(100% - 100px)' }}
         >
           <InfiniteScroll
-            dataLength={processedList.length}
+            dataLength={hits.length}
             next={this.fetchMoreData}
             hasMore={hasMore}
             style={{ overflow: 'visible' }}
@@ -81,7 +68,7 @@ class JobAdsList extends Component {
               </div>
             }
           >
-            {processedList.map((item, i) => {
+            {hits.map((item, i) => {
               if (item.changedLocation) {
                 return (
                   <li
@@ -119,7 +106,6 @@ function mapStateToProps({ ads }) {
     error,
     hits,
     hasMore,
-    processedList,
     selectedJob,
     searchTerm,
     location,
@@ -131,7 +117,6 @@ function mapStateToProps({ ads }) {
     error,
     hits,
     hasMore,
-    processedList,
     selectedJob,
     searchTerm,
     location,

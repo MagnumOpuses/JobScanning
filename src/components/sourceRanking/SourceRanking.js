@@ -3,68 +3,58 @@ import styled from 'styled-components';
 import breakpoints from '../../styles/breakpoints';
 import getLogo from '../../utils/getLogo';
 
-const SourceRanking = ({ numberOfSources, scoreboard, searchTerm }) => {
+const SourceRanking = ({ numberOfSources, scoreboard, usedSearchTerm }) => {
   return (
-    <div className="SourceRanking">
-      <p>
+    <SourceRankingContainer>
+      <h2>
         Topp{' '}
         <span className="bold">{numberOfSources ? numberOfSources : 0}</span>{' '}
         webbplatser för dig som letar efter annonser för{' '}
-        <span className="bold">{searchTerm}</span>
-      </p>
-      <OrderedList>
+        <span className="occupation-name">{usedSearchTerm}</span>.
+      </h2>
+
+      <ol>
         {scoreboard.map(item => (
           <li key={item.source}>
             {getLogo(item.source)}
-            <span className="score">
-              <span>{item.score}</span>st
+            <span>
+              <span>{item.score}</span> st
             </span>
           </li>
         ))}
-      </OrderedList>
-    </div>
+      </ol>
+    </SourceRankingContainer>
   );
 };
 
 export default SourceRanking;
 
-const OrderedList = styled.ol`
-  list-style: none;
+const SourceRankingContainer = styled.div`
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+  }
 
-  li {
-    height: 50px;
-    width: 65%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2rem auto 0;
+  .competences {
+    margin: 0 10px 0 0;
 
     @media (max-width: ${breakpoints.tablet}) {
-      width: 100%;
+      margin: 0 0 20px 0;
     }
+  }
 
-    .score {
-      min-height: 6rem;
-      min-width: 6rem;
-      border-radius: 50%;
+  ol {
+    list-style: none;
+
+    li {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      color: #fff;
-      font-size: 24px;
-      font-weight: 700;
-    }
+      font-size: 2rem;
 
-    &:nth-child(3n + 1) .score {
-      background: #ffeb9e;
-    }
-
-    &:nth-child(3n - 1) .score {
-      background: #02decc;
-    }
-
-    &:nth-child(3n) .score {
-      background: #a6f3ed;
+      &:not(:last-child) {
+        margin: 0 0 20px 0;
+      }
     }
   }
 `;

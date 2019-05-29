@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob, setLocation } from '../redux/actions';
+import { selectJob, unselectJob, setLocation, fetchJobs } from '../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
 import PageHeader from '../components/PageHeader';
 import JobAdsList from '../components/jobAdsList/JobAdsList';
-import DesktopJobDetails from '../components/DesktopJobDetails';
+import JobDetails from '../components/JobDetails';
 import breakpoints from '../styles/breakpoints';
 import MapComponent from '../components/map/map';
 import getNumberOfJobsInPlace from '../utils/getNumberOfJobsInPlace';
+import { countiesAndMunicipalities } from '../utils/searchOptions'
 
-class AdsPage extends Component {
+class Jobs extends Component {
   constructor(props) {
     super(props);
 
@@ -32,13 +33,16 @@ class AdsPage extends Component {
     };
   }
 
-  updateMap(){
-
-    let adsByLocation = getNumberOfJobsInPlace(this.props.hits);
-    this.mapData.total = adsByLocation.sweden; 
-    this.mapData.result = Object.keys(adsByLocation).map(function(key) {
+  updateMap(hits) {
+    let adsByLocation = getNumberOfJobsInPlace(hits);
+    this.mapData.total = adsByLocation.sweden;
+    this.mapData.result = Object.keys(adsByLocation).map(function (key) {
       return { "name": key, "value": adsByLocation[key] };
     });
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.hits != this.props.hits) this.updateMap(nextProps.hits);
+    return true;
   }
 
   componentDidUpdate() {
@@ -47,7 +51,6 @@ class AdsPage extends Component {
         headerHeight: this.headerRef.current.clientHeight
       });
     }
-    this.updateMap();
   }
 
   handleScroll = ref => {
@@ -85,6 +88,14 @@ class AdsPage extends Component {
     }
   };
 
+  setLocationAndFetch = (location) => {
+    const locationObject = countiesAndMunicipalities.find(
+      place => place.value === location
+    );
+    this.props.fetchJobs(this.props.searchTerm, locationObject)
+    this.props.setLocation(location);
+  }
+
   render() {
     const { hits, selectedJob } = this.props;
     const { headerHeight, headerVisible } = this.state;
@@ -93,14 +104,14 @@ class AdsPage extends Component {
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <Header
           ref={this.headerRef}
-          // className={headerVisible ? 'visible' : 'hidden'}
+        // className={headerVisible ? 'visible' : 'hidden'}
         >
           <PageHeader />
         </Header>
 
         <FlexContainer
           visible={this.state.sidemenuVisible}
-          // style={{ marginTop: `${headerHeight}px` }}
+        // style={{ marginTop: `${headerHeight}px` }}
         >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
@@ -111,7 +122,7 @@ class AdsPage extends Component {
           </div>
 
           {Object.keys(selectedJob).length > 0 && (
-            <DesktopJobDetails
+            <JobDetails
               key={selectedJob.id}
               selectedJob={selectedJob}
               unselectJob={this.props.unselectJob}
@@ -146,7 +157,7 @@ class AdsPage extends Component {
               mapData={this.mapData}
               location={this.props.location.value}
               q={this.props.searchTerm}
-              setLocation={this.props.setLocation}
+              setLocationAndFetch={this.setLocationAndFetch}
             />
           </div>
         </FlexContainer>
@@ -168,8 +179,8 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob, setLocation }
-)(AdsPage);
+  { selectJob, unselectJob, setLocation, fetchJobs }
+)(Jobs);
 
 const Header = styled.header`
   background: #fff;
@@ -189,7 +200,7 @@ const Header = styled.header`
 `;
 
 const FlexContainer = styled.main`
-  height: 100%;
+  height: calc(100% - 140px);
   width: 100%;
   display: flex;
   position: relative;

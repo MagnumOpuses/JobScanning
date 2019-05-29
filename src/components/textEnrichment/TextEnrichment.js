@@ -26,7 +26,7 @@ const TextEnrichment = ({ header, icon, list, margin }) => {
         >
           <div
             style={{
-              border: 'solid black',
+              border: 'solid #4aefe2',
               borderWidth: '0 3px 3px 0',
               display: 'inline-block',
               padding: '5px',
@@ -46,12 +46,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   margin: ${({ margin }) => margin};
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 0;
+    margin: 20px 0 0;
   }
 
   .header {
@@ -60,8 +61,7 @@ const Container = styled.div`
 
   .list {
     transition: max-height 0.3s ease;
-    max-height: ${({ isExpanded, listHeight }) =>
-      isExpanded ? '192px' : '64px'};
+    max-height: ${({ isExpanded }) => (isExpanded ? '192px' : '64px')};
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -85,8 +85,9 @@ const Container = styled.div`
     text-align: left;
     padding: 5px 0;
 
-    @media (max-width: ${breakpoints.tablet}) {
+    @media (max-width: ${breakpoints.tabletLandscape}) {
       flex: 1 0 100%;
+      text-align: center;
     }
   }
 `;

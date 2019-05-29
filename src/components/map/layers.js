@@ -44,7 +44,7 @@ class mapLayers
     zIndex: 0
   });
 
-  Heatmap = new OlHeatmapLayer(
+  heatmap = new OlHeatmapLayer(
     {
       source: new OlVectorSource(
         {
@@ -119,7 +119,7 @@ class mapLayers
       source: new OlVectorSource(),
       name: 'selected',
       zIndex: 5,
-      visible: false,
+      visible: true,
       style: styling.selected
     }
   );

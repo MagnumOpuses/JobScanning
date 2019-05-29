@@ -20,7 +20,6 @@ const initialState = {
   isFetching: false,
   hits: [],
   hasMore: true,
-  processedList: [],
   selectedJob: {},
   numberOfJobsInPlace: {},
   offset: 0,
@@ -28,15 +27,14 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  console.log(action);
+
   switch (action.type) {
     case JOBS_REQUEST: {
       return {
         ...state,
         isFetching: true,
-        hasMore: true,
-        searchTerm: action.term,
-        location: action.location,
-        selectedJob: {}
+        hasMore: true
       };
     }
 
@@ -56,10 +54,7 @@ export default (state = initialState, action) => {
         numberOfJobsInPlace,
         topCompetences,
         topTraits,
-        offset: action.offset,
-        selectedJob: action.payload.processedList[0].changedLocation
-          ? {}
-          : action.payload.processedList[0]
+        offset: action.offset
       };
     }
 
@@ -68,15 +63,11 @@ export default (state = initialState, action) => {
     }
 
     case JOBS_ADD_MORE: {
-      const hits = [...state.hits, ...action.payload.hits];
-      let processedList = [
-        ...state.processedList,
-        ...action.payload.processedList
-      ];
+      let hits = [...state.hits, ...action.payload.hits];
 
-      processedList = _.uniqBy(processedList, 'id');
+      hits = _.uniqBy(hits, 'id');
       const scoreboard = createScoreboard(hits);
-      const numberOfJobsInPlace = getNumberOfJobsInPlace(processedList);
+      // const numberOfJobsInPlace = getNumberOfJobsInPlace(processedList);
 
       const topCompetences = countAndSort(hits, 'skills');
       const topTraits = countAndSort(hits, 'traits');
@@ -84,9 +75,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         hits,
-        processedList,
         scoreboard,
-        numberOfJobsInPlace,
+        // numberOfJobsInPlace,
         topCompetences,
         topTraits,
         total: action.payload.total,
@@ -109,13 +99,6 @@ export default (state = initialState, action) => {
     }
 
     case SET_LOCATION: {
-      // const jobsInSelectedLocation = _.remove(
-      //   state.processedList,
-      //   job => job.location === action.location
-      // )
-
-      // state.processedList.unshift(...jobsInSelectedLocation)
-
       return {
         ...state,
         location: action.locationObject
