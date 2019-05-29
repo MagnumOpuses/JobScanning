@@ -12,8 +12,6 @@ export const JOB_SELECT = 'JOB_SELECT';
 export const JOB_UNSELECT = 'JOB_UNSELECT';
 
 export const fetchJobs = (term, location) => async dispatch => {
-  console.log(term, location);
-
   dispatch({
     type: JOBS_REQUEST
   });
@@ -26,6 +24,12 @@ export const fetchJobs = (term, location) => async dispatch => {
         type: JOBS_FAILURE
       });
     }
+
+    data = {
+      ...data,
+      usedSearchTerm: term,
+      usedLocation: location
+    };
 
     dispatch({
       type: JOBS_SUCCESS,
@@ -69,27 +73,45 @@ export const fetchJobs = (term, location) => async dispatch => {
             payload: data,
             offset: 0
           });
-
-          console.log(data);
         } catch (error) {
           console.log(error);
         }
       } else if (location.type === 'county') {
+        dispatch({
+          type: SET_LOCATION,
+          locationObject: { key: 'everywhere', text: 'Hela Sverige', value: '' }
+        });
+
         try {
           const { data } = await apiFetchJobs(term, '');
+
+          if (!data.hits.length > 0) {
+            dispatch({
+              type: JOBS_NO_MORE
+            });
+          }
+
+          const { hits } = data;
+
+          hits.unshift({
+            changedLocation: true,
+            oldLocation: location.value,
+            newLocation: 'hela Sverige'
+          });
+
           console.log(data);
-        } catch (error) { }
+
+          dispatch({
+            type: JOBS_ADD_MORE,
+            payload: data,
+            offset: 0
+          });
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
-
-    data = {
-      ...data,
-      usedSearchTerm: term,
-      usedLocation: location
-    };
   } catch (error) {
-    console.log(error);
-
     dispatch({
       type: JOBS_FAILURE
     });
@@ -178,11 +200,9 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
       offset
     });
   } catch (error) {
-    console.log(error);
-
-    // dispatch({
-    //   type: JOBS_FAILURE
-    // })
+    dispatch({
+      type: JOBS_FAILURE
+    })
   }
 };
 
