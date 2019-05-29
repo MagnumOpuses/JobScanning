@@ -34,9 +34,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
-        hasMore: true,
-        searchTerm: action.term,
-        location: action.location
+        hasMore: true
       };
     }
 
@@ -101,12 +99,6 @@ export default (state = initialState, action) => {
     }
 
     case SET_LOCATION: {
-      console.log(action);
-
-      const jobsInSelectedLocation = state.hits.filter(
-        job => job.location === action.locationObject.value
-      );
-
       return {
         ...state,
         location: action.locationObject

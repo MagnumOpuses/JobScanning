@@ -15,9 +15,7 @@ export const fetchJobs = (term, location) => async dispatch => {
   console.log(term, location);
 
   dispatch({
-    type: JOBS_REQUEST,
-    term,
-    location
+    type: JOBS_REQUEST
   });
 
   try {
@@ -80,7 +78,7 @@ export const fetchJobs = (term, location) => async dispatch => {
         try {
           const { data } = await apiFetchJobs(term, '');
           console.log(data);
-        } catch (error) {}
+        } catch (error) { }
       }
     }
 
@@ -196,6 +194,8 @@ export const setSearchTerm = searchTerm => {
 };
 
 export const setLocation = location => {
+  console.log(location);
+
   const locationObject = countiesAndMunicipalities.find(
     place => place.value === location
   );
