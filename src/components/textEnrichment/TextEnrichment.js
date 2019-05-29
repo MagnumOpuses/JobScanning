@@ -61,7 +61,7 @@ const Container = styled.div`
 
   .list {
     transition: max-height 0.3s ease;
-    max-height: ${({ isExpanded }) => (isExpanded ? '192px' : '64px')};
+    max-height: ${({ isExpanded }) => (isExpanded ? '320px' : '64px')};
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -74,20 +74,15 @@ const Container = styled.div`
 
     @media (max-width: ${breakpoints.tablet}) {
       max-height: ${({ isExpanded, listHeight }) =>
-        isExpanded ? listHeight * 32 + 'px' : '64px'};
+    isExpanded ? listHeight * 32 + 'px' : '64px'};
     }
   }
 
   .list-item {
-    flex: 1 0 50%;
+    flex: 1 0 100%;
     text-transform: capitalize;
     font-size: 16px;
-    text-align: left;
+    text-align: center;
     padding: 5px 0;
-
-    @media (max-width: ${breakpoints.tabletLandscape}) {
-      flex: 1 0 100%;
-      text-align: center;
-    }
   }
 `;

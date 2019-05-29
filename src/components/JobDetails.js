@@ -55,21 +55,21 @@ const JobDetails = ({ selectedJob, unselectJob }) => {
               {selectedJob.sources.length > 1 ? (
                 <p>{`${selectedJob.sources.length} källor`}</p>
               ) : (
-                <a
-                  key={selectedJob.sources[0].url}
-                  href={selectedJob.sources[0].url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {[selectedJob.sources[0].name] in images ? (
-                    <SourceLogo
-                      sourceLogo={images[selectedJob.sources[0].name]}
-                    />
-                  ) : (
-                    <p>{selectedJob.sources[0].name}</p>
-                  )}
-                </a>
-              )}
+                  <a
+                    key={selectedJob.sources[0].url}
+                    href={selectedJob.sources[0].url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {[selectedJob.sources[0].name] in images ? (
+                      <SourceLogo
+                        sourceLogo={images[selectedJob.sources[0].name]}
+                      />
+                    ) : (
+                        <p>{selectedJob.sources[0].name}</p>
+                      )}
+                  </a>
+                )}
             </div>
           </div>
         </div>
@@ -119,21 +119,21 @@ const JobDetails = ({ selectedJob, unselectJob }) => {
                 {[source.name] in images ? (
                   <SourceLogo sourceLogo={images[source.name]} />
                 ) : (
-                  <p>{source.name}</p>
-                )}
+                    <p>{source.name}</p>
+                  )}
               </A>
             ))}
           </SourcesContainer>
         </MultipleLinks>
       ) : (
-        <Link
-          href={selectedJob.sources[0].url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Gå till annonsen
+          <Link
+            href={selectedJob.sources[0].url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Gå till annonsen
         </Link>
-      )}
+        )}
     </Container>
   );
 };
@@ -142,12 +142,13 @@ export default JobDetails;
 
 const Container = styled.div`
   position: absolute;
-  top: 50px;
+  top: 20px;
   left: 520px;
   right: 45px;
-  z-index: 10;
+  bottom: 20px;
+  z-index: 2000;
+  overflow-y: scroll;
   padding: 60px;
-  margin-bottom: 50px;
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 
@@ -158,9 +159,11 @@ const Container = styled.div`
   }
 
   @media (max-width: 767px) {
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     padding: 40px;
   }
 
