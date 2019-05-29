@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob, setLocation } from '../redux/actions';
+import { selectJob, unselectJob, setLocation, fetchJobs } from '../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
@@ -10,6 +10,7 @@ import JobDetails from '../components/JobDetails';
 import breakpoints from '../styles/breakpoints';
 import MapComponent from '../components/map/map';
 import getNumberOfJobsInPlace from '../utils/getNumberOfJobsInPlace';
+import { countiesAndMunicipalities } from '../utils/searchOptions'
 
 class Jobs extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class Jobs extends Component {
   updateMap() {
     let adsByLocation = getNumberOfJobsInPlace(this.props.hits);
     this.mapData.total = adsByLocation.sweden;
-    this.mapData.result = Object.keys(adsByLocation).map(function(key) {
+    this.mapData.result = Object.keys(adsByLocation).map(function (key) {
       return { name: key, value: adsByLocation[key] };
     });
   }
@@ -84,6 +85,14 @@ class Jobs extends Component {
     }
   };
 
+  setLocationAndFetch = (location) => {
+    const locationObject = countiesAndMunicipalities.find(
+      place => place.value === location
+    );
+    this.props.fetchJobs(this.props.searchTerm, locationObject)
+    this.props.setLocation(location);
+  }
+
   render() {
     const { hits, selectedJob } = this.props;
     const { headerHeight, headerVisible } = this.state;
@@ -92,14 +101,14 @@ class Jobs extends Component {
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <Header
           ref={this.headerRef}
-          // className={headerVisible ? 'visible' : 'hidden'}
+        // className={headerVisible ? 'visible' : 'hidden'}
         >
           <PageHeader />
         </Header>
 
         <FlexContainer
           visible={this.state.sidemenuVisible}
-          // style={{ marginTop: `${headerHeight}px` }}
+        // style={{ marginTop: `${headerHeight}px` }}
         >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
@@ -145,7 +154,7 @@ class Jobs extends Component {
               mapData={this.mapData}
               location={this.props.location.value}
               q={this.props.searchTerm}
-              setLocation={this.props.setLocation}
+              setLocationAndFetch={this.setLocationAndFetch}
             />
           </div>
         </FlexContainer>
@@ -167,7 +176,7 @@ function mapStateToProps({ ads }) {
 
 export default connect(
   mapStateToProps,
-  { selectJob, unselectJob, setLocation }
+  { selectJob, unselectJob, setLocation, fetchJobs }
 )(Jobs);
 
 const Header = styled.header`
