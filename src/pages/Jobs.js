@@ -37,7 +37,7 @@ class Jobs extends Component {
     let adsByLocation = getNumberOfJobsInPlace(hits);
     this.mapData.total = adsByLocation.sweden;
     this.mapData.result = Object.keys(adsByLocation).map(function (key) {
-      return { "name": key, "value": adsByLocation[key] };
+      return { name: key, value: adsByLocation[key] };
     });
   }
   shouldComponentUpdate(nextProps, nextState) {
