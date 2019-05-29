@@ -292,7 +292,7 @@ class MapComponent extends Component
     const parent = this;
     setTimeout(function()
     {
-      if(parent.props.mapData.result && parent.props.mapData.result.length > 0)
+      if(parent.props.mapData.result)
       {
         console.log(parent.props);
         console.log('populate data from props');
