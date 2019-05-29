@@ -526,7 +526,7 @@ class MapComponent extends Component
       nextState.location !== "null"  && 
       nextState.location !== this.state.location)
     {
-      if(nextState.location.length > 1) this.props.setLocation(nextState.location);
+      if(nextState.location.length > 1) this.props.setLocationAndFetch(nextState.location);
     }
 
     let center = this.olmap.getView().getCenter();
