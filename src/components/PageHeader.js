@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 import { SearchForm } from './index';
 import theme from '../styles/theme';
 import breakpoints from '../styles/breakpoints';
-import jt_logoblack from '../images/logo/1x/jt_logoblack.png';
+import jt_logo_black from '../images/logo/jt_logoblack.png';
 import TermAndLocation from './TermAndLocation';
 
 const PageHeader = () => {
@@ -31,7 +31,7 @@ const PageHeader = () => {
     <Header ref={refContainer}>
       <div className="wrapper">
         <StyledLink to="/">
-          <Logo alt="JobTech" src={jt_logoblack} />
+          <Logo alt="JobTech" src={jt_logo_black} />
           <H1>JobScanner</H1>
         </StyledLink>
 
