@@ -34,7 +34,11 @@ class SearchFormContainer extends React.Component {
       setShowForm(false);
     }
     fetchJobs(searchTerm, location);
-    history.push('/jobs');
+    history.push(
+      `/jobs/${searchTerm.toLowerCase()}/${
+        location.value ? location.value : ' '
+      }`
+    );
   };
 
   render() {

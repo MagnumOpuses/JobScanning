@@ -7,7 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { CustomLoader, NoResultsBox } from '..';
 import ListItem from './ListItem';
 
-class JobAdsList extends Component {
+class JobList extends Component {
   constructor(props) {
     super(props);
     this.listRef = React.createRef();
@@ -38,7 +38,7 @@ class JobAdsList extends Component {
           id="scrollableDiv"
           ref={this.listRef}
           // onScroll={this.handleScroll}
-          style={{ height: 'calc(100% - 100px)' }}
+          style={{ height: 'calc(100% - 68px)' }}
         >
           <InfiniteScroll
             dataLength={hits.length}
@@ -87,7 +87,7 @@ class JobAdsList extends Component {
               return (
                 <ListItem
                   key={item.id}
-                  item={item}
+                  job={item}
                   selectOrUnselectJob={this.props.selectOrUnselectJob}
                   selectedJob={selectedJob}
                 />
@@ -128,7 +128,7 @@ export default withRouter(
   connect(
     mapStateToProps,
     { fetchMoreJobs }
-  )(JobAdsList)
+  )(JobList)
 );
 
 const List = styled.ul`

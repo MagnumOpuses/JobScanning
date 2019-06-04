@@ -18,27 +18,23 @@ export default class ListItemComponent extends Component {
   }
 
   render() {
+    const { selectOrUnselectJob, job, selectedJob } = this.props;
+
     return (
       <ListItem
         onClick={() => {
-          this.props.selectOrUnselectJob(this.props.item);
+          selectOrUnselectJob(job);
         }}
-        selected={this.props.item.id === this.props.selectedJob.id}
+        selected={job.id === selectedJob.id}
         new={this.state.new}
       >
-        {this.props.item.employer && (
-          <LogoPlaceholder employer={this.props.item.employer} />
-        )}
+        {job.employer && <LogoPlaceholder employer={job.employer} />}
         <div style={{ flex: '1', fontSize: '18px' }}>
-          <ItemTitle>{this.props.item.header}</ItemTitle>
+          <ItemTitle>{job.header}</ItemTitle>
           <P>
-            {this.props.item.employer.name ? this.props.item.employer.name : ''}
-            {this.props.item.employer.name && this.props.item.location ? (
-              <span> &bull; </span>
-            ) : (
-              ' '
-            )}
-            {this.props.item.location ? this.props.item.location : ''}
+            {job.employer.name ? job.employer.name : ''}
+            {job.employer.name && job.location ? <span> &bull; </span> : ' '}
+            {job.location ? job.location : ''}
           </P>
         </div>
       </ListItem>

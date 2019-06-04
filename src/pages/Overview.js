@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Header, Icon } from 'semantic-ui-react';
-import PageHeader from '../components/PageHeader';
-import Chart from '../components/Chart';
+import {
+  SkillsRankingContainer,
+  TraitsRankingContainer,
+  SourceRanking,
+  Chart,
+  PageHeader
+} from '../components';
 import theme from '../styles/theme';
 import breakpoints from '../styles/breakpoints';
-import SkillsRankingContainer from '../components/enrichmentRanking/SkillsRankingContainer';
-import TraitsRankingContainer from '../components/enrichmentRanking/TraitsRankingContainer';
-import SourceRankingContainer from '../components/sourceRanking/SourceRankingContainer';
 import MapComponent from '../components/map/map';
 
 const Overview = props => {
@@ -37,7 +39,7 @@ const Overview = props => {
               margin: '20px 0 !important'
             }}
           >
-            YRKESÖVERSIKT {occupationData.occupation}
+            ÖVERSIKT {occupationData.occupation}
           </h2>
           <p>
             Här finns information om alla annonser vi hittar för{' '}
@@ -54,7 +56,7 @@ const Overview = props => {
             content="Källor"
             style={{ fontSize: '24px' }}
           />
-          <SourceRankingContainer />
+          <SourceRanking />
         </div>
         <div className="skills box">
           <Header

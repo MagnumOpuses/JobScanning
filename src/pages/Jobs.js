@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJob, unselectJob, setLocation, fetchJobs } from '../redux/actions';
+import {
+  selectJob,
+  unselectJob,
+  setLocation,
+  fetchJobs
+} from '../redux/actions';
 import styled from 'styled-components';
 import { ResultStats } from '../components';
 import { Icon } from 'semantic-ui-react';
-import PageHeader from '../components/PageHeader';
-import JobAdsList from '../components/jobAdsList/JobAdsList';
-import JobDetails from '../components/JobDetails';
+import { JobList, JobDetails, PageHeader } from '../components';
 import breakpoints from '../styles/breakpoints';
 import MapComponent from '../components/map/map';
 import getNumberOfJobsInPlace from '../utils/getNumberOfJobsInPlace';
-import { countiesAndMunicipalities } from '../utils/searchOptions'
+import { countiesAndMunicipalities } from '../utils/searchOptions';
 
 class Jobs extends Component {
   constructor(props) {
@@ -36,12 +39,12 @@ class Jobs extends Component {
   updateMap(hits) {
     let adsByLocation = getNumberOfJobsInPlace(hits);
     this.mapData.total = adsByLocation.sweden;
-    this.mapData.result = Object.keys(adsByLocation).map(function (key) {
+    this.mapData.result = Object.keys(adsByLocation).map(function(key) {
       return { name: key, value: adsByLocation[key] };
     });
   }
   shouldComponentUpdate(nextProps, nextState) {
-    if(nextProps.hits != this.props.hits) this.updateMap(nextProps.hits);
+    if (nextProps.hits != this.props.hits) this.updateMap(nextProps.hits);
     return true;
   }
 
@@ -55,6 +58,8 @@ class Jobs extends Component {
 
   handleScroll = ref => {
     const { headerHeight } = this.state;
+    console.log(this.state);
+    console.log(this.state);
 
     const refScrollTop = ref.current.scrollTop;
     // const headerHeight = this.headerRef.current.offsetHeight
@@ -83,18 +88,23 @@ class Jobs extends Component {
     if (job.id === this.props.selectedJob.id) {
       this.props.unselectJob();
     } else {
-      // this.props.location.search
       this.props.selectJob(job);
+      this.props.history.replace(
+        `${this.props.history.location.pathname}/${job.id}`
+      );
     }
   };
 
-  setLocationAndFetch = (location) => {
+  setLocationAndFetch = location => {
+    const { fetchJobs, searchTerm, setLocation, history } = this.props;
+
     const locationObject = countiesAndMunicipalities.find(
       place => place.value === location
     );
-    this.props.fetchJobs(this.props.searchTerm, locationObject)
-    this.props.setLocation(location);
-  }
+    fetchJobs(searchTerm, locationObject);
+    setLocation(location);
+    history.push(`/jobs/${searchTerm.toLowerCase()}/${locationObject.value}`);
+  };
 
   render() {
     const { hits, selectedJob } = this.props;
@@ -104,18 +114,18 @@ class Jobs extends Component {
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <Header
           ref={this.headerRef}
-        // className={headerVisible ? 'visible' : 'hidden'}
+          // className={headerVisible ? 'visible' : 'hidden'}
         >
           <PageHeader />
         </Header>
 
         <FlexContainer
           visible={this.state.sidemenuVisible}
-        // style={{ marginTop: `${headerHeight}px` }}
+          // style={{ marginTop: `${headerHeight}px` }}
         >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
-            <JobAdsList
+            <JobList
               selectOrUnselectJob={this.selectOrUnselectJob}
               handleScroll={this.handleScroll}
             />

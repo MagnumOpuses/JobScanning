@@ -65,7 +65,7 @@ export default (state = initialState, action) => {
 
       hits = _.uniqBy(hits, 'id');
       const scoreboard = createScoreboard(hits);
-      // const numberOfJobsInPlace = getNumberOfJobsInPlace(processedList);
+      const numberOfJobsInPlace = getNumberOfJobsInPlace(hits);
 
       const topCompetences = countAndSort(hits, 'skills');
       const topTraits = countAndSort(hits, 'traits');
@@ -74,7 +74,7 @@ export default (state = initialState, action) => {
         ...state,
         hits,
         scoreboard,
-        // numberOfJobsInPlace,
+        numberOfJobsInPlace,
         topCompetences,
         topTraits,
         total: action.payload.total,
