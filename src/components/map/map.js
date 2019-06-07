@@ -141,6 +141,7 @@ class MapComponent extends Component
         }
       );
     }
+    this.setState({ extent: ''});
   }
   
   toggleLevel(level = 'county')
@@ -503,9 +504,9 @@ class MapComponent extends Component
       let found = this.findFeature(nextProps.location);
       if(found.feature) 
       {
-        //console.log('location found');
+        console.log(['location found', found]);
+        nextState.extent = found.feature.getGeometry().getExtent();
         this.addSelect(found.feature, found.level);
-        this.updateMap();
 
       }
     }
@@ -530,20 +531,24 @@ class MapComponent extends Component
       nextState.location !== "null"  && 
       nextState.location !== this.state.location)
     {
-      if(nextState.location.length > 1) this.props.setLocationAndFetch(nextState.location);
+      if(nextState.location.length > 1) 
+      {
+        this.props.setLocationAndFetch(nextState.location);
+      }
     }
 
-    let center = this.olmap.getView().getCenter();
-    let zoom = this.olmap.getView().getZoom();
+    // let center = this.olmap.getView().getCenter();
+    // let zoom = this.olmap.getView().getZoom();
   
-    if(
-      center === nextState.center && 
-      zoom === nextState.zoom  
-      ) return false;
-    return true;
+    // if(
+    //   center === nextState.center && 
+    //   zoom === nextState.zoom  
+    //   ) return false;
+
+    return false;
   }
   
-  addSelect(feature,type, selectIt = true) {
+  addSelect(feature, type, selectIt = true) {
     console.trace();
     if(this.selected[type].name.length > 0)
     {
@@ -570,7 +575,7 @@ class MapComponent extends Component
     feature.setId(this.selected[type].name);
     if(selectIt) 
     {
-      if(this.level !== type) this.toggleLevel(type);
+      if(this.state.level !== type) this.toggleLevel(type);
       let extent = feature.getGeometry().getExtent();
       this.setState(
         { 
