@@ -89,9 +89,6 @@ const Overview = props => {
             har 'mycket goda' möjligheter till arbete det närmaste året. På fem
             års sikt bedöms möjligheterna till arbete vara 'goda'.
           </p>
-          <div style={{ flexGrow: '1' }}>
-            <MapComponent mode="heatmap" />
-          </div>
         </div>
         <div className="chart box">
           <Header
