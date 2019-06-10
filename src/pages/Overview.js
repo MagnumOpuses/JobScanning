@@ -76,7 +76,6 @@ const Overview = props => {
           />
           <TraitsRankingContainer />
         </div>
-        '+
         {/* <div className="map box">
           <Header
             as="h2"
@@ -92,7 +91,6 @@ const Overview = props => {
           </p>
           <MapComponent mode="heatmap" />
         </div> */}
-        +'
         <div className="chart box">
           <Header
             as="h2"
