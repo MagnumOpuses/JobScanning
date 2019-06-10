@@ -76,7 +76,8 @@ const Overview = props => {
           />
           <TraitsRankingContainer />
         </div>
-        <div className="map box">
+        '+
+        {/* <div className="map box">
           <Header
             as="h2"
             icon="map"
@@ -89,7 +90,9 @@ const Overview = props => {
             har 'mycket goda' möjligheter till arbete det närmaste året. På fem
             års sikt bedöms möjligheterna till arbete vara 'goda'.
           </p>
-        </div>
+          <MapComponent mode="heatmap" />
+        </div> */}
+        +'
         <div className="chart box">
           <Header
             as="h2"
