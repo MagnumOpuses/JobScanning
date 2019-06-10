@@ -125,7 +125,7 @@ class MapComponent extends Component
 
   updateMap() 
   {
-    console.log('updating map');
+    //console.log('updating map');
     const map = this.olmap;
     if(this.state.extent.length === 4) 
     {
@@ -177,8 +177,7 @@ class MapComponent extends Component
     }
     else
     {
-      //console.log('swiching to county level');
-      
+      //console.log('swiching to county level');    
       //console.log('unselect municipality');
       this.removeMark(this.selected.municipality.name, 'selected');
       this.removeMark('', 'municipalitySelected');
@@ -187,7 +186,6 @@ class MapComponent extends Component
       {
         this.setState({ location: this.selected.county.name });
       }
-      if(this.olmap.zoom > 10) this.setState({ zoom: 8 });
       layers.municipality.setStyle(styling.clean);
       layers.municipalitySelected.setVisible(false);
       layers.county.setStyle(styling.default);
@@ -418,7 +416,7 @@ class MapComponent extends Component
     {
       if(nextProps.mapData.total !== this.state.total)
       {
-        console.log('updating mapresults');
+        //console.log('updating mapresults');
         nextState.total = nextProps.mapData.total ;
         this.findFeatures(nextProps.mapData.result); 
       }
@@ -456,7 +454,7 @@ class MapComponent extends Component
       let found = this.findFeature(nextProps.location);
       if(found.feature) 
       {
-        console.log(['location found', found]);
+        //console.log(['location found', found]);
         nextState.extent = found.feature.getGeometry().getExtent();
         this.addSelect(found.feature, found.level);
 
@@ -481,21 +479,11 @@ class MapComponent extends Component
       nextState.location !== undefined && 
       nextState.location !== null  && 
       nextState.location !== "null"  && 
-      nextState.location !== this.state.location)
+      nextState.location !== this.state.location &&
+      nextState.location.length > 1)
     {
-      if(nextState.location.length > 1) 
-      {
-        this.props.setLocationAndFetch(nextState.location);
-      }
+      this.props.setLocationAndFetch(nextState.location);
     }
-
-    // let center = this.olmap.getView().getCenter();
-    // let zoom = this.olmap.getView().getZoom();
-  
-    // if(
-    //   center === nextState.center && 
-    //   zoom === nextState.zoom  
-    //   ) return false;
 
     return false;
   }
@@ -511,8 +499,6 @@ class MapComponent extends Component
     if(type === 'county') 
     {
       this.selected[type].name = feature.get('name');
-      // TODO set total to selected county. Marks might needs to be global within comp.
-      // https://trello.com/c/CSnzPUAU/85-f%C3%A4rger-p%C3%A5-kartan
     }
     else 
     {    
@@ -522,11 +508,10 @@ class MapComponent extends Component
       ]);
       this.selected[type].name = feature.get('short_name');
     }
-    console.log('adding feature ' + this.selected[type].name + ' to ' + type);
+    //console.log('adding feature ' + this.selected[type].name + ' to ' + type);
     feature.setId(this.selected[type].name);
     if(selectIt) 
     {
-      console.log('update map on selected feature');
       if(this.state.level !== type) this.toggleLevel(type);
       let extent = feature.getGeometry().getExtent();
       this.setState(
