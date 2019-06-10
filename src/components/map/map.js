@@ -11,7 +11,13 @@ import './custom.css';
 import mapStyling from './styling';
 import mapLayers from './layers';
 import api from '../../api/api';
-import {colorCodeValue, capitalize,areaSelected} from './helpers'
+import {
+  colorCodeValue, 
+  capitalize,
+  areaSelected, 
+  isElementResized,
+  globalDivElement
+} from './helpers'
 const styling = new mapStyling();
 const layers = new mapLayers();
 
@@ -130,6 +136,7 @@ class MapComponent extends Component
           'duration': 1000
         } 
       );
+      this.setState({ extent: ''});
     }
     else 
     {
@@ -141,7 +148,6 @@ class MapComponent extends Component
         }
       );
     }
-    this.setState({ extent: ''});
   }
   
   toggleLevel(level = 'county')
@@ -181,7 +187,7 @@ class MapComponent extends Component
       {
         this.setState({ location: this.selected.county.name });
       }
-
+      if(this.olmap.zoom > 10) this.setState({ zoom: 8 });
       layers.municipality.setStyle(styling.clean);
       layers.municipalitySelected.setVisible(false);
       layers.county.setStyle(styling.default);
@@ -190,7 +196,6 @@ class MapComponent extends Component
       layers.selected.setVisible(true);
     }
 
-    this.populate();	
   }
 
   findFeature(featureName, layers = ['county', 'municipality'])
@@ -238,7 +243,7 @@ class MapComponent extends Component
       this.addMarks(
         marks, 
         { 
-          layerExtent: true, 
+          layerExtent: false, 
           layer: area + 'Selected',
           clear: true
         }
@@ -298,68 +303,13 @@ class MapComponent extends Component
     }
   }
 
-  populate()
+  componentDidMount() 
   {
-    const parent = this;
-    setTimeout(function()
-    {
-      if(parent.props.mapData.result)
-      {
-        console.log(['populate data from props',parent.props.mapData.result]);
-        parent.setState({ total: parent.props.mapData.total });
-        parent.findFeatures(parent.props.mapData.result);
-      }
-      else
-      {
-        console.log('populate data from api');
-        parent.loadValues(parent.state.level);		
-      }
-    }, 2000);
-
-  }
-
-  globalJobTechVariables()
-  {
-    this.jobTechVaribles = document.getElementById('jobTechVaribles');
-    if(!this.jobTechVaribles) {
-      let jobTechVaribles = document.createElement("div");
-      jobTechVaribles.setAttribute('id','jobTechVaribles');
-      this.jobTechVaribles = document.body.appendChild(jobTechVaribles);
-    }
+    if(isElementResized("map")) this.olmap.updateSize();
+    this.jobTechVaribles = globalDivElement('jobTechVaribles');
 
     this.handleChange = this.handleChange.bind(this);
     document.body.addEventListener('change', this.handleChange);
-  }
-
-  isElementResized(ElementId)
-  {
-    const e = document.getElementById(ElementId);
-    if(!this.mapHeight)
-    {
-      this.mapHeight = e.offsetHeight;
-      this.mapWidth = e.offsetWidth; 
-    }
-    else 
-    {
-      if(
-        e &&
-        (
-          this.mapHeight !== e.offsetHeight ||
-          this.mapWidth !== e.offsetWidth 
-        )
-        )
-      {
-        this.olmap.updateSize();
-        this.mapHeight = e.offsetHeight;
-        this.mapWidth = e.offsetWidth; 
-      }
-    }
-  }
-
-  componentDidMount() 
-  {
-    this.isElementResized("map");
-    this.globalJobTechVariables();
     this.handleChange();
 
     const parent = this;
@@ -369,18 +319,13 @@ class MapComponent extends Component
 
     if( this.props.mode !== undefined ) this.toggleLevel(this.props.mode);
     if( this.props.location !== undefined ) this.setState({ location: this.props.location });
-    if( this.props.mode === undefined && this.props.location === undefined) 
+    if( 
+      this.props.mode === undefined && 
+      this.props.location === undefined &&
+      this.props.mapData.result === undefined) 
     {
-      this.populate();
+      this.loadValues(this.state.level);
     }
-
-    map.on('moveend', (evt) => 
-    {
-      let center = map.getView().getCenter();
-      let zoom = map.getView().getZoom();
-      this.setState({ center, zoom });
-
-    });
 
     map.on('pointermove', function(evt) 
     {
@@ -430,7 +375,10 @@ class MapComponent extends Component
             else
             {
               // if we select a municipality from other county, we select that county when zooming out
-              parent.addSelect(feature, 'county', false);
+              if(parent.selected.county.name !== feature.get('name'))
+              {
+                parent.addSelect(feature, 'county', false);
+              }
             }
 
           };
@@ -446,7 +394,6 @@ class MapComponent extends Component
             //console.log([ feature.get('admin_level'), feature.get('name')]);
             parent.addSelect(feature, 'municipality');
             found = true;
-
           };
         
         }
@@ -458,9 +405,14 @@ class MapComponent extends Component
 
   shouldComponentUpdate(nextProps, nextState) 
   {
-    const parent = this;
-    if(nextState.level != "heatmap"){
-      setTimeout(function(){parent.isElementResized("map")},300);
+    if(nextState.level !== "heatmap"){
+      const parent = this;
+      setTimeout(function(){
+        if(isElementResized("map"))
+        {
+          parent.olmap.updateSize();
+        }
+      },300);
     }
     if(nextProps.mapData)
     {
@@ -549,7 +501,6 @@ class MapComponent extends Component
   }
   
   addSelect(feature, type, selectIt = true) {
-    console.trace();
     if(this.selected[type].name.length > 0)
     {
       //select one county or municipality at the time
@@ -575,6 +526,7 @@ class MapComponent extends Component
     feature.setId(this.selected[type].name);
     if(selectIt) 
     {
+      console.log('update map on selected feature');
       if(this.state.level !== type) this.toggleLevel(type);
       let extent = feature.getGeometry().getExtent();
       this.setState(

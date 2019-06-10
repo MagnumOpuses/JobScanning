@@ -44,7 +44,7 @@ class Jobs extends Component {
     });
   }
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.hits != this.props.hits) this.updateMap(nextProps.hits);
+    if (nextProps.hits !== this.props.hits) this.updateMap(nextProps.hits);
     return true;
   }
 
