@@ -232,6 +232,7 @@ const FlexContainer = styled.main`
     flex-direction: column;
     transition: width 0.5s;
     background: #fff;
+    z-index: 15;
 
     @media (max-width: ${breakpoints.tabletLandscape}) {
       width: ${({ visible }) => (visible ? '50%' : '0px')};
@@ -274,7 +275,7 @@ const Button = styled.div`
   position: absolute;
   top: 25px;
   left: -25px;
-  z-index: 2;
+  z-index: 20;
 
   @media only screen and (max-width: ${breakpoints.tablet}) {
     left: ${({ visible }) => (visible ? '-75px' : '25px')};

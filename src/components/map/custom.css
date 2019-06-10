@@ -16,7 +16,7 @@
 #map ul {
   position: absolute;
   margin: 0.5em;
-  z-index: 1000;
+  z-index: 10;
   right: 0.5em;
 }
 
