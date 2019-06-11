@@ -485,6 +485,8 @@ class MapComponent extends Component
       this.props.setLocationAndFetch(nextState.location);
     }
 
+    if(nextState.level !== this.state.level) return true;
+
     return false;
   }
   
@@ -611,11 +613,25 @@ class MapComponent extends Component
 
   render() 
   {
+    let areaLevelIsCounty = true;
+    if (this.state.level  !== 'county') areaLevelIsCounty = false;
     return (
         <div id="map" style={{ width: this.state.width, height: this.state.height }}>
           <ul>
-            <li><a href="#"  onClick={e => this.toggleLevel('county')}>Län</a></li>
-            <li><a href="#"  onClick={e => this.toggleLevel('municipality')}>Kommun</a></li>
+            <li>
+              <button 
+                className={`ui button ${areaLevelIsCounty ? 'selected' : ''}` } 
+                onClick={e => this.toggleLevel('county')}>
+                  Län
+              </button>
+            </li>
+            <li>
+              <button 
+                className={`ui button ${areaLevelIsCounty ? '' : 'selected'}` } 
+                onClick={e => this.toggleLevel('municipality')}>
+                  Kommun
+              </button>
+            </li>
           </ul>
         </div>
     );
