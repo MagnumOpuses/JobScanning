@@ -5,6 +5,14 @@
   bottom: .5em;
 }
 
+.ol-control button {
+  background-color: #4aefe2;
+  color: #000;
+}
+.ol-control button:focus, .ol-control button:hover {
+  background-color: #04cbbb;
+}
+
 #map *:focus{
   outline: none;
 }
@@ -23,7 +31,7 @@
 
 #map li button {
   color: #000;
-  border: 1px solid #02DECCc;
+  border: 1px solid #02DECC;
   padding: 0.3em 0.8em;
   background-color: #4aefe2;
   font-size: 16px;
@@ -32,10 +40,4 @@
   background-color: #04cbbb;
 }
 
-.ol-control button {
-  background-color: #4aefe2;
-  color: #000;
-}
-.ol-control button:focus, .ol-control button:hover {
-  background-color: #04cbbb;
-}
+
