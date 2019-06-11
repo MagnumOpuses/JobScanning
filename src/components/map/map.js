@@ -126,6 +126,7 @@ class MapComponent extends Component
   updateMap() 
   {
     //console.log('updating map');
+    const duration = 1000;
     const map = this.olmap;
     if(this.state.extent.length === 4) 
     {
@@ -133,7 +134,7 @@ class MapComponent extends Component
         this.state.extent, 
         {
           'size': map.getSize(), 
-          'duration': 1000
+          'duration': duration
         } 
       );
       this.setState({ extent: ''});
@@ -144,7 +145,7 @@ class MapComponent extends Component
         {
           center: this.state.center,
           zoom: this.state.zoom,
-          duration: 1000
+          duration: duration
         }
       );
     }
@@ -310,7 +311,7 @@ class MapComponent extends Component
     document.body.addEventListener('change', this.handleChange);
     this.handleChange();
 
-    const parent = this;
+    const that = this;
     const map = this.olmap;
     let hovered;
     map.setTarget('map');
@@ -332,8 +333,8 @@ class MapComponent extends Component
       let pixel = map.getEventPixel(evt.originalEvent);
       let feature = map.forEachFeatureAtPixel(pixel, function(feature) 
       {
-        if(parent.state.level === 'county' && feature.get('admin_level') === '4') return feature;
-        if(parent.state.level === 'municipality' && feature.get('admin_level') === '7') return feature;
+        if(that.state.level === 'county' && feature.get('admin_level') === '4') return feature;
+        if(that.state.level === 'municipality' && feature.get('admin_level') === '7') return feature;
       });
 
       if (feature !== hovered) 
@@ -364,18 +365,18 @@ class MapComponent extends Component
           // admin_level 4 = county
           if(feature.get('admin_level') === '4' )
           {
-            if(parent.state.level === 'county')
+            if(that.state.level === 'county')
             {
-              parent.addSelect(feature, 'county');
-              parent.toggleLevel('municipality');
+              that.addSelect(feature, 'county');
+              that.toggleLevel('municipality');
               found = true;
             }
             else
             {
               // if we select a municipality from other county, we select that county when zooming out
-              if(parent.selected.county.name !== feature.get('name'))
+              if(that.selected.county.name !== feature.get('name'))
               {
-                parent.addSelect(feature, 'county', false);
+                that.addSelect(feature, 'county', false);
               }
             }
 
@@ -383,14 +384,14 @@ class MapComponent extends Component
 
           // admin_level 7 = municipality
           if(
-              parent.selected.municipality.name !== feature.get('name') && 
+              that.selected.municipality.name !== feature.get('name') && 
               feature.get('admin_level') === '7' &&
-              parent.state.level === 'municipality' &&
+              that.state.level === 'municipality' &&
               found !== true     
             )
           {
             //console.log([ feature.get('admin_level'), feature.get('name')]);
-            parent.addSelect(feature, 'municipality');
+            that.addSelect(feature, 'municipality');
             found = true;
           };
         
@@ -403,12 +404,13 @@ class MapComponent extends Component
 
   shouldComponentUpdate(nextProps, nextState) 
   {
-    if(nextState.level !== "heatmap"){
-      const parent = this;
+    if(nextState.level !== "heatmap")
+    {
+      const that = this;
       setTimeout(function(){
         if(isElementResized("map"))
         {
-          parent.olmap.updateSize();
+          that.olmap.updateSize();
         }
       },300);
     }
@@ -491,7 +493,8 @@ class MapComponent extends Component
   }
   
   addSelect(feature, type, selectIt = true) {
-    if(this.selected[type].name.length > 0)
+    if(this.selected[type].name.length > 0 &&
+      feature.get('name') !== this.selected[type].name)
     {
       //select one county or municipality at the time
       this.removeMark(this.selected[type].name, 'selected');
