@@ -66,3 +66,36 @@ export class areaSelected {
   name = '';
 
 }
+
+export function getElementAttribute(attr,id = 'jobTechVaribles')
+{
+  const e = document.getElementById(id);
+  if(!e) return false;
+  if(!e.getAttribute('data-' + attr)) return false;
+  return e.getAttribute('data-' + attr);
+
+}
+
+export function offseter()
+{
+  const zoom = Math.round(getElementAttribute('zoom'));
+  if(zoom < 4) return false;
+
+  const offsets = 
+  {
+    5 : 50000,
+    6 : 28000,
+    7 : 12000,
+    8 : 7000,
+    9 : 3000,
+    10 : 1500,
+    11 : 1000,
+    12 : 800,
+    13 : 300,
+    14 : 150,
+    15 : 100
+  }
+
+  if(zoom > 15) return 50;
+  return offsets[zoom];
+}

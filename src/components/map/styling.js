@@ -1,4 +1,5 @@
 import { Fill, Stroke, Style, Text, Circle as CircleStyle } from 'ol/style.js';
+import { offseter } from './helpers';
 
 class mapStyling 
 {
@@ -32,7 +33,10 @@ class mapStyling
     }),
     geometry: function(feature)
     {
+      let offset = offseter();
       let retPoint;
+      feature = feature.clone();
+      feature.getGeometry().translate(0,offset);
       if (feature.getGeometry().getType() === 'MultiPolygon') 
       {
         retPoint =  feature.getGeometry().getPolygon(0).getInteriorPoint();
@@ -45,11 +49,48 @@ class mapStyling
     }
   });
 
-  label = new Style(
+  labelLower = new Style(
   {
     geometry: function(feature)
     {
+      let offset = offseter();
       let retPoint;
+      feature = feature.clone();
+      feature.getGeometry().translate(0,-offset);
+      if (feature.getGeometry().getType() === 'MultiPolygon') 
+      {
+        retPoint =  feature.getGeometry().getPolygon(0);
+      } 
+      else if (feature.getGeometry().getType() === 'Polygon') 
+      {
+        retPoint = feature.getGeometry();
+      }
+      return retPoint;
+    },
+    text: new Text(
+    {
+      font: 'bold 16px Open-sans,sans-serif',
+      overflow: true,
+      placement : "point",
+      fill: new Fill(
+      {
+        color: '#000'
+      }),
+      stroke: new Stroke(
+      {
+        color: '#ccc',
+        width: 2
+      })
+    })
+  });
+  labelUpper = new Style(
+  {
+    geometry: function(feature)
+    {
+      let offset = offseter();
+      let retPoint;
+      feature = feature.clone();
+      feature.getGeometry().translate(0,offset);
       if (feature.getGeometry().getType() === 'MultiPolygon') 
       {
         retPoint =  feature.getGeometry().getPolygon(0);
