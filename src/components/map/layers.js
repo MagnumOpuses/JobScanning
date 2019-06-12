@@ -123,12 +123,20 @@ class mapLayers
       style: styling.selected
     }
   );
+  values = new OlVectorLayer(
+    {
+      source: new OlVectorSource(),
+      name: 'values',
+      zIndex: 75,
+      visible: true,
+    }
+  );
 
   hover = new OlVectorLayer(
     {
       source: new OlVectorSource(),
       name: 'hover',
-      zIndex: 75,
+      zIndex: 50,
     }
   );
 

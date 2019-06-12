@@ -84,6 +84,7 @@ class MapComponent extends Component
       layers.county, 
       layers.countySelected, 
       layers.selected,
+      layers.values,
       layers.hover 
     ];
     /*
@@ -338,6 +339,14 @@ class MapComponent extends Component
     {
       let zoom = map.getView().getZoom();
       that.setState({ zoom });
+      if(zoom < 6)
+      {
+        layers.values.setVisible(false);
+      }
+      else
+      {
+        layers.values.setVisible(true);
+      }
     });
 
     map.on('pointermove', function(evt) 
@@ -560,13 +569,19 @@ class MapComponent extends Component
     let options = Object.assign(standardsOpt, opt);
     if(this.state.level === 'county') options.zoomResult = true;
     const selectedLayer = this.findLayerByValue('name', options.layer);
-
-    if(options.clear) selectedLayer.getSource().clear();
+    const valuesLayer = this.findLayerByValue('name', 'values');
+    if(options.clear) {
+      selectedLayer.getSource().clear();
+      valuesLayer.getSource().clear();
+    }
     let feature = {};
+    let numFeature = {};
     marks.forEach(function(mark){
       feature = mark.feature.clone();
-      selectedLayer.getSource().addFeature(feature);
+      numFeature = mark.feature.clone();
 
+      valuesLayer.getSource().addFeature(numFeature);
+      selectedLayer.getSource().addFeature(feature);
       feature.setStyle(function() 
       {
         let fill = new Style({
@@ -574,9 +589,14 @@ class MapComponent extends Component
             color: mark.color
           })
         });
-        styling.labelUpper.getText().setText(mark.text);
-        return [styling.circle,styling.labelUpper,fill];
+        return [fill];
       });
+      numFeature.setStyle(function() 
+      {
+        styling.labelUpper.getText().setText(mark.text);
+        return [styling.circle,styling.labelUpper];
+      });
+
     });
 
     let extent = [];
