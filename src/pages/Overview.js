@@ -135,7 +135,7 @@ const GridContainer = styled.div`
       'sources map'
       'chart chart';
     grid-gap: 20px;
-    margin: 20px auto;
+    margin: 10px auto;
   }
 
   @media screen and (max-width: ${breakpoints.tablet}) {
@@ -153,7 +153,7 @@ const GridContainer = styled.div`
 
   @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     height: auto;
-    padding: 20px 15px;
+    padding: 0px 15px;
   }
 
   .box {

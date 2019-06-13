@@ -28,7 +28,7 @@ const ResultStats = ({ searchTerm, hits, sources }) => {
 export default ResultStats;
 
 const DesktopSearchMetadata = styled.div`
-  margin: 20px;
+  margin: 20px 10px;
 
   @media (max-width: ${breakpoints.tabletLandscape}) {
     padding: 0 10px;
