@@ -210,10 +210,14 @@ const Header = styled.header`
 `;
 
 const FlexContainer = styled.main`
-  height: calc(100% - 140px);
+  height: calc(100% - 70px);
   width: 100%;
   display: flex;
   position: relative;
+  @media only screen and (min-width: ${breakpoints.largerThentablet}) {
+    height: calc(100% - 130px);
+  }
+
 
   @media only screen and (min-width: ${breakpoints.tablet}) {
     padding: 0;
