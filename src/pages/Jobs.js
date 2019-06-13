@@ -109,7 +109,6 @@ class Jobs extends Component {
   render() {
     const { hits, selectedJob } = this.props;
     const { headerHeight, headerVisible } = this.state;
-
     return (
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <Header
@@ -121,7 +120,6 @@ class Jobs extends Component {
 
         <FlexContainer
           visible={this.state.sidemenuVisible}
-          // style={{ marginTop: `${headerHeight}px` }}
         >
           <div className="left-container">
             {hits.length > 0 && <ResultStats />}
@@ -139,7 +137,7 @@ class Jobs extends Component {
             />
           )}
 
-          <div className="right-container">
+          <div className={this.state.sidemenuVisible ? 'right-container' : 'right-container z-upp'}>            
             <Button
               visible={this.state.sidemenuVisible}
               onClick={() =>
@@ -260,6 +258,9 @@ const FlexContainer = styled.main`
     p {
       font-size: 20px !important;
     }
+  }
+  .z-upp {
+    z-index: 100;
   }
 `;
 
