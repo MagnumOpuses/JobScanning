@@ -85,8 +85,7 @@ const JobDetails = ({ selectedJob, unselectJob }) => {
           }}
         >
           <p>
-            Vi hittade följande information i annonsen som vi tror är relevant
-            för dig.
+            Vi hittade följande information i annonsen som vi tror är relevant:
           </p>
           <div className="TextEnrichment--container">
             <TextEnrichment />
@@ -220,7 +219,15 @@ const Header = styled.header`
 
   .publisher {
     flex: 0 0 auto;
-    align-self: flex-end;
+    align-self: flex-start;
+    @media (min-width: ${breakpoints.mobileLandscape}) {
+      align-self: flex-end;
+    }
+  }
+  .publisher p {
+    display: inline-block;
+    margin: 0px 6px;
+    font-size: 16px;
   }
 
   .close-icon {
@@ -292,15 +299,20 @@ const SourcesContainer = styled.div`
 `;
 
 const MultipleLinks = styled.div`
-  width: 70%;
+  width: 100%;
+  padding: 15px;
   background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
-  padding: 2rem 0 1rem;
   margin: 0 auto 50px;
+  @media (min-width: ${breakpoints.mobileLandscape}) {
+    width: 70%;
+    padding: 2rem 0 1rem;
+  }
+
 `;
 
 const A = styled.a`
