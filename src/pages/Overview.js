@@ -11,7 +11,7 @@ import {
 } from '../components';
 import theme from '../styles/theme';
 import breakpoints from '../styles/breakpoints';
-import MapComponent from '../components/map/map';
+// import MapComponent from '../components/map/map';
 
 const Overview = props => {
   const [occupationData, setOccupationData] = useState({});
@@ -27,7 +27,7 @@ const Overview = props => {
 
       <GridContainer>
         <div className="header">
-          <OverviewLink to="/jobs">
+          <OverviewLink to={`/jobs/${occupationData.occupation}`}>
             <Icon name="angle double left" />
             Gå tillbaka till annonser
           </OverviewLink>
