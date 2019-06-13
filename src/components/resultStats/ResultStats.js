@@ -19,7 +19,7 @@ const ResultStats = ({ searchTerm, hits, sources }) => {
       <p>
         {hits ? hits.length : 0} jobbannonser från {sources}
         {'\n'}
-        webbplatser
+        webbplatser. Scrolla ner för att visa fler annonser
       </p>
     </DesktopSearchMetadata>
   );
