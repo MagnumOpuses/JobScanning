@@ -135,7 +135,7 @@ const GridContainer = styled.div`
       'sources map'
       'chart chart';
     grid-gap: 20px;
-    margin: 10px auto;
+    margin: 0px auto;
   }
 
   @media screen and (max-width: ${breakpoints.tablet}) {

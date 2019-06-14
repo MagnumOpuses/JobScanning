@@ -42,10 +42,11 @@ class SearchFormContainer extends React.Component {
   };
 
   render() {
-    const { searchTerm, location, upward, isDesktop } = this.props;
+    const { hits, searchTerm, location, upward, isDesktop } = this.props;
 
     return (
       <SearchForm
+        hits={hits}
         searchTerm={searchTerm}
         location={location.value}
         handleChange={this.handleChange}
@@ -59,9 +60,10 @@ class SearchFormContainer extends React.Component {
 }
 
 function mapStateToProps({ ads }) {
-  const { searchTerm, location } = ads;
+  const { hits, searchTerm, location } = ads;
 
   return {
+    hits,
     searchTerm,
     location
   };

@@ -5,6 +5,7 @@ import { Button, Dropdown, Form, Icon, Input } from 'semantic-ui-react';
 import breakpoint from '../../styles/breakpoints';
 
 const SearchForm = ({
+  hits,
   handleSubmit,
   countiesAndMunicipalities,
   isDesktop,
@@ -32,7 +33,7 @@ const SearchForm = ({
         <OverviewLink
           to={`/overview/${searchTerm}`}
           className={`desktop-overview-link ${
-            searchTerm.length > 0 ? '' : 'link-disabled'
+            hits.length > 0 ? '' : 'link-disabled'
           }`}
         >
           <Icon name="line graph" />
