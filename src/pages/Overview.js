@@ -76,40 +76,41 @@ const Overview = props => {
           />
           <TraitsRankingContainer />
         </div>
-        {/* <div className="map box">
-          <Header
-            as="h2"
-            icon="map"
-            content="PROGNOSKARTA"
-            style={{ fontSize: '24px' }}
-          />
-          <p>
-            Arbetsförmedlingen bedömer att{' '}
-            <span className="occupation-name">{occupationData.occupation}</span>{' '}
-            har 'mycket goda' möjligheter till arbete det närmaste året. På fem
-            års sikt bedöms möjligheterna till arbete vara 'goda'.
-          </p>
-          <MapComponent mode="heatmap" />
-        </div> */}
-        <div className="chart box">
-          <Header
-            as="h2"
-            icon="line graph"
-            content="ANNONSHISTORIK"
-            style={{ fontSize: '24px' }}
-          />
-          <p>
-            Medelvärde över hur jobbannonser publicerade på Platsbanken för{' '}
-            <span className="occupation-name">{occupationData.occupation}</span>{' '}
-            fördelats över året historiskt sett.
-          </p>
-          <Chart />
-        </div>
       </GridContainer>
     </>
   );
 };
-
+/* 
+  <div className="map box">
+    <Header
+      as="h2"
+      icon="map"
+      content="PROGNOSKARTA"
+      style={{ fontSize: '24px' }}
+    />
+    <p>
+      Arbetsförmedlingen bedömer att{' '}
+      <span className="occupation-name">{occupationData.occupation}</span>{' '}
+      har 'mycket goda' möjligheter till arbete det närmaste året. På fem
+      års sikt bedöms möjligheterna till arbete vara 'goda'.
+    </p>
+    <MapComponent mode="heatmap" />
+  </div> 
+  <div className="chart box">
+    <Header
+      as="h2"
+      icon="line graph"
+      content="ANNONSHISTORIK"
+      style={{ fontSize: '24px' }}
+    />
+    <p>
+      Medelvärde över hur jobbannonser publicerade på Platsbanken för{' '}
+      <span className="occupation-name">{occupationData.occupation}</span>{' '}
+      fördelats över året historiskt sett.
+    </p>
+    <Chart />
+  </div>
+*/
 export default Overview;
 
 const GridContainer = styled.div`
@@ -118,8 +119,8 @@ const GridContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     'header header header'
-    'sources skills traits'
-    'map chart chart';
+    'sources skills traits';
+    //'map chart chart';
   grid-gap: 40px;
   max-width: 1366px;
   margin: 40px auto;
@@ -127,13 +128,13 @@ const GridContainer = styled.div`
 
   @media screen and (max-width: 1366px) {
     height: auto;
-    grid-template-rows: auto auto 1fr 1fr;
+    grid-template-rows: auto auto;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       'header header'
       'skills traits'
-      'sources map'
-      'chart chart';
+      'sources map';
+    //  'chart chart';
     grid-gap: 20px;
     margin: 0px auto;
   }
@@ -146,9 +147,9 @@ const GridContainer = styled.div`
       'header'
       'sources'
       'skills'
-      'traits'
-      'map'
-      'chart';
+      'traits';
+  //   'map'
+  //    'chart';
   }
 
   @media screen and (max-width: ${breakpoints.mobileLandscape}) {
