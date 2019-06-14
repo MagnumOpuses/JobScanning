@@ -81,10 +81,11 @@ class MapComponent extends Component
       layers.heatmap, 
       layers.municipality, 
       layers.municipalitySelected, 
+      layers.municipalityValues,
       layers.county, 
       layers.countySelected, 
+      layers.countyValues,
       layers.selected,
-      layers.values,
       layers.hover 
     ];
     /*
@@ -152,6 +153,8 @@ class MapComponent extends Component
     }
   }
   
+
+
   toggleLevel(level = 'county')
   {
     this.setState({ level: level });
@@ -160,8 +163,10 @@ class MapComponent extends Component
       //console.log('swiching to municipality level');
       layers.municipality.setStyle(styling.default);
       layers.municipalitySelected.setVisible(true);
+      layers.municipalityValues.setVisible(true);
       layers.county.setStyle(styling.clean);
       layers.countySelected.setVisible(false);
+      layers.countyValues.setVisible(false);
       layers.heatmap.setVisible(false);
       layers.selected.setVisible(true);
     } 
@@ -170,11 +175,14 @@ class MapComponent extends Component
       //console.log('swiching to heatmap')
       layers.county.setStyle(styling.clean);
       layers.countySelected.setVisible(false);
+      layers.countyValues.setVisible(false);
       layers.municipality.setStyle(styling.clean);
       layers.municipalitySelected.setVisible(false);
+      layers.municipalityValues.setVisible(false);
       layers.heatmap.setVisible(true);
       layers.hover.getSource().clear();
       layers.selected.setVisible(false);
+
     
     }
     else
@@ -190,8 +198,10 @@ class MapComponent extends Component
       }
       layers.municipality.setStyle(styling.clean);
       layers.municipalitySelected.setVisible(false);
+      layers.municipalityValues.setVisible(false);
       layers.county.setStyle(styling.default);
       layers.countySelected.setVisible(true);
+      layers.countyValues.setVisible(true);
       layers.heatmap.setVisible(false);
       layers.selected.setVisible(true);
     }
@@ -213,6 +223,7 @@ class MapComponent extends Component
             feature.get('short_name') === featureName
           )  
         {
+          console.log([layerName,feature.get('name'),feature.get('short_name')])
           found = {
             feature: feature,
             level: layerName
@@ -229,11 +240,12 @@ class MapComponent extends Component
     let marks = [];
     let found = false;
     array.forEach(fetchedRow => {
-      found = this.findFeature(fetchedRow.name, [area]);
+      found = this.findFeature(fetchedRow.name);
       if(found.feature)
       {
         marks.push({
           feature: found.feature,
+          level: found.level,
           text: fetchedRow.value.toString(),
           color: colorCodeValue(fetchedRow.value.toString())
         });
@@ -339,13 +351,27 @@ class MapComponent extends Component
     {
       let zoom = map.getView().getZoom();
       that.setState({ zoom });
-      if(zoom < 6)
+      if(this.state.level === "county")
       {
-        layers.values.setVisible(false);
-      }
-      else
+        if(zoom < 6)
+        {
+          layers.countyValues.setVisible(false);
+        }
+        else
+        {
+          layers.countyValues.setVisible(true);
+        }
+      } 
+      else if (this.state.level === "municipality")
       {
-        layers.values.setVisible(true);
+        if(zoom < 8)
+        {
+          layers.municipalityValues.setVisible(false);
+        }
+        else
+        {
+          layers.municipalityValues.setVisible(true);
+        }
       }
     });
 
@@ -562,17 +588,16 @@ class MapComponent extends Component
     //console.log('adding marks');
     const standardsOpt = {
       layerExtent: false,
-      layer: '',
       clear: false,
       zoomResult: false,
     } 
     let options = Object.assign(standardsOpt, opt);
     if(this.state.level === 'county') options.zoomResult = true;
-    const selectedLayer = this.findLayerByValue('name', options.layer);
-    const valuesLayer = this.findLayerByValue('name', 'values');
     if(options.clear) {
-      selectedLayer.getSource().clear();
-      valuesLayer.getSource().clear();
+      layers.countyValues.getSource().clear();
+      layers.countySelected.getSource().clear();
+      layers.municipalityValues.getSource().clear();
+      layers.municipalitySelected.getSource().clear();
     }
     let feature = {};
     let numFeature = {};
@@ -580,8 +605,15 @@ class MapComponent extends Component
       feature = mark.feature.clone();
       numFeature = mark.feature.clone();
 
-      valuesLayer.getSource().addFeature(numFeature);
-      selectedLayer.getSource().addFeature(feature);
+      if(mark.level === 'county'){
+        layers.countyValues.getSource().addFeature(numFeature);
+        layers.countySelected.getSource().addFeature(feature);
+      }
+      else if (mark.level === 'municipality')
+      {
+        layers.municipalityValues.getSource().addFeature(numFeature);
+        layers.municipalitySelected.getSource().addFeature(feature);
+      }
       feature.setStyle(function() 
       {
         let fill = new Style({
@@ -600,7 +632,7 @@ class MapComponent extends Component
     });
 
     let extent = [];
-    if(options.layerExtent) extent = selectedLayer.getSource().getExtent();
+    //if(options.layerExtent) extent = selectedLayer.getSource().getExtent();
     if(!options.layerExtent) extent = feature.getGeometry().getExtent();
     if(options.zoomResult) {
       this.setState(
