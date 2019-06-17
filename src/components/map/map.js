@@ -123,26 +123,26 @@ class MapComponent extends Component
   {
     if(this.hovered) layers.hover.getSource().removeFeature(this.hovered);
     this.setState({ level: level });
+
     if(level === 'municipality')
     {
       //console.log('swiching to municipality level');
-      layers.municipality.setStyle(styling.default);
-      layers.municipalitySelected.setVisible(true);
+      this.olmap.removeLayer('heatmap');
+      layers.municipality.setVisible(true);
       layers.municipalityValues.setVisible(true);
-      layers.county.setStyle(styling.clean);
-      layers.countySelected.setVisible(false);
+      layers.county.setVisible(false);
       layers.countyValues.setVisible(false);
-      layers.heatmap.setVisible(false);
       layers.selected.setVisible(true);
     } 
     else if(level === 'heatmap')
     {
-      //console.log('swiching to heatmap')
+      //console.log('swiching to heatmap');
+      /* TODO: remove county and municipality. Might delete results */
+      this.olmap.addLayer(layers.heatmap);      
+
       layers.county.setStyle(styling.clean);
-      layers.countySelected.setVisible(false);
       layers.countyValues.setVisible(false);
       layers.municipality.setStyle(styling.clean);
-      layers.municipalitySelected.setVisible(false);
       layers.municipalityValues.setVisible(false);
       layers.heatmap.setVisible(true);
       layers.hover.getSource().clear();
@@ -152,18 +152,16 @@ class MapComponent extends Component
     {
       //console.log('swiching to county level');    
       //console.log('unselect municipality');
+      this.olmap.removeLayer('heatmap');
       this.removeMark(this.selected.municipality.name, 'selected');
-      this.removeMark('', 'municipalitySelected');
       this.selected.municipality = new areaSelected();
       if(this.selected.county.name.length > 0)
       {
         this.setState({ location: this.selected.county.name });
       }
-      layers.municipality.setStyle(styling.clean);
-      layers.municipalitySelected.setVisible(false);
+      layers.municipality.setVisible(false);
       layers.municipalityValues.setVisible(false);
-      layers.county.setStyle(styling.default);
-      layers.countySelected.setVisible(true);
+      layers.county.setVisible(true);
       layers.countyValues.setVisible(true);
       layers.heatmap.setVisible(false);
       layers.selected.setVisible(true);
@@ -186,7 +184,7 @@ class MapComponent extends Component
             feature.get('short_name') === featureName
           )  
         {
-          console.log([layerName,feature.get('name'),feature.get('short_name')])
+          //console.log([layerName,feature.get('name'),feature.get('short_name')])
           found = {
             feature: feature,
             level: layerName
@@ -558,9 +556,9 @@ class MapComponent extends Component
     if(this.state.level === 'county') options.zoomResult = true;
     if(options.clear) {
       layers.countyValues.getSource().clear();
-      layers.countySelected.getSource().clear();
+      layers.county.getSource().clear();
       layers.municipalityValues.getSource().clear();
-      layers.municipalitySelected.getSource().clear();
+      layers.municipality.getSource().clear();
     }
     let feature = {};
     let numFeature = {};
@@ -570,12 +568,12 @@ class MapComponent extends Component
 
       if(mark.level === 'county'){
         layers.countyValues.getSource().addFeature(numFeature);
-        layers.countySelected.getSource().addFeature(feature);
+        layers.county.getSource().addFeature(feature);
       }
       else if (mark.level === 'municipality')
       {
         layers.municipalityValues.getSource().addFeature(numFeature);
-        layers.municipalitySelected.getSource().addFeature(feature);
+        layers.municipality.getSource().addFeature(feature);
       }
       feature.setStyle(function() 
       {

@@ -1,18 +1,7 @@
-.ol-zoom {
-  right: .5em;
-  left: auto;
-  top: auto;
-  bottom: .5em;
-}
 
-.ol-control button {
-  background-color: #4aefe2;
-  color: #000;
+#map {
+  Transform: translate3d(0,0,0);
 }
-.ol-control button:focus, .ol-control button:hover {
-  background-color: #04cbbb;
-}
-
 #map *:focus{
   outline: none;
 }
@@ -40,4 +29,17 @@
   background-color: #04cbbb;
 }
 
+.ol-zoom {
+  right: .5em;
+  left: auto;
+  top: auto;
+  bottom: .5em;
+}
 
+.ol-control button {
+  background-color: #4aefe2;
+  color: #000;
+}
+.ol-control button:focus, .ol-control button:hover {
+  background-color: #04cbbb;
+}

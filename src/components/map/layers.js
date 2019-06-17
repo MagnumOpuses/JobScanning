@@ -78,16 +78,6 @@ class mapLayers
     }
   );
 
-  countySelected = new OlVectorLayer(
-    {
-      source: new OlVectorSource(),
-      name: 'countySelected',
-      zIndex: 21,
-      style: styling.selected,
-
-    }
-  );
-
   municipality = new OlVectorLayer(
     {
       source: new OlVectorSource(
@@ -97,18 +87,8 @@ class mapLayers
         }
       ),
       name: 'municipality',
-      style: styling.clean,
+      style: styling.default,
       zIndex: 30,
-    }
-  );
-
-  municipalitySelected = new OlVectorLayer(
-    {
-      source: new OlVectorSource(),
-      name: 'municipalitySelected',
-      zIndex: 31,
-      visible: false,
-      style: styling.selected,
     }
   );
 
@@ -152,12 +132,9 @@ class mapLayers
   
   top = 
     [ 
-      this.heatmap, 
       this.municipality, 
-      this.municipalitySelected, 
       this.municipalityValues,
       this.county, 
-      this.countySelected, 
       this.countyValues,
       this.selected,
       this.hover 
