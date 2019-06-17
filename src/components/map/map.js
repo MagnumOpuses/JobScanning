@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import OlMap from "ol/Map";
 import OlView from "ol/View";
 import {getCenter} from 'ol/extent.js';
-import OlLayerTile from "ol/layer/Tile";
-import OlSourceWMTS from "ol/source/WMTS";
 import {Fill, Style } from 'ol/style.js';
 import 'ol/ol.css';
 import './custom.css';
@@ -56,38 +54,6 @@ class MapComponent extends Component
       municipality: new areaSelected()
     };
 
-    const LmMap = new OlLayerTile(
-      {
-      source: new OlSourceWMTS(
-        {
-          url: layers.layer,
-          layer: 'topowebb_nedtonad',
-          format: 'image/png',
-          matrixSet: '3857',
-          tileGrid: layers.tileGrid3857,
-          version: '1.0',
-          tited: true,
-          style: 'default',
-          crossOrigin: 'anonymous'
-        }
-      ),
-      name: 'Karta',
-      zIndex: 0
-    });
-
-    const groundLayers = [ LmMap ];
-    this.topLayers = 
-    [ 
-      layers.heatmap, 
-      layers.municipality, 
-      layers.municipalitySelected, 
-      layers.municipalityValues,
-      layers.county, 
-      layers.countySelected, 
-      layers.countyValues,
-      layers.selected,
-      layers.hover 
-    ];
     /*
     layers.Heatmap.getSource().on('addfeature', function(event) 
       {
@@ -112,7 +78,7 @@ class MapComponent extends Component
     this.olmap = new OlMap(
       {
         target: null,
-        layers: [...groundLayers, ...this.topLayers],
+        layers: [...layers.ground, ...layers.top],
         view: new OlView(
           {
             center: this.state.center,
@@ -153,10 +119,9 @@ class MapComponent extends Component
     }
   }
   
-
-
   toggleLevel(level = 'county')
   {
+    if(this.hovered) layers.hover.getSource().removeFeature(this.hovered);
     this.setState({ level: level });
     if(level === 'municipality')
     {
@@ -182,8 +147,6 @@ class MapComponent extends Component
       layers.heatmap.setVisible(true);
       layers.hover.getSource().clear();
       layers.selected.setVisible(false);
-
-    
     }
     else
     {
@@ -333,7 +296,7 @@ class MapComponent extends Component
 
     const that = this;
     const map = this.olmap;
-    let hovered;
+    this.hovered = '';
     map.setTarget('map');
 
     if( this.props.mode !== undefined ) this.toggleLevel(this.props.mode);
@@ -346,7 +309,7 @@ class MapComponent extends Component
     {
       this.loadValues(this.state.level);
     }
-
+    
     map.on('rendercomplete', (evt) => 
     {
       let zoom = map.getView().getZoom();
@@ -386,9 +349,9 @@ class MapComponent extends Component
         if(that.state.level === 'municipality' && feature.get('admin_level') === '7') return feature;
       });
 
-      if (feature !== hovered) 
+      if (feature !== this.hovered) 
       {
-        if (hovered) layers.hover.getSource().removeFeature(hovered);
+        if (this.hovered) layers.hover.getSource().removeFeature(this.hovered);
         if (feature) 
         {
           feature = feature.clone();
@@ -399,7 +362,7 @@ class MapComponent extends Component
           });
           layers.hover.getSource().addFeature(feature);
         }
-        hovered = feature;
+        this.hovered = feature;
       }
 
     });
@@ -662,26 +625,11 @@ class MapComponent extends Component
   findLayerByValue(key, name)
   {
     let found = {};
-    this.topLayers.forEach((layer) => 
+    layers.top.forEach((layer) => 
     {
       if(layer.get(key) === name) found = layer; 
     });
     return found;
-  }
-
-  toggleLayer(layer, value='') 
-  {
-    if(Number.isInteger(layer)) layer = this.topLayers[layer];
-    if(value.length < 1) 
-    {
-      layer.setVisible(!layer.getVisible());
-      //console.log('layer vis toggled');
-    }
-    else 
-    {
-      layer.setVisible(value);
-      //console.log('layer vis set to ' + value);
-    }
   }
 
   render() 
@@ -710,13 +658,5 @@ class MapComponent extends Component
     );
   }
 }
-/*  links to toggle layers
 
-      <ul>
-        {this.topLayers.map((layer, i) => {     
-          return (<li key={i}><a href="#"  onClick={e => this.toggleLayer(i)}>{layer.get('name')}</a></li>) 
-        })}
-      </ul>
-
-*/ 
 export default MapComponent;

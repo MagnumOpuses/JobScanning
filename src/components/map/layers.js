@@ -12,19 +12,18 @@ const styling = new mapStyling();
 
 class mapLayers 
 {
-  constructor() {
-    this.layer = 'https://api.lantmateriet.se/open/topowebb-ccby/v1/wmts/token/' + process.env.REACT_APP_LMTOKEN + '/';
-    this.tileGrid3857 = new OlGridWMTS(
-      {
-        tileSize: 256,
-        extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
-        resolutions: [156543.0339280410, 78271.51696402048, 39135.75848201023, 19567.87924100512, 9783.939620502561, 4891.969810251280, 2445.984905125640, 1222.992452562820, 611.4962262814100, 305.7481131407048, 152.8740565703525, 76.43702828517624, 38.21851414258813, 19.10925707129406,9.554628535647032, 4.777314267823516, 2.388657133911758, 1.194328566955879],
-        matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15]
-      }
-    ); 
 
-  }
+  layer = 'https://api.lantmateriet.se/open/topowebb-ccby/v1/wmts/token/' + process.env.REACT_APP_LMTOKEN + '/';
   
+  tileGrid3857 = new OlGridWMTS(
+    {
+      tileSize: 256,
+      extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
+      resolutions: [156543.0339280410, 78271.51696402048, 39135.75848201023, 19567.87924100512, 9783.939620502561, 4891.969810251280, 2445.984905125640, 1222.992452562820, 611.4962262814100, 305.7481131407048, 152.8740565703525, 76.43702828517624, 38.21851414258813, 19.10925707129406,9.554628535647032, 4.777314267823516, 2.388657133911758, 1.194328566955879],
+      matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15]
+    }
+  ); 
+
   LmMap = new OlLayerTile(
     {
     source: new OlSourceWMTS(
@@ -110,7 +109,6 @@ class mapLayers
       zIndex: 31,
       visible: false,
       style: styling.selected,
-
     }
   );
 
@@ -123,6 +121,7 @@ class mapLayers
       style: styling.selected
     }
   );
+
   countyValues = new OlVectorLayer(
     {
       source: new OlVectorSource(),
@@ -131,6 +130,7 @@ class mapLayers
       visible: true,
     }
   );
+
   municipalityValues = new OlVectorLayer(
     {
       source: new OlVectorSource(),
@@ -148,5 +148,21 @@ class mapLayers
     }
   );
 
+  ground = [ this.LmMap ];
+  
+  top = 
+    [ 
+      this.heatmap, 
+      this.municipality, 
+      this.municipalitySelected, 
+      this.municipalityValues,
+      this.county, 
+      this.countySelected, 
+      this.countyValues,
+      this.selected,
+      this.hover 
+    ];
+ 
 }
+
 export default mapLayers;
