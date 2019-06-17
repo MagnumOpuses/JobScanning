@@ -97,7 +97,6 @@ class mapLayers
       source: new OlVectorSource(),
       name: 'selected',
       zIndex: 5,
-      visible: true,
       style: styling.selected
     }
   );
@@ -107,7 +106,6 @@ class mapLayers
       source: new OlVectorSource(),
       name: 'values',
       zIndex: 75,
-      visible: true,
     }
   );
 
@@ -116,7 +114,6 @@ class mapLayers
       source: new OlVectorSource(),
       name: 'values',
       zIndex: 75,
-      visible: true,
     }
   );
 

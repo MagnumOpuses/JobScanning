@@ -128,9 +128,9 @@ class MapComponent extends Component
     {
       //console.log('swiching to municipality level');
       this.olmap.removeLayer('heatmap');
-      layers.municipality.setVisible(true);
+      layers.municipality.setZIndex(30);
       layers.municipalityValues.setVisible(true);
-      layers.county.setVisible(false);
+      layers.county.setZIndex(-10);
       layers.countyValues.setVisible(false);
       layers.selected.setVisible(true);
     } 
@@ -159,9 +159,9 @@ class MapComponent extends Component
       {
         this.setState({ location: this.selected.county.name });
       }
-      layers.municipality.setVisible(false);
+      layers.municipality.setZIndex(-1);
       layers.municipalityValues.setVisible(false);
-      layers.county.setVisible(true);
+      layers.county.setZIndex(20);
       layers.countyValues.setVisible(true);
       layers.heatmap.setVisible(false);
       layers.selected.setVisible(true);
@@ -238,48 +238,52 @@ class MapComponent extends Component
   handleChange() 
   {
     const jtv = this.jobTechVaribles;
+    let location = jtv.getAttribute('data-location');
+    let q = jtv.getAttribute('data-q');
+    let mode = jtv.getAttribute('data-mode');
+    let zoom = jtv.getAttribute('data-zoom');
     if(
-      jtv.getAttribute('data-location') !== undefined &&
-      this.state.location !== jtv.getAttribute('data-location')
+      location !== undefined &&
+      location !== this.state.location
       )
     {
       let found = {};
-      found = this.findFeature(jtv.getAttribute('data-location'));
+      found = this.findFeature(location);
       if(found.feature)
       {
-        this.setState({ location: jtv.getAttribute('data-location') });
+        this.setState({ location: location });
         if(this.state.level === 'county') this.toggleLevel('municipality');
         this.addSelect(found.feature, found.level);
       } 
       else
       {
-        console.log('can not find : ' + this.state.location);
+        console.log('can not find : ' + location);
       }
     }
     if(
-      jtv.getAttribute('data-q') !== undefined &&
-      this.state.q !== jtv.getAttribute('data-q')
+      q !== undefined &&
+      q !== this.state.q 
       )
     {
-      this.setState({ q: jtv.getAttribute('data-q') });
+      this.setState({ q: q });
       this.loadValues(this.state.level);
     }
     if(
-      jtv.getAttribute('data-mode') !== undefined &&
+      mode !== undefined &&
       ( 
-        jtv.getAttribute('data-mode') === 'heatmap' ||
-        jtv.getAttribute('data-mode') === 'county' ||
-        jtv.getAttribute('data-mode') === 'municipality'
+        mode === 'heatmap' ||
+        mode === 'county' ||
+        mode === 'municipality'
       ))
     {
-      this.toggleLevel(jtv.getAttribute('data-mode'));
+      this.toggleLevel(mode);
     }
     if(
-      jtv.getAttribute('data-zoom') !== undefined &&
-      jtv.getAttribute('data-zoom') !== this.olmap.zoom
+      zoom !== undefined &&
+      zoom !== this.olmap.zoom
       )
     {
-      this.setState({ zoom: jtv.getAttribute('data-zoom') });
+      this.setState({ zoom: zoom });
     }
   }
 
