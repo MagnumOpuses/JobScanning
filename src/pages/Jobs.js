@@ -18,9 +18,9 @@ import { countiesAndMunicipalities } from '../utils/searchOptions';
 class Jobs extends Component {
   constructor(props) {
     super(props);
-
+    // sidemenuVisible is false to render map comp and get results there also
     this.state = {
-      sidemenuVisible: true,
+      sidemenuVisible: false,
       headerHeight: '',
       headerVisible: true,
       lastScrollTop: 0
@@ -29,7 +29,10 @@ class Jobs extends Component {
   }
 
   componentDidMount() {
-    this.setState({ headerHeight: this.headerRef.current.clientHeight });
+    this.setState({ 
+      headerHeight: this.headerRef.current.clientHeight,
+      sidemenuVisible: true 
+    });
     this.mapData = {
       total: 0,
       result: []
