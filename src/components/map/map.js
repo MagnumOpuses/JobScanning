@@ -289,6 +289,7 @@ class MapComponent extends Component
 
   componentDidMount() 
   {
+    //console.log('map component is mounted');
     if(isElementResized("map")) this.olmap.updateSize();
     this.jobTechVaribles = globalDivElement('jobTechVaribles');
 
@@ -424,6 +425,7 @@ class MapComponent extends Component
       setTimeout(function(){
         if(isElementResized("map"))
         {
+          //console.log('element resized');
           that.olmap.updateSize();
         }
       },300);
@@ -432,7 +434,7 @@ class MapComponent extends Component
     {
       if(nextProps.mapData.total !== this.state.total)
       {
-        //console.log('updating mapresults');
+        //console.log('Map props is updating mapresults');
         nextState.total = nextProps.mapData.total ;
         this.findFeatures(nextProps.mapData.result); 
       }

@@ -37,13 +37,13 @@ export function isElementResized(ElementId)
   else 
   {
     if(
-      e.getAttribute('data-height') !== e.offsetHeight ||
-      e.getAttribute('data-width') !== e.offsetWidth 
+      Number(e.getAttribute('data-height')) !== e.offsetHeight ||
+      Number(e.getAttribute('data-width')) !== e.offsetWidth 
       )
     {
-      return true;
       e.setAttribute('data-height', e.offsetHeight);
-      e.setAttribute('data-width', e.offsetWidth); 
+      e.setAttribute('data-width', e.offsetWidth);   
+      return true;
     }
   }
   return false;
