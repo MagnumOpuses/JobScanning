@@ -154,7 +154,7 @@ const GridContainer = styled.div`
 
   @media screen and (max-width: ${breakpoints.mobileLandscape}) {
     height: auto;
-    padding: 0px 15px;
+    padding: 10px 15px;
   }
 
   .box {
