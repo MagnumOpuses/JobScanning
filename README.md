@@ -1,6 +1,14 @@
+![alt text][logo]
+
+[logo]: https://github.com/MagnumOpuses/project-meta/blob/master/img/jobtechdev_black.png "JobTech dev logo"
+[A JobTech Project]( https://www.jobtechdev.se)
+
 # JobScanner
 
-## Disclaimer
+This is a demonstration of what you can do with the JobTech API's. 
+It shows ads and gives the posibilities to find ads in diffrent ways, it has also enriched all ads and shows them on a map if that information is applied.
+
+## Version Beta - Disclaimer
 
 The project is under development and should not be seen as production ready.
 Features may be added, removed or modified.
@@ -9,6 +17,13 @@ Test
 
 ## Get started!
 
+### Prerequisites
+
+* You will need [npm](https://www.npmjs.com/) on your computer.
+* You need to copy the [.env.default](./.env.default) to .env and add the api key from Lantmäteriet.
+* You need API key from [jobtech](https://jobtechdev.se) to get the ads
+
+### Installation
 
 Easiest way to get started:
 
@@ -21,12 +36,10 @@ Easiest way to get started:
 7. Start the project by running **`npm start`**
 8. DONE! The project will be running at [http://localhost:3000](http://localhost:3000)
 
-## Create React App's README.md
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
 
 In the project directory, you can run:
 
@@ -53,42 +66,20 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
+### Learn More about React
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Built with
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This project uses the component [MapWidget](https://github.com/MagnumOpuses/mapWidget) from another repo on Jobtech. <br />
+You can read more about that in that [readme.md](https://github.com/MagnumOpuses/mapWidget/blob/master/README.md). 
 
-### Analyzing the Bundle Size
+Otherwise there is more technical descriptions in readme files in componets folders. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Contact us if you would like to contribute.
