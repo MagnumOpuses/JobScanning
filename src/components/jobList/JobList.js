@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CustomLoader, NoResultsBox } from '..';
 import ListItem from './ListItem';
+import breakpoints from '../../styles/breakpoints';
 
 class JobList extends Component {
   constructor(props) {
@@ -38,7 +39,6 @@ class JobList extends Component {
           id="scrollableDiv"
           ref={this.listRef}
           // onScroll={this.handleScroll}
-          style={{ height: 'calc(100% - 68px)' }}
         >
           <InfiniteScroll
             dataLength={hits.length}
@@ -136,6 +136,13 @@ const List = styled.ul`
   overflow: auto;
   list-style: none;
   background: #fff;
+  height: -webkit-calc(100% - 180px);
+  height: calc(100% - 180px);
+
+  @media screen and (min-width: ${breakpoints.mobileLandscape}) {
+    height: -webkit-calc(100% - 68px);
+    height: calc(100% - 68px);
+  }
 
   &::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);
