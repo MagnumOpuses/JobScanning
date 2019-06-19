@@ -6,7 +6,7 @@ import {
   SkillsRankingContainer,
   TraitsRankingContainer,
   SourceRanking,
-  Chart,
+//  Chart,
   PageHeader
 } from '../components';
 import theme from '../styles/theme';
