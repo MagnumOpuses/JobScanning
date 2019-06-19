@@ -183,7 +183,7 @@ export const fetchMoreJobs = (term, location, offset) => async dispatch => {
           locationObject: { key: 'everywhere', text: 'Hela Sverige', value: '' }
         });
 
-        const { data } = await apiFetchJobs(term, '', offset);
+        let { data } = await apiFetchJobs(term, '', offset);
 
         if (!data.hits.length > 0) {
           dispatch({
