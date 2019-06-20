@@ -319,7 +319,7 @@ class MapComponent extends Component
       that.setState({ zoom });
       if(this.state.level === "county")
       {
-        if(zoom < 6)
+        if(zoom < 5.5)
         {
           layers.countyValues.setVisible(false);
         }
@@ -330,7 +330,7 @@ class MapComponent extends Component
       } 
       else if (this.state.level === "municipality")
       {
-        if(zoom < 8)
+        if(zoom < 7)
         {
           layers.municipalityValues.setVisible(false);
         }
