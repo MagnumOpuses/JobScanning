@@ -21,7 +21,7 @@ Test
 
 * You will need [npm](https://www.npmjs.com/) on your computer.
 * You need to copy the [.env.default](./.env.default) to .env and add the api key from Lantmäteriet.
-* You need API key from [jobtech](https://jobtechdev.se) to get the ads
+* You need API key from [jobtech](https://jobtechdev.se/doc/api/beta/jobsearch/) to get the ads
 
 ### Installation
 
