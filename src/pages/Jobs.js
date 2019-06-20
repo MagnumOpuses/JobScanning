@@ -29,6 +29,14 @@ class Jobs extends Component {
   }
 
   componentDidMount() {
+    // an android bug makes searchbar apart of viewpoint, we calc correct viewpoint
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    window.addEventListener('resize', () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+
     this.setState({ 
       headerHeight: this.headerRef.current.clientHeight,
       sidemenuVisible: true 
@@ -211,12 +219,13 @@ const Header = styled.header`
 `;
 
 const FlexContainer = styled.main`
-  height: calc(100% - 70px);
+  height: calc(var(--vh, 1vh) * 100 - 70px);
   width: 100%;
   display: flex;
+  overflow: hidden;
   position: relative;
   @media only screen and (min-width: ${breakpoints.largerThentablet}) {
-    height: calc(100% - 130px);
+    height: calc(var(--vh, 1%) * 100 - 130px);
   }
 
 
