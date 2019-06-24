@@ -292,6 +292,12 @@ class MapComponent extends Component
     }
   }
 
+    toListingFromSnackbar()
+    {
+      this.props.sidemenu(true);
+      this.props.closeSnackbar(this.snackKey);
+    }
+
   componentDidMount() 
   {
     //console.log('map component is mounted');
@@ -328,7 +334,8 @@ class MapComponent extends Component
       }
     }
 
-    onlongtouch = function() { 
+    onlongtouch = function(e) {
+      if(clientX - 20) 
       let area = '';
       let value = '';
       map.forEachFeatureAtPixel([clientX,(clientY - 70)], function(feature) // minus 70 because header takes 70px
@@ -345,19 +352,18 @@ class MapComponent extends Component
       if(value && area)
       {
         let msg = 'Hittade ' + value + 'st i ' + area + '.';
-        that.props.enqueueSnackbar(
+        that.snackKey = that.props.enqueueSnackbar(
           msg, 
           { 
             autoHideDuration: 5000,
             action: (
-              <Button onClick={() => that.props.sidemenu(true) }>
+              <Button onClick={() => that.toListingFromSnackbar() }>
                   visa i listan
               </Button>
             ),
           }
         );
       }
-
     };
 
     window.addEventListener("touchstart", touchstart, false);
