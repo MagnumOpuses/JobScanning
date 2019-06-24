@@ -36,6 +36,23 @@
   background-color: #4aefe2;
   color: #000;
 }
+
 .ol-control button:focus, .ol-control button:hover {
   background-color: #04cbbb;
+}
+
+#root .MuiSnackbarContent-root, #root .MuiSnackbarContent-root .MuiButton-root {
+  font-size: 14px;
+}
+
+#root .MuiSnackbarContent-root .MuiButton-root {
+  text-transform: unset;
+  cursor: pointer;
+}
+
+#root .MuiSnackbarContent-root {
+  background-color: #4aefe2;
+  color: #000;
+  border: 1px solid #02DECC;
+
 }

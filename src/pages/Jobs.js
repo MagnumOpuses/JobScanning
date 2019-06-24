@@ -105,7 +105,9 @@ class Jobs extends Component {
       );
     }
   };
-
+  showSidemenu = visible => {
+    this.setState({ sidemenuVisible: visible });
+  }
   setLocationAndFetch = location => {
     const { fetchJobs, searchTerm, setLocation, history } = this.props;
 
@@ -173,6 +175,7 @@ class Jobs extends Component {
               mode="county"
               height={'100%'}
               width={'auto'}
+              sidemenu={this.showSidemenu}
               mapData={this.mapData}
               location={this.props.location.value}
               q={this.props.searchTerm}

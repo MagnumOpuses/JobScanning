@@ -16,6 +16,11 @@ import {
   isElementResized,
   globalDivElement
 } from './helpers'
+
+import { withSnackbar } from 'notistack';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
 const styling = new mapStyling();
 const layers = new mapLayers();
 
@@ -299,6 +304,73 @@ class MapComponent extends Component
 
     const that = this;
     const map = this.olmap;
+
+    /* touch and hold a area and get information in a snackar */
+    let onlongtouch; 
+    let clientX, clientY;
+    let timer, lockTimer;
+    const touchduration = 1500; 
+
+    function touchstart(e) {
+      if(lockTimer){
+        return;
+      }
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+      timer = setTimeout(onlongtouch, touchduration); 
+      lockTimer = true;
+    }
+
+    function touchend() {
+        if (timer){ 
+            clearTimeout(timer); // clearTimeout, not cleartimeout..
+        lockTimer = false;
+      }
+    }
+
+    onlongtouch = function() { 
+      let area = '';
+      let value = '';
+      map.forEachFeatureAtPixel([clientX,(clientY - 70)], function(feature) // minus 70 because header takes 70px
+      {
+        if(feature.get('innerText'))
+        {
+          if(feature.get('admin_level') === '4' && that.state.level === 'county') 
+          {
+            area = feature.get('name');
+            value = feature.get('innerText');
+          }
+          if(feature.get('admin_level') === '7' && that.state.level === 'municipality')
+          {
+            area = feature.get('name');
+            value = feature.get('innerText');
+          } 
+        }     
+      });
+      if(value && area)
+      {
+        let msg = 'Hittade ' + value + 'st i ' + area + '.';
+        that.props.enqueueSnackbar(
+          msg, 
+          { 
+            autoHideDuration: 5000,
+            action: (
+              <Button onClick={() => that.props.sidemenu(true) }>
+                  visa i listan
+              </Button>
+            ),
+          }
+        );
+      }
+
+    };
+
+    window.addEventListener("touchstart", touchstart, false);
+    window.addEventListener("touchend", touchend, false);
+
+    /* touch and hold end */
+
+
     this.hovered = '';
     map.setTarget('map');
 
@@ -348,8 +420,7 @@ class MapComponent extends Component
       let pixel = map.getEventPixel(evt.originalEvent);
       let feature = map.forEachFeatureAtPixel(pixel, function(feature) 
       {
-        if(that.state.level === 'county' && feature.get('admin_level') === '4') return feature;
-        if(that.state.level === 'municipality' && feature.get('admin_level') === '7') return feature;
+        if(that.featureFromArea(feature)) return feature;
       });
 
       if (feature !== this.hovered) 
@@ -415,6 +486,14 @@ class MapComponent extends Component
 
     });
 
+  }
+
+  featureFromArea(feature, level = this.state.level)
+  {
+    if (level === 'county' && feature.get('admin_level') === '4') return feature;
+    if (level === 'municipality' && feature.get('admin_level') === '7') return feature;
+
+    return false;
   }
 
   shouldComponentUpdate(nextProps, nextState) 
@@ -570,6 +649,7 @@ class MapComponent extends Component
     let numFeature = {};
     marks.forEach(function(mark){
       feature = mark.feature.clone();
+      feature.set('innerText', mark.text);
       numFeature = mark.feature.clone();
 
       if(mark.level === 'county'){
@@ -595,7 +675,6 @@ class MapComponent extends Component
         styling.labelUpper.getText().setText(mark.text);
         return [styling.circle,styling.labelUpper];
       });
-
     });
 
     let extent = [];
@@ -663,4 +742,4 @@ class MapComponent extends Component
   }
 }
 
-export default MapComponent;
+export default withSnackbar(MapComponent);
