@@ -335,16 +335,11 @@ class MapComponent extends Component
       {
         if(feature.get('innerText'))
         {
-          if(feature.get('admin_level') === '4' && that.state.level === 'county') 
+          if(that.featureFromArea(feature)) 
           {
             area = feature.get('name');
             value = feature.get('innerText');
           }
-          if(feature.get('admin_level') === '7' && that.state.level === 'municipality')
-          {
-            area = feature.get('name');
-            value = feature.get('innerText');
-          } 
         }     
       });
       if(value && area)
@@ -423,19 +418,16 @@ class MapComponent extends Component
         if(that.featureFromArea(feature)) return feature;
       });
 
-      if (feature !== this.hovered) 
+      if (feature && feature !== this.hovered) 
       {
         if (this.hovered) layers.hover.getSource().removeFeature(this.hovered);
-        if (feature) 
+        feature = feature.clone();
+        feature.setStyle(function(feature) 
         {
-          feature = feature.clone();
-          feature.setStyle(function(feature) 
-          {
-            styling.labelLower.getText().setText(feature.get('name'));
-            return [styling.labelLower,styling.highlight];
-          });
-          layers.hover.getSource().addFeature(feature);
-        }
+          styling.labelLower.getText().setText(feature.get('name'));
+          return [styling.labelLower,styling.highlight];
+        });
+        layers.hover.getSource().addFeature(feature);
         this.hovered = feature;
       }
 
@@ -448,7 +440,7 @@ class MapComponent extends Component
       {
         if(feature !== undefined)
         {
-          // admin_level 4 = county
+          // county
           if(feature.get('admin_level') === '4' )
           {
             if(that.state.level === 'county')
@@ -468,11 +460,10 @@ class MapComponent extends Component
 
           };
 
-          // admin_level 7 = municipality
+          // municipality
           if(
               that.selected.municipality.name !== feature.get('name') && 
-              feature.get('admin_level') === '7' &&
-              that.state.level === 'municipality' &&
+              that.featureFromArea(feature, 'municipality') &&
               found !== true     
             )
           {
