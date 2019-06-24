@@ -126,6 +126,7 @@ class MapComponent extends Component
   
   toggleLevel(level = 'county')
   {
+    if(level === 'municipality') level = 'county';
     if(this.hovered) layers.hover.getSource().removeFeature(this.hovered);
     this.setState({ level: level });
 
@@ -257,7 +258,7 @@ class MapComponent extends Component
       if(found.feature)
       {
         this.setState({ location: location });
-        if(this.state.level === 'county') this.toggleLevel('municipality');
+        //if(this.state.level === 'county') this.toggleLevel('municipality');
         this.addSelect(found.feature, found.level);
       } 
       else
@@ -334,8 +335,7 @@ class MapComponent extends Component
       }
     }
 
-    onlongtouch = function(e) {
-      if(clientX - 20) 
+    onlongtouch = function() { 
       let area = '';
       let value = '';
       map.forEachFeatureAtPixel([clientX,(clientY - 70)], function(feature) // minus 70 because header takes 70px
@@ -718,7 +718,7 @@ class MapComponent extends Component
     if (this.state.level  !== 'county') areaLevelIsCounty = false;
     return (
         <div id="map" style={{ width: this.state.width, height: this.state.height }}>
-          <ul>
+          {/*<ul>
             <li>
               <button 
                 className={`ui button ${areaLevelIsCounty ? 'selected' : ''}` } 
@@ -733,7 +733,7 @@ class MapComponent extends Component
                   Kommun
               </button>
             </li>
-          </ul>
+          </ul>*/}
         </div>
     );
   }
