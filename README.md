@@ -76,7 +76,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 This project uses the component [MapWidget](https://github.com/MagnumOpuses/mapWidget) from another repo on Jobtech. <br />
 You can read more about that in that [readme.md](https://github.com/MagnumOpuses/mapWidget/blob/master/README.md). 
-
+Also we have used [iamhosseindhv snackbar](https://iamhosseindhv.com/notistack/demos#custom-snackbar)
 Otherwise there is more technical descriptions in readme files in componets folders. 
 
 
