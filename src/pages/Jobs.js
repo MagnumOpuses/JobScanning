@@ -69,8 +69,7 @@ class Jobs extends Component {
 
   handleScroll = ref => {
     const { headerHeight } = this.state;
-    console.log(this.state);
-    console.log(this.state);
+    // console.log(this.state);
 
     const refScrollTop = ref.current.scrollTop;
     // const headerHeight = this.headerRef.current.offsetHeight
