@@ -99,3 +99,20 @@ export function offseter()
   if(zoom > 15) return 50;
   return offsets[zoom];
 }
+export function isMobile(type)
+{
+  switch (type) {
+    case 'Android':
+      return navigator.userAgent.match(/Android/i);
+    case 'BlackBerry':
+      return navigator.userAgent.match(/BlackBerry/i);
+    case 'iOS':
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    case 'Opera':
+      return navigator.userAgent.match(/Opera Mini/i);
+    case 'Windows':
+      return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    default:
+      return (isMobile('Android') || isMobile('BlackBerry') || isMobile('iOS') || isMobile('Opera') || isMobile('Windows'));
+  }
+}

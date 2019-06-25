@@ -14,12 +14,12 @@ import {
   capitalize,
   areaSelected, 
   isElementResized,
-  globalDivElement
+  globalDivElement,
+  isMobile
 } from './helpers'
 
 import { withSnackbar } from 'notistack';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
 
 const styling = new mapStyling();
 const layers = new mapLayers();
@@ -40,7 +40,7 @@ class MapComponent extends Component
       extent: [],
       q: '',
       location: '',
-      level: 'county',
+      level: 'municipality',
       total: 0,
       height: '400px',
       width: 'auto'
@@ -58,27 +58,6 @@ class MapComponent extends Component
       county: new areaSelected(),
       municipality: new areaSelected()
     };
-
-    /*
-    layers.Heatmap.getSource().on('addfeature', function(event) 
-      {
-
-        var level = event.feature.get('level');
-        switch(level) {
-          case 'high':
-            level = 1;
-            break;
-          case 'medium':
-            level = .5;
-            break;
-          default:
-            level = .1;
-          break;
-        }
-        event.feature.set('weight', Math.random());  // set weight on point 0 -> 1
-      }
-    );
-    */
 
     this.olmap = new OlMap(
       {
@@ -98,7 +77,6 @@ class MapComponent extends Component
 
   updateMap() 
   {
-    //console.log('updating map');
     const duration = 1000;
     const map = this.olmap;
     if(this.state.extent.length === 4) 
@@ -124,57 +102,6 @@ class MapComponent extends Component
     }
   }
   
-  toggleLevel(level = 'county')
-  {
-    if(level === 'municipality') level = 'county';
-    if(this.hovered) layers.hover.getSource().removeFeature(this.hovered);
-    this.setState({ level: level });
-
-    if(level === 'municipality')
-    {
-      //console.log('swiching to municipality level');
-      this.olmap.removeLayer('heatmap');
-      layers.municipality.setZIndex(30);
-      layers.municipalityValues.setVisible(true);
-      layers.county.setZIndex(-10);
-      layers.countyValues.setVisible(false);
-      layers.selected.setVisible(true);
-    } 
-    else if(level === 'heatmap')
-    {
-      //console.log('swiching to heatmap');
-      /* TODO: remove county and municipality. Might delete results */
-      this.olmap.addLayer(layers.heatmap);      
-
-      layers.county.setStyle(styling.clean);
-      layers.countyValues.setVisible(false);
-      layers.municipality.setStyle(styling.clean);
-      layers.municipalityValues.setVisible(false);
-      layers.heatmap.setVisible(true);
-      layers.hover.getSource().clear();
-      layers.selected.setVisible(false);
-    }
-    else
-    {
-      //console.log('swiching to county level');    
-      //console.log('unselect municipality');
-      this.olmap.removeLayer('heatmap');
-      this.removeMark(this.selected.municipality.name, 'selected');
-      this.selected.municipality = new areaSelected();
-      if(this.selected.county.name.length > 0)
-      {
-        this.setState({ location: this.selected.county.name });
-      }
-      layers.municipality.setZIndex(-1);
-      layers.municipalityValues.setVisible(false);
-      layers.county.setZIndex(20);
-      layers.countyValues.setVisible(true);
-      layers.heatmap.setVisible(false);
-      layers.selected.setVisible(true);
-    }
-
-  }
-
   findFeature(featureName, layers = ['county', 'municipality'])
   {
     if(featureName === '') return false;
@@ -190,7 +117,6 @@ class MapComponent extends Component
             feature.get('short_name') === featureName
           )  
         {
-          //console.log([layerName,feature.get('name'),feature.get('short_name')])
           found = {
             feature: feature,
             level: layerName
@@ -228,7 +154,6 @@ class MapComponent extends Component
         }
       );
     }
-
   }
 
   async loadValues(area) 
@@ -246,7 +171,6 @@ class MapComponent extends Component
     const jtv = this.jobTechVaribles;
     let location = jtv.getAttribute('data-location');
     let q = jtv.getAttribute('data-q');
-    let mode = jtv.getAttribute('data-mode');
     let zoom = jtv.getAttribute('data-zoom');
     if(
       location !== undefined &&
@@ -258,8 +182,7 @@ class MapComponent extends Component
       if(found.feature)
       {
         this.setState({ location: location });
-        //if(this.state.level === 'county') this.toggleLevel('municipality');
-        this.addSelect(found.feature, found.level);
+        if(found.level !== 'county') this.addSelect(found.feature, found.level);
       } 
       else
       {
@@ -275,16 +198,6 @@ class MapComponent extends Component
       this.loadValues(this.state.level);
     }
     if(
-      mode !== undefined &&
-      ( 
-        mode === 'heatmap' ||
-        mode === 'county' ||
-        mode === 'municipality'
-      ))
-    {
-      this.toggleLevel(mode);
-    }
-    if(
       zoom !== undefined &&
       zoom !== this.olmap.zoom
       )
@@ -293,15 +206,14 @@ class MapComponent extends Component
     }
   }
 
-    toListingFromSnackbar()
-    {
-      this.props.sidemenu(true);
-      this.props.closeSnackbar(this.snackKey);
-    }
+  toListingFromSnackbar()
+  {
+    this.props.sidemenu(true);
+    this.props.closeSnackbar(this.snackKey);
+  }
 
   componentDidMount() 
   {
-    //console.log('map component is mounted');
     if(isElementResized("map")) this.olmap.updateSize();
     this.jobTechVaribles = globalDivElement('jobTechVaribles');
 
@@ -312,70 +224,9 @@ class MapComponent extends Component
     const that = this;
     const map = this.olmap;
 
-    /* touch and hold a area and get information in a snackar */
-    let onlongtouch; 
-    let clientX, clientY;
-    let timer, lockTimer;
-    const touchduration = 1500; 
-
-    function touchstart(e) {
-      if(lockTimer){
-        return;
-      }
-      clientX = e.touches[0].clientX;
-      clientY = e.touches[0].clientY;
-      timer = setTimeout(onlongtouch, touchduration); 
-      lockTimer = true;
-    }
-
-    function touchend() {
-        if (timer){ 
-            clearTimeout(timer); // clearTimeout, not cleartimeout..
-        lockTimer = false;
-      }
-    }
-
-    onlongtouch = function() { 
-      let area = '';
-      let value = '';
-      map.forEachFeatureAtPixel([clientX,(clientY - 70)], function(feature) // minus 70 because header takes 70px
-      {
-        if(feature.get('innerText'))
-        {
-          if(that.featureFromArea(feature)) 
-          {
-            area = feature.get('name');
-            value = feature.get('innerText');
-          }
-        }     
-      });
-      if(value && area)
-      {
-        let msg = 'Hittade ' + value + 'st i ' + area + '.';
-        that.snackKey = that.props.enqueueSnackbar(
-          msg, 
-          { 
-            autoHideDuration: 5000,
-            action: (
-              <Button onClick={() => that.toListingFromSnackbar() }>
-                  visa i listan
-              </Button>
-            ),
-          }
-        );
-      }
-    };
-
-    window.addEventListener("touchstart", touchstart, false);
-    window.addEventListener("touchend", touchend, false);
-
-    /* touch and hold end */
-
-
     this.hovered = '';
     map.setTarget('map');
 
-    if( this.props.mode !== undefined ) this.toggleLevel(this.props.mode);
     if( this.props.location !== undefined ) this.setState({ location: this.props.location });
     if( 
       this.props.mode === undefined && 
@@ -386,34 +237,6 @@ class MapComponent extends Component
       this.loadValues(this.state.level);
     }
     
-    map.on('rendercomplete', (evt) => 
-    {
-      let zoom = map.getView().getZoom();
-      that.setState({ zoom });
-      if(this.state.level === "county")
-      {
-        if(zoom < 5.5)
-        {
-          layers.countyValues.setVisible(false);
-        }
-        else
-        {
-          layers.countyValues.setVisible(true);
-        }
-      } 
-      else if (this.state.level === "municipality")
-      {
-        if(zoom < 7)
-        {
-          layers.municipalityValues.setVisible(false);
-        }
-        else
-        {
-          layers.municipalityValues.setVisible(true);
-        }
-      }
-    });
-
     map.on('pointermove', function(evt) 
     {
       if(evt.dragging) return;
@@ -435,6 +258,11 @@ class MapComponent extends Component
         });
         layers.hover.getSource().addFeature(feature);
         this.hovered = feature;
+      } 
+      else if (!feature)
+      {
+        layers.hover.getSource().clear();
+        this.hovered = '';
       }
 
     });
@@ -446,34 +274,28 @@ class MapComponent extends Component
       {
         if(feature !== undefined)
         {
-          // county
-          if(feature.get('admin_level') === '4' )
-          {
-            if(that.state.level === 'county')
-            {
-              that.addSelect(feature, 'county');
-              that.toggleLevel('municipality');
-              found = true;
-            }
-            else
-            {
-              // if we select a municipality from other county, we select that county when zooming out
-              if(that.selected.county.name !== feature.get('name'))
-              {
-                that.addSelect(feature, 'county', false);
-              }
-            }
-
-          };
-
-          // municipality
           if(
               that.selected.municipality.name !== feature.get('name') && 
               that.featureFromArea(feature, 'municipality') &&
               found !== true     
             )
           {
-            //console.log([ feature.get('admin_level'), feature.get('name')]);
+            if(isMobile())
+            {
+              let msg = feature.get('name') ;
+              that.snackKey = that.props.enqueueSnackbar(
+                msg, 
+                { 
+                  autoHideDuration: 5000,
+                  action: (
+                    <Button onClick={() => that.toListingFromSnackbar() }>
+                        Tryck här för att se annonser
+                    </Button>
+                  ),
+                }
+              );
+            }
+
             that.addSelect(feature, 'municipality');
             found = true;
           };
@@ -489,28 +311,24 @@ class MapComponent extends Component
   {
     if (level === 'county' && feature.get('admin_level') === '4') return feature;
     if (level === 'municipality' && feature.get('admin_level') === '7') return feature;
-
     return false;
   }
 
   shouldComponentUpdate(nextProps, nextState) 
   {
-    if(nextState.level !== "heatmap")
-    {
-      const that = this;
-      setTimeout(function(){
-        if(isElementResized("map"))
-        {
-          //console.log('element resized');
-          that.olmap.updateSize();
-        }
-      },300);
-    }
+    const that = this;
+    setTimeout(function(){
+      if(isElementResized("map"))
+      {
+        //console.log('element resized');
+        that.olmap.updateSize();
+      }
+    },300);
+
     if(nextProps.mapData)
     {
       if(nextProps.mapData.total !== this.state.total)
       {
-        //console.log('Map props is updating mapresults');
         nextState.total = nextProps.mapData.total ;
         this.findFeatures(nextProps.mapData.result); 
       }
@@ -522,7 +340,6 @@ class MapComponent extends Component
       )
     {
       nextState.location = nextProps.location;
-      //console.log('finding location : ' + nextProps.location);
       if(nextProps.location.length < 2)
       {
 
@@ -548,10 +365,8 @@ class MapComponent extends Component
       let found = this.findFeature(nextProps.location);
       if(found.feature) 
       {
-        //console.log(['location found', found]);
         nextState.extent = found.feature.getGeometry().getExtent();
-        this.addSelect(found.feature, found.level);
-
+        if(found.level !== 'county') this.addSelect(found.feature, found.level);
       }
     }
 
@@ -609,11 +424,9 @@ class MapComponent extends Component
       ]);
       this.selected[type].name = feature.get('short_name');
     }
-    //console.log('adding feature ' + this.selected[type].name + ' to ' + type);
     feature.setId(this.selected[type].name);
     if(selectIt) 
     {
-      if(this.state.level !== type) this.toggleLevel(type);
       let extent = feature.getGeometry().getExtent();
       this.setState(
         { 
@@ -637,7 +450,6 @@ class MapComponent extends Component
     let options = Object.assign(standardsOpt, opt);
     if(this.state.level === 'county') options.zoomResult = true;
     if(options.clear) {
-      layers.countyValues.getSource().clear();
       layers.county.getSource().clear();
       layers.municipalityValues.getSource().clear();
       layers.municipality.getSource().clear();
@@ -649,11 +461,7 @@ class MapComponent extends Component
       feature.set('innerText', mark.text);
       numFeature = mark.feature.clone();
 
-      if(mark.level === 'county'){
-        layers.countyValues.getSource().addFeature(numFeature);
-        layers.county.getSource().addFeature(feature);
-      }
-      else if (mark.level === 'municipality')
+      if (mark.level === 'municipality')
       {
         layers.municipalityValues.getSource().addFeature(numFeature);
         layers.municipality.getSource().addFeature(feature);
@@ -714,26 +522,8 @@ class MapComponent extends Component
 
   render() 
   {
-    let areaLevelIsCounty = true;
-    if (this.state.level  !== 'county') areaLevelIsCounty = false;
     return (
         <div id="map" style={{ width: this.state.width, height: this.state.height }}>
-          {/*<ul>
-            <li>
-              <button 
-                className={`ui button ${areaLevelIsCounty ? 'selected' : ''}` } 
-                onClick={e => this.toggleLevel('county')}>
-                  Län
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`ui button ${areaLevelIsCounty ? '' : 'selected'}` } 
-                onClick={e => this.toggleLevel('municipality')}>
-                  Kommun
-              </button>
-            </li>
-          </ul>*/}
         </div>
     );
   }

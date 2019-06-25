@@ -1,7 +1,6 @@
 import OlLayerTile from "ol/layer/Tile";
 import OlSourceWMTS from "ol/source/WMTS";
 import OlGridWMTS from "ol/tilegrid/WMTS";
-import OlHeatmapLayer from "ol/layer/Heatmap";
 import OlVectorLayer from 'ol/layer/Vector.js';
 import OlVectorSource from "ol/source/Vector";
 import {GeoJSON} from 'ol/format';
@@ -43,28 +42,6 @@ class mapLayers
     zIndex: 0
   });
 
-  heatmap = new OlHeatmapLayer(
-    {
-      source: new OlVectorSource(
-        {
-          url: '/mockHeatmap.json',
-          format: new GeoJSON(),
-        }),
-      name: 'heatmap',
-      visible: false,
-      zIndex: 10,
-      blur: parseInt(10),
-      radius: parseInt(5),
-      opacity: 0.8,
-      gradient: [
-        process.env.REACT_APP_COLOR4,
-        process.env.REACT_APP_COLOR3,
-        process.env.REACT_APP_COLOR2,
-        process.env.REACT_APP_COLOR1,
-      ], //['#D9FAF7', '#D9FAF7', '#A6F3ED', '#50E8DB', '#02DECC'], //
-    }
-  );
-
   county = new OlVectorLayer(
     {
       source: new OlVectorSource(
@@ -74,7 +51,7 @@ class mapLayers
         }),
       name: 'county',
       style: styling.default,
-      zIndex: 20
+      zIndex: -10
     }
   );
 
@@ -101,14 +78,6 @@ class mapLayers
     }
   );
 
-  countyValues = new OlVectorLayer(
-    {
-      source: new OlVectorSource(),
-      name: 'values',
-      zIndex: 75,
-    }
-  );
-
   municipalityValues = new OlVectorLayer(
     {
       source: new OlVectorSource(),
@@ -132,7 +101,6 @@ class mapLayers
       this.municipality, 
       this.municipalityValues,
       this.county, 
-      this.countyValues,
       this.selected,
       this.hover 
     ];
