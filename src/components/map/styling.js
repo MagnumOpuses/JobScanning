@@ -20,11 +20,11 @@ class mapStyling
   {
     image: new CircleStyle(
     {
-      radius: 18,
+      radius: 15,
       stroke: new Stroke(
       {
-        color: 'rgba(0,132,121, 1)',
-        width: 2
+        color: 'rgba(0,132,121, 0.5)',
+        width: 1
       }),
       fill: new Fill(
       {
