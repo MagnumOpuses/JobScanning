@@ -42,7 +42,7 @@
 }
 
 #root .MuiSnackbarContent-root, #root .MuiSnackbarContent-root .MuiButton-root {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 #root .MuiSnackbarContent-root .MuiButton-root {
@@ -51,8 +51,17 @@
 }
 
 #root .MuiSnackbarContent-root {
-  background-color: #4aefe2;
+  background-color: rgb(2,222,204,0.8);
   color: #000;
-  border: 1px solid #02DECC;
+  border: 3px solid #FFF;
 
+}
+.MuiSnackbarContent-message {
+  padding: 8px 0;
+  margin: auto;
+}
+.MuiSnackbarContent-root .MuiSnackbarContent-action {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: auto;
 }
