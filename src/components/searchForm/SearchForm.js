@@ -99,7 +99,7 @@ const CustomForm = styled(Form)`
       margin-top: 1rem;
     }
 
-    @media (min-width: ${breakpoint.tablet}) {
+    @media (min-width: ${breakpoint.largerThentablet}) {
       flex-direction: row;
       justify-content: center;
       height: min-content;

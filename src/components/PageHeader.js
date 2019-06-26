@@ -59,7 +59,7 @@ const Header = styled.header`
   background: #fff;
   border-bottom: 5px solid ${theme.green4};
 
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.largerThentablet}) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -73,14 +73,19 @@ const Header = styled.header`
     @media (min-width: ${breakpoints.tabletLandscape}) {
       position: absolute;
     }
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 100vw;
+    }
   }
 `;
 
 const ToggleSearch = styled(Button)`
   &&& {
     font-size: 24px !important;
+    margin: 0;
+    float: right;
 
-    @media (min-width: ${breakpoints.tablet}) {
+    @media (min-width: ${breakpoints.largerThentablet}) {
       display: none;
     }
   }
@@ -92,7 +97,7 @@ const StyledLink = styled(Link)`
   padding: 10px;
   z-index: 2000;
 
-  @media screen and (max-width: ${breakpoints.tablet}) {
+  @media screen and (max-width: ${breakpoints.largerThentablet}) {
     padding: 5px;
   }
 `;
