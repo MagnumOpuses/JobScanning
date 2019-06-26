@@ -236,7 +236,11 @@ class MapComponent extends Component
     {
       this.loadValues(this.state.level);
     }
-    
+    map.once('rendercomplete', function()
+    { 
+      that.mapLoaded = true;
+    });
+
     map.on('pointermove', function(evt) 
     {
       if(evt.dragging) return;
@@ -317,6 +321,8 @@ class MapComponent extends Component
   shouldComponentUpdate(nextProps, nextState) 
   {
     const that = this;
+    let wait = 1000;
+    if(this.mapLoaded) wait = 0;
     setTimeout(function(){
       if(isElementResized("map"))
       {
@@ -330,7 +336,10 @@ class MapComponent extends Component
       if(nextProps.mapData.total !== this.state.total)
       {
         nextState.total = nextProps.mapData.total ;
-        this.findFeatures(nextProps.mapData.result); 
+        setTimeout(function()
+        {
+          that.findFeatures(nextProps.mapData.result); 
+        }, wait);
       }
     }
 
@@ -340,34 +349,13 @@ class MapComponent extends Component
       )
     {
       nextState.location = nextProps.location;
-      if(nextProps.location.length < 2)
-      {
-
-        this.olmap.getView().animate(
-          {
-            center: [
-              process.env.REACT_APP_MAP_START_LON , 
-              process.env.REACT_APP_MAP_START_LAT 
-            ],
-            zoom: process.env.REACT_APP_MAP_START_ZOOM,
-            duration: 1000
-          }
-        );
-  
-        this.selected = 
+      setTimeout(function(){  // React is faster then ol, ol is not finnished
+        let found = that.findFeature(nextProps.location);
+        if(found.feature && found.level !== 'county') 
         {
-          county: new areaSelected(),
-          municipality: new areaSelected()
-        };
-        this.removeMark('','selected');
-
-      }
-      let found = this.findFeature(nextProps.location);
-      if(found.feature) 
-      {
-        nextState.extent = found.feature.getGeometry().getExtent();
-        if(found.level !== 'county') this.addSelect(found.feature, found.level);
-      }
+          that.addSelect(found.feature, found.level);
+        }
+      },wait);
     }
 
     if(this.jobTechVaribles)
