@@ -104,9 +104,11 @@ class Jobs extends Component {
       );
     }
   };
+
   showSidemenu = visible => {
     this.setState({ sidemenuVisible: visible });
   }
+  
   setLocationAndFetch = location => {
     const { fetchJobs, searchTerm, setLocation, history } = this.props;
 
