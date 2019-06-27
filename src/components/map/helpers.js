@@ -88,17 +88,13 @@ export function offseter()
     7 : 12000,
     8 : 7000,
     9 : 3000,
-    10 : 1500,
-    11 : 1000,
-    12 : 800,
-    13 : 300,
-    14 : 150,
-    15 : 100
+    10 : 1500
   }
 
   if(zoom > 15) return 50;
   return offsets[zoom];
 }
+
 export function isMobile(type)
 {
   switch (type) {
@@ -115,4 +111,11 @@ export function isMobile(type)
     default:
       return (isMobile('Android') || isMobile('BlackBerry') || isMobile('iOS') || isMobile('Opera') || isMobile('Windows'));
   }
+}
+
+export function featureFromArea(feature, level)
+{
+  if (level === 'county' && feature.get('admin_level') === '4') return feature;
+  if (level === 'municipality' && feature.get('admin_level') === '7') return feature;
+  return false;
 }

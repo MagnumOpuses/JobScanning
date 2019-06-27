@@ -3,23 +3,23 @@ import OlMap from "ol/Map";
 import OlView from "ol/View";
 import {getCenter} from 'ol/extent.js';
 import {Fill, Style } from 'ol/style.js';
-import 'ol/ol.css';
-import './custom.css';
+import { withSnackbar } from 'notistack';
+import Button from '@material-ui/core/Button';
 
 import mapStyling from './styling';
 import mapLayers from './layers';
-import api from '../../api/api';
 import {
   colorCodeValue, 
   capitalize,
   areaSelected, 
   isElementResized,
   globalDivElement,
-  isMobile
+  isMobile,
+  featureFromArea
 } from './helpers'
 
-import { withSnackbar } from 'notistack';
-import Button from '@material-ui/core/Button';
+import 'ol/ol.css';
+import './custom.css';
 
 const styling = new mapStyling();
 const layers = new mapLayers();
@@ -46,19 +46,11 @@ class MapComponent extends Component
       width: 'auto'
     };
 
-    if(this.props.height !== undefined){
-      this.state.height = this.props.height;
-    }
-    if(this.props.width !== undefined){
-      this.state.width = this.props.width;
-    }
+    if(this.props.height) this.state.height = this.props.height;
+    if(this.props.width) this.state.width = this.props.width;
 
-    this.selected = 
-    {
-      county: new areaSelected(),
-      municipality: new areaSelected()
-    };
-
+    this.oneSec = 1000;
+    this.selected = { municipality: new areaSelected() };
     this.olmap = new OlMap(
       {
         target: null,
@@ -68,7 +60,8 @@ class MapComponent extends Component
             center: this.state.center,
             zoom: this.state.zoom,
             extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
-            minZoom: 4.8
+            minZoom: 4.8,
+            maxZoom: 10
           })
       }
     );
@@ -77,63 +70,56 @@ class MapComponent extends Component
 
   updateMap() 
   {
-    const duration = 1000;
-    const map = this.olmap;
     if(this.state.extent.length === 4) 
     {
-      map.getView().fit(
+      this.olmap.getView().fit(
         this.state.extent, 
         {
-          'size': map.getSize(), 
-          'duration': duration
+          'size': this.olmap.getSize(), 
+          'duration': this.oneSec
         } 
       );
       this.setState({ extent: ''});
     }
     else 
     {
-      map.getView().animate(
+      this.olmap.getView().animate(
         {
           center: this.state.center,
           zoom: this.state.zoom,
-          duration: duration
+          duration: this.oneSec
         }
       );
     }
   }
   
-  findFeature(featureName, layers = ['county', 'municipality'])
+  findFeature(featureName)
   {
-    if(featureName === '') return false;
+    if(!featureName) return false;
     featureName = capitalize(featureName);
     let found = {};
-    layers.forEach(layerName => {
-      let layer = this.findLayerByValue('name', layerName);
-      layer.getSource().forEachFeature(function(feature)
+    layers.municipality.getSource().forEachFeature(function(feature)
+    {
+      if(found.feature) return true; // fastest way to stop forEach
+      if(
+          feature.get('name') === featureName || 
+          feature.get('short_name') === featureName
+        )  
       {
-        if(found.feature) return;
-        if(
-            feature.get('name') === featureName || 
-            feature.get('short_name') === featureName
-          )  
-        {
-          found = {
-            feature: feature,
-            level: layerName
-          }
+        found = {
+          feature: feature,
+          level: 'municipality'
         }
-      });
+      }
     });
     return found;
-
   }
 
-  findFeatures(array, area = this.state.level)
+  findFeatures(array)
   {
     let marks = [];
-    let found = false;
     array.forEach(fetchedRow => {
-      found = this.findFeature(fetchedRow.name);
+      let found = this.findFeature(fetchedRow.name);
       if(found.feature)
       {
         marks.push({
@@ -144,26 +130,7 @@ class MapComponent extends Component
         });
       }
     });
-    if(marks.length) {
-      this.addMarks(
-        marks, 
-        { 
-          layerExtent: false, 
-          layer: area + 'Selected',
-          clear: true
-        }
-      );
-    }
-  }
-
-  async loadValues(area) 
-  {
-    const resp = await api(this.state.q);
-    if(resp.data.result !== undefined && resp.data.result[area] !== undefined)
-    {
-      this.setState({ total: resp.data.results.total });
-      this.findFeatures(resp.data.results[area]);
-    }
+    if(marks.length) this.addMarks( marks, true );
   }
 
   handleChange() 
@@ -172,13 +139,9 @@ class MapComponent extends Component
     let location = jtv.getAttribute('data-location');
     let q = jtv.getAttribute('data-q');
     let zoom = jtv.getAttribute('data-zoom');
-    if(
-      location !== undefined &&
-      location !== this.state.location
-      )
+    if( location && location !== this.state.location )
     {
-      let found = {};
-      found = this.findFeature(location);
+      let found = this.findFeature(location);
       if(found.feature)
       {
         this.setState({ location: location });
@@ -189,18 +152,11 @@ class MapComponent extends Component
         console.log('can not find : ' + location);
       }
     }
-    if(
-      q !== undefined &&
-      q !== this.state.q 
-      )
+    if( q !== undefined && q !== this.state.q )
     {
       this.setState({ q: q });
-      this.loadValues(this.state.level);
     }
-    if(
-      zoom !== undefined &&
-      zoom !== this.olmap.zoom
-      )
+    if( zoom !== undefined && zoom !== this.olmap.zoom)
     {
       this.setState({ zoom: zoom });
     }
@@ -214,28 +170,20 @@ class MapComponent extends Component
 
   componentDidMount() 
   {
-    if(isElementResized("map")) this.olmap.updateSize();
+    const that = this;
+    const map = this.olmap;
+    this.hovered = '';
+
+    map.setTarget('map');
+    if(isElementResized("map")) map.updateSize();
     this.jobTechVaribles = globalDivElement('jobTechVaribles');
 
     this.handleChange = this.handleChange.bind(this);
     document.body.addEventListener('change', this.handleChange);
     this.handleChange();
 
-    const that = this;
-    const map = this.olmap;
+    if(this.props.location) this.setState({ location: this.props.location });
 
-    this.hovered = '';
-    map.setTarget('map');
-
-    if( this.props.location !== undefined ) this.setState({ location: this.props.location });
-    if( 
-      this.props.mode === undefined && 
-      this.props.location === undefined &&
-      this.props.mapData.result === undefined
-      ) 
-    {
-      this.loadValues(this.state.level);
-    }
     map.once('rendercomplete', function()
     { 
       that.mapLoaded = true;
@@ -248,7 +196,7 @@ class MapComponent extends Component
       let pixel = map.getEventPixel(evt.originalEvent);
       let feature = map.forEachFeatureAtPixel(pixel, function(feature) 
       {
-        if(that.featureFromArea(feature)) return feature;
+        if(featureFromArea(feature, that.state.level)) return feature;
       });
 
       if (feature && feature !== this.hovered) 
@@ -268,7 +216,6 @@ class MapComponent extends Component
         layers.hover.getSource().clear();
         this.hovered = '';
       }
-
     });
 
     map.on('click', function(evt) 
@@ -276,14 +223,8 @@ class MapComponent extends Component
       let found = false;
       map.forEachFeatureAtPixel(evt.pixel, function(feature) 
       {
-        if(feature !== undefined)
+        if(feature && that.selected.municipality.name !== feature.get('short_name') && featureFromArea(feature, 'municipality') )
         {
-          if(
-              that.selected.municipality.name !== feature.get('name') && 
-              that.featureFromArea(feature, 'municipality') &&
-              found !== true     
-            )
-          {
             if(isMobile())
             {
               let msg = feature.get('name') ;
@@ -299,23 +240,11 @@ class MapComponent extends Component
                 }
               );
             }
-
             that.addSelect(feature, 'municipality');
             found = true;
-          };
-        
-        }
+        };
       });
-
     });
-
-  }
-
-  featureFromArea(feature, level = this.state.level)
-  {
-    if (level === 'county' && feature.get('admin_level') === '4') return feature;
-    if (level === 'municipality' && feature.get('admin_level') === '7') return feature;
-    return false;
   }
 
   shouldComponentUpdate(nextProps, nextState) 
@@ -330,7 +259,7 @@ class MapComponent extends Component
         that.olmap.updateSize();
       }
     },300);
-
+    this.jobTechVaribles = globalDivElement('jobTechVaribles');
     if(nextProps.mapData)
     {
       if(nextProps.mapData.total !== this.state.total)
@@ -362,14 +291,6 @@ class MapComponent extends Component
     {
       // If the jobTechVaribles is not the same as the map, update them
       const jvt = this.jobTechVaribles;
-      if(jvt.getAttribute('data-location') !== nextState.location)
-      {
-        jvt.setAttribute('data-location', nextState.location);
-      }
-      if(jvt.getAttribute('data-q') !== nextState.q)
-      {
-        jvt.setAttribute('data-q', nextState.q);
-      }
       if(jvt.getAttribute('data-zoom') !== nextState.zoom)
       {
         jvt.setAttribute('data-zoom', nextState.zoom);
@@ -377,8 +298,7 @@ class MapComponent extends Component
     }
 
     if(
-      nextState.location !== undefined && 
-      nextState.location !== null  && 
+      nextState.location  && 
       nextState.location !== "null"  && 
       nextState.location !== this.state.location &&
       nextState.location.length > 1)
@@ -393,25 +313,21 @@ class MapComponent extends Component
   
   addSelect(feature, type, selectIt = true) {
     if(this.selected[type].name.length > 0 &&
-      feature.get('name') !== this.selected[type].name)
+      feature.get('short_name') !== this.selected[type].name)
     {
-      //select one county or municipality at the time
-      this.removeMark(this.selected[type].name, 'selected');
+      //select one municipality at the time
+      //this.removeMark(this.selected[type].name, 'selected');
+      const feature = layers.selected.getSource().getFeatureById(this.selected[type].name);
+      if (feature) layers.selected.getSource().removeFeature(feature);
     }
     feature = feature.clone();
     layers.selected.getSource().addFeature(feature);
-    if(type === 'county') 
-    {
-      this.selected[type].name = feature.get('name');
-    }
-    else 
-    {    
-      feature.setStyle([
-        styling.highlight, 
-        styling.selected
-      ]);
-      this.selected[type].name = feature.get('short_name');
-    }
+    feature.setStyle([
+      styling.highlight, 
+      styling.selected
+    ]);
+    this.selected[type].name = feature.get('short_name');
+
     feature.setId(this.selected[type].name);
     if(selectIt) 
     {
@@ -427,39 +343,23 @@ class MapComponent extends Component
     this.updateMap();
   }
 
-  addMarks(marks, opt) 
+  addMarks(marks, clear = false) 
   {
-    //console.log('adding marks');
-    const standardsOpt = {
-      layerExtent: false,
-      clear: false,
-      zoomResult: false,
-    } 
-    let options = Object.assign(standardsOpt, opt);
-    if(this.state.level === 'county') options.zoomResult = true;
-    if(options.clear) {
-      layers.county.getSource().clear();
+    if(clear) {
       layers.municipalityValues.getSource().clear();
       layers.municipality.getSource().clear();
     }
-    let feature = {};
-    let numFeature = {};
     marks.forEach(function(mark){
-      feature = mark.feature.clone();
+      let feature = mark.feature.clone();
+      let numFeature = mark.feature.clone();
       feature.set('innerText', mark.text);
-      numFeature = mark.feature.clone();
+      layers.municipality.getSource().addFeature(feature);
+      layers.municipalityValues.getSource().addFeature(numFeature);
 
-      if (mark.level === 'municipality')
-      {
-        layers.municipalityValues.getSource().addFeature(numFeature);
-        layers.municipality.getSource().addFeature(feature);
-      }
       feature.setStyle(function() 
       {
         let fill = new Style({
-          fill: new Fill({
-            color: mark.color
-          })
+          fill: new Fill({color: mark.color})
         });
         return [fill];
       });
@@ -470,49 +370,15 @@ class MapComponent extends Component
       });
     });
 
-    let extent = [];
-    //if(options.layerExtent) extent = selectedLayer.getSource().getExtent();
-    if(!options.layerExtent) extent = feature.getGeometry().getExtent();
-    if(options.zoomResult) {
-      this.setState(
-        { 
-          center: getCenter(extent), 
-          extent: extent 
-        }
-      );
-    }
-
-  }
-
-  removeMark(featureName, layer) 
-  {
-    const selectedLayer = this.findLayerByValue('name', layer);
-    if(featureName === '')
-    {
-      selectedLayer.getSource().clear();
-    }
-    else
-    {
-      const feature = selectedLayer.getSource().getFeatureById(featureName);
-      if (feature) selectedLayer.getSource().removeFeature(feature);
-    }
-  }
-
-  findLayerByValue(key, name)
-  {
-    let found = {};
-    layers.top.forEach((layer) => 
-    {
-      if(layer.get(key) === name) found = layer; 
-    });
-    return found;
   }
 
   render() 
   {
     return (
-        <div id="map" style={{ width: this.state.width, height: this.state.height }}>
-        </div>
+      <div id="map" style={{ 
+        width: this.state.width, 
+        height: this.state.height }}>
+      </div>
     );
   }
 }
