@@ -20,9 +20,11 @@ export function colorCodeValue(value)
 
 export function capitalize(s)
 {
-  if (typeof s !== 'string') return ''
-  s = s.toLowerCase();
-  return s.charAt(0).toUpperCase() + s.slice(1)
+  var splitStr = s.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+  return splitStr.join(' '); 
 }
 
 export function isElementResized(ElementId)
