@@ -63,6 +63,7 @@ const ListItem = styled.li`
 
 const ItemTitle = styled.h3`
   font-size: 18px;
+  word-break: break-word;
 `;
 
 const P = styled.p`
