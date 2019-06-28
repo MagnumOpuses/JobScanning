@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import OlMap from "ol/Map";
 import OlView from "ol/View";
-import {getCenter} from 'ol/extent.js';
-import {Fill, Style } from 'ol/style.js';
+import { getCenter } from 'ol/extent.js';
+import { Fill, Style } from 'ol/style.js';
 import { withSnackbar } from 'notistack';
 import Button from '@material-ui/core/Button';
 
@@ -29,7 +29,6 @@ class MapComponent extends Component
   constructor(props) 
   {
     super(props);
-  
     this.state = 
     { 
       center: [
@@ -97,22 +96,24 @@ class MapComponent extends Component
   {
     if(!featureName) return false;
     featureName = capitalize(featureName);
-    let found = {};
-    layers.municipality.getSource().forEachFeature(function(feature)
+    let feature = layers.municipality.getSource().forEachFeature(function(feature)
     {
-      if(found.feature) return true; // fastest way to stop forEach
       if(
           feature.get('name') === featureName || 
           feature.get('short_name') === featureName
         )  
       {
-        found = {
-          feature: feature,
-          level: 'municipality'
-        }
+        return feature;
       }
     });
-    return found;
+    if(feature)
+    {
+      return {
+        feature: feature,
+        level: 'municipality'
+      }
+    }
+    return false;
   }
 
   findFeatures(array)
@@ -152,11 +153,11 @@ class MapComponent extends Component
         console.log('can not find : ' + location);
       }
     }
-    if( q !== undefined && q !== this.state.q )
+    if( q && q !== this.state.q )
     {
       this.setState({ q: q });
     }
-    if( zoom !== undefined && zoom !== this.olmap.zoom)
+    if( zoom && zoom !== this.olmap.zoom)
     {
       this.setState({ zoom: zoom });
     }
@@ -193,15 +194,17 @@ class MapComponent extends Component
     {
       if(evt.dragging) return;
 
+      let zoom = map.getView().getZoom();
+      that.setState({ zoom });
       let pixel = map.getEventPixel(evt.originalEvent);
       let feature = map.forEachFeatureAtPixel(pixel, function(feature) 
       {
         if(featureFromArea(feature, that.state.level)) return feature;
       });
 
-      if (feature && feature !== this.hovered) 
+      if(feature && feature !== this.hovered) 
       {
-        if (this.hovered) layers.hover.getSource().removeFeature(this.hovered);
+        if(this.hovered) layers.hover.getSource().removeFeature(this.hovered);
         feature = feature.clone();
         feature.setStyle(function(feature) 
         {
@@ -211,7 +214,7 @@ class MapComponent extends Component
         layers.hover.getSource().addFeature(feature);
         this.hovered = feature;
       } 
-      else if (!feature)
+      else if(!feature)
       {
         layers.hover.getSource().clear();
         this.hovered = '';
@@ -220,28 +223,30 @@ class MapComponent extends Component
 
     map.on('click', function(evt) 
     {
-      let found = false;
       map.forEachFeatureAtPixel(evt.pixel, function(feature) 
       {
-        if(feature && that.selected.municipality.name !== feature.get('short_name') && featureFromArea(feature, 'municipality') )
+        if(
+          feature && 
+          that.selected.municipality.name !== feature.get('short_name') && 
+          featureFromArea(feature, 'municipality') 
+          )
         {
-            if(isMobile())
-            {
-              let msg = feature.get('name') ;
-              that.snackKey = that.props.enqueueSnackbar(
-                msg, 
-                { 
-                  autoHideDuration: 5000,
-                  action: (
-                    <Button onClick={() => that.toListingFromSnackbar() }>
-                        Tryck här för att se annonser
-                    </Button>
-                  ),
-                }
-              );
-            }
-            that.addSelect(feature, 'municipality');
-            found = true;
+          if(isMobile())
+          {
+            let msg = feature.get('name') ;
+            that.snackKey = that.props.enqueueSnackbar(
+              msg, 
+              { 
+                autoHideDuration: 5000,
+                action: (
+                  <Button onClick={() => that.toListingFromSnackbar() }>
+                      Tryck här för att se annonser
+                  </Button>
+                ),
+              }
+            );
+          }
+          that.addSelect(feature, 'municipality');
         };
       });
     });
@@ -250,7 +255,7 @@ class MapComponent extends Component
   shouldComponentUpdate(nextProps, nextState) 
   {
     const that = this;
-    let wait = 1000;
+    let wait = this.oneSec;
     if(this.mapLoaded) wait = 0;
     setTimeout(function(){
       if(isElementResized("map"))
@@ -318,7 +323,7 @@ class MapComponent extends Component
       //select one municipality at the time
       //this.removeMark(this.selected[type].name, 'selected');
       const feature = layers.selected.getSource().getFeatureById(this.selected[type].name);
-      if (feature) layers.selected.getSource().removeFeature(feature);
+      if(feature) layers.selected.getSource().removeFeature(feature);
     }
     feature = feature.clone();
     layers.selected.getSource().addFeature(feature);
