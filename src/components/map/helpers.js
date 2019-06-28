@@ -1,4 +1,3 @@
-
 export function colorCodeValue(value)
 {
 
@@ -82,18 +81,16 @@ export function offseter()
 {
   const zoom = Math.round(getElementAttribute('zoom'));
   if(zoom < 4) return false;
-
+  if(zoom > 10) return 500;
   const offsets = 
   {
     5 : 50000,
     6 : 28000,
     7 : 12000,
-    8 : 7000,
-    9 : 3000,
-    10 : 1500
+    8 : 9000,
+    9 : 4300,
+    10 : 2500
   }
-
-  if(zoom > 15) return 50;
   return offsets[zoom];
 }
 
