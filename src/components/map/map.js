@@ -157,9 +157,9 @@ class MapComponent extends Component
     {
       this.setState({ q: q });
     }
-    if( zoom && zoom !== this.olmap.zoom)
+    if( zoom && zoom !== this.olmap.getView().getZoom())
     {
-      this.setState({ zoom: zoom });
+      this.setState({ zoom });
     }
   }
 
@@ -185,17 +185,17 @@ class MapComponent extends Component
 
     if(this.props.location) this.setState({ location: this.props.location });
 
-    map.once('rendercomplete', function()
+    map.on('rendercomplete', function()
     { 
       that.mapLoaded = true;
+      that.setState({ zoom: that.olmap.getView().getZoom() });
+
     });
 
     map.on('pointermove', function(evt) 
     {
       if(evt.dragging) return;
 
-      let zoom = map.getView().getZoom();
-      that.setState({ zoom });
       let pixel = map.getEventPixel(evt.originalEvent);
       let feature = map.forEachFeatureAtPixel(pixel, function(feature) 
       {
@@ -351,8 +351,8 @@ class MapComponent extends Component
   addMarks(marks, clear = false) 
   {
     if(clear) {
-      layers.municipalityValues.getSource().clear();
       layers.municipality.getSource().clear();
+      layers.municipalityValues.getSource().clear();
     }
     marks.forEach(function(mark){
       let feature = mark.feature.clone();
