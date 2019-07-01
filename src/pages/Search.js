@@ -2,8 +2,22 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { SearchForm } from '../components';
 import breakpoints from '../styles/breakpoints';
+import { withSnackbar } from 'notistack';
 
 class Search extends Component {
+
+  constructor(props){
+    super(props);
+
+    const message = 'The data in this site is not real, just to show what can be done';
+
+    // enqueue persistent snackbar
+    this.props.enqueueSnackbar(message, { 
+      autoHideDuration: 5000
+    });
+
+  }
+
   render() {
     return (
       <FlexContainer>
@@ -19,7 +33,7 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withSnackbar(Search);
 
 const FlexContainer = styled.div`
   height: 100%;
