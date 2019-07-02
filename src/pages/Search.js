@@ -13,7 +13,7 @@ class Search extends Component {
 
     // enqueue persistent snackbar
     this.props.enqueueSnackbar(message, { 
-      autoHideDuration: 5000
+      persist: true,
     });
 
   }

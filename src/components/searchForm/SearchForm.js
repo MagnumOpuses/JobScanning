@@ -27,7 +27,7 @@ const SearchForm = ({
           size="big"
           icon="search"
           iconPosition="left"
-          placeholder="Skriv sökord"
+          placeholder="vård"  //"Skriv sökord"
           required
         />
         <OverviewLink
