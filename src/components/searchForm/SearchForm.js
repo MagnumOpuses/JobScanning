@@ -99,7 +99,7 @@ const CustomForm = styled(Form)`
       margin-top: 1rem;
     }
 
-    @media (min-width: ${breakpoint.largerThentablet}) {
+    @media (min-width: ${breakpoint.largerThenTablet}) {
       flex-direction: row;
       justify-content: center;
       height: min-content;
@@ -169,7 +169,7 @@ const OverviewLink = styled(Link)`
     }
 
     &.desktop-overview-link {
-      @media (max-width: ${breakpoint.tablet}) {
+      @media (max-width: ${breakpoint.smallerThenTablet}) {
         display: none;
       }
     }
@@ -178,7 +178,7 @@ const OverviewLink = styled(Link)`
       width: 213px;
       margin: 20px auto;
 
-      @media (min-width: ${breakpoint.tablet}) {
+      @media (min-width: ${breakpoint.smallerThenTablet}) {
         display: none;
       }
     }
