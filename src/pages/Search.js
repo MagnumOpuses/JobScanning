@@ -3,17 +3,25 @@ import styled from 'styled-components';
 import { SearchForm } from '../components';
 import breakpoints from '../styles/breakpoints';
 import { withSnackbar } from 'notistack';
+import Button from '@material-ui/core/Button';
 
 class Search extends Component {
 
   constructor(props){
     super(props);
 
-    const message = 'The data in this site is not real, just to show what can be done';
+    const message = "Please note that this is a demo and operates on historical data. We plan to populate it with live data early fall 2019.";
+
+    const action = (key) => (
+      <Button onClick={() => { props.closeSnackbar(key) }}>
+          {'Dismiss'}
+      </Button>
+    );
 
     // enqueue persistent snackbar
     this.props.enqueueSnackbar(message, { 
       persist: true,
+      action: action
     });
 
   }

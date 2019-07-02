@@ -17,9 +17,9 @@ const ResultStats = ({ searchTerm, hits, sources }) => {
         Se översikt
       </OverviewLink>
       <p>
-        {hits ? hits.length : 0} jobbannonser från {sources}
+        Visar{hits ? hits.length : 0} jobbannonser från {sources}
         {'\n'}
-        webbplatser. Scrolla ner för att visa fler annonser
+        webbplatser.
       </p>
     </DesktopSearchMetadata>
   );
@@ -36,10 +36,6 @@ const DesktopSearchMetadata = styled.div`
 
   p {
     margin: 0;
-
-    @media (max-width: ${breakpoints.mobileLandscape}) {
-      white-space: pre-line;
-    }
   }
 `;
 
