@@ -228,7 +228,7 @@ const FlexContainer = styled.main`
   display: flex;
   overflow: hidden;
   position: relative;
-  @media only screen and (min-width: ${breakpoints.largerThentablet}) {
+  @media only screen and (min-width: ${breakpoints.largerThenTablet}) {
     height: calc(var(--vh, 1%) * 100 - 130px);
   }
 

@@ -59,7 +59,7 @@ const Header = styled.header`
   background: #fff;
   border-bottom: 5px solid ${theme.green4};
 
-  @media (min-width: ${breakpoints.largerThentablet}) {
+  @media (min-width: ${breakpoints.largerThenTablet}) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -85,7 +85,7 @@ const ToggleSearch = styled(Button)`
     margin: 0;
     float: right;
 
-    @media (min-width: ${breakpoints.largerThentablet}) {
+    @media (min-width: ${breakpoints.largerThenTablet}) {
       display: none;
     }
   }
@@ -97,7 +97,7 @@ const StyledLink = styled(Link)`
   padding: 10px;
   z-index: 2000;
 
-  @media screen and (max-width: ${breakpoints.largerThentablet}) {
+  @media screen and (max-width: ${breakpoints.largerThenTablet}) {
     padding: 5px;
   }
 `;
