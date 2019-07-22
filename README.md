@@ -21,6 +21,8 @@ Design is not finialized and will most likely be changed/improved.
 * You will need [npm](https://www.npmjs.com/) on your computer.
 * You need a API key from [Lantmäteriet](https://opendata.lantmateriet.se/#register) to get the map.
 * You need API key from [jobtech](https://jobtechdev.se/doc/api/beta/jobsearch/) to get the ads
+*optionally you can use Docker*
+
 
 ### Installation
 
@@ -78,6 +80,14 @@ This project uses the component [MapWidget](https://github.com/MagnumOpuses/mapW
 You can read more about that in [readme.md](https://github.com/MagnumOpuses/mapWidget/blob/master/README.md) on that project. <br /> 
 Also we have used [iamhosseindhv snackbar](https://iamhosseindhv.com/notistack/demos#custom-snackbar)
 Otherwise there is more technical descriptions in readme files in each componets folders. 
+
+## Docker
+you might need to run them with `sudo`
+
+1. goto project root
+2. run: `docker build . -t <image name>`
+3. run: `docker run -it -p 8080:8080 <image name>`
+4. open a browser of your choice and goto: `http://localhost:8080/`
 
 ## Contributing
 
