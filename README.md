@@ -20,7 +20,7 @@ Design is not finialized and will most likely be changed/improved.
 
 * You will need [npm](https://www.npmjs.com/) on your computer.
 * You need a API key from [Lantmäteriet](https://opendata.lantmateriet.se/#register) to get the map.
-* You need API key for Job search API from [jobtech](https://jobtechdev.se) to get the ads
+* You need API key for Job search API from [jobtechdev.se](https://jobtechdev.se) to get the ads
 *optionally you can use Docker*
 
 
