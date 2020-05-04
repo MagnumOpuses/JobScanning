@@ -1,6 +1,6 @@
 ![alt text][logo]
 
-[logo]: https://github.com/MagnumOpuses/project-meta/blob/master/img/jobtechdev_black.png "JobTech dev logo"
+[logo]: https://github.com/MagnumOpuses/project-meta/raw/master/img/jobtechdev_black.png "JobTech dev logo"
 [A JobTech Project]( https://www.jobtechdev.se)
 
 # JobScanner
