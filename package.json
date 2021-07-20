@@ -15,7 +15,7 @@
     "react-countup": "^4.0.0-alpha.6",
     "react-dom": "^16.8.6",
     "react-infinite-scroll-component": "^4.2.0",
-    "react-native": "^0.59.9",
+    "react-native": "^0.62.3",
     "react-redux": "^5.0.7",
     "react-responsive": "^6.0.1",
     "react-router-dom": "^4.3.1",
